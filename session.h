@@ -154,7 +154,8 @@ struct peer_stats {
 
 struct peer_capa {
 	u_int8_t	announce;
-	u_int8_t	ann_mp;
+	u_int8_t	ann_mp_v4;
+	u_int8_t	ann_mp_v6;
 	u_int8_t	ann_refresh;
 	u_int8_t	mp_v4;		/* multiprotocol extensions, RFC 2858 */
 	u_int8_t	mp_v6;
