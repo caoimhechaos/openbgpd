@@ -563,7 +563,7 @@ aspath_verify(void *data, u_int16_t len)
 	u_int8_t	 seg_len, seg_type;
 
 	if (len & 1)
-		/* odd lenght aspath are invalid */
+		/* odd length aspath are invalid */
 		return AS_ERR_BAD;
 
 	for (; len > 0; len -= seg_size, seg += seg_size) {

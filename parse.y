@@ -695,7 +695,7 @@ encspec		: /* nada */	{
 			}
 
 			if (strlen($2) / 2 != $$.enc_key_len) {
-				yyerror("enc key lenght wrong: should be %u "
+				yyerror("enc key length wrong: should be %u "
 				    "bytes, is %u bytes",
 				    $$.enc_key_len * 2, strlen($2));
 				free($2);
