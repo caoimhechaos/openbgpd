@@ -2167,6 +2167,15 @@ sa_cmp(struct bgpd_addr *a, struct sockaddr *b)
 		break;
 	case AF_INET6:
 		in6_b = (struct sockaddr_in6 *)b;
+#if defined(__KAME__) && defined(KAME_SCOPEID)
+		/* directly stolen from sbin/ifconfig/ifconfig.c */
+		if (IN6_IS_ADDR_LINKLOCAL(&in6_b->sin6_addr)) {
+			in6_b->sin6_scope_id =
+			    ntohs(*(u_int16_t *)&in6_b->sin6_addr.s6_addr[2]);
+			in6_b->sin6_addr.s6_addr[2] =
+			    in6_b->sin6_addr.s6_addr[3] = 0;
+		}
+#endif
 		if (bcmp(&a->v6, &in6_b->sin6_addr,
 		    sizeof(struct in6_addr)))
 			return (1);

@@ -15,4 +15,7 @@ CFLAGS+= -Wsign-compare
 YFLAGS=
 MAN= bgpd.8 bgpd.conf.5
 
+# kame scopeid hack
+CPPFLAGS+=-DKAME_SCOPEID
+
 .include <bsd.prog.mk>
