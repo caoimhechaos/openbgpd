@@ -568,10 +568,12 @@ parse_config(char *filename, struct bgpd_config *xconf,
 		if ((conf->opts & BGPD_OPT_VERBOSE2) && !sym->used)
 			fprintf(stderr, "warning: macro '%s' not "
 			    "used\n", sym->nam);
-		free(sym->nam);
-		free(sym->val);
-		TAILQ_REMOVE(&symhead, sym, entries);
-		free(sym);
+		if (!sym->persist) {
+			free(sym->nam);
+			free(sym->val);
+			TAILQ_REMOVE(&symhead, sym, entries);
+			free(sym);
+		}
 	}
 
 	errors += merge_config(xconf, conf);
