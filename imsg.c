@@ -48,7 +48,7 @@ imsg_read(struct imsgbuf *ibuf)
 		return (0);
 	}
 	if (n == 0) {	/* connection closed */
-		logit(LOG_CRIT, "imsg_get: pipe close");
+		logit(LOG_CRIT, "imsg_get: pipe closed");
 		return (-1);
 	}
 
