@@ -306,7 +306,7 @@ mrt_dump_entry(struct mrt_config *mrt, struct prefix *p, u_int16_t snum,
 
 	DUMP_SHORT(buf, 0);
 	DUMP_SHORT(buf, snum);
-	DUMP_NLONG(buf, p->prefix->prefix.s_addr);
+	DUMP_NLONG(buf, p->prefix->prefix.v4.s_addr);
 	DUMP_BYTE(buf, p->prefix->prefixlen);
 	DUMP_BYTE(buf, 1);		/* state */
 	DUMP_LONG(buf, p->lastchange);	/* originated */
