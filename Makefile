@@ -6,9 +6,8 @@ SRCS=	bgpd.c buffer.c session.c log.c parse.y config.c imsg.c \
 CFLAGS+= -Wall
 CFLAGS+= -Wstrict-prototypes -Wmissing-prototypes
 CLFAGS+= -Wmissing-declarations -Wredundant-decls
-CFLAGS+= -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align
+CFLAGS+= -Wshadow -Wpointer-arith -Wcast-qual
 CFLAGS+= -Wsign-compare
-CFLAGS+= -Werror
 YFLAGS=
 NOMAN=
 
