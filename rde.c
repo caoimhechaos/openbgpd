@@ -798,7 +798,7 @@ rde_update_dispatch(struct imsg *imsg)
 
 				fasp = path_copy(asp);
 				/* input filter */
-				if (rde_filter(peer, asp, &prefix,
+				if (rde_filter(peer, fasp, &prefix,
 				    prefixlen, DIR_IN) == ACTION_DENY) {
 					path_put(fasp);
 					continue;
