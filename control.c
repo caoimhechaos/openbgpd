@@ -110,8 +110,6 @@ control_accept(int listenfd)
 	int			 connfd;
 	socklen_t		 len;
 	struct sockaddr_un	 sun;
-	uid_t			 uid;
-	gid_t			 gid;
 	struct ctl_conn		*ctl_conn;
 
 	len = sizeof(sun);
@@ -124,16 +122,6 @@ control_accept(int listenfd)
 	}
 
 	session_socket_blockmode(connfd, BM_NONBLOCK);
-
-	if (getpeereid(connfd, &uid, &gid) == -1) {
-		log_warn("session_control_accept");
-		return;
-	}
-
-	if (uid) {
-		log_info("Control connection attempt from uid %ld", uid);
-		return;
-	}
 
 	if ((ctl_conn = malloc(sizeof(struct ctl_conn))) == NULL) {
 		log_warn("session_control_accept");
