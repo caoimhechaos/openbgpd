@@ -574,6 +574,9 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	errors += merge_config(xconf, conf);
 	errors += mrt_mergeconfig(xmconf, mrtconf);
 
+	free(conf);
+	free(mrtconf);
+
 	return (errors ? -1 : 0);
 }
 

@@ -95,7 +95,6 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 
 	/* merge peers done by session egine except for initial config */
 	xconf->peers = conf->peers;
-	free(conf);
 
 	return (0);
 }

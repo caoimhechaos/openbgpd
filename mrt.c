@@ -425,7 +425,6 @@ mrt_mergeconfig(struct mrt_config *xconf, struct mrt_config *conf)
 		xm = LIST_NEXT(m, list);
 		free(m);
 	}
-	free(conf);
 
 	if (interval != INT_MAX)
 		alarm(interval);
