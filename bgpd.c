@@ -52,7 +52,6 @@ sighdlr(int sig)
 {
 	switch (sig) {
 	case SIGTERM:
-	case SIGKILL:
 	case SIGINT:
 	case SIGCHLD:
 		quit = 1;
@@ -140,7 +139,6 @@ main(int argc, char *argv[])
 		exit (1);
 
 	signal(SIGTERM, sighdlr);
-	signal(SIGKILL, sighdlr);
 	signal(SIGINT, sighdlr);
 	signal(SIGCHLD, sighdlr);
 	signal(SIGHUP, sighdlr);
