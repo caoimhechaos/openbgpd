@@ -196,7 +196,8 @@ main(int argc, char *argv[])
 
 	/* fork children */
 	rde_pid = rde_main(&conf, peer_l, &net_l, rules_l, pipe_m2r, pipe_s2r);
-	io_pid = session_main(&conf, peer_l, rules_l, pipe_m2s, pipe_s2r);
+	io_pid = session_main(&conf, peer_l, &net_l, rules_l, pipe_m2s,
+	    pipe_s2r);
 
 	setproctitle("parent");
 
