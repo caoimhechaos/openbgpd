@@ -105,7 +105,7 @@ enum capa_codes {
 };
 
 struct msg_header {
-	u_char			 marker[16];
+	u_char			 marker[MSGSIZE_HEADER_MARKER];
 	u_int16_t		 len;
 	u_int8_t		 type;
 };
