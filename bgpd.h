@@ -152,7 +152,7 @@ enum auth_method {
 	AUTH_IPSEC_MANUAL_AH,
 	AUTH_IPSEC_IKE
 };
-	
+
 struct peer_auth {
 	enum auth_method	method;
 	char			md5key[TCP_MD5_KEY_LEN];
