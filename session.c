@@ -926,10 +926,12 @@ session_open(struct peer *p)
 				log_peer_warn(&p->conf, "Write error");
 			buf_free(buf);
 			bgp_fsm(p, EVNT_CON_FATAL);
+			return;
 		}
 	} else {
 		buf_free(buf);
 		bgp_fsm(p, EVNT_CON_FATAL);
+		return;
 	}
 
 	p->stats.msg_sent_open++;
