@@ -1114,13 +1114,14 @@ filter_set_opt	: LOCALPREF number		{
 			$$.med = $2;
 		}
 		| NEXTHOP address		{
+			$$.flags = SET_NEXTHOP;
 			memcpy(&$$.nexthop, &$2, sizeof($$.nexthop));
 		}
 		| NEXTHOP BLACKHOLE		{
-			$$.flags |= SET_NEXTHOP_BLACKHOLE;
+			$$.flags = SET_NEXTHOP_BLACKHOLE;
 		}
 		| NEXTHOP REJECT		{
-			$$.flags |= SET_NEXTHOP_REJECT;
+			$$.flags = SET_NEXTHOP_REJECT;
 		}
 		| PREPEND_SELF number		{
 			$$.flags = SET_PREPEND_SELF;
