@@ -493,6 +493,7 @@ struct filter_peers {
 #define COMMUNITY_NO_EXPORT		0xff01
 #define COMMUNITY_NO_ADVERTISE		0xff02
 #define COMMUNITY_NO_EXPSUBCONFED	0xff03
+#define COMMUNITY_NO_PEER		0xff04	/* rfc3765 */
 
 struct filter_match {
 	struct {

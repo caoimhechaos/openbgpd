@@ -1495,6 +1495,10 @@ parsecommunity(char *s, int *as, int *type)
 		*as = COMMUNITY_WELLKNOWN;
 		*type = COMMUNITY_NO_EXPSUBCONFED;
 		return (0);
+	} else if (strcasecmp(s, "NO_PEER") == 0) {
+		*as = COMMUNITY_WELLKNOWN;
+		*type = COMMUNITY_NO_PEER;
+		return (0);
 	}
 
 	if ((p = strchr(s, ':')) == NULL) {
