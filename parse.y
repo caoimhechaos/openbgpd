@@ -507,6 +507,10 @@ peeropts	: REMOTEAS asnumber	{
 			curpeer->conf.max_prefix = $2;
 		}
 		| TCP MD5SIG PASSWORD string {
+			if (curpeer->conf.auth.method) {
+				yyerror("auth method cannot be redefined");
+				YYERROR;
+			}
 			if (strlcpy(curpeer->conf.auth.md5key, $4,
 			    sizeof(curpeer->conf.auth.md5key)) >=
 			    sizeof(curpeer->conf.auth.md5key)) {
@@ -522,6 +526,10 @@ peeropts	: REMOTEAS asnumber	{
 			unsigned	i;
 			char		s[3];
 
+			if (curpeer->conf.auth.method) {
+				yyerror("auth method cannot be redefined");
+				YYERROR;
+			}
 			if (strlen($4) / 2 >=
 			    sizeof(curpeer->conf.auth.md5key)) {
 				yyerror("key too long");
@@ -551,6 +559,10 @@ peeropts	: REMOTEAS asnumber	{
 			free($4);
 		}
 		| IPSEC IKE {
+			if (curpeer->conf.auth.method) {
+				yyerror("auth method cannot be redefined");
+				YYERROR;
+			}
 			curpeer->conf.auth.method = AUTH_IPSEC_IKE;
 		}
 		| IPSEC ESP inout SPI number STRING STRING encspec {
@@ -559,6 +571,10 @@ peeropts	: REMOTEAS asnumber	{
 			u_int32_t	auth_alg;
 			u_int8_t	keylen;
 
+			if (curpeer->conf.auth.method) {
+				yyerror("auth method cannot be redefined");
+				YYERROR;
+			}
 			curpeer->conf.auth.method = AUTH_IPSEC_MANUAL_ESP;
 
 			if (!strcmp($6, "sha1")) {
