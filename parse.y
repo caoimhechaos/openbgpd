@@ -1096,7 +1096,8 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| PFTABLE string		{
 			$$.flags = SET_PFTABLE;
-			if (pftable_exists($2) != 0) {
+			if (!(conf->opts & BGPD_OPT_NOACTION) &&
+			    pftable_exists($2) != 0) {
 				yyerror("pftable name does not exist");
 				free($2);
 				YYERROR;
