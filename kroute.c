@@ -616,8 +616,11 @@ kroute_detach_nexthop(struct knexthop_node *kn)
 	 * if not remove the flag
 	 */
 
+	if (kn->kroute == NULL)
+		return;
+
 	for (s = RB_MIN(knexthop_tree, &knt); s != NULL &&
-	    s->kroute != s->kroute; s = RB_NEXT(knexthop_tree, &knt, s))
+	    s->kroute != kn->kroute; s = RB_NEXT(knexthop_tree, &knt, s))
 		;	/* nothing */
 
 	if (s == NULL)
