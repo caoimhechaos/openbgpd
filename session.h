@@ -17,6 +17,7 @@
  */
 
 #include <sys/types.h>
+#include <time.h>
 
 #define	MAX_BACKLOG			5
 #define	INTERVAL_CONNECTRETRY		120
@@ -118,6 +119,8 @@ TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
 struct peer_stats {
 	u_int64_t		 msg_rcvd;
 	u_int64_t		 msg_send;
+	time_t			 last_updown;
+	time_t			 last_read;
 };
 
 struct peer {
