@@ -374,15 +374,6 @@ log_conn_attempt(const struct peer *peer, struct in_addr remote)
 }
 
 const char *
-log_ntoa(in_addr_t ip)
-{
-	struct in_addr	ina;
-
-	ina.s_addr = ip;
-	return (inet_ntoa(ina));
-}
-
-const char *
 log_addr(const struct bgpd_addr *addr)
 {
 	static char	buf[48];
