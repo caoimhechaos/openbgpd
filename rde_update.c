@@ -108,9 +108,9 @@ up_prefix_cmp(struct update_prefix *a, struct update_prefix *b)
 {
 	ENSURE(a->prefix.af == AF_INET);
 
-	if (a->prefix.v4.s_addr < b->prefix.v4.s_addr)
+	if (ntohl(a->prefix.v4.s_addr) < ntohl(b->prefix.v4.s_addr))
 		return (-1);
-	if (a->prefix.v4.s_addr > b->prefix.v4.s_addr)
+	if (ntohl(a->prefix.v4.s_addr) > ntohl(b->prefix.v4.s_addr))
 		return (1);
 	if (a->prefixlen < b->prefixlen)
 		return (-1);
