@@ -226,7 +226,8 @@ up_generate_updates(struct rde_peer *peer,
 			 */
 			return;
 
-		if (peer->conf.ebgp == 0 && old->peer->conf.ebgp == 0)
+		if (peer->conf.ebgp == 0 && old->peer->conf.ebgp == 0 &&
+		    (old->aspath->nexthop->flags & NEXTHOP_ANNOUNCE) == 0)
 			/* Do not redistribute updates to ibgp peers */
 			return;
 
@@ -281,7 +282,8 @@ up_generate_updates(struct rde_peer *peer,
 			 */
 			return;
 
-		if (peer->conf.ebgp == 0 && new->peer->conf.ebgp == 0)
+		if (peer->conf.ebgp == 0 && new->peer->conf.ebgp == 0 &&
+		    (new->aspath->nexthop->flags & NEXTHOP_ANNOUNCE) == 0)
 			/* Do not redistribute updates to ibgp peers */
 			return;
 
