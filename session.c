@@ -2334,6 +2334,7 @@ session_match_mask(struct peer *p, struct sockaddr *ip)
 	}
 
 	if (p->conf.remote_addr.af == AF_INET6) {
+		bzero(&mask, sizeof(mask));
 		for (i = 0; i < p->conf.remote_masklen / 8; i++)
 			mask.s6_addr[i] = 0xff;
 		i = p->conf.remote_masklen % 8;
