@@ -52,7 +52,7 @@ buf_open(struct peer *peer, int sock, ssize_t len)
 }
 
 int
-buf_add(struct buf *buf, u_char *data, ssize_t len)
+buf_add(struct buf *buf, void *data, ssize_t len)
 {
 	if (buf->wpos + len > buf->size)
 		return (-1);

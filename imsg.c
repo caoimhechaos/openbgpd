@@ -97,7 +97,7 @@ imsg_compose(int fd, int type, u_int32_t peerid, u_char *data,
 	wbuf = buf_open(NULL, fd, hdr.len);
 	if (wbuf == NULL)
 		fatal("buf_open error", 0);
-	if (buf_add(wbuf, (u_char *)&hdr, sizeof(hdr)) == -1)
+	if (buf_add(wbuf, &hdr, sizeof(hdr)) == -1)
 		fatal("buf_add error", 0);
 	if (datalen)
 		if (buf_add(wbuf, data, datalen) == -1)

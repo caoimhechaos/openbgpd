@@ -234,7 +234,7 @@ int		 session_main(struct bgpd_config *, int[2], int[2]);
 
 /* buffer.c */
 struct buf	*buf_open(struct peer *, int, ssize_t);
-int		 buf_add(struct buf *, u_char *, ssize_t);
+int		 buf_add(struct buf *, void *, ssize_t);
 u_char		*buf_reserve(struct buf *, ssize_t);
 int		 buf_close(struct buf *);
 int		 buf_write(struct buf *);
