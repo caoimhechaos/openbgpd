@@ -94,9 +94,11 @@ rde_apply_set(struct rde_aspath *asp, struct filter_set_head *sh,
 		switch (set->type) {
 		case ACTION_SET_LOCALPREF:
 			asp->lpref = set->action.metric;
+			break;
 		case ACTION_SET_MED:
 			asp->flags |= F_ATTR_MED | F_ATTR_MED_ANNOUNCE;
 			asp->med = set->action.metric;
+			break;
 		case ACTION_SET_PREPEND_SELF:
 			/* don't apply if this is a incoming default override */
 			if (dir == DIR_DEFAULT_IN)
