@@ -112,6 +112,7 @@ struct bgpd_config {
 	int			 flags;
 	int			 log;
 	struct sockaddr_in	 listen_addr;
+	struct sockaddr_in6	 listen6_addr;
 };
 
 struct buf_read {
