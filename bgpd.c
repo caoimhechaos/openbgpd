@@ -195,7 +195,8 @@ main(int argc, char *argv[])
 		fatalx("control socket setup failed");
 
 	/* fork children */
-	rde_pid = rde_main(&conf, peer_l, &net_l, rules_l, pipe_m2r, pipe_s2r);
+	rde_pid = rde_main(&conf, peer_l, &net_l, rules_l, &mrt_l,
+	    pipe_m2r, pipe_s2r);
 	io_pid = session_main(&conf, peer_l, &net_l, rules_l, &mrt_l,
 	    pipe_m2s, pipe_s2r);
 
