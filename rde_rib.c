@@ -92,6 +92,8 @@ path_update(struct rde_peer *peer, struct rde_aspath *nasp,
 		} else {
 			/* already registered */
 			path_put(nasp);
+			/* update last change */
+			p->lastchange = time(NULL);
 		}
 	} else if ((asp = path_lookup(nasp, peer)) == NULL) {
 		/* path not available */
