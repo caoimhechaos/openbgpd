@@ -366,8 +366,7 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 			if (idx != PFD_PIPE_ROUTE)
 				fatal("nexthop request not from RDE", 0);
 			memcpy(&ina, imsg.data, sizeof(ina));
-			/* XXX */
-			/* kroute_nexthop_delete(ina); */
+			kroute_nexthop_delete(ina);
 			break;
 		default:
 			break;
