@@ -409,7 +409,8 @@ rde_update_dispatch(struct imsg *imsg)
 	while (attrpath_len > 0) {
 		if ((pos = attr_parse(p, attrpath_len, &attrs,
 		    peer->conf.ebgp, conf->as)) < 0) {
-			emsg = attr_error(p, attrpath_len, &subtype, &size);
+			emsg = attr_error(p, attrpath_len, &attrs,
+			    &subtype, &size);
 			rde_update_err(peer, ERR_UPDATE, subtype, emsg, size);
 			aspath_destroy(attrs.aspath);
 			attr_optfree(&attrs);
@@ -417,6 +418,14 @@ rde_update_dispatch(struct imsg *imsg)
 		}
 		p += pos;
 		attrpath_len -= pos;
+	}
+
+	if ((subtype = attr_missing(&attrs, peer->conf.ebgp)) != 0) {
+		rde_update_err(peer, ERR_UPDATE, ERR_UPD_MISSNG_WK_ATTR,
+		    &subtype, sizeof(u_int8_t));
+		aspath_destroy(attrs.aspath);
+		attr_optfree(&attrs);
+		return (-1);
 	}
 
 	while (nlri_len > 0) {
