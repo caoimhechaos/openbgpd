@@ -316,6 +316,6 @@ int	kroute_change(int, struct kroute *);
 int	kroute_delete(int, struct kroute *);
 void	kroute_shutdown(int);
 void	kroute_dispatch_msg(int);
-void	kroute_nexthop_check(in_addr_t);
+void	kroute_nexthop_add(in_addr_t);
 
 #endif /* __BGPD_H__ */
