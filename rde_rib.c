@@ -247,9 +247,8 @@ path_link(struct rde_aspath *asp, struct rde_peer *peer)
 	LIST_INSERT_HEAD(head, asp, path_l);
 	LIST_INSERT_HEAD(&peer->path_h, asp, peer_l);
 	asp->peer = peer;
-	asp->flags |= F_ATTR_LINKED;
-
 	nexthop_link(asp);
+	asp->flags |= F_ATTR_LINKED;
 }
 
 /*
@@ -764,9 +763,11 @@ nexthop_modify(struct rde_aspath *asp, struct bgpd_addr *nexthop, int flags,
 		return;
 
 	nh = nexthop_get(nexthop);
-	nexthop_unlink(asp);
+	if (asp->flags & F_ATTR_LINKED)
+		nexthop_unlink(asp);
 	asp->nexthop = nh;
-	nexthop_link(asp);
+	if (asp->flags & F_ATTR_LINKED)
+		nexthop_link(asp);
 }
 
 void
