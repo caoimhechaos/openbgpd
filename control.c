@@ -216,7 +216,7 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 			if (imsg.hdr.len == IMSG_HEADER_SIZE +
 			    sizeof(struct bgpd_addr)) {
 				addr = imsg.data;
-				p = getpeerbyip(addr->v4.s_addr);
+				p = getpeerbyaddr(addr);
 				if (p != NULL)
 					imsg_compose(&c->ibuf,
 					    IMSG_CTL_SHOW_NEIGHBOR,
@@ -237,7 +237,7 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 			if (imsg.hdr.len == IMSG_HEADER_SIZE +
 			    sizeof(struct bgpd_addr)) {
 				addr = imsg.data;
-				p = getpeerbyip(addr->v4.s_addr);
+				p = getpeerbyaddr(addr);
 				if (p != NULL)
 					bgp_fsm(p, EVNT_START);
 				else
@@ -251,7 +251,7 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 			if (imsg.hdr.len == IMSG_HEADER_SIZE +
 			    sizeof(struct bgpd_addr)) {
 				addr = imsg.data;
-				p = getpeerbyip(addr->v4.s_addr);
+				p = getpeerbyaddr(addr);
 				if (p != NULL)
 					bgp_fsm(p, EVNT_STOP);
 				else
