@@ -83,7 +83,7 @@ struct ctl_conn {
 
 TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
 
-struct bgpd_config	*conf;
+struct peer	*peers;
 
 /* control.c */
 int	control_listen(void);
