@@ -223,6 +223,19 @@ See also the
 section.
 .Pp
 .It Xo
+.Ic rde
+.Ic route-age
+.Pq Ic ignore Ns \&| Ns Ic evaluate
+.Xc
+If set to
+.Ic evaluate ,
+the best path selection will not only be based on the path attributes but
+also on the age of the route.
+In this case the decision process is no longer deterministic.
+The default is
+.Ic ignore .
+.Pp
+.It Xo
 .Ic route-collector
 .Pq Ic yes Ns \&| Ns Ic no
 .Xc

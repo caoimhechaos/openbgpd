@@ -1738,6 +1738,12 @@ rde_noevaluate(void)
 	return (conf->flags & BGPD_FLAG_NO_EVALUATE);
 }
 
+int
+rde_decisionflags(void)
+{
+	return (conf->flags & BGPD_FLAG_DECISION_MASK);
+}
+
 /*
  * peer functions
  */

@@ -117,6 +117,9 @@ print_mainconf(struct bgpd_config *conf)
 	if (conf->flags & BGPD_FLAG_NO_EVALUATE)
 		printf("route-collector yes\n");
 
+	if (conf->flags & BGPD_FLAG_DECISION_ROUTEAGE)
+		printf("rde route-age evaluate\n");
+
 	if (conf->log & BGPD_LOG_UPDATES)
 		printf("log updates\n");
 

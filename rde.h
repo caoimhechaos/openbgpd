@@ -244,6 +244,7 @@ void		 rde_send_pftable_commit(void);
 void		 rde_generate_updates(struct prefix *, struct prefix *);
 u_int16_t	 rde_local_as(void);
 int		 rde_noevaluate(void);
+int		 rde_decisionflags(void);
 
 /* rde_attr.c */
 int		 attr_write(void *, u_int16_t, u_int8_t, u_int8_t, void *,
