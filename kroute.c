@@ -111,7 +111,8 @@ retry:
 			} else if (r.hdr.rtm_type == RTM_DELETE) {
 				logit(LOG_INFO, "route vanished before delete");
 				return (0);
-			}
+			} else			/* nexthop invalid */
+				return (-1);
 			break;
 		case EEXIST:	/* connected route */
 			return (-2);
