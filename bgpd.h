@@ -325,6 +325,6 @@ void	control_cleanup(void);
 int	control_imsg_relay(struct imsg *);
 
 /* pfkey.c */
-int	pfkey_signature(struct sockaddr *, struct sockaddr *, char *);
+int	pfkey_setkey(struct sockaddr *, struct sockaddr *, char *);
 
 #endif /* __BGPD_H__ */
