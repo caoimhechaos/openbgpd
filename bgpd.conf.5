@@ -356,6 +356,9 @@ statement defines the maximum hops the neighbor may be away.
 Do not attempt to actively open a TCP connection to the neighbor system.
 .It Ar remote-as
 Set the AS number of the remote system.
+.It Ar route-reflector
+Act as a RFC 2796 route-reflector for this neighbor.
+An optional cluster id can be specified else the own bgp id will be used.
 .It Ar set
 Set the
 .Em AS path attributes

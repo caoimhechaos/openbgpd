@@ -97,7 +97,9 @@ enum attrtypes {
 	ATTR_LOCALPREF,
 	ATTR_ATOMIC_AGGREGATE,
 	ATTR_AGGREGATOR,
-	ATTR_COMMUNITIES
+	ATTR_COMMUNITIES,
+	ATTR_ORIGINATOR_ID,
+	ATTR_CLUSTER_LIST
 };
 
 /* attribute flags. 4 low order bits reserved */
@@ -227,7 +229,7 @@ void		 attr_free(struct attr_flags *);
 int		 attr_write(void *, u_int16_t, u_int8_t, u_int8_t, void *,
 		     u_int16_t);
 int		 attr_optadd(struct attr_flags *, u_int8_t, u_int8_t,
-		     u_char *, u_int16_t);
+		     void *, u_int16_t);
 struct attr	*attr_optget(struct attr_flags *, u_int8_t);
 void		 attr_optfree(struct attr_flags *);
 
