@@ -649,6 +649,13 @@ change_state(struct peer *peer, enum session_state state,
 	switch (state) {
 	case STATE_IDLE:
 		/*
+		 * try to write out what's buffered (maybe a notification),
+		 * don't bother if it fails
+		 */
+		if (peer->state >= STATE_OPENSENT && peer->wbuf.queued)
+			msgbuf_write(&peer->wbuf);
+
+		/*
 		 * we must start the timer for the next EVNT_START
 		 * if we are coming here due to an error and the
 		 * session was not established successfully before, the
