@@ -800,7 +800,7 @@ session_accept(int listenfd)
 		session_socket_blockmode(connfd, BM_NONBLOCK);
 		bgp_fsm(p, EVNT_CON_OPEN);
 	} else {
-		log_conn_attempt(p, cliaddr.sin_addr);
+		log_conn_attempt(p, (struct sockaddr *)&cliaddr);
 		shutdown(connfd, SHUT_RDWR);
 		close(connfd);
 	}
