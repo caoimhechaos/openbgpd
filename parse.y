@@ -1245,11 +1245,11 @@ lookup(char *s)
 		{ "route-reflector",	REFLECTOR},
 		{ "router-id",		ROUTERID},
 		{ "set",		SET},
-		{ "source-AS",		SOURCEAS},
+		{ "source-as",		SOURCEAS},
 		{ "spi",		SPI},
 		{ "tcp",		TCP},
 		{ "to",			TO},
-		{ "transit-AS",		TRANSITAS}
+		{ "transit-as",		TRANSITAS}
 	};
 	const struct keywords	*p;
 
