@@ -76,8 +76,7 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	pid_t		 pid;
 	struct passwd	*pw;
 	struct pollfd	 pfd[2];
-	size_t		 nfds;
-	int		 n;
+	int		 n, nfds;
 
 	switch (pid = fork()) {
 	case -1:
