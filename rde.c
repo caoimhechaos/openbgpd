@@ -241,6 +241,7 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 		case IMSG_NEXTHOP_UPDATE:
 			if (idx != PFD_PIPE_MAIN)
 				fatal("nexthop response not from parent", 0);
+			nexthop_update(imsg.data);
 			break;
 		case IMSG_MRT_REQ:
 			if (idx != PFD_PIPE_MAIN)
@@ -262,13 +263,6 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 		imsg_free(&imsg);
 	}
 }
-
-/*
- * rde_request_dispatch() -- handle all messages comming form the parent.
- * This are reconfiguration request and inquiries.
- * XXX most is done in rde_dispatch_imsg so probably drop this function.
- */
-
 
 /*
  * rde_update_dispatch() -- handle routing updates comming from the session

@@ -948,8 +948,7 @@ nexthop_add(struct rde_aspath *asp)
 		nh = nexthop_get(asp->flags.nexthop.s_addr);
 	if (nh == NULL) {
 		nh = nexthop_alloc();
-		//nh->state = NEXTHOP_LOOKUP;
-		nh->state = NEXTHOP_REACH;
+		nh->state = NEXTHOP_LOOKUP;
 		nh->exit_nexthop = asp->flags.nexthop;
 		LIST_INSERT_HEAD(NEXTHOP_HASH(asp->flags.nexthop.s_addr), nh,
 		    nexthop_l);
