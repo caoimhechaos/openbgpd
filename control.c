@@ -211,6 +211,9 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 					    0, p, sizeof(struct peer));
 			imsg_compose(&c->ibuf, IMSG_CTL_END, 0, NULL, 0);
 			break;
+		case IMSG_CTL_RELOAD:
+			imsg_compose_parent(IMSG_CTL_RELOAD, 0, NULL, 0);
+			break;
 		default:
 			break;
 		}

@@ -426,6 +426,12 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 				kroute_nexthop_delete(ina);
 			}
 			break;
+		case IMSG_CTL_RELOAD:
+			if (idx != PFD_PIPE_SESSION)
+				logit(LOG_CRIT, "reload request not from SE");
+			else
+				reconfig = 1;
+			break;
 		default:
 			break;
 		}

@@ -148,7 +148,7 @@ void		  session_socket_blockmode(int, enum blockmodes);
 int		  session_main(struct bgpd_config *, struct peer *, int[2],
 		    int[2]);
 struct peer	*getpeerbyip(in_addr_t);
-
+int		 imsg_compose_parent(int, u_int32_t, void *, u_int16_t);
 
 /* log.c */
 void		 log_peer_err(const struct peer *, const char *, ...);

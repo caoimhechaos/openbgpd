@@ -186,6 +186,8 @@ session_main(struct bgpd_config *config, struct peer *cpeers, int pipe_m2s[2],
 		pfd[PFD_LISTEN].events = POLLIN;
 		pfd[PFD_PIPE_MAIN].fd = ibuf_main.sock;
 		pfd[PFD_PIPE_MAIN].events = POLLIN;
+		if (ibuf_main.w.queued > 0)
+			pfd[PFD_PIPE_MAIN].events |= POLLOUT;
 		pfd[PFD_PIPE_ROUTE].fd = ibuf_rde.sock;
 		pfd[PFD_PIPE_ROUTE].events = POLLIN;
 		if (ibuf_rde.w.queued > 0)
@@ -280,6 +282,10 @@ session_main(struct bgpd_config *config, struct peer *cpeers, int pipe_m2s[2],
 			nfds--;
 			session_accept(sock);
 		}
+
+		if (nfds > 0 && pfd[PFD_PIPE_MAIN].revents & POLLOUT)
+			if (msgbuf_write(&ibuf_main.w) < 0)
+				fatal("pipe write error");
 
 		if (nfds > 0 && pfd[PFD_PIPE_MAIN].revents & POLLIN) {
 			nfds--;
@@ -1409,4 +1415,10 @@ session_up(struct peer *peer)
 	if (imsg_compose(&ibuf_rde, IMSG_SESSION_UP, peer->conf.id,
 	    &peer->remote_bgpid, sizeof(peer->remote_bgpid)) == -1)
 		fatalx("imsg_compose error");
+}
+
+int
+imsg_compose_parent(int type, u_int32_t peerid, void *data, u_int16_t datalen)
+{
+	return (imsg_compose(&ibuf_main, type, peerid, data, datalen));
 }
