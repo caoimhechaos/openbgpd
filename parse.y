@@ -724,7 +724,7 @@ lookup(char *s)
 		{ "prepend-self",	PREPEND},
 		{ "quick",		QUICK},
 		{ "remote-as",		REMOTEAS},
-		{ "route-collector",	ROUTECOLL},	
+		{ "route-collector",	ROUTECOLL},
 		{ "router-id",		ROUTERID},
 		{ "set",		SET},
 		{ "source-AS",		SOURCEAS},

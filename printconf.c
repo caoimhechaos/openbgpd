@@ -164,7 +164,7 @@ print_peer(struct peer_config *p)
 		printf("\n");
 
 	print_mrt(p->id, p->groupid, c == nada ? "\t" : "\t\t");
-	
+
 	printf("%s}\n", c);
 	if (p->group[0])
 		printf("}\n");
