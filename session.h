@@ -144,7 +144,6 @@ struct peer {
 	time_t			 IdleHoldResetTimer;
 	u_int			 IdleHoldTime;
 	int			 sock;
-	int			 events;
 	struct sockaddr_storage	 sa_local;
 	struct sockaddr_storage	 sa_remote;
 	struct msgbuf		 wbuf;
