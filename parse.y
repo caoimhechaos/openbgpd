@@ -552,7 +552,13 @@ peeropts	: REMOTEAS asnumber	{
 			u_int32_t	auth_alg;
 			u_int8_t	keylen;
 
-			if (curpeer->conf.auth.method) {
+			if (curpeer->conf.auth.method &&
+			    (((curpeer->conf.auth.spi_in && $3 == 1) ||
+			    (curpeer->conf.auth.spi_out && $3 == 0)) ||
+			    ($2 == 1 && curpeer->conf.auth.method !=
+			    AUTH_IPSEC_MANUAL_ESP) ||
+			    ($2 == 0 && curpeer->conf.auth.method !=
+			    AUTH_IPSEC_MANUAL_AH))) {
 				yyerror("auth method cannot be redefined");
 				YYERROR;
 			}
