@@ -55,11 +55,6 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 		p->conf.ebgp = (p->conf.remote_as != conf->as);
 		if (!p->conf.id)
 			p->conf.id = get_id(p);
-		if (p->conf.tcp_sign_key[0] &&
-		    pfkey_setkey(&p->conf.local_addr,
-		    &p->conf.remote_addr,
-		    p->conf.tcp_sign_key) == -1)
-			return (1);
 	}
 
 	memcpy(xconf, conf, sizeof(struct bgpd_config));
