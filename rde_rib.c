@@ -585,10 +585,10 @@ prefix_network_clean(struct rde_peer *peer, time_t reloadtime)
 
 				if (pt_empty(pte))
 					pt_remove(pte);
-				if (path_empty(asp))
-					path_destroy(asp);
 			}
 		}
+		if (path_empty(asp))
+			path_destroy(asp);
 	}
 }
 
