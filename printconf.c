@@ -240,6 +240,18 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 			printf("unfluffy-AS %u ", r->match.as.as);
 	}
 
+	if (r->match.community.as != 0) {
+		if (r->match.community.as == COMMUNITY_ANY)
+			printf("*:");
+		else
+			printf("%d:", r->match.community.as);
+
+		if (r->match.community.type == COMMUNITY_ANY)
+			printf("* ");
+		else
+			printf("%d ", r->match.community.type);
+	} 
+
 	print_set(&r->set);
 
 	printf("\n");

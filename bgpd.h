@@ -394,6 +394,14 @@ struct filter_peers {
 	u_int32_t	groupid;
 };
 
+/* special community type */
+#define COMMUNITY_ERROR			-1
+#define COMMUNITY_ANY			-2
+#define COMMUNITY_WELLKNOWN		0xffff
+#define COMMUNITY_NO_EXPORT		0xff01
+#define COMMUNITY_NO_ADVERTISE		0xff02
+#define COMMUNITY_NO_EXPSUBCONFED	0xff03
+
 struct filter_match {
 	struct {
 		struct bgpd_addr	addr;
@@ -406,6 +414,10 @@ struct filter_match {
 		u_int8_t		len_max;
 	} prefixlen;
 	struct as_filter		as;
+	struct {
+		int			as;
+		int			type;
+	} community;
 };
 
 TAILQ_HEAD(filter_head, filter_rule);
