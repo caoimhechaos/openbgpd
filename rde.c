@@ -689,7 +689,7 @@ rde_dump_as(struct as_filter *a, pid_t pid)
 			if (!aspath_match(asp->flags.aspath, a->type, a->as))
 				continue;
 			/* match found */
-			ENSURE(!LIST_EMPTY(&asp->prefix_h));
+			ENSURE(!path_empty(asp));
 			rde_dump_rib(LIST_FIRST(&asp->prefix_h), pid);
 			for (p = LIST_NEXT(LIST_FIRST(&asp->prefix_h), path_l);
 			    p != NULL; p = LIST_NEXT(p, path_l))
