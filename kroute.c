@@ -379,7 +379,7 @@ knexthop_compare(struct knexthop_node *a, struct knexthop_node *b)
 	if (a->nexthop.af != b->nexthop.af)
 		return (b->nexthop.af - a->nexthop.af);
 
-	switch(a->nexthop.af) {
+	switch (a->nexthop.af) {
 	case AF_INET:
 		if ((r = b->nexthop.addr32[0] - a->nexthop.addr32[0]) != 0)
 			return (r);

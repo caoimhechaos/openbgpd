@@ -1007,7 +1007,7 @@ struct nexthop_table {
 } nexthoptable;
 
 #define NEXTHOP_HASH(x)					\
-	&nexthoptable.nexthop_hashtbl[ntohl((x)) & 	\
+	&nexthoptable.nexthop_hashtbl[ntohl((x)) &	\
 	    nexthoptable.nexthop_hashmask]
 
 void

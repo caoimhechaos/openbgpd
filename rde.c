@@ -545,7 +545,7 @@ rde_update_log(const char *message,
     const struct bgpd_addr *prefix, u_int8_t prefixlen)
 {
 	char		*neighbor;
-	char	 	*nexthop = NULL;
+	char		*nexthop = NULL;
 	struct in_addr	 nh;
 
 	if (! (conf->log & BGPD_LOG_UPDATES))
