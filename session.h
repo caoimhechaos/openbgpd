@@ -115,8 +115,14 @@ struct ctl_conn {
 
 TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
 
+struct peer_stats {
+	u_int64_t		 msg_rcvd;
+	u_int64_t		 msg_send;
+};
+
 struct peer {
 	struct peer_config	 conf;
+	struct peer_stats	 stats;
 	u_int32_t		 remote_bgpid;
 	u_int16_t		 holdtime;
 	enum session_state	 state;
