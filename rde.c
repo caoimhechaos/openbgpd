@@ -555,7 +555,7 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 
 	kr.prefix = p->prefix->prefix.s_addr;
 	kr.prefixlen = p->prefix->prefixlen;
-	kr.nexthop = p->aspath->flags.nexthop.s_addr;
+	kr.nexthop = p->aspath->nexthop->true_nexthop.s_addr;
 
 	if (imsg_compose(&ibuf_main, type, 0, &kr, sizeof(kr)) == -1)
 		fatal("imsg_compose error");
