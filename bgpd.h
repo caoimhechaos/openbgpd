@@ -43,6 +43,7 @@
 #define	MIN_HOLDTIME			3
 #define	READ_BUF_SIZE			65535
 #define	RT_BUF_SIZE			16384
+#define	MAX_RTSOCK_BUF			128 * 1024
 
 #define	BGPD_OPT_VERBOSE		0x0001
 #define	BGPD_OPT_VERBOSE2		0x0002
