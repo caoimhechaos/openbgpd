@@ -153,10 +153,14 @@ struct peer_ipsec {
 	u_int8_t	auth_alg_out;
 	char		auth_key_in[IPSEC_AUTH_KEY_LEN];
 	char		auth_key_out[IPSEC_AUTH_KEY_LEN];
+	u_int8_t	auth_keylen_in;
+	u_int8_t	auth_keylen_out;
 	u_int8_t	enc_alg_in;
 	u_int8_t	enc_alg_out;
 	char		enc_key_in[IPSEC_ENC_KEY_LEN];
 	char		enc_key_out[IPSEC_ENC_KEY_LEN];
+	u_int8_t	enc_keylen_in;
+	u_int8_t	enc_keylen_out;
 };
 
 struct peer_config {
