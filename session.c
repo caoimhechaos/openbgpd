@@ -1221,6 +1221,7 @@ session_dispatch_imsg(int fd, int idx)
 				    NULL)
 					fatal("new_peer", errno);
 				p->state = STATE_NONE;
+				p->sock = -1;
 				p->next = nconf->peers;
 				nconf->peers = p;
 				reconf = RECONF_REINIT;
