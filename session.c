@@ -745,6 +745,7 @@ session_accept(int listenfd)
 			close(connfd);
 			return;
 		}
+		session_socket_blockmode(connfd, BM_NONBLOCK);
 		bgp_fsm(p, EVNT_CON_OPEN);
 	} else {
 		log_conn_attempt(p, cliaddr.sin_addr);
@@ -871,7 +872,6 @@ session_tcp_established(struct peer *peer)
 {
 	socklen_t	len;
 
-	session_socket_blockmode(peer->sock, BM_NORMAL);
 	len = sizeof(peer->sa_local);
 	if (getsockname(peer->sock, (struct sockaddr *)&peer->sa_local,
 	    &len) == -1)
