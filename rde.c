@@ -399,8 +399,7 @@ rde_update_dispatch(struct imsg *imsg)
 		nlri_len -= pos;
 		rde_update_log("update", peer, &attrs, &prefix, prefixlen);
 		if (peer->prefix_cnt >= peer->conf.max_prefix) {
-			log_warnx("peer %s: prefix limit reached",
-			    peer->conf.descr);			/* LXXX */
+			log_peer_warnx(&peer->conf, "prefix limit reached");
 			rde_update_err(peer, ERR_UPD_UNSPECIFIC);
 			break;
 		}
