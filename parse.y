@@ -934,17 +934,33 @@ filter_match	: filter_elm
 		;
 
 filter_elm	: filter_prefix_h	{
+			if (fmopts.prefix_l != NULL) {
+				yyerror("\"prefix\" already specified");
+				YYERROR;
+			}
 			fmopts.prefix_l = $1;
 		}
 		| PREFIXLEN prefixlenop		{
+			if (fmopts.m.prefixlen.af) {
+				yyerror("\"prefixlen\" already specified");
+				YYERROR;
+			}
 			memcpy(&fmopts.m.prefixlen, &$2,
 			    sizeof(fmopts.m.prefixlen));
 			fmopts.m.prefixlen.af = AF_INET;
 		}
 		| filter_as_h		{
+			if (fmopts.as_l != NULL) {
+				yyerror("AS filters already specified");
+				YYERROR;
+			}
 			fmopts.as_l = $1;
 		}
 		| COMMUNITY STRING	{
+			if (fmopts.m.community.as) {
+				yyerror("\"community\" already specified");
+				YYERROR;
+			}
 			if (parsecommunity($2, &fmopts.m.community.as,
 			    &fmopts.m.community.type) == -1) {
 				free($2);
