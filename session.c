@@ -1462,6 +1462,10 @@ parse_open(struct peer *peer)
 	memcpy(&as, p, sizeof(as));
 	p += sizeof(as);
 
+	/* if remote-as is zero and it's a cloned neighbor, accept any */
+	if (peer->conf.cloned && !peer->conf.remote_as)
+		peer->conf.remote_as = ntohs(as);
+
 	if (peer->conf.remote_as != ntohs(as)) {
 		log_peer_warnx(&peer->conf, "peer sent wrong AS %u", ntohs(as));
 		session_notification(peer, ERR_OPEN, ERR_OPEN_AS, NULL, 0);
