@@ -241,6 +241,7 @@ u_int32_t	 aspath_hash(struct aspath *);
 int		 aspath_compare(struct aspath *, struct aspath *);
 int		 aspath_snprint(char *, size_t, void *, u_int16_t);
 size_t		 aspath_strlen(void *, u_int16_t);
+int		 aspath_match(struct aspath *, enum as_spec, u_int16_t);
 
 /* rde_rib.c */
 void		 path_init(u_int32_t);
