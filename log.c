@@ -31,16 +31,9 @@
 
 #include "bgpd.h"
 #include "session.h"
+#include "log.h"
 
-static const char *statenames[] = {
-	"None",
-	"Idle",
-	"Connect",
-	"Active",
-	"OpenSent",
-	"OpenConfirm",
-	"Established"
-};
+int	debug;
 
 static const char *eventnames[] = {
 	"None",
@@ -106,8 +99,6 @@ static const char *procnames[] = {
 	"SE",
 	"RDE"
 };
-
-int	debug;
 
 char	*log_fmt_peer(const struct peer *);
 
