@@ -46,6 +46,8 @@
 
 #define BGPD_LOG_UPDATES		0x0001
 
+#define	SOCKET_NAME			"/var/run/bgpd.sock"
+
 enum {
 	PROC_MAIN,
 	PROC_SE,

@@ -25,7 +25,6 @@
 #include <unistd.h>
 
 #include "bgpd.h"
-#include "bgpdctl.h"
 #include "session.h"
 
 #define	CONTROL_BACKLOG	5
