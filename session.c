@@ -939,7 +939,7 @@ session_setup_socket(struct peer *p)
 		while (setsockopt(p->fd, SOL_SOCKET, SO_SNDBUF, &bsize,
 		    sizeof(bsize)) == -1)
 			bsize /= 2;
- 	}
+	}
 
 	return (0);
 }
