@@ -108,7 +108,7 @@ get_bgpid(void)
 	localnet = inet_addr("127.0.0.0");
 
 	if (getifaddrs(&ifap) == -1)
-		fatal("getifaddrs", errno);
+		fatal("getifaddrs");
 
 	for (ifa = ifap; ifa; ifa = ifa->ifa_next) {
 		if (ifa->ifa_addr->sa_family != AF_INET)

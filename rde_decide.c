@@ -170,7 +170,7 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 		return (p2->peer->conf.remote_addr.sin_addr.s_addr -
 		    p1->peer->conf.remote_addr.sin_addr.s_addr);
 
-	fatal("Uh, oh a politician in the decision process", 0);
+	fatalx("Uh, oh a politician in the decision process");
 	/* NOTREACHED */
 	return 0;
 }
