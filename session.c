@@ -687,17 +687,13 @@ session_accept(int listenfd)
 	struct sockaddr_in	 cliaddr;
 	struct peer		*p = NULL;
 
-	/* collision detection, 6.8, missing */
-
 	len = sizeof(cliaddr);
 	if ((connfd = accept(listenfd,
 	    (struct sockaddr *)&cliaddr, &len)) == -1) {
 		if (errno == EWOULDBLOCK || errno == EINTR)
-			/* EINTR check needed? stevens says yes */
 			return;
 		else
-			/* what do we do here? log & ignore? */
-			;
+			log_warn("accept");
 	}
 
 	p = getpeerbyip(cliaddr.sin_addr.s_addr);
