@@ -245,7 +245,7 @@ fatal_ensure(const char *file, int line, const char *cond)
 }
 
 void
-log_statechange(const struct peer *peer, enum session_state nstate,
+log_statechange(struct peer *peer, enum session_state nstate,
     enum session_events event)
 {
 	char	*p;
