@@ -168,6 +168,7 @@ struct peer {
 	u_int32_t		 remote_bgpid;
 	u_int16_t		 holdtime;
 	enum session_state	 state;
+	enum session_state	 prev_state;
 	time_t			 ConnectRetryTimer;
 	time_t			 KeepaliveTimer;
 	time_t			 HoldTimer;
