@@ -73,7 +73,7 @@ usage(void)
 {
 	extern char *__progname;
 
-	fprintf(stderr, "usage: %s [-dv] ", __progname);
+	fprintf(stderr, "usage: %s [-dnv] ", __progname);
 	fprintf(stderr, "[-D macro=value] [-f file]\n");
 	exit(1);
 }
@@ -110,7 +110,7 @@ main(int argc, char *argv[])
 	bzero(&mrtconf, sizeof(mrtconf));
 	LIST_INIT(&mrtconf);
 
-	while ((ch = getopt(argc, argv, "dD:f:v")) != -1) {
+	while ((ch = getopt(argc, argv, "dD:f:nv")) != -1) {
 		switch (ch) {
 		case 'd':
 			debug = 1;
@@ -123,6 +123,9 @@ main(int argc, char *argv[])
 			break;
 		case 'f':
 			conffile = optarg;
+			break;
+		case 'n':
+			conf.opts |= BGPD_OPT_NOACTION;
 			break;
 		case 'v':
 			if (conf.opts & BGPD_OPT_VERBOSE)
@@ -137,6 +140,11 @@ main(int argc, char *argv[])
 
 	if (parse_config(conffile, &conf, &mrtconf))
 		exit (1);
+
+	if (conf.opts & BGPD_OPT_NOACTION) {
+		fprintf(stderr, "configuration OK\n");
+		exit(0);
+	}
 
 	signal(SIGTERM, sighdlr);
 	signal(SIGINT, sighdlr);

@@ -37,6 +37,7 @@
 
 #define BGPD_OPT_VERBOSE		0x0001
 #define BGPD_OPT_VERBOSE2		0x0002
+#define BGPD_OPT_NOACTION		0x0004
 
 enum {
 	PROC_MAIN,
