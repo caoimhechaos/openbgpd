@@ -618,8 +618,6 @@ void		 kr_nexthop_delete(struct bgpd_addr *);
 void		 kr_show_route(struct imsg *);
 in_addr_t	 prefixlen2mask(u_int8_t);
 struct in6_addr	*prefixlen2mask6(u_int8_t prefixlen);
-int		 prefix_equal(const struct bgpd_addr *,
-		    const struct bgpd_addr *, int);
 void		 inet6applymask(struct in6_addr *, const struct in6_addr *,
 		    int);
 

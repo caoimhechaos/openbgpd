@@ -112,7 +112,7 @@ rde_filter_match(struct filter_rule *f, struct attr_flags *attrs,
 
 	if (f->match.prefix.addr.af != 0 &&
 	    f->match.prefix.addr.af == prefix->af) {
-		if (!prefix_equal(prefix, &f->match.prefix.addr,
+		if (prefix_compare(prefix, &f->match.prefix.addr,
 		    f->match.prefix.len))
 			return (0);
 

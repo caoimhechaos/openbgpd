@@ -1063,7 +1063,7 @@ rde_dump_prefix_upcall(struct pt_entry *pt, void *ptr)
 		return;
 	if (ctl->pref->prefixlen > pt->prefixlen)
 		return;
-	if (prefix_equal(&ctl->pref->prefix, &addr, ctl->pref->prefixlen))
+	if (!prefix_compare(&ctl->pref->prefix, &addr, ctl->pref->prefixlen))
 		LIST_FOREACH(p, &pt->prefix_h, prefix_l)
 			rde_dump_rib_as(p, ctl->pid);
 }

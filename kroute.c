@@ -896,43 +896,6 @@ prefixlen2mask6(u_int8_t prefixlen)
 	return (&mask);
 }
 
-int
-prefix_equal(const struct bgpd_addr *a, const struct bgpd_addr *b,
-    int prefixlen)
-{
-	in_addr_t	mask;
-	int		i;
-	u_int8_t	m;
-
-	if (a->af != b->af)
-		return 0;
-	switch (a->af) {
-	case AF_INET:
-		if (prefixlen > 32)
-			fatalx("prefix_cmp: bad IPv4 prefixlen");
-		mask = htonl(prefixlen2mask(prefixlen));
-		if ((a->v4.s_addr & mask) == (b->v4.s_addr & mask))
-			return (1);
-		else
-			return (0);
-	case AF_INET6:
-		for (i = 0; i < prefixlen / 8; i++)
-			if (a->v6.s6_addr[i] != b->v6.s6_addr[i])
-				return (0);
-		i = prefixlen % 8;
-		if (i) {
-			m = 0xff00 >> i;
-			if ((a->v6.s6_addr[prefixlen / 8] & m) !=
-			    (b->v6.s6_addr[prefixlen / 8] & m))
-				return (0);
-		}
-		return (1);
-	default:
-		fatalx("prefix_cmp: unknown af");
-	}
-	return (0);
-}
-
 void
 inet6applymask(struct in6_addr *dest, const struct in6_addr *src, int prefixlen)
 {
