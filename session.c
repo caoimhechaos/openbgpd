@@ -1301,9 +1301,8 @@ getpeerbyip(in_addr_t ip)
 void
 session_down(struct peer *peer)
 {
-	if (!session_quit)
-		imsg_compose(&ibuf_rde, IMSG_SESSION_DOWN, peer->conf.id,
-		    NULL, 0);
+	imsg_compose(&ibuf_rde, IMSG_SESSION_DOWN, peer->conf.id,
+	    NULL, 0);
 }
 
 void
