@@ -726,14 +726,12 @@ nexthop_update(struct kroute_nexthop *msg)
 		nh->state = NEXTHOP_UNREACH;
 
 	if (msg->connected) {
-		if (!(nh->flags & NEXTHOP_LINKLOCAL))
-			/* use linklocal address if provided */
-			nh->true_nexthop = nh->exit_nexthop;
 		nh->flags |= NEXTHOP_CONNECTED;
-	} else {
-		nh->true_nexthop = msg->gateway;
-		nh->flags &= ~NEXTHOP_LINKLOCAL;
-	}
+		memcpy(&nh->true_nexthop, &nh->exit_nexthop,
+		    sizeof(nh->true_nexthop));
+	} else
+		memcpy(&nh->true_nexthop, &msg->gateway,
+		    sizeof(nh->true_nexthop));
 
 	nh->nexthop_netlen = msg->kr.kr4.prefixlen;
 	nh->nexthop_net.af = AF_INET;

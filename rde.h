@@ -191,7 +191,6 @@ struct nexthop {
 	u_int8_t		nexthop_netlen;
 	u_int8_t		flags;
 #define NEXTHOP_CONNECTED	0x01
-#define NEXTHOP_LINKLOCAL	0x02
 };
 
 /* generic entry without address specific part */
