@@ -243,10 +243,10 @@ optnumber	: /* empty */		{ $$ = 0; }
 		| number
 		;
 
-neighbor	: NEIGHBOR address optnl '{' optnl {
-			curpeer = new_peer();
+neighbor	: {	curpeer = new_peer(); }
+		    NEIGHBOR address optnl '{' optnl {
 			curpeer->conf.remote_addr.af = AF_INET;
-			curpeer->conf.remote_addr.v4.s_addr = $2.s_addr;
+			curpeer->conf.remote_addr.v4.s_addr = $3.s_addr;
 			if (get_id(curpeer)) {
 				yyerror("get_id failed");
 				YYERROR;
