@@ -172,7 +172,7 @@ struct peer	*peers;
 void		 session_socket_blockmode(int, enum blockmodes);
 int		 session_main(struct bgpd_config *, struct peer *,
 		    struct network_head *, struct filter_head *,
-		    int[2], int[2]);
+		    struct mrt_head *, int[2], int[2]);
 void		 bgp_fsm(struct peer *, enum session_events);
 struct peer	*getpeerbyip(in_addr_t);
 int		 imsg_compose_parent(int, pid_t, void *, u_int16_t);
