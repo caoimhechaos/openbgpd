@@ -250,6 +250,14 @@ log_statechange(const struct peer *peer, enum session_state nstate,
 {
 	char	*p;
 
+	/* don't clutter the logs with constant Connect -> Active -> Connect */
+	if (nstate == STATE_CONNECT && peer->state == STATE_ACTIVE &&
+	    peer->prev_state == STATE_CONNECT)
+		return;
+	if (nstate == STATE_ACTIVE && peer->state == STATE_CONNECT &&
+	    peer->prev_state == STATE_ACTIVE)
+		return;
+
 	p = log_fmt_peer(&peer->conf);
 	logit(LOG_INFO, "%s: state change %s -> %s, reason: %s",
 	    p, statenames[peer->state], statenames[nstate], eventnames[event]);
