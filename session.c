@@ -1137,6 +1137,9 @@ session_update(u_int32_t peerid, void *data, size_t datalen)
 		return;
 	}
 
+	if (p->state != STATE_ESTABLISHED)
+		return;
+
 	len = MSGSIZE_HEADER + datalen;
 
 	memset(&msg.marker, 0xff, sizeof(msg.marker));
