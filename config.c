@@ -70,6 +70,14 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 	memcpy(&xconf->listen_addr, &conf->listen_addr,
 	    sizeof(xconf->listen_addr));
 
+	if ((xconf->flags & BGPD_FLAG_NO_FIB_UPDATE) !=
+	    (conf->flags & BGPD_FLAG_NO_FIB_UPDATE)) {
+		if (!(conf->flags & BGPD_FLAG_NO_FIB_UPDATE))
+			kroute_fib_couple();
+		else
+			kroute_fib_decouple();
+	}
+	
 	xconf->flags = conf->flags;
 	xconf->log = conf->log;
 
