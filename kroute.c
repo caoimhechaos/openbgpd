@@ -368,6 +368,9 @@ kroute_insert(struct kroute_node *kr)
 	}
 
 	if (kr->r.flags & F_KERNEL) {
+		if (!(kr->r.flags & F_CONNECTED))
+			kr->r.flags |= F_STATIC;
+
 		mask = 0xffffffff << (32 - kr->r.prefixlen);
 		ina = ntohl(kr->r.prefix);
 		RB_FOREACH(h, knexthop_tree, &knt)
