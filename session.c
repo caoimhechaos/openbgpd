@@ -955,7 +955,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *peer)
 						session_notification(peer,
 						    ERR_HEADER, ERR_HDR_TYPE,
 						    (u_char *)&peer->rbuf->type,
-						     1);
+						    1);
 						logit(LOG_CRIT,
 						    "received message with "
 						    "unknown type %u",

@@ -174,7 +174,8 @@ void
 mrt_dump_upcall(struct pt_entry *pt, int fd, int *wait, void *arg)
 {
 	struct prefix	*p;
-	u_int32_t	 id = (u_int32_t)(u_long)arg;
+	u_int32_t	*idp = arg;
+	u_int32_t	 id = *idp;
 
 	/*
 	 * dump all prefixes even the inactive ones. That is the way zebra

@@ -135,11 +135,11 @@ struct attr_flags {
 	struct aspath			*aspath;
 	struct astags			*astags;
 	struct in_addr			 nexthop;
-	u_int32_t			 med;	/* multi exit disc */
-	u_int32_t			 lpref;	/* local pref */
-	u_int8_t			 aggr_atm; /* atomic aggregate */
-	u_int16_t			 aggr_as;  /* aggregator as */
-	struct in_addr			 aggr_ip;  /* aggregator ip */
+	u_int32_t			 med;		/* multi exit disc */
+	u_int32_t			 lpref;		/* local pref */
+	u_int8_t			 aggr_atm;	/* atomic aggregate */
+	u_int16_t			 aggr_as;	/* aggregator as */
+	struct in_addr			 aggr_ip;	/* aggregator ip */
 };
 
 enum nexthop_state {
