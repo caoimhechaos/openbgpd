@@ -454,7 +454,7 @@ enum as_spec {
 	AS_EMPTY
 };
 
-struct as_filter {
+struct filter_as {
 	u_int16_t	as;
 	enum as_spec	type;
 };
@@ -536,7 +536,7 @@ struct filter_community {
 struct filter_match {
 	struct filter_prefix	prefix;
 	struct filter_prefixlen	prefixlen;
-	struct as_filter	as;
+	struct filter_as	as;
 	struct filter_community	community;
 };
 

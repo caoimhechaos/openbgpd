@@ -74,7 +74,7 @@ struct filter_prefix_l {
 
 struct filter_as_l {
 	struct filter_as_l	*next;
-	struct as_filter	 a;
+	struct filter_as	 a;
 };
 
 struct filter_match_l {
@@ -1892,7 +1892,7 @@ expand_rule(struct filter_rule *rule, struct filter_peers_l *peer,
 
 				if (a != NULL)
 					memcpy(&r->match.as, &a->a,
-					    sizeof(struct as_filter));
+					    sizeof(struct filter_as));
 
 				TAILQ_INSERT_TAIL(filter_l, r, entry);
 
