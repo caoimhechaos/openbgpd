@@ -344,7 +344,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers, int pipe_m2s[2],
 
 	for (p = peers; p != NULL; p = p->next)
 		bgp_fsm(p, EVNT_STOP);
-		
+
 	control_shutdown();
 	log_info("session engine exiting");
 	_exit(0);

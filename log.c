@@ -378,7 +378,7 @@ log_addr(const struct bgpd_addr *addr)
 {
 	static char	buf[48];
 
-	if(inet_ntop(addr->af, &addr->ba, buf, sizeof(buf)) == NULL)
+	if (inet_ntop(addr->af, &addr->ba, buf, sizeof(buf)) == NULL)
 		return ("?");
 	else
 		return (buf);
