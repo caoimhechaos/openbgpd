@@ -375,7 +375,7 @@ optnumber	: /* empty */		{ $$ = 0; }
 		;
 
 neighbor	: {	curpeer = new_peer(); }
-		    NEIGHBOR addrspec optnl '{' optnl {
+		    NEIGHBOR addrspec {
 			memcpy(&curpeer->conf.remote_addr, &$3.prefix,
 			    sizeof(curpeer->conf.remote_addr));
 			curpeer->conf.remote_masklen = $3.len;
@@ -387,7 +387,7 @@ neighbor	: {	curpeer = new_peer(); }
 				YYERROR;
 			}
 		}
-		    peeropts_l '}' {
+		    peeropts_h {
 			if (curpeer->conf.local_addr.af &&
 			    curpeer->conf.local_addr.af !=
 			    curpeer->conf.remote_addr.af) {
@@ -431,6 +431,10 @@ groupopts_l	: groupopts_l groupoptsl
 groupoptsl	: peeropts nl
 		| neighbor nl
 		| error nl
+		;
+
+peeropts_h	: '{' optnl peeropts_l '}'
+		| /* empty */
 		;
 
 peeropts_l	: peeropts_l peeroptsl
