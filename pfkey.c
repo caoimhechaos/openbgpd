@@ -209,6 +209,8 @@ pfkey_send(int sd, uint8_t mtype, struct sockaddr *src, struct sockaddr *dst,
 		log_warn("writev: should=%d has=%d", len, n);
 		return (-1);
 	}
+
+	return (0);
 }
 
 int
