@@ -125,10 +125,12 @@ log_fmt_peer(const struct peer_config *peer)
 void
 log_init(int n_debug)
 {
+	extern char	*__progname;
+
 	debug = n_debug;
 
 	if (!debug)
-		openlog("bgpd", LOG_PID | LOG_NDELAY, LOG_DAEMON);
+		openlog(__progname, LOG_PID | LOG_NDELAY, LOG_DAEMON);
 }
 
 void
