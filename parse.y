@@ -397,7 +397,7 @@ neighbor	: {	curpeer = new_peer(); }
 
 			curpeer->next = peer_l;
 			peer_l = curpeer;
-			curpeer = NULL;
+			curpeer = curgroup;
 		}
 		;
 
