@@ -371,7 +371,7 @@ mrt_write(struct mrt *mrt)
 		mrt->queued--;
 		buf_free(b);
 	}
-	if (r == -1) {
+	if (r <= -1) {
 		log_warn("mrt dump write");
 		mrt_clean(mrt);
 		return (-1);
