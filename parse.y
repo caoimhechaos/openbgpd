@@ -318,7 +318,7 @@ address		: STRING		{
 
 			if (!host($1, &$$, &len)) {
 				yyerror("could not parse address spec \"%s\"",
-				     $1);
+				    $1);
 				free($1);
 				YYERROR;
 			}
@@ -342,7 +342,7 @@ prefix		: STRING '/' number	{
 
 			if (!host(s, &$$.prefix, &$$.len)) {
 				yyerror("could not parse address \"%s/%u\"",
-				     $1, $3);
+				    $1, $3);
 				free(s);
 				free($1);
 				YYERROR;

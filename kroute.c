@@ -922,7 +922,6 @@ send_rtmsg(int fd, int action, struct kroute *kroute)
 		struct sockaddr_in	nexthop;
 		struct sockaddr_in	mask;
 	} r;
-	ssize_t	n;
 
 	if (kr_state.fib_sync == 0)
 		return (0);
@@ -945,7 +944,7 @@ send_rtmsg(int fd, int action, struct kroute *kroute)
 	r.mask.sin_addr.s_addr = htonl(0xffffffff << (32 - kroute->prefixlen));
 
 retry:
-	if ((n = write(fd, &r, sizeof(r))) == -1) {
+	if (write(fd, &r, sizeof(r)) == -1) {	/* XXX never partial? */
 		switch (errno) {
 		case ESRCH:
 			if (r.hdr.rtm_type == RTM_CHANGE) {
