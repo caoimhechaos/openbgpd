@@ -303,7 +303,7 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 	ssize_t			 len;
 	int			 n;
 
-	if (get_imsg(ibuf, &imsg) > 0) {
+	if (imsg_get(ibuf, &imsg) > 0) {
 		switch (imsg.hdr.type) {
 		case IMSG_MRT_MSG:
 		case IMSG_MRT_END:

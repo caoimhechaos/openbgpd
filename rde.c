@@ -172,7 +172,7 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 	struct rde_peer		*p, *np;
 	u_int32_t		 rid;
 
-	if (get_imsg(ibuf, &imsg) > 0) {
+	if (imsg_get(ibuf, &imsg) > 0) {
 		switch (imsg.hdr.type) {
 		case IMSG_RECONF_CONF:
 			if (idx != PFD_PIPE_MAIN)

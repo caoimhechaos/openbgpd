@@ -45,7 +45,7 @@ imsg_init(struct imsgbuf *ibuf, int sock)
 }
 
 int
-get_imsg(struct imsgbuf *ibuf, struct imsg *imsg)
+imsg_get(struct imsgbuf *ibuf, struct imsg *imsg)
 {
 	struct imsg_hdr		*hdr;
 	ssize_t			 n, read_total = 0, datalen = 0;
