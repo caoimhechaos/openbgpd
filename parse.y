@@ -308,7 +308,7 @@ lookup(char *s)
 		{ "group",		GROUP},
 		{ "holdtime",		HOLDTIME},
 		{ "listen",		LISTEN},
-		{ "local-address",	LOCALADDR},
+		{ "local-addr",		LOCALADDR},
 		{ "min",		YMIN},
 		{ "mrtdump",		MRTDUMP},
 		{ "multihop",		MULTIHOP},
