@@ -345,8 +345,13 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 	int			 n;
 	in_addr_t		 ina;
 
-	if (imsg_read(ibuf) == -1)
+	if ((n = imsg_read(ibuf)) == -1)
 		return (-1);
+
+	if (n == 0) {	/* connection closed */
+		logit(LOG_CRIT, "dispatch_imsg in main: pipe closed");
+		return (-1);
+	}
 
 	for (;;) {
 		if ((n = imsg_get(ibuf, &imsg)) == -1)

@@ -176,8 +176,11 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 	u_int32_t		 rid;
 	int			 n;
 
-	if (imsg_read(ibuf) == -1)
+	if ((n = imsg_read(ibuf)) == -1)
 		fatal("rde_dispatch_imsg: imsg_read error");
+
+	if (n == 0)	/* connection closed */
+		fatal("rde_dispatch_imsg: pipe closed");
 
 	for (;;) {
 		if ((n = imsg_get(ibuf, &imsg)) == -1)

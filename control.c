@@ -179,7 +179,7 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 		return (0);
 	}
 
-	if (imsg_read(&c->ibuf) == -1) {
+	if (imsg_read(&c->ibuf) <= 0) {
 		control_close(pfd->fd);
 		return (1);
 	}
