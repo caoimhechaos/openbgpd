@@ -211,6 +211,12 @@ struct kroute_nexthop {
 	struct kroute		kr;
 };
 
+struct session_up {
+	u_int32_t		remote_bgpid;
+	struct bgpd_addr	local_addr;
+	struct bgpd_addr	remote_addr;
+};
+
 struct ctl_show_nexthop {
 	struct bgpd_addr	addr;
 	u_int8_t		valid;

@@ -1528,9 +1528,26 @@ session_down(struct peer *peer)
 void
 session_up(struct peer *peer)
 {
+	struct session_up	sup;
+
+	sup.remote_bgpid = peer->remote_bgpid;
+
+	switch (peer->sa_local.ss_family) {
+	case AF_INET:
+		sup.local_addr.af = AF_INET;
+		sup.local_addr.v4 =
+		    ((struct sockaddr_in *)&peer->sa_local)->sin_addr;
+		sup.remote_addr.af = AF_INET;
+		sup.remote_addr.v4 =
+		    ((struct sockaddr_in *)&peer->sa_remote)->sin_addr;
+		break;
+	default:
+		fatalx("session_up: only AF_INET supported");
+	}
+
 	peer->stats.last_updown = time(NULL);
 	if (imsg_compose(&ibuf_rde, IMSG_SESSION_UP, peer->conf.id,
-	    &peer->remote_bgpid, sizeof(peer->remote_bgpid)) == -1)
+	    &sup, sizeof(sup)) == -1)
 		fatalx("imsg_compose error");
 }
 
