@@ -210,7 +210,7 @@ group		: GROUP string optnl '{' optnl {
 				YYERROR;
 			}
 		}
-		   groupopts_l optnl '}' {
+		  groupopts_l optnl '}' {
 			free(curgroup);
 			curgroup = NULL;
 		}
