@@ -250,10 +250,7 @@ path_unlink(struct rde_aspath *asp)
 	asp->peer = NULL;
 	asp->nexthop = NULL;
 
-	/* free the aspath and all other path attributes */
-	aspath_destroy(asp->flags.aspath);
-	asp->flags.aspath = NULL;
-	attr_optfree(&asp->flags);
+	attr_free(&asp->flags);
 }
 
 /* alloc and initialize new entry. May not fail. */
