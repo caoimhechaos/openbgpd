@@ -122,6 +122,7 @@ struct peer_config {
 	u_int16_t		 remote_as;
 	u_int8_t		 ebgp;		/* 1 = ebgp, 0 = ibgp */
 	u_int8_t		 distance;	/* 1 = direct, >1 = multihop */
+	u_int8_t		 passive;
 	enum reconf_action	 reconf_action;
 };
 

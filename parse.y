@@ -84,7 +84,7 @@ typedef struct {
 %token	SET
 %token	AS BGPID HOLDTIME YMIN LISTEN ON NO FIBUPDATE
 %token	GROUP NEIGHBOR
-%token	REMOTEAS DESCR LOCALADDR MULTIHOP
+%token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE
 %token	ERROR
 %token	MRTDUMP
 %token	<v.string>	STRING
@@ -266,6 +266,9 @@ peeropts	: REMOTEAS number	{
 			}
 			curpeer->conf.distance = $2;
 		}
+		| PASSIVE		{
+			curpeer->conf.passive = 1;
+		}
 		;
 
 %%
@@ -315,6 +318,7 @@ lookup(char *s)
 		{ "neighbor",		NEIGHBOR},
 		{ "no",			NO},
 		{ "on",			ON},
+		{ "passive",		PASSIVE},
 		{ "remote-as",		REMOTEAS},
 		{ "set",		SET},
 	};
