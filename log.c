@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <syslog.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "bgpd.h"
@@ -77,6 +78,8 @@ log_init(int n_debug)
 
 	if (!debug)
 		openlog(__progname, LOG_PID | LOG_NDELAY, LOG_DAEMON);
+
+	tzset();
 }
 
 void
