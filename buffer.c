@@ -185,7 +185,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 		close(buf->fd);
 		buf->fd = -1;
 	}
-	
+
 	for (buf = TAILQ_FIRST(&msgbuf->bufs); buf != NULL && n > 0;
 	    buf = next) {
 		next = TAILQ_NEXT(buf, entry);
