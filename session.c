@@ -1260,7 +1260,7 @@ session_dispatch_imsg(int fd, int idx)
 					p->conf.reconf_action = RECONF_REINIT;
 				if (p->holdtime > nconf->holdtime)
 					p->conf.reconf_action = RECONF_REINIT;
-				if (p->holdtime > nconf->min_holdtime)
+				if (p->holdtime < nconf->min_holdtime)
 					p->conf.reconf_action = RECONF_REINIT;
 			}
 			break;
