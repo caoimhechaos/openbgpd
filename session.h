@@ -84,7 +84,8 @@ enum suberr_open {
 	ERR_OPEN_BGPID,
 	ERR_OPEN_OPT,
 	ERR_OPEN_AUTH,
-	ERR_OPEN_HOLDTIME
+	ERR_OPEN_HOLDTIME,
+	ERR_OPEN_CAPA
 };
 
 enum opt_params {
