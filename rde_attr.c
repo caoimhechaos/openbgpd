@@ -508,7 +508,7 @@ struct attr *
 attr_optget(struct attr_flags *attr, u_int8_t type)
 {
 	struct attr	*a;
-	
+
 	TAILQ_FOREACH(a, &attr->others, attr_l) {
 		if (type == a->type)
 			return (a);
