@@ -14,8 +14,3 @@ NOMAN=
 CFLAGS+=	-Wall
 
 .include <bsd.prog.mk>
-
-publish:
-	-rm ${.CURDIR}/*~
-	-cp ${.CURDIR}/* /var/www/www/bgpd/
-	-scp ${.CURDIR}/* henning@cvs.openbsd.org:~/bgpd/
