@@ -210,7 +210,7 @@ int	 rde_main(struct bgpd_config *, struct network_head *,
 /* control.c */
 int	control_listen(void);
 void	control_shutdown(void);
-int	control_dispatch_msg(struct pollfd *, int);
+int	control_dispatch_msg(struct pollfd *);
 void	control_accept(int);
 void	control_close(int);
 

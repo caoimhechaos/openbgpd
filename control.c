@@ -174,7 +174,7 @@ control_close(int fd)
 }
 
 int
-control_dispatch_msg(struct pollfd *pfd, int i)
+control_dispatch_msg(struct pollfd *pfd)
 {
 	struct imsg		 imsg;
 	struct ctl_conn		*c;
