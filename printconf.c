@@ -98,6 +98,9 @@ print_set(struct filter_set_head *set)
 		case ACTION_SET_NEXTHOP_BLACKHOLE:
 			printf("nexthop blackhole ");
 			break;
+		case ACTION_SET_NEXTHOP_NOMODIFY:
+			printf("nexthop no-modify ");
+			break;
 		case ACTION_SET_PREPEND_SELF:
 			printf("prepend-self %u ", s->action.prepend);
 			break;
@@ -140,6 +143,9 @@ print_mainconf(struct bgpd_config *conf)
 
 	if (conf->flags & BGPD_FLAG_DECISION_ROUTEAGE)
 		printf("rde route-age evaluate\n");
+
+	if (conf->flags & BGPD_FLAG_DECISION_TRANS_AS)
+		printf("transparent-as yes\n");
 
 	if (conf->log & BGPD_LOG_UPDATES)
 		printf("log updates\n");

@@ -762,6 +762,10 @@ nexthop_modify(struct rde_aspath *asp, struct bgpd_addr *nexthop,
 		asp->flags |= F_NEXTHOP_BLACKHOLE;
 		return;
 	}
+	if (type == ACTION_SET_NEXTHOP_NOMODIFY) {
+		asp->flags |= F_NEXTHOP_NOMODIFY;
+		return;
+	}
 	if (af != nexthop->af)
 		return;
 
