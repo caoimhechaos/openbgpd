@@ -1186,7 +1186,7 @@ nexthop_update(struct kroute_nexthop *msg)
 
 	nh->nexthop_netlen = msg->kr.prefixlen;
 	nh->nexthop_net.af = AF_INET;
-	nh->nexthop_net.v4.s_addr = msg->kr.prefix;
+	nh->nexthop_net.v4.s_addr = msg->kr.prefix.s_addr;
 
 	if (msg->connected)
 		nh->flags |= NEXTHOP_CONNECTED;

@@ -228,9 +228,9 @@ enum suberr_update {
 };
 
 struct kroute {
-	in_addr_t	prefix;
+	struct in_addr	prefix;
 	u_int8_t	prefixlen;
-	in_addr_t	nexthop;
+	struct in_addr	nexthop;
 	u_int8_t	flags;
 	u_short		ifindex;
 };
