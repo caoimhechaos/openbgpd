@@ -391,7 +391,8 @@ bgp_fsm(struct peer *peer, enum session_events event)
 
 			/* init pfkey */
 			if (pfkey_auth_establish(peer) == -1) {
-				log_warnx("pfkey_auth setup failed");
+				log_peer_warnx(&peer->conf,
+				    "pfkey_auth setup failed");
 				return;
 			}
 
