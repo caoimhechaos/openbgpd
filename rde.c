@@ -532,7 +532,7 @@ rde_update_log(const char *message,
 	    "%s",
 	    neighbor, peer->conf.remote_as, message,
 	    inet_ntoa(*prefix), prefixlen,
-	    nexthop);
+	    nexthop ? nexthop : "");
 
 	free(neighbor);
 	free(nexthop);
