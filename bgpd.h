@@ -279,6 +279,7 @@ void		 log_statechange(struct peer *, enum session_state,
 void		 log_notification(struct peer *, u_int8_t, u_int8_t,
 		    u_char *, u_int16_t);
 void		 log_conn_attempt(struct peer *, struct in_addr);
+void		 log_kroute(int, const char *, struct kroute *);
 
 /* parse.y */
 int	 cmdline_symset(char *);

@@ -308,3 +308,15 @@ log_conn_attempt(struct peer *peer, struct in_addr remote)
 		free(p);
 	}
 }
+
+void
+log_kroute(int pri, const char *lmsg, struct kroute *kr)
+{
+	char			*ip;
+	struct in_addr		 ina;
+
+	ina.s_addr = kr->prefix;
+
+	ip = inet_ntoa(ina);
+	logit(pri, "%s %s/%u", lmsg, ip, kr->prefixlen);
+}
