@@ -233,8 +233,10 @@ conf_main	: AS asnumber		{
 		| LOG string		{
 			if (!strcmp($2, "updates"))
 				conf->log |= BGPD_LOG_UPDATES;
-			else
+			else {
+				free($2);
 				YYERROR;
+			}
 			free($2);
 		}
 		| NETWORK prefix filter_set	{
@@ -312,7 +314,7 @@ prefix		: STRING '/' number	{
 
 			if (!host(s, &$$.prefix, &$$.len)) {
 				free(s);
-				yyerror("could not parse address \"%s/%s\"",
+				yyerror("could not parse address \"%s/%u\"",
 				     $1, $3);
 				YYERROR;
 			}
@@ -564,8 +566,10 @@ filter_peer	: ANY		{ $$.peerid = $$.groupid = 0; }
 				}
 			if ($$.groupid == 0) {
 				yyerror("no such group: \"%s\"", $2);
+				free($2);
 				YYERROR;
 			}
+			free($2);
 		}
 		;
 
