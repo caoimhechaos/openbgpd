@@ -289,7 +289,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		if (peer_cnt > peer_l_elms ||
 		    peer_cnt + 2 * PEER_L_RESERVE < peer_l_elms) {
 			if ((newp = realloc(peer_l, sizeof(struct peer *) *
-			    peer_cnt + PEER_L_RESERVE)) == NULL) {
+			    (peer_cnt + PEER_L_RESERVE))) == NULL) {
 				/* panic for now  */
 				log_warn("could not resize peer_l from %u -> %u"
 				    " entries", peer_l_elms,
@@ -303,7 +303,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		new_cnt =
 		    PFD_LISTENERS_START + listener_cnt + peer_cnt + ctl_cnt;
 		if (new_cnt > pfd_elms ||
-		    new_cnt + 2 * PFD_RESERVE < pfd_elms) {
+		    (new_cnt + 2) * PFD_RESERVE < pfd_elms) {
 			if ((newp = realloc(pfd, sizeof(struct pollfd) *
 			    (new_cnt + PFD_RESERVE))) == NULL) {
 				/* panic for now  */
