@@ -315,7 +315,7 @@ int	 rde_main(struct bgpd_config *, int[2], int[2]);
 int	 mrt_mergeconfig(struct mrt_config *, struct mrt_config *);
 
 /* kroute.c */
-int	kroute_init(void);
+int	kroute_init(int);
 int	kroute_change(int, struct kroute *);
 int	kroute_delete(int, struct kroute *);
 void	kroute_shutdown(int);
