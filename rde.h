@@ -213,7 +213,8 @@ u_int16_t	 rde_local_as(void);
 
 /* rde_attr.c */
 void		 attr_init(struct attr_flags *);
-int		 attr_parse(u_char *, u_int16_t, struct attr_flags *, int);
+int		 attr_parse(u_char *, u_int16_t, struct attr_flags *, int,
+		     enum enforce_as, u_int16_t);
 u_char		*attr_error(u_char *, u_int16_t, struct attr_flags *,
 		     u_int8_t *, u_int16_t *);
 u_int8_t	 attr_missing(struct attr_flags *, int);
@@ -237,7 +238,7 @@ int		 aspath_write(void *, u_int16_t, struct aspath *, u_int16_t,
 u_char		*aspath_dump(struct aspath *);
 u_int16_t	 aspath_length(struct aspath *);
 u_int16_t	 aspath_count(struct aspath *);
-u_int16_t	 aspath_neighbour(struct aspath *);
+u_int16_t	 aspath_neighbor(struct aspath *);
 u_int32_t	 aspath_hash(struct aspath *);
 int		 aspath_loopfree(struct aspath *, u_int16_t);
 int		 aspath_compare(struct aspath *, struct aspath *);

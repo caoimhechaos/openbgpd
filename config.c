@@ -59,6 +59,9 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 		if (p->conf.announce_type == ANNOUNCE_UNDEF)
 			p->conf.announce_type = p->conf.ebgp == 0 ?
 			    ANNOUNCE_ALL : ANNOUNCE_SELF;
+		if (p->conf.enforce_as == ENFORCE_AS_UNDEF)
+			p->conf.enforce_as = p->conf.ebgp == 0 ?
+			    ENFORCE_AS_OFF : ENFORCE_AS_ON;
 	}
 
 	memcpy(xconf, conf, sizeof(struct bgpd_config));

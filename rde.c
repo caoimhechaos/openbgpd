@@ -409,8 +409,8 @@ rde_update_dispatch(struct imsg *imsg)
 	/* parse path attributes */
 	attr_init(&attrs);
 	while (attrpath_len > 0) {
-		if ((pos = attr_parse(p, attrpath_len, &attrs,
-		    peer->conf.ebgp)) < 0) {
+		if ((pos = attr_parse(p, attrpath_len, &attrs, peer->conf.ebgp,
+		    peer->conf.enforce_as, peer->conf.remote_as)) < 0) {
 			emsg = attr_error(p, attrpath_len, &attrs,
 			    &subtype, &size);
 			rde_update_err(peer, ERR_UPDATE, subtype, emsg, size);
