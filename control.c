@@ -57,16 +57,19 @@ control_init(void)
 	if (unlink(SOCKET_NAME) == -1)
 		if (errno != ENOENT) {
 			log_warn("unlink %s", SOCKET_NAME);
+			close(fd);
 			return (-1);
 		}
 
 	if (bind(fd, (struct sockaddr *)&sun, sizeof(sun)) == -1) {
 		log_warn("control_init: bind: %s", SOCKET_NAME);
+		close(fd);
 		return (-1);
 	}
 
 	if (chmod(SOCKET_NAME, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP) == -1) {
 		log_warn("control_init chmod");
+		close(fd);
 		return (-1);
 	}
 
