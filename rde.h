@@ -61,6 +61,7 @@ struct rde_peer {
 	struct aspath_head		 path_h; /* list of all as paths */
 	struct peer_config		 conf;
 	enum peer_state			 state;
+	u_long				 prefix_cnt;
 	u_int32_t			 remote_bgpid;
 	struct bgpd_addr		 remote_addr;
 	struct bgpd_addr		 local_addr;
