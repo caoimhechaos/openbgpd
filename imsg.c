@@ -188,7 +188,7 @@ imsg_close(struct imsgbuf *ibuf, struct buf *msg)
 	int	n;
 
 	if ((n = buf_close(&ibuf->w, msg)) < 0) {
-			log_warnx("imsg_close: buf_add error");
+			log_warnx("imsg_close: buf_close error");
 			buf_free(msg);
 			return (-1);
 	}
