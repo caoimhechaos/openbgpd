@@ -198,6 +198,7 @@ host_v6(const char *s, struct bgpd_addr *h)
 		h->scope_id =
 		    ((struct sockaddr_in6 *)res->ai_addr)->sin6_scope_id;
 
+		freeaddrinfo(res);
 		return (1);
 	}
 
