@@ -246,7 +246,7 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 				addr = imsg.data;
 				p = getpeerbyaddr(addr);
 				if (p == NULL) {
-					log_warnx("IMSG_CTL_NEIGHBOR_"
+					log_warnx("IMSG_CTL_NEIGHBOR_ "
 					    "with unknown neighbor");
 					break;
 				}
