@@ -865,7 +865,6 @@ parse_config(char *filename, struct bgpd_config *xconf,
 {
 	struct sym		*sym, *next;
 	struct peer		*p, *pnext;
-	struct filter_rule	*r;
 
 	if ((conf = calloc(1, sizeof(struct bgpd_config))) == NULL)
 		fatal(NULL);
@@ -915,10 +914,6 @@ parse_config(char *filename, struct bgpd_config *xconf,
 			free(sym);
 		}
 	}
-
-	if (xconf->opts & BGPD_OPT_VERBOSE)
-		TAILQ_FOREACH(r, filter_l, entries)
-			print_rule(peer_l, r);
 
 	errors += merge_config(xconf, conf, peer_l);
 	errors += mrt_mergeconfig(xmconf, mrtconf);
