@@ -290,6 +290,7 @@ yyerror(const char *fmt, ...)
 		fatal("yyerror asprintf", 0);
 	vlog(LOG_CRIT, nfmt, ap);
 	va_end(ap);
+	free(nfmt);
 	return (0);
 }
 
