@@ -87,11 +87,9 @@ typedef struct {
 
 %}
 
-%token	SET
-%token	AS ROUTERID HOLDTIME YMIN LISTEN ON NO FIBUPDATE
+%token	AS ROUTERID HOLDTIME YMIN LISTEN ON FIBUPDATE
 %token	GROUP NEIGHBOR NETWORK
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE MAXPREFIX ANNOUNCE
-%token	ERROR
 %token	DUMP MSG IN TABLE
 %token	LOG UPDATES
 %token	<v.string>	STRING
@@ -405,7 +403,6 @@ lookup(char *s)
 		{ "passive",		PASSIVE},
 		{ "remote-as",		REMOTEAS},
 		{ "router-id",		ROUTERID},
-		{ "set",		SET},
 		{ "table",		TABLE},
 		{ "updates",		UPDATES},
 	};
