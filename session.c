@@ -503,6 +503,9 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		free(la);
 	}
 	free(conf->listen_addrs);
+	free(peer_l);
+	free(mrt_l);
+	free(pfd);
 
 	msgbuf_write(&ibuf_rde.w);
 	msgbuf_clear(&ibuf_rde.w);
