@@ -1042,7 +1042,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *peer)
 					break;
 				case KEEPALIVE:
 					bgp_fsm(peer, EVNT_RCVD_KEEPALIVE);
-					peer->stats.msg_rcvd_update++;
+					peer->stats.msg_rcvd_keepalive++;
 					break;
 				default:	/* cannot happen */
 					session_notification(peer, ERR_HEADER,
