@@ -382,8 +382,11 @@ kr_show_route(struct imsg *imsg)
 		RB_FOREACH(h, knexthop_tree, &knt) {
 			bzero(&snh, sizeof(snh));
 			memcpy(&snh.addr, &h->nexthop, sizeof(snh.addr));
-			if (h->kroute != NULL)
+			if (h->kroute != NULL) {
 				snh.valid = kroute_validate(&h->kroute->r);
+				if ((kif = kif_find(h->kroute->r.ifindex)) != NULL)
+					memcpy(&snh.kif, &kif->k, sizeof(snh.kif));
+			}
 			send_imsg_session(IMSG_CTL_SHOW_NEXTHOP, imsg->hdr.pid,
 			    &snh, sizeof(snh));
 		}

@@ -408,6 +408,7 @@ struct pftable_msg {
 struct ctl_show_nexthop {
 	struct bgpd_addr	addr;
 	u_int8_t		valid;
+	struct kif		kif;
 };
 
 struct ctl_neighbor {
