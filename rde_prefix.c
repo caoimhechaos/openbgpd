@@ -270,7 +270,7 @@ pt_prefix_cmp(const struct pt_entry *a, const struct pt_entry *b)
 	int			 i;
 
 	if (a->af != b->af)
-		fatalx("king bula sez: comapring pears with apples"); 
+		fatalx("king bula sez: comapring pears with apples");
 
 	switch (a->af) {
 	case AF_INET:

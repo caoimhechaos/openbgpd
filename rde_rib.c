@@ -73,7 +73,8 @@ static void	path_free(struct rde_aspath *);
 struct path_table pathtable;
 
 #define PATH_HASH(x)				\
-	&pathtable.path_hashtbl[aspath_hash((x)) & pathtable.path_hashmask]
+	&pathtable.path_hashtbl[aspath_hash((x)->data, (x)->len) & \
+	    pathtable.path_hashmask]
 
 void
 path_init(u_int32_t hashsize)
