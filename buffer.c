@@ -184,10 +184,8 @@ msgbuf_write(struct msgbuf *msgbuf)
 		return (-2);
 	}
 
-	if (buf != NULL && buf->fd != -1) {
-		shutdown(buf->fd, SHUT_RDWR);
+	if (buf != NULL && buf->fd != -1)
 		close(buf->fd);
-	}
 
 	for (buf = TAILQ_FIRST(&msgbuf->bufs); buf != NULL && n > 0;
 	    buf = next) {
