@@ -595,11 +595,10 @@ int	 host(const char *, struct bgpd_addr *, u_int8_t *);
 void	 imsg_init(struct imsgbuf *, int);
 int	 imsg_read(struct imsgbuf *);
 int	 imsg_get(struct imsgbuf *, struct imsg *);
-int	 imsg_compose(struct imsgbuf *, int, u_int32_t, void *, u_int16_t);
-int	 imsg_compose_pid(struct imsgbuf *, int, pid_t, void *, u_int16_t);
-int	 imsg_compose_fdpass(struct imsgbuf *, int, int, void *, u_int16_t);
-struct buf *imsg_create(struct imsgbuf *, int, u_int32_t, u_int16_t);
-struct buf *imsg_create_pid(struct imsgbuf *, int, pid_t, u_int16_t);
+int	 imsg_compose(struct imsgbuf *, int, u_int32_t, pid_t, int,
+	    void *, u_int16_t);
+struct buf	*imsg_create(struct imsgbuf *, int, u_int32_t, pid_t,
+		    u_int16_t);
 int	 imsg_add(struct buf *, void *, u_int16_t);
 int	 imsg_close(struct imsgbuf *, struct buf *);
 void	 imsg_free(struct imsg *);

@@ -598,7 +598,7 @@ mrt_open(struct mrt *mrt, time_t now)
 
 	i = mrt->type == MRT_TABLE_DUMP ? 0 : 1;
 
-	if (imsg_compose_fdpass(mrt_imsgbuf[i], type, mrt->fd,
+	if (imsg_compose(mrt_imsgbuf[i], type, 0, 0, mrt->fd,
 	    mrt, sizeof(struct mrt)) == -1)
 		log_warn("mrt_open");
 

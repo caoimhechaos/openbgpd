@@ -307,6 +307,6 @@ control_imsg_relay(struct imsg *imsg)
 	if ((c = control_connbypid(imsg->hdr.pid)) == NULL)
 		return (0);
 
-	return (imsg_compose_pid(&c->ibuf, imsg->hdr.type, imsg->hdr.pid,
+	return (imsg_compose(&c->ibuf, imsg->hdr.type, 0, imsg->hdr.pid, -1,
 	    imsg->data, imsg->hdr.len - IMSG_HEADER_SIZE));
 }
