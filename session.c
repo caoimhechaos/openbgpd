@@ -58,7 +58,6 @@ int	timer_due(time_t);
 void	start_timer_holdtime(struct peer *);
 void	start_timer_keepalive(struct peer *);
 void	session_close_connection(struct peer *);
-void	session_terminate(void);
 void	change_state(struct peer *, enum session_state, enum session_events);
 int	session_setup_socket(struct peer *);
 void	session_accept(int);
@@ -631,19 +630,6 @@ session_close_connection(struct peer *peer)
 		close(peer->sock);
 	}
 	peer->sock = peer->wbuf.sock = -1;
-}
-
-void
-session_terminate(void)
-{
-	struct peer	*p;
-
-	for (p = peers; p != NULL; p = p->next)
-		bgp_fsm(p, EVNT_STOP);
-
-	shutdown(sock, SHUT_RDWR);
-	close(sock);
-	sock = -1;
 }
 
 void
