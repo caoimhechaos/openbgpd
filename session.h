@@ -197,3 +197,6 @@ void	control_close(int);
 int	pfkey_auth_establish(struct peer *p);
 int	pfkey_auth_remove(struct peer *p);
 int	pfkey_init(void);
+
+/* printconf.c */
+void		 print_rule(struct peer *, struct filter_rule *);
