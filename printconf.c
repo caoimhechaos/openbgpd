@@ -114,6 +114,8 @@ void
 print_network(struct network_config *n)
 {
 	printf("network %s/%u", log_addr(&n->prefix), n->prefixlen);
+	if (n->attrset.flags)
+		printf(" ");
 	print_set(&n->attrset);
 	printf("\n");
 }
