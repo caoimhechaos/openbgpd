@@ -246,6 +246,7 @@ struct kif {
 	u_short			 ifindex;
 	int			 flags;
 	char			 ifname[IFNAMSIZ];
+	u_int8_t		 link_state;
 };
 
 struct session_up {
