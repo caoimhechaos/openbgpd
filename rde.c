@@ -577,7 +577,10 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 	struct prefix	*p;
 	enum imsg_type	 type;
 
-	if (old == NULL && new == NULL)
+	if ((old == NULL || old->aspath->nexthop == NULL ||
+	    old->aspath->nexthop->state == NEXTHOP_UNREACH) &&
+	    (new == NULL || new->aspath->nexthop == NULL ||
+	    new->aspath->nexthop->state == NEXTHOP_UNREACH))
 		return;
 
 	if (new == NULL || new->aspath->nexthop == NULL ||
