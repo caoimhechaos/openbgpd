@@ -308,3 +308,12 @@ log_conn_attempt(struct peer *peer, struct in_addr remote)
 		free(p);
 	}
 }
+
+char *
+log_ntoa(in_addr_t ip)
+{
+	struct in_addr	ina;
+
+	ina.s_addr = ip;
+	return (inet_ntoa(ina));
+}
