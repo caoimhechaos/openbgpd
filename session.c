@@ -1294,7 +1294,7 @@ getpeerbyip(in_addr_t ip)
 {
 	struct peer *p;
 
-	/* we might want a more efftive way to find peers by IP */
+	/* we might want a more effective way to find peers by IP */
 	for (p = conf->peers; p != NULL &&
 	    p->conf.remote_addr.sin_addr.s_addr != ip; p = p->next)
 		;	/* nothing */
