@@ -67,6 +67,10 @@ rde_apply_set(struct attr_flags *attrs, struct filter_set *set)
 		attrs->med = set->med;
 	if (set->flags & SET_NEXTHOP)
 		attrs->nexthop = set->nexthop;
+	if (set->flags & SET_NEXTHOP_REJECT)
+		attrs->nexthop_reject = 1;
+	if (set->flags & SET_NEXTHOP_BLACKHOLE)
+		attrs->nexthop_blackhole = 1;
 	if (set->flags & SET_PREPEND) {
 		/*
 		 * The actual prepending is done afterwards because

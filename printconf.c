@@ -79,6 +79,10 @@ print_set(struct filter_set *set)
 			printf("med %u ", set->med);
 		if (set->flags & SET_NEXTHOP)
 			printf("nexthop %s ", inet_ntoa(set->nexthop));
+		if (set->flags & SET_NEXTHOP_REJECT)
+			printf("nexthop reject ");
+		if (set->flags & SET_NEXTHOP_BLACKHOLE)
+			printf("nexthop blackhole ");
 		if (set->flags & SET_PREPEND)
 			printf("prepend-self %u ", set->prepend);
 		printf("}");

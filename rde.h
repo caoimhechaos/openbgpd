@@ -130,6 +130,8 @@ TAILQ_HEAD(attr_list, attr);
 struct attr_flags {
 	struct aspath			*aspath;
 	struct in_addr			 nexthop;	/* exit nexthop */
+	u_int8_t			 nexthop_reject;
+	u_int8_t			 nexthop_blackhole;
 	char				 pftable[PFTABLE_LEN];
 	u_int32_t			 med;		/* multi exit disc */
 	u_int32_t			 lpref;		/* local pref */
