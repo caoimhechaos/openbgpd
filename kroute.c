@@ -1207,6 +1207,11 @@ dispatch_rtmsg(void)
 						kif_kr_insert(kr);
 					kr->r.flags = flags;
 				}
+			} else if (rtm->rtm_type == RTM_CHANGE) {
+				log_warnx("change req for %s/%u: not "
+				    "in table", inet_ntoa(prefix),
+				    prefixlen);
+				continue;
 			} else {
 				if ((kr = calloc(1,
 				    sizeof(struct kroute_node))) == NULL) {
