@@ -214,8 +214,8 @@ void	control_accept(int);
 void	control_close(int);
 
 /* pfkey.c */
-int	pfkey_auth_establish(struct peer *p);
-int	pfkey_auth_remove(struct peer *p);
+int	pfkey_establish(struct peer *p);
+int	pfkey_remove(struct peer *p);
 int	pfkey_init(void);
 
 /* printconf.c */
