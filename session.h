@@ -169,9 +169,9 @@ struct peer {
 struct peer	*peers;
 
 /* session.c */
-void		  session_socket_blockmode(int, enum blockmodes);
-int		  session_main(struct bgpd_config *, struct peer *, int[2],
-		    int[2]);
+void		 session_socket_blockmode(int, enum blockmodes);
+int		 session_main(struct bgpd_config *, struct peer *,
+		    struct filter_head *, int[2], int[2]);
 void		 bgp_fsm(struct peer *, enum session_events);
 struct peer	*getpeerbyip(in_addr_t);
 int		 imsg_compose_parent(int, pid_t, void *, u_int16_t);
