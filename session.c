@@ -1218,6 +1218,7 @@ session_dispatch_imsg(int fd, int idx)
 				fatal(NULL, errno);
 			memcpy(nconf, imsg.data, sizeof(struct bgpd_config));
 			nconf->peers = NULL;
+			init_conf(nconf);
 			pending_reconf = 1;
 			break;
 		case IMSG_RECONF_PEER:
@@ -1272,7 +1273,6 @@ session_dispatch_imsg(int fd, int idx)
 			conf->holdtime = nconf->holdtime;
 			conf->bgpid = nconf->bgpid;
 			conf->min_holdtime = nconf->min_holdtime;
-			init_conf(conf);
 			/* add new peers */
 			for (p = nconf->peers; p != NULL; p = next) {
 				next = p->next;
