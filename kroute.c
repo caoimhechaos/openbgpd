@@ -532,7 +532,7 @@ kroute_fetchtable(void)
 
 		kr->flags = F_KERNEL;
 
-		switch(sa->sa_family) {
+		switch (sa->sa_family) {
 		case AF_INET:
 			kr->r.prefix =
 			    ((struct sockaddr_in *)sa)->sin_addr.s_addr;
@@ -671,7 +671,7 @@ kroute_dispatch_msg(void)
 		if (rtm->rtm_errno)			/* failed attempts... */
 			continue;
 
-		switch(sa->sa_family) {
+		switch (sa->sa_family) {
 		case AF_INET:
 			s.r.prefix =
 			    ((struct sockaddr_in *)sa)->sin_addr.s_addr;
