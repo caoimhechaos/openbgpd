@@ -132,7 +132,8 @@ print_peer(struct peer_config *p)
 		c = nada;
 
 	printf("%sneighbor %s {\n", c, log_addr(&p->remote_addr));
-	printf("%s\tdescr \"%s\"\n", c, p->descr);
+	if (p->descr[0])
+		printf("%s\tdescr \"%s\"\n", c, p->descr);
 	printf("%s\tremote-as %u\n", c, p->remote_as);
 	if (p->distance > 1)
 		printf("%s\tmultihop %u\n", c, p->distance);
