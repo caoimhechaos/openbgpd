@@ -454,7 +454,8 @@ const char	*log_addr(const struct bgpd_addr *);
 int	 cmdline_symset(char *);
 
 /* config.c */
-int	 check_file_secrecy(int fd, const char *fname);
+int	 check_file_secrecy(int, const char *);
+int	 host(const char *, struct bgpd_addr *, u_int8_t *);
 
 /* imsg.c */
 void	 imsg_init(struct imsgbuf *, int);
