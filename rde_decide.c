@@ -97,7 +97,6 @@ int	prefix_cmp(struct prefix *, struct prefix *);
  *  - withdraw of a prefix (prefix_remove)
  *  - state change of the nexthop (nexthop-{in}validate)
  *  - state change of session (session down)
- *
  */
 
 /*
@@ -173,7 +172,7 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 
 	fatalx("Uh, oh a politician in the decision process");
 	/* NOTREACHED */
-	return 0;
+	return (0);
 }
 
 /*
