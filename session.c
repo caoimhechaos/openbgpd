@@ -969,8 +969,10 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *peer)
 				}
 				return (1);
 			}
-			if (n == 0) /* connection closed */
+			if (n == 0) {	/* connection closed */
 				bgp_fsm(peer, EVNT_CON_CLOSED);
+				return (1);
+			}
 
 			rpos = 0;
 			av = peer->rbuf->wpos + n;
