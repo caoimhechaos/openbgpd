@@ -293,8 +293,8 @@ void		 log_debug(const char *, ...);
 void		 fatal(const char *);
 void		 fatalx(const char *);
 void		 fatal_ensure(const char *, int, const char *);
-char		*log_ntoa(in_addr_t);
-char		*log_addr(const struct bgpd_addr *);
+const char	*log_ntoa(in_addr_t);
+const char	*log_addr(const struct bgpd_addr *);
 
 /* parse.y */
 int	 cmdline_symset(char *);

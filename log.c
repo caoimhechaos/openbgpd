@@ -107,7 +107,7 @@ void	 logit(int, const char *, ...);
 char *
 log_fmt_peer(const struct peer_config *peer)
 {
-	char		*ip;
+	const char	*ip;
 	char		*pfmt;
 
 	ip = log_addr(&peer->remote_addr);
@@ -373,7 +373,7 @@ log_conn_attempt(const struct peer *peer, struct in_addr remote)
 	}
 }
 
-char *
+const char *
 log_ntoa(in_addr_t ip)
 {
 	struct in_addr	ina;
@@ -382,7 +382,7 @@ log_ntoa(in_addr_t ip)
 	return (inet_ntoa(ina));
 }
 
-char *
+const char *
 log_addr(const struct bgpd_addr *addr)
 {
 	static char	buf[48];
