@@ -1155,12 +1155,10 @@ dispatch_rtmsg(void)
 				    ((struct sockaddr_in *)sa)->sin_addr.s_addr;
 				sa_in = (struct sockaddr_in *)
 				    rti_info[RTAX_NETMASK];
-				if (sa_in != NULL) {
-					if (sa_in->sin_family != AF_INET)
-						continue;
+				if (sa_in != NULL)
 					prefixlen = mask2prefixlen(
 					    sa_in->sin_addr.s_addr);
-				} else if (rtm->rtm_flags & RTF_HOST)
+				else if (rtm->rtm_flags & RTF_HOST)
 					prefixlen = 32;
 				else
 					prefixlen =
