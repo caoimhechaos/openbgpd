@@ -554,9 +554,10 @@ struct rrefresh {
 #define	AFI_ALL		0xffff
 
 /* Subsequent Address Family Identifier as per rfc2858 */
-#define	SAFI_UNICAST	1
-#define	SAFI_MULTICAST	2
-#define	SAFI_BOTH	3
+#define	SAFI_NONE	0x00
+#define	SAFI_UNICAST	0x01
+#define	SAFI_MULTICAST	0x02
+#define	SAFI_BOTH	0x03
 #define	SAFI_ALL	0xff
 
 /* prototypes */
