@@ -50,7 +50,7 @@ attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
 	*b++ = type;
 	if (data_len > 255) {
 		tmp = htons(data_len);
-		memcpy(b, &tmp, 2);
+		memcpy(b, &tmp, sizeof(tmp));
 		b += 2;
 	} else
 		*b++ = (u_char)(data_len & 0xff);
