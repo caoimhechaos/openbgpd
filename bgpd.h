@@ -24,6 +24,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <net/if.h>
+#include <net/pfkeyv2.h>
 
 #include <poll.h>
 #include <stdarg.h>
@@ -34,6 +35,8 @@
 #define	BGPD_USER			"_bgpd"
 #define	PEER_DESCR_LEN			32
 #define	TCP_MD5_KEY_LEN			80
+#define	IPSEC_ENC_KEY_LEN		32
+#define IPSEC_AUTH_KEY_LEN		20
 
 #define	MAX_PKTSIZE			4096
 #define	MIN_HOLDTIME			3
@@ -143,6 +146,19 @@ struct filter_set {
 	u_int8_t	prepend;
 };
 
+struct peer_ipsec {
+	u_int32_t	spi_in;
+	u_int32_t	spi_out;
+	u_int8_t	auth_alg_in;
+	u_int8_t	auth_alg_out;
+	char		auth_key_in[IPSEC_AUTH_KEY_LEN];
+	char		auth_key_out[IPSEC_AUTH_KEY_LEN];
+	u_int8_t	enc_alg_in;
+	u_int8_t	enc_alg_out;
+	char		enc_key_in[IPSEC_ENC_KEY_LEN];
+	char		enc_key_out[IPSEC_ENC_KEY_LEN];
+};
+
 struct peer_config {
 	u_int32_t		 id;
 	u_int32_t		 groupid;
@@ -164,6 +180,7 @@ struct peer_config {
 	enum announce_type	 announce_type;
 	enum enforce_as		 enforce_as;
 	char			 tcp_md5_key[TCP_MD5_KEY_LEN];
+	struct peer_ipsec	 ipsec;
 	u_int8_t		 capabilities;
 	enum reconf_action	 reconf_action;
 };
