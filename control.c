@@ -179,6 +179,7 @@ control_close(int fd)
 		return;
 	}
 
+	msgbuf_clear(&c->ibuf.w);
 	TAILQ_REMOVE(&ctl_conns, c, entries);
 
 	close(c->ibuf.sock);
