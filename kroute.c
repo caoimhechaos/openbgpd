@@ -137,7 +137,7 @@ RB_GENERATE(kif_tree, kif_node, entry, kif_compare)
 int
 kr_init(int fs)
 {
-	int opt;
+	int	opt = 0;
 
 	kr_state.fib_sync = fs;
 
