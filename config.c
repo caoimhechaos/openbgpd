@@ -255,8 +255,24 @@ prepare_listeners(struct bgpd_config *conf)
 
 		if (bind(la->fd, (struct sockaddr *)&la->sa, la->sa.ss_len) ==
 		    -1) {
-			log_warn("cannot bind to %s",
-			    log_sockaddr((struct sockaddr *)&la->sa));
+			switch (la->sa.ss_family) {
+			case AF_INET:
+				log_warn("cannot bind to %s:%u",
+				    log_sockaddr((struct sockaddr *)&la->sa),
+				    ntohs(((struct sockaddr_in *)
+				    &la->sa)->sin_port));
+				break;
+			case AF_INET6:
+				log_warn("cannot bind to [%s]:%u",
+				    log_sockaddr((struct sockaddr *)&la->sa),
+				    ntohs(((struct sockaddr_in6 *)
+				    &la->sa)->sin6_port));
+				break;
+			default:
+				log_warn("cannot bind to %s",
+				    log_sockaddr((struct sockaddr *)&la->sa));
+				break;
+			}
 			close(la->fd);
 			TAILQ_REMOVE(conf->listen_addrs, la, entry);
 			free(la);
