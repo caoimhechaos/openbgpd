@@ -530,7 +530,7 @@ int
 parse_config(char *filename, struct bgpd_config *xconf,
     struct mrt_config *xmconf)
 {
-	struct sym	*sym;
+	struct sym	*sym, *next;
 
 	if ((conf = calloc(1, sizeof(struct bgpd_config))) == NULL)
 		fatal(NULL, errno);
@@ -562,13 +562,15 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	yyparse();
 
 	/* Free macros and check which have not been used. */
-	TAILQ_FOREACH(sym, &symhead, entries) {
+	for(sym = TAILQ_FIRST(&symhead); sym != NULL; sym = next) {
+		next = TAILQ_NEXT(sym, entries);
 		if ((conf->opts & BGPD_OPT_VERBOSE2) && !sym->used)
 			fprintf(stderr, "warning: macro '%s' not "
 			    "used\n", sym->nam);
 		free(sym->nam);
 		free(sym->val);
 		TAILQ_REMOVE(&symhead, sym, entries);
+		free(sym);
 	}
 
 	errors += merge_config(xconf, conf);
