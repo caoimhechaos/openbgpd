@@ -424,8 +424,12 @@ pfkey_reply(int sd, u_int32_t *spip)
 	}
 	if (hdr.sadb_msg_errno != 0) {
 		errno = hdr.sadb_msg_errno;
-		log_warn("pfkey");
-		return (-1);
+		if (errno == ESRCH)
+			return (0);
+		else {
+			log_warn("pfkey");
+			return (-1);
+		}
 	}
 	len = hdr.sadb_msg_len * PFKEY2_CHUNK;
 	if ((data = malloc(len)) == NULL) {
