@@ -146,7 +146,7 @@ typedef struct {
 %token	QUICK
 %token	FROM TO ANY
 %token	PREFIX PREFIXLEN SOURCEAS TRANSITAS COMMUNITY
-%token	SET LOCALPREF MED NEXTHOP PREPEND PFTABLE REJECT BLACKHOLE
+%token	SET LOCALPREF MED METRIC NEXTHOP PREPEND PFTABLE REJECT BLACKHOLE
 %token	ERROR
 %token	IPSEC ESP AH SPI IKE
 %token	<v.string>		STRING
@@ -1073,6 +1073,10 @@ filter_set_opt	: LOCALPREF number		{
 			$$.flags = SET_MED;
 			$$.med = $2;
 		}
+		| METRIC number			{	/* alias for MED */
+			$$.flags = SET_MED;
+			$$.med = $2;
+		}
 		| NEXTHOP address		{
 			if ($2.af == AF_INET) {
 				$$.flags = SET_NEXTHOP;
@@ -1221,6 +1225,7 @@ lookup(char *s)
 		{ "max-prefix",		MAXPREFIX},
 		{ "md5sig",		MD5SIG},
 		{ "med",		MED},
+		{ "metric",		METRIC},
 		{ "min",		YMIN},
 		{ "multihop",		MULTIHOP},
 		{ "neighbor",		NEIGHBOR},
