@@ -160,7 +160,7 @@ vlog(int pri, const char *fmt, va_list ap)
 
 
 void
-log_err(struct peer *peer, const char *emsg, ...)
+log_peer_err(struct peer *peer, const char *emsg, ...)
 {
 	char	*p, *nfmt;
 	va_list	 ap;
@@ -181,7 +181,7 @@ log_err(struct peer *peer, const char *emsg, ...)
 }
 
 void
-log_errx(struct peer *peer, const char *emsg, ...)
+log_peer_errx(struct peer *peer, const char *emsg, ...)
 {
 	char	*p, *nfmt;
 	va_list	 ap;
