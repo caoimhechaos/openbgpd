@@ -272,8 +272,8 @@ log_notification(struct peer *peer, u_int8_t errcode, u_int8_t subcode,
 		uk = 1;
 		break;
 	default:
-		logit(LOG_CRIT, "%s: received notification, unknown errcode %u, "
-		    "subcode %u", p, errcode, subcode);
+		logit(LOG_CRIT, "%s: received notification, unknown errcode "
+		    "%u, subcode %u", p, errcode, subcode);
 		free(p);
 		return;
 	}
@@ -303,8 +303,8 @@ log_conn_attempt(struct peer *peer, struct in_addr remote)
 			    inet_ntoa(remote));
 	else {
 		p = log_fmt_peer(peer);
-		logit(LOG_INFO, "Connection attempt from %s while session is in "
-		    "state %s", p, statenames[peer->state]);
+		logit(LOG_INFO, "Connection attempt from %s while session is "
+		    "in state %s", p, statenames[peer->state]);
 		free(p);
 	}
 }
