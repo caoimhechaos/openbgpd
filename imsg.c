@@ -113,7 +113,7 @@ imsg_get(struct imsgbuf *ibuf, struct imsg *imsg)
 
 	if (imsg->hdr.len < av) {
 		left = av - imsg->hdr.len;
-		memcpy(&ibuf->r.buf, ibuf->r.buf + imsg->hdr.len, left);
+		memmove(&ibuf->r.buf, ibuf->r.buf + imsg->hdr.len, left);
 		ibuf->r.wpos = left;
 	} else
 		ibuf->r.wpos = 0;
