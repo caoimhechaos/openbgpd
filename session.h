@@ -118,12 +118,6 @@ struct msg_open {
 	u_int8_t		 optparamlen;
 };
 
-struct capa_mp {
-	u_int16_t		afi;
-	u_int8_t		pad;
-	u_int8_t		safi;
-};
-
 struct bgpd_sysdep {
 	u_int8_t		no_pfkey;
 	u_int8_t		no_md5sig;
