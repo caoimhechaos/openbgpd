@@ -2185,11 +2185,6 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 				close(mrt->fd);
 				mrt->fd = xmrt.fd;
 			}
-
-			/* tell parent to close fd */
-			if (imsg_compose(&ibuf_main, IMSG_MRT_CLOSE, 0,
-			    &xmrt, sizeof(struct mrt)) == -1)
-				log_warn("session_dispatch_imsg: mrt close");
 			break;
 		case IMSG_MRT_CLOSE:
 			if (imsg.hdr.len > IMSG_HEADER_SIZE +

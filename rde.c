@@ -474,11 +474,6 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 				log_warnx("expected to receive fd for mrt dump "
 				    "but didn't receive any");
 
-			/* tell parent to close fd */
-			if (imsg_compose(&ibuf_main, IMSG_MRT_CLOSE, 0,
-			    xmrt, sizeof(struct mrt)) == -1)
-				log_warn("rde_dispatch_imsg_parent: mrt close");
-
 			if (xmrt->type == MRT_TABLE_DUMP) {
 				/* do not dump if a other is still running */
 				if (mrt == NULL || mrt->queued == 0) {
