@@ -564,7 +564,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 				nexthop = peer->local_addr.v4.s_addr;
 		} else
 			nexthop = peer->local_addr.v4.s_addr;
-	} else 
+	} else
 		/* ebgp multihop */
 		/*
 		 * XXX for ebgp multihop nh->connected should always be false
