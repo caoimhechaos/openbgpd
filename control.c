@@ -180,6 +180,15 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 		return (0);
 	}
 
+	if (pfd->revents & POLLOUT)
+		if (msgbuf_write(&c->ibuf.w) < 0) {
+			control_close(pfd->fd);
+			return (1);
+		}
+
+	if (!(pfd->revents & POLLIN))
+		return (0);
+
 	if (imsg_read(&c->ibuf) <= 0) {
 		control_close(pfd->fd);
 		return (1);
