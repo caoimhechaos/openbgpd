@@ -151,6 +151,8 @@ msgbuf_write(struct msgbuf *msgbuf)
 	TAILQ_FOREACH(buf, &msgbuf->bufs, entry) {
 		if (i >= IOV_MAX)
 			break;
+		if (i != 0 && buf->fd != -1)	/* fds on their own */
+			break;
 		iov[i].iov_base = buf->buf + buf->rpos;
 		iov[i].iov_len = buf->size - buf->rpos;
 		i++;
@@ -192,6 +194,11 @@ msgbuf_write(struct msgbuf *msgbuf)
 		} else {
 			buf->rpos += n;
 			n = 0;
+			/* assumption: fd got sent if sendmsg sent anything */
+			if (buf->fd != -1) {
+				close(buf->fd);
+				buf->fd = -1;
+			}
 		}
 	}
 
