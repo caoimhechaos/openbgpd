@@ -249,6 +249,7 @@ struct kif {
 	u_int8_t		 media_type;
 	u_int8_t		 link_state;
 	u_long			 baudrate;
+	u_int8_t		 nh_reachable;	/* for nexthop verification */
 };
 
 struct session_up {
