@@ -441,6 +441,7 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_head *mrtc)
 		case IMSG_CTL_KROUTE:
 		case IMSG_CTL_KROUTE_ADDR:
 		case IMSG_CTL_SHOW_NEXTHOP:
+		case IMSG_CTL_SHOW_INTERFACE:
 			if (idx != PFD_PIPE_SESSION)
 				logit(LOG_CRIT, "kroute request not from SE");
 			else

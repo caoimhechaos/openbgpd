@@ -176,7 +176,8 @@ enum imsg_type {
 	IMSG_CTL_NEIGHBOR_DOWN,
 	IMSG_CTL_KROUTE,
 	IMSG_CTL_KROUTE_ADDR,
-	IMSG_CTL_SHOW_NEXTHOP
+	IMSG_CTL_SHOW_NEXTHOP,
+	IMSG_CTL_SHOW_INTERFACE
 };
 
 struct imsg_hdr {
@@ -224,6 +225,11 @@ struct kroute_nexthop {
 	u_int8_t		connected;
 	struct bgpd_addr	gateway;
 	struct kroute		kr;
+};
+
+struct kif {
+	u_short			 ifindex;
+	int			 flags;
 };
 
 struct session_up {
