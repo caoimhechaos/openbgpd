@@ -33,7 +33,7 @@
 #define	CONFFILE			"/etc/bgpd.conf"
 #define	BGPD_USER			"_bgpd"
 #define	PEER_DESCR_LEN			32
-#define	TCP_SIGN_KEY_LEN		32
+#define	TCP_MD5_KEY_LEN			80
 
 #define	MAX_PKTSIZE			4096
 #define	MIN_HOLDTIME			3
@@ -137,7 +137,7 @@ struct peer_config {
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;
 	enum announce_type	 announce_type;
-	char			 tcp_sign_key[TCP_SIGN_KEY_LEN];
+	char			 tcp_md5_key[TCP_MD5_KEY_LEN];
 	enum reconf_action	 reconf_action;
 };
 
