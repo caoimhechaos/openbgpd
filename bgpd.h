@@ -316,12 +316,12 @@ int	 mrt_mergeconfig(struct mrt_config *, struct mrt_config *);
 
 /* kroute.c */
 int	kroute_init(int);
-int	kroute_change(int, struct kroute *);
-int	kroute_delete(int, struct kroute *);
-void	kroute_shutdown(int);
-void	kroute_fib_couple(int);
-void	kroute_fib_decouple(int);
-int	kroute_dispatch_msg(int);
+int	kroute_change(struct kroute *);
+int	kroute_delete(struct kroute *);
+void	kroute_shutdown(void);
+void	kroute_fib_couple(void);
+void	kroute_fib_decouple(void);
+int	kroute_dispatch_msg(void);
 int	kroute_nexthop_add(in_addr_t);
 void	kroute_nexthop_delete(in_addr_t);
 
