@@ -101,8 +101,8 @@ print_peer(struct peer_config *p)
 		printf("%s\tpassive\n", c);
 	if (p->local_addr.af)
 		printf("%s\tlocal-address %s\n", c, log_addr(&p->local_addr));
-	if (p->max_prefix != ULONG_MAX)
-		printf("%s\tmax-prefix %lu\n", c, p->max_prefix);
+	if (p->max_prefix)
+		printf("%s\tmax-prefix %u\n", c, p->max_prefix);
 	if (p->holdtime)
 		printf("%s\tholdtime %u\n", c, p->holdtime);
 	if (p->min_holdtime)

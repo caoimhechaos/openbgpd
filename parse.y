@@ -1033,7 +1033,6 @@ alloc_peer(void)
 	p->next = NULL;
 	p->conf.distance = 1;
 	p->conf.announce_type = ANNOUNCE_UNDEF;
-	p->conf.max_prefix = ULONG_MAX;
 
 	return (p);
 }

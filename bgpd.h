@@ -131,7 +131,7 @@ struct peer_config {
 	char			 descr[PEER_DESCR_LEN];
 	struct bgpd_addr	 remote_addr;
 	struct bgpd_addr	 local_addr;
-	u_long			 max_prefix;
+	u_int32_t		 max_prefix;
 	u_int16_t		 remote_as;
 	u_int8_t		 ebgp;		/* 1 = ebgp, 0 = ibgp */
 	u_int8_t		 distance;	/* 1 = direct, >1 = multihop */
