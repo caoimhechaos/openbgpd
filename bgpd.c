@@ -193,7 +193,8 @@ main(int argc, char *argv[])
 
 	imsg_init(&ibuf_se, pipe_m2s[0]);
 	imsg_init(&ibuf_rde, pipe_m2r[0]);
-	rfd = kroute_init();
+	if ((rfd = kroute_init()) == -1)
+		quit = 1;
 
 	while (quit == 0) {
 		pfd[PFD_PIPE_SESSION].fd = ibuf_se.sock;

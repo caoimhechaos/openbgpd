@@ -81,12 +81,14 @@ kroute_init(void)
 {
 	int s, opt;
 
-	if ((s = socket(AF_ROUTE, SOCK_RAW, 0)) == -1)
+	if ((s = socket(AF_ROUTE, SOCK_RAW, 0)) == -1) {
+		log_err("kroute_init: socket");
 		return (-1);
+	}
 
 	/* not intrested in my own messages */
 	if (setsockopt(s, SOL_SOCKET, SO_USELOOPBACK, &opt, sizeof(opt)) == -1)
-		return (-1);
+		log_err("kroute_init: setsockopt");	/* not fatal */
 
 	pid = getpid();
 
