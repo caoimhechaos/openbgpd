@@ -873,9 +873,11 @@ session_tcp_established(struct peer *peer)
 	socklen_t	len;
 
 	session_socket_blockmode(peer->sock, BM_NORMAL);
+	len = sizeof(peer->sa_local);
 	if (getsockname(peer->sock, (struct sockaddr *)&peer->sa_local,
 	    &len) == -1)
 		log_warn("getsockname");
+	len = sizeof(peer->sa_remote);
 	if (getpeername(peer->sock, (struct sockaddr *)&peer->sa_remote,
 	    &len) == -1)
 		log_warn("getpeername");
