@@ -556,11 +556,11 @@ knexthop_validate(struct knexthop_node *kn)
 
 	bzero(&n, sizeof(n));
 	n.nexthop = kn->nexthop;
+	kroute_detach_nexthop(kn);
 
 	if ((kr = kroute_match(kn->nexthop)) == NULL) {	/* no match */
 		if (was_valid)
 			send_nexthop_update(&n);
-		kroute_detach_nexthop(kn);
 	} else {					/* found match */
 		if (kr->flags & F_DOWN) {		/* but is down */
 			if (was_valid)
