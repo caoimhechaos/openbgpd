@@ -291,7 +291,7 @@ yyerror(const char *fmt, ...)
 	errors = 1;
 	va_start(ap, fmt);
 	if (asprintf(&nfmt, "%s:%d: %s", infile, yylval.lineno, fmt) == -1)
-		fatal("yyerror asprintf");
+		fatalx("yyerror asprintf");
 	vlog(LOG_CRIT, nfmt, ap);
 	va_end(ap);
 	free(nfmt);
