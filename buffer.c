@@ -172,7 +172,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 	}
 
 	if ((n = sendmsg(msgbuf->fd, &msg, 0)) == -1) {
-		if (errno == EAGAIN)	/* cannot write immediately */
+		if (errno == EAGAIN || errno == ENOBUFS)	/* try later */
 			return (0);
 		else
 			return (-1);
