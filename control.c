@@ -198,6 +198,7 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 			for (p = conf->peers; p != NULL; p = p->next)
 				imsg_compose(&c->ibuf, IMSG_CTL_SHOW_NEIGHBOR,
 				    0, p, sizeof(struct peer));
+			imsg_compose(&c->ibuf, IMSG_CTL_END, 0, NULL, 0);
 			break;
 		default:
 			break;
