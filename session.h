@@ -182,6 +182,7 @@ struct peer {
 	struct buf_read		*rbuf;
 	u_int8_t		 auth_established;
 	u_int8_t		 depend_ok;
+	int			 lasterr;
 	struct peer		*next;
 };
 
