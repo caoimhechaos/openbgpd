@@ -91,7 +91,7 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	if ((pw = getpwnam(BGPD_USER)) == NULL)
 		fatal("getpwnam", errno);
 
-	if (chroot(pw->pw_dir) < 0)
+	if (chroot(pw->pw_dir) == -1)
 		fatal("chroot failed", errno);
 	chdir("/");
 
