@@ -1365,35 +1365,8 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			} else
 				reconf = RECONF_KEEP;
 
-			if (bcmp(&p->conf.remote_addr, &pconf->remote_addr,
-			    sizeof(struct sockaddr_in)))
-				reconf = RECONF_REINIT;
-			if (bcmp(&p->conf.local_addr, &pconf->local_addr,
-			    sizeof(struct sockaddr_in)))
-				reconf = RECONF_REINIT;
-			if (p->conf.remote_as != pconf->remote_as)
-				reconf = RECONF_REINIT;
-			if (p->conf.distance != pconf->distance)
-				reconf = RECONF_REINIT;
-
-			if (p->state <= STATE_ACTIVE &&
-			    p->conf.passive && !pconf->passive)
-				reconf = RECONF_REINIT;
-
 			memcpy(&p->conf, pconf, sizeof(struct peer_config));
 			p->conf.reconf_action = reconf;
-			if (pconf->reconf_action > reconf)
-				p->conf.reconf_action = pconf->reconf_action;
-
-			if (p->state >= STATE_OPENSENT) {
-				if (p->holdtime == conf->holdtime &&
-				    nconf->holdtime > conf->holdtime)
-					p->conf.reconf_action = RECONF_REINIT;
-				if (p->holdtime > nconf->holdtime)
-					p->conf.reconf_action = RECONF_REINIT;
-				if (p->holdtime < nconf->min_holdtime)
-					p->conf.reconf_action = RECONF_REINIT;
-			}
 			break;
 		case IMSG_RECONF_DONE:
 			if (idx != PFD_PIPE_MAIN)
