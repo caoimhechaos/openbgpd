@@ -208,6 +208,7 @@ struct kroute_nexthop {
 	u_int8_t		valid;
 	u_int8_t		connected;
 	struct bgpd_addr	gateway;
+	struct kroute		kr;
 };
 
 struct ctl_show_nexthop {

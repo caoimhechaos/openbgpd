@@ -270,6 +270,7 @@ kr_nexthop_add(in_addr_t key)
 			nh.valid = 1;
 			nh.connected = h->kroute->r.flags & F_CONNECTED;
 			nh.gateway.v4.s_addr = h->kroute->r.nexthop;
+			memcpy(&nh.kr, &h->kroute->r, sizeof(nh.kr));
 		}
 		send_nexthop_update(&nh);
 	} else {
@@ -604,6 +605,7 @@ knexthop_validate(struct knexthop_node *kn)
 				n.valid = 1;
 				n.connected = kr->r.flags & F_CONNECTED;
 				n.gateway.v4.s_addr = kr->r.nexthop;
+				memcpy(&n.kr, &kr->r, sizeof(n.kr));
 				send_nexthop_update(&n);
 			}
 		}
@@ -763,6 +765,7 @@ if_change(u_short ifindex, int flags)
 					nh.gateway.v4.s_addr =
 					    kkr->kr->r.nexthop;
 				}
+				memcpy(&nh.kr, &kkr->kr->r, sizeof(nh.kr));
 				send_nexthop_update(&nh);
 			}
 	}
