@@ -618,7 +618,7 @@ kroute_match(in_addr_t key)
 			return (kr);
 	}
 
-	/* if we don't have a match yet, try to find a defautl route */
+	/* if we don't have a match yet, try to find a default route */
 	s.r.prefix = 0;
 	s.r.prefixlen = 0;
 	if ((kr = RB_FIND(kroute_tree, &krt, &s)) != NULL)
