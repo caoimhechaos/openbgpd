@@ -978,9 +978,12 @@ int
 community_match(void *data, u_int16_t len, int as, int type)
 {
 	u_int8_t	*p = data;
-	u_int16_t	 eas, etype, l;
+	u_int16_t	 eas, etype;
 
-	for (l = 0; l + 3 < len; len +=4) {
+	ENSURE((len & 0x3) == 0);
+	len >>= 2; /* devide by four */
+
+	for (; len > 0; len--) {
 		eas = *p++;
 		eas <<= 8;
 		eas |= *p++;
