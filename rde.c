@@ -597,7 +597,6 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 		kr.nexthop = p->aspath->nexthop->true_nexthop.v4.s_addr;
 	}
 
-	/* XXX switch struct kroute to bgpd_addr too */
 	kr.prefix = p->prefix->prefix.v4.s_addr;
 	kr.prefixlen = p->prefix->prefixlen;
 
