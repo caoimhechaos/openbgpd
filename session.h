@@ -146,10 +146,7 @@ struct peer_stats {
 	u_int32_t		 prefix_cnt;
 };
 
-struct peer_capa {
-	u_int8_t	ann_mp_v4;
-	u_int8_t	ann_mp_v6;
-	u_int8_t	ann_refresh;
+struct capabilities {
 	u_int8_t	mp_v4;		/* multiprotocol extensions, RFC 2858 */
 	u_int8_t	mp_v6;
 	u_int8_t	refresh;	/* route refresh, RFC 2918 */
@@ -158,7 +155,10 @@ struct peer_capa {
 struct peer {
 	struct peer_config	 conf;
 	struct peer_stats	 stats;
-	struct peer_capa	 capa;
+	struct {
+		struct capabilities	ann;
+		struct capabilities	peer;
+	}			 capa;
 	u_int32_t		 remote_bgpid;
 	u_int16_t		 holdtime;
 	enum session_state	 state;
