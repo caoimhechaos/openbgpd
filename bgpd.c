@@ -155,18 +155,18 @@ main(int argc, char *argv[])
 
 	logit(LOG_INFO, "startup");
 
-	if (socketpair(AF_UNIX, SOCK_STREAM, PF_UNSPEC, pipe_m2s) == -1)
-		fatal("socketpair", errno);
+	if (pipe(pipe_m2s) == -1)
+		fatal("pipe", errno);
 	if (fcntl(pipe_m2s[0], F_SETFL, O_NONBLOCK) == -1 ||
 	    fcntl(pipe_m2s[1], F_SETFL, O_NONBLOCK) == -1)
 		fatal("fcntl", errno);
-	if (socketpair(AF_UNIX, SOCK_STREAM, PF_UNSPEC, pipe_m2r) == -1)
-		fatal("socketpair", errno);
+	if (pipe(pipe_m2r) == -1)
+		fatal("pipe", errno);
 	if (fcntl(pipe_m2r[0], F_SETFL, O_NONBLOCK) == -1 ||
 	    fcntl(pipe_m2r[1], F_SETFL, O_NONBLOCK) == -1)
 		fatal("fcntl", errno);
-	if (socketpair(AF_UNIX, SOCK_STREAM, PF_UNSPEC, pipe_s2r) == -1)
-		fatal("socketpair", errno);
+	if (pipe(pipe_s2r) == -1)
+		fatal("pipe", errno);
 	if (fcntl(pipe_s2r[0], F_SETFL, O_NONBLOCK) == -1 ||
 	    fcntl(pipe_s2r[1], F_SETFL, O_NONBLOCK) == -1)
 		fatal("fcntl", errno);
