@@ -63,13 +63,6 @@ struct rib_stats {
 } ribstats;
 #define RIB_STAT(x)	(ribstats.x++)
 
-/*
- * Maximum number of prefixes we allow per prefix. The number should
- * not be too big and ensure only that the prefix count is properly
- * increased and decreased. Only useful if ENSURE is active.
- */
-#define MAX_PREFIX_PER_AS 1500
-
 /* path specific functions */
 
 static void	path_link(struct rde_aspath *, struct rde_peer *);
@@ -383,8 +376,6 @@ prefix_move(struct rde_aspath *asp, struct prefix *p)
 	 * no need to update the peer prefix count because we are only moving
 	 * the prefix without changing the peer.
 	 */
-	/* XXX for debugging */
-	ENSURE(asp->prefix_cnt < MAX_PREFIX_PER_AS);
 
 	/*
 	 * First kick the old prefix node out of the prefix list,
@@ -552,9 +543,6 @@ prefix_link(struct prefix *pref, struct pt_entry *pte, struct rde_aspath *asp)
 	LIST_INSERT_HEAD(&asp->prefix_h, pref, path_l);
 	asp->prefix_cnt++;
 	asp->peer->prefix_cnt++;
-
-	/* XXX for debugging */
-	ENSURE(asp->prefix_cnt < MAX_PREFIX_PER_AS);
 
 	pref->aspath = asp;
 	pref->prefix = pte;
