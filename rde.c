@@ -1069,7 +1069,7 @@ peer_down(u_int32_t id)
 
 	peer = peer_get(id);
 	if (peer == NULL) {
-		log_warnx("peer_down: unknown peer id &d", id);
+		log_warnx("peer_down: unknown peer id %d", id);
 		return;
 	}
 	peer->remote_bgpid = 0;
