@@ -342,6 +342,7 @@ dispatch_imsg(int fd, int idx, struct mrt_config *conf,
 			}
 			break;
 		default:
+			break;
 		}
 		imsg_free(&imsg);
 	}

@@ -247,6 +247,7 @@ mrt_state(struct mrtdump_config *m, enum imsg_type type,
 			free(m);
 			return (0);
 		default:
+			break;
 		}
 		break;
 	case MRT_STATE_REOPEN:
@@ -265,6 +266,7 @@ mrt_state(struct mrtdump_config *m, enum imsg_type type,
 				    m->id, NULL, 0);
 			return (0);
 		default:
+			break;
 		}
 		break;
 	case MRT_STATE_OPEN:
@@ -283,6 +285,7 @@ mrt_state(struct mrtdump_config *m, enum imsg_type type,
 		}
 		break;
 	default:
+		break;
 	}
 	return (1);
 }
@@ -354,6 +357,7 @@ mrt_alrm(struct mrt_config *conf, int rfd, int *rwait
 				if (m->type == MRT_TABLE_DUMP)
 					*rwait += imsg_compose(rfd,
 					    IMSG_MRT_END, m->id, NULL, 0);
+				break;
 			}
 
 			m->ReopenTimer = now + m->ReopenTimerInterval;

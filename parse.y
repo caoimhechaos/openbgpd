@@ -291,6 +291,7 @@ endsection	: '}'			{
 			default:
 				yyerror("\"}\" not allowed in this context");
 				YYERROR;
+				break;
 			}
 		}
 		;

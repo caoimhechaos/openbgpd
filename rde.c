@@ -256,6 +256,7 @@ rde_dispatch_imsg(int fd, int idx)
 			    IMSG_MRT_END, imsg.hdr.peerid, NULL, 0);
 			break;
 		default:
+			break;
 		}
 		imsg_free(&imsg);
 	}
@@ -490,6 +491,7 @@ rde_update_get_attr(u_char *p, u_int16_t len, struct attr_flags *a)
 	default:
 		/* ignore for now */
 		plen += attr_len;
+		break;
 	}
 
 	return (plen);
