@@ -155,7 +155,7 @@ setup_listeners(u_int *la_cnt)
 	return (0);
 }
 
-int
+pid_t
 session_main(struct bgpd_config *config, struct peer *cpeers,
     struct network_head *net_l, struct filter_head *rules,
     struct mrt_head *m_l, int pipe_m2s[2], int pipe_s2r[2], int pipe_m2r[2])
