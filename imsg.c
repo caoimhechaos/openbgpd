@@ -111,8 +111,8 @@ imsg_compose(struct imsgbuf *ibuf, int type, u_int32_t peerid, void *data,
 	if (datalen)
 		if (buf_add(wbuf, data, datalen) == -1)
 			fatal("imsg_compose: buf_add error", 0);
-	if ((n = buf_close(&ibuf->w, wbuf)) == -1)
-		fatal("imsg_compose: buf_close error", 0);
+	if ((n = buf_close(&ibuf->w, wbuf)) < 0)
+		fatal("imsg_compose: buf_close error", errno);
 
 	return (n);
 }

@@ -148,15 +148,14 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 		if (nfds > 0 && (pfd[PFD_PIPE_MAIN].revents & POLLOUT) &&
 		    ibuf_main.w.queued) {
 			nfds--;
-			if ((n = msgbuf_write(&ibuf_main.w)) == -1)
+			if ((n = msgbuf_write(&ibuf_main.w)) < 0)
 				fatal("pipe write error", errno);
 		}
 
 		if (nfds > 0 && (pfd[PFD_PIPE_SESSION].revents & POLLOUT) &&
 		    ibuf_se.w.queued) {
 			nfds--;
-			if ((n = msgbuf_write(&ibuf_se.w)) ==
-			    -1)
+			if ((n = msgbuf_write(&ibuf_se.w)) < 0)
 				fatal("pipe write error", errno);
 		}
 	}
