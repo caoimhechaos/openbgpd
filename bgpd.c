@@ -300,10 +300,14 @@ main(int argc, char *argv[])
 
 		if (sigchld) {
 			sigchld = 0;
-			if (check_child(io_pid, "session engine"))
+			if (check_child(io_pid, "session engine")) {
 				quit = 1;
-			if (check_child(rde_pid, "route decision engine"))
+				io_pid = 0;
+			}
+			if (check_child(rde_pid, "route decision engine")) {
 				quit = 1;
+				rde_pid = 0;
+			}
 		}
 
 		if (mrtdump == 1) {
