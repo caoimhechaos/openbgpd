@@ -146,6 +146,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 	int		 i = 0;
 	ssize_t		 n;
 
+	bzero(&iov, sizeof(iov));
 	TAILQ_FOREACH(buf, &msgbuf->bufs, entries) {
 		if (i >= IOV_MAX)
 			break;
