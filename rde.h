@@ -134,7 +134,7 @@ TAILQ_HEAD(attr_list, attr);
 
 struct attr_flags {
 	struct aspath			*aspath;
-	in_addr_t			 nexthop;	/* exit nexthop */
+	struct in_addr			 nexthop;	/* exit nexthop */
 	u_int32_t			 med;		/* multi exit disc */
 	u_int32_t			 lpref;		/* local pref */
 	u_int8_t			 origin;
@@ -189,7 +189,7 @@ struct pt_entry {
 	LIST_ENTRY(pt_entry)		 pt_l;	/* currently we are using a
 						   hash list for prefixes */
 	struct bgpd_addr		 prefix;
-	int				 prefixlen;
+	u_int8_t			 prefixlen;
 	struct prefix_head		 prefix_h;
 	struct prefix			*active; /* for fast access */
 	/*

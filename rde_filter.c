@@ -64,8 +64,7 @@ rde_apply_set(struct attr_flags *attrs, struct filter_set *set)
 	if (set->flags & SET_MED)
 		attrs->med = set->med;
 	if (set->flags & SET_NEXTHOP)
-		/* TODO switch attr->nexthop to struct in_addr */
-		attrs->nexthop = set->nexthop.s_addr;
+		attrs->nexthop = set->nexthop;
 	if (set->flags & SET_PREPEND) {
 		/*
 		 * The acctual prepending is done afterwards because 
