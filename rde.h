@@ -251,6 +251,7 @@ int		 aspath_asprint(char **, void *, u_int16_t);
 size_t		 aspath_strlen(void *, u_int16_t);
 int		 aspath_match(struct aspath *, enum as_spec, u_int16_t);
 int		 community_match(void *, u_int16_t, int, int);
+int		 community_set(struct attr *, int, int);
 
 /* rde_rib.c */
 void		 path_init(u_int32_t);
