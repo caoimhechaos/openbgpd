@@ -48,7 +48,7 @@ control_init(void)
 		return (-1);
 	}
 
-	old_umask = umask(S_IWGRP|S_IWOTH|S_IROTH|S_IXOTH);
+	old_umask = umask(S_IXUSR|S_IXGRP|S_IWOTH|S_IROTH|S_IXOTH);
 	bzero(&sun, sizeof(sun));
 	sun.sun_family = AF_UNIX;
 	strlcpy(sun.sun_path, SOCKET_NAME, sizeof(sun.sun_path));
