@@ -276,7 +276,9 @@ prepare_listeners(struct bgpd_config *conf)
 			log_warn("cannot bind to %s",
 			    log_sockaddr((struct sockaddr *)&la->sa));
 			close(la->fd);
-			la->fd = -1;
+			TAILQ_REMOVE(conf->listen_addrs, la, entry);
+			free(la);
+			continue;
 		}
 	}
 }
