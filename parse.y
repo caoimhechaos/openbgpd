@@ -116,7 +116,7 @@ typedef struct {
 %token	SET LOCALPREF MED NEXTHOP PREPEND
 %token	ERROR
 %token	<v.string>		STRING
-%type	<v.number>		number asnumber optnumber cnumber yesno inout
+%type	<v.number>		number asnumber optnumber yesno inout
 %type	<v.string>		string
 %type	<v.addr>		address
 %type	<v.prefix>		prefix
