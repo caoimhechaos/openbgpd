@@ -170,7 +170,6 @@ struct rde_aspath {
 	 * currently we use the boolean nexthop state, this could be exchanged
 	 * with a variable coast with a max for unreachable.
 	 */
-	enum nexthop_state		 state;
 #if 0
 	u_int32_t			 nexthop_costs;
 #endif
