@@ -1206,7 +1206,7 @@ session_dispatch_imsg(int fd, int idx)
 	struct imsg		 imsg;
 	struct peer_config	*pconf;
 	struct peer		*p, *next;
-	int			 reconf;
+	enum reconf_action	 reconf;
 
 	if (get_imsg(fd, &imsg) > 0) {
 		switch (imsg.hdr.type) {
