@@ -218,6 +218,7 @@ int		 attr_write(void *, u_int16_t, u_int8_t, u_int8_t, void *,
 		     u_int16_t);
 void		 attr_optadd(struct attr_flags *, u_int8_t, u_int8_t,
 		     u_char *, u_int16_t);
+void		 attr_optfree(struct attr_flags *);
 
 int		 aspath_verify(void *, u_int16_t, u_int16_t);
 #define		 AS_ERR_LOOP	-1
