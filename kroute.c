@@ -508,6 +508,7 @@ kroute_dispatch_msg(int fd)
 			break;
 		}
 	}
+	return (0);
 }
 
 int
