@@ -79,14 +79,6 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	size_t		 nfds;
 	int		 n;
 
-	conf = config;
-
-	if ((pw = calloc(1, sizeof(struct passwd))) == NULL)
-		fatal(NULL, errno);
-
-	if ((pw = getpwnam(BGPD_USER)) == NULL)
-		fatal("getpwnam", errno);
-
 	switch (pid = fork()) {
 	case -1:
 		fatal("cannot fork", errno);
@@ -95,6 +87,11 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	default:
 		return (pid);
 	}
+
+	conf = config;
+
+	if ((pw = getpwnam(BGPD_USER)) == NULL)
+		fatal("getpwnam", errno);
 
 	if (chroot(pw->pw_dir) < 0)
 		fatal("chroot failed", errno);
@@ -106,6 +103,8 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	    seteuid(pw->pw_uid) || setuid(pw->pw_uid)) {
 		fatal("can't drop privileges", errno);
 	}
+
+	endpwent();
 
 	signal(SIGTERM, rde_sighdlr);
 
