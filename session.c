@@ -878,9 +878,8 @@ session_connect(struct peer *peer)
 			bgp_fsm(peer, EVNT_CON_OPENFAIL);
 			return (-1);
 		}
-	}
-
-	bgp_fsm(peer, EVNT_CON_OPEN);
+	} else
+		bgp_fsm(peer, EVNT_CON_OPEN);
 
 	return (0);
 }
