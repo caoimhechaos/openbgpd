@@ -23,7 +23,7 @@
 #define	INTERVAL_CONNECTRETRY		120
 #define	INTERVAL_HOLD_INITIAL		240
 #define	INTERVAL_HOLD			90
-#define INTERVAL_START			90
+#define INTERVAL_IDLE_HOLD_INITIAL	90
 #define MSGSIZE_HEADER			19
 #define MSGSIZE_HEADER_MARKER		16
 #define	MSGSIZE_NOTIFICATION_MIN	21	/* 19 hdr + 1 code + 1 sub */
@@ -138,8 +138,8 @@ struct peer {
 	time_t			 ConnectRetryTimer;
 	time_t			 KeepaliveTimer;
 	time_t			 HoldTimer;
-	time_t			 StartTimer;
-	u_int			 StartTimerInterval;
+	time_t			 IdleHoldTimer;
+	u_int			 IdleHoldTime;
 	int			 sock;
 	int			 events;
 	struct msgbuf		 wbuf;
