@@ -1,7 +1,7 @@
 /*	$OpenBSD$ */
 
 /*
- * Copyright (c) 2003 Claudio Jeker <claudio@openbsd.org>
+ * Copyright (c) 2003, 2004 Claudio Jeker <claudio@openbsd.org>
  * Copyright (c) 2003, 2004 Henning Brauer <henning@openbsd.org>
  *
  * Permission to use, copy, modify, and distribute this software for any
