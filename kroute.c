@@ -1157,6 +1157,7 @@ fetchtable(void)
 		}
 
 		kr->r.flags = F_KERNEL;
+		kr->r.ifindex = rtm->rtm_index;
 
 		switch (sa->sa_family) {
 		case AF_INET:
@@ -1187,7 +1188,6 @@ fetchtable(void)
 				break;
 			case AF_LINK:
 				kr->r.flags |= F_CONNECTED;
-				kr->r.ifindex = rtm->rtm_index;
 				break;
 			}
 
