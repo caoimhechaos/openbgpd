@@ -435,7 +435,7 @@ up_generate_updates(struct rde_peer *peer,
 
 		/*
 		 * apply default outgoing overrides,
-		 * acctually only prepend-self
+		 * actually only prepend-self
 		 */
 		rde_apply_set(fasp, &peer->conf.attrset, new->prefix->af,
 		    fasp->peer, DIR_DEFAULT_OUT);
