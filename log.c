@@ -142,9 +142,17 @@ logit(int pri, const char *fmt, ...)
 void
 vlog(int pri, const char *fmt, va_list ap)
 {
+	char	*nfmt;
+
 	if (debug) {
-		vfprintf(stderr, fmt, ap);
-		fprintf(stderr, "\n");
+		/* best effort in out of mem situations */
+		if (asprintf(&nfmt, "%s\n", fmt) == -1) {
+			vfprintf(stderr, fmt, ap);
+			fprintf(stderr, "\n");
+		} else {
+			vfprintf(stderr, nfmt, ap);
+			free(nfmt);
+		}
 	} else
 		vsyslog(pri, fmt, ap);
 }
