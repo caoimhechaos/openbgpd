@@ -138,7 +138,7 @@ up_attr_cmp(struct update_attr *a, struct update_attr *b)
 int
 up_add(struct rde_peer *peer, struct update_prefix *p, struct update_attr *a)
 {
-	struct update_attr	*na;
+	struct update_attr	*na = NULL;
 	struct update_prefix	*np;
 
 	ENSURE(p != NULL);
