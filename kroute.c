@@ -284,7 +284,7 @@ kr_nexthop_add(struct bgpd_addr *addr)
 				nh.gateway.v4.s_addr =
 				    h->kroute->r.nexthop.s_addr;
 			}
-			memcpy(&nh.kr, &h->kroute->r, sizeof(nh.kr));
+			memcpy(&nh.kr.kr4, &h->kroute->r, sizeof(nh.kr.kr4));
 		}
 		send_nexthop_update(&nh);
 	} else {

@@ -355,12 +355,23 @@ struct kroute {
 	u_short		ifindex;
 };
 
+struct kroute6 {
+	struct in6_addr	prefix;
+	u_int8_t	prefixlen;
+	struct in6_addr	nexthop;
+	u_int8_t	flags;
+	u_short		ifindex;
+};
+
 struct kroute_nexthop {
 	struct bgpd_addr	nexthop;
 	u_int8_t		valid;
 	u_int8_t		connected;
 	struct bgpd_addr	gateway;
-	struct kroute		kr;
+	union {
+		struct kroute		kr4;
+		struct kroute6		kr6;
+	} kr;
 };
 
 struct kif {
