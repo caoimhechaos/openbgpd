@@ -76,7 +76,7 @@ buf_close(struct msgbuf *msgbuf, struct buf *buf)
 {
 	int	n;
 
-	/*  first try to write out directly */
+	/* first try to write out directly */
 	if (msgbuf->queued == 0) {
 		if ((n = buf_write(msgbuf->sock, buf)) == -1)
 			return (-1);

@@ -238,7 +238,7 @@ main(int argc, char *argv[])
 			dispatch_imsg(&ibuf_rde, PFD_PIPE_ROUTE, &mrtconf);
 		}
 
-		for (j =  PFD_MRT_START; j < i && nfds > 0 ; j++) {
+		for (j = PFD_MRT_START; j < i && nfds > 0 ; j++) {
 			if (pfd[j].revents & POLLOUT) {
 				if ((n = msgbuf_write(&mrt[i]->msgbuf)) == -1)
 					fatal("pipe write error", errno);

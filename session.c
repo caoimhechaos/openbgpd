@@ -119,7 +119,7 @@ setup_listener(void)
 		close(fd);
 		return (-1);
 	}
-	
+
 	return (fd);
 }
 
