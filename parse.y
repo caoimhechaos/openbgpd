@@ -1099,6 +1099,10 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| PREPEND number		{
 			$$.flags = SET_PREPEND;
+			if ($2 > 128) {
+				yyerror("to many prepends");
+				YYERROR;
+			}
 			$$.prepend = $2;
 		}
 		| PFTABLE string		{
