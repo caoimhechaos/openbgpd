@@ -1361,7 +1361,7 @@ get_id(struct peer *newpeer)
 			}
 
 	/* new one */
-	for (; id < UINT_MAX; id++) {
+	for (; id < UINT_MAX / 2; id++) {
 		for (p = peer_l_old; p != NULL && p->conf.id != id; p = p->next)
 			;	/* nothing */
 		if (p == NULL) {	/* we found a free id */
