@@ -110,17 +110,27 @@ char *
 log_fmt_peer(const struct peer_config *peer)
 {
 	const char	*ip;
-	char		*pfmt;
+	char		*pfmt, *p;
 
 	ip = log_addr(&peer->remote_addr);
+	if ((peer->remote_addr.af == AF_INET && peer->remote_masklen != 32) ||
+	    (peer->remote_addr.af == AF_INET6 && peer->remote_masklen != 128)) {
+		if (asprintf(&p, "%s/%u", ip, peer->remote_masklen) == -1)
+			fatal(NULL);
+	} else {
+		if((p = strdup(ip)) == NULL)
+			fatal(NULL);
+	}
+
 	if (peer->descr[0]) {
-		if (asprintf(&pfmt, "neighbor %s (%s)", ip, peer->descr) ==
+		if (asprintf(&pfmt, "neighbor %s (%s)", p, peer->descr) ==
 		    -1)
 			fatal(NULL);
 	} else {
-		if (asprintf(&pfmt, "neighbor %s", ip) == -1)
+		if (asprintf(&pfmt, "neighbor %s", p) == -1)
 			fatal(NULL);
 	}
+	free(p);
 	return (pfmt);
 }
 
@@ -365,8 +375,7 @@ log_notification(const struct peer *peer, u_int8_t errcode, u_int8_t subcode,
 void
 log_conn_attempt(const struct peer *peer, struct sockaddr *sa)
 {
-	char *p, buf[48];
-
+	char *p,  buf[NI_MAXHOST];
 
 	if (peer == NULL) {	/* connection from non-peer, drop */
 		if (getnameinfo(sa, sa->sa_len, buf, sizeof(buf), NULL, 0,
