@@ -129,8 +129,9 @@ host(const char *s, struct bgpd_addr *h, u_int8_t *len)
 	char			*p, *q, *ps;
 
 	if ((p = strrchr(s, '/')) != NULL) {
+		errno = 0;
 		mask = strtol(p+1, &q, 0);
-		if (!q || *q || mask > 128 || q == (p+1)) {
+		if (errno == ERANGE || !q || *q || mask > 128 || q == (p+1)) {
 			log_warnx("invalid netmask");
 			return (0);
 		}
