@@ -92,6 +92,7 @@ typedef struct {
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE MAXPREFIX ANNOUNCE
 %token	DUMP MSG IN TABLE
 %token	LOG UPDATES
+%token	ERROR
 %token	<v.string>	STRING
 %type	<v.number>	number optnumber yesno
 %type	<v.string>	string
