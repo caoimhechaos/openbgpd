@@ -1000,7 +1000,11 @@ nexthop_update(struct kroute_nexthop *msg)
 	else
 		nh->state = NEXTHOP_UNREACH;
 
-	nh->true_nexthop.s_addr = msg->gateway;
+	if (msg->connected)
+		nh->true_nexthop.s_addr = nh->exit_nexthop.s_addr;
+	else
+		nh->true_nexthop.s_addr = msg->gateway;
+
 	nh->connected = msg->connected;
 
 	LIST_FOREACH(asp, &nh->path_h, nexthop_l) {
