@@ -540,7 +540,9 @@ struct filter_rule {
 
 enum action_types {
 	ACTION_SET_LOCALPREF,
+	ACTION_SET_RELATIVE_LOCALPREF,
 	ACTION_SET_MED,
+	ACTION_SET_RELATIVE_MED,
 	ACTION_SET_PREPEND_SELF,
 	ACTION_SET_PREPEND_PEER,
 	ACTION_SET_NEXTHOP,
@@ -557,6 +559,7 @@ struct filter_set {
 	union {
 		u_int8_t		prepend;
 		u_int32_t		metric;
+		int32_t			relative;
 		struct bgpd_addr	nexthop;
 		struct filter_community	community;
 		char			pftable[PFTABLE_LEN];

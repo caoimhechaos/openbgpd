@@ -812,11 +812,27 @@ or
 Set the
 .Em LOCAL_PREF
 AS path attribute.
+If 
+.Ar number
+starts with a sign 
+.Em LOCAL_PREF
+will be adjusted by adding or substracting
+.Ar number
+else it will be set to
+.Ar number .
 .Pp
 .It Ic med Ar number
 Set the
 .Em MULTI_EXIT_DISC
 AS path attribute.
+If 
+.Ar number
+starts with a sign 
+.Em MULTI_EXIT_DISC
+will be adjusted by adding or substracting
+.Ar number
+else it will be set to
+.Ar number .
 .Pp
 .It Xo
 .Ic nexthop
