@@ -284,6 +284,8 @@ int		 msgbuf_unbounded(struct msgbuf *msgbuf);
 void		 log_init(int);
 void		 logit(int, const char *, ...);
 void		 vlog(int, const char *, va_list);
+void		 log_peer_warn(const struct peer_config *, const char *, ...);
+void		 log_peer_warnx(const struct peer_config *, const char *, ...);
 void		 log_warn(const char *, ...);
 void		 log_warnx(const char *, ...);
 void		 log_info(const char *, ...);
