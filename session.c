@@ -124,8 +124,6 @@ setup_listener(struct sockaddr *sa)
 	}
 
 	opt = 1;
-	if (setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, &opt, sizeof(opt)) == -1)
-		fatal("setsockopt SO_REUSEPORT");
 	if (setsockopt(fd, IPPROTO_TCP, TCP_MD5SIG, &opt, sizeof(opt)) == -1)
 		fatal("setsockopt TCP_MD5SIG");
 
