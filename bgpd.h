@@ -121,7 +121,6 @@ struct peer {
 	int			 sock;
 	int			 events;
 	int			 queued_writes;
-	int			 queued_reads;
 	int			 queued_imsg_writes;
 	struct peer_buf_read	*rbuf;
 	struct peer		*next;

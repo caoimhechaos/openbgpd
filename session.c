@@ -589,7 +589,7 @@ change_state(struct peer *peer, enum session_state state,
 		buf_peer_remove(peer);
 		free(peer->rbuf);
 		peer->rbuf = NULL;
-		peer->queued_writes = peer->queued_reads = 0;
+		peer->queued_writes = 0;
 		if (peer->state == STATE_ESTABLISHED)
 			session_down(peer);
 		if (event != EVNT_STOP) {
