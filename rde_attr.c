@@ -393,11 +393,11 @@ aspath_neighbour(struct aspath *aspath)
 
 #define AS_HASH_INITIAL 8271
 
-u_long
+u_int32_t
 aspath_hash(struct aspath *aspath)
 {
 	u_int8_t	*seg;
-	u_long		 hash;
+	u_int32_t	 hash;
 	u_int16_t	 len, seg_size;
 	u_int8_t	 i, seg_len, seg_type;
 

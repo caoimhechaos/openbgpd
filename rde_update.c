@@ -40,7 +40,7 @@ struct update_prefix {
 };
 
 struct update_attr {
-	u_long				 attr_hash;
+	u_int32_t			 attr_hash;
 	u_char				*attr;
 	u_int16_t			 attr_len;
 	struct uplist_prefix		 prefix_h;
