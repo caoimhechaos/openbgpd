@@ -438,10 +438,11 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_head *mrtc)
 				kr_fib_decouple();
 			break;
 		case IMSG_CTL_KROUTE:
+		case IMSG_CTL_KROUTE_ADDR:
 			if (idx != PFD_PIPE_SESSION)
 				logit(LOG_CRIT, "kroute request not from SE");
 			else
-				kr_show_route(imsg.hdr.pid);
+				kr_show_route(&imsg);
 			break;
 		default:
 			break;
