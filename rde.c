@@ -894,6 +894,9 @@ network_add(struct network_config *nc)
 	attrs.origin = ORIGIN_IGP;
 	TAILQ_INIT(&attrs.others);
 
+	/* apply default overrides */
+	rde_apply_set(&attrs, &nc->attrset);
+
 	path_update(&peerself, &attrs, &nc->prefix, nc->prefixlen);
 }
 
