@@ -541,6 +541,7 @@ peeropts	: REMOTEAS asnumber	{
 				curpeer->conf.announce_type =
 				    ANNOUNCE_DEFAULT_ROUTE;
 			else {
+				yyerror("invalid announce type");
 				free($2);
 				YYERROR;
 			}
@@ -993,6 +994,7 @@ filter_elm	: filter_prefix_h	{
 		| COMMUNITY STRING	{
 			if (fmopts.m.community.as) {
 				yyerror("\"community\" already specified");
+				free($2);
 				YYERROR;
 			}
 			if (parsecommunity($2, &fmopts.m.community.as,
