@@ -333,8 +333,12 @@ prefix_add(struct rde_aspath *asp, struct bgpd_addr *prefix, int prefixlen)
 
 	if (needlink == 1)
 		prefix_link(p, pte, asp);
-	else
+	else {
+		if (p->aspath != asp)
+			/* prefix belongs to a different aspath so move */
+			return prefix_move(asp, p);
 		p->lastchange = time(NULL);
+	}
 
 	return pte;
 }
