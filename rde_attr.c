@@ -78,6 +78,7 @@ attr_parse(u_char *p, u_int16_t len, struct attr_flags *a, int ebgp)
 		if (len - plen < 2)
 			return (-1);
 		UPD_READ(&attr_len, p, plen, 2);
+		attr_len = ntohs(attr_len);
 	} else {
 		UPD_READ(&tmp8, p, plen, 1);
 		attr_len = tmp8;
@@ -135,7 +136,8 @@ attr_parse(u_char *p, u_int16_t len, struct attr_flags *a, int ebgp)
 			return (-1);
 		if (ebgp) {
 			/* ignore local-pref attr for non ibgp peers */
-			a->lpref = 0;	/* set a default value */
+			a->lpref = 0;	/* set a default value ... */
+			plen += 4;	/* and ignore the real value */
 			break;
 		}
 		WFLAG(a->wflags, F_ATTR_LOCALPREF);
