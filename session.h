@@ -184,7 +184,7 @@ int	 merge_config(struct bgpd_config *, struct bgpd_config *,
 
 /* rde.c */
 int	 rde_main(struct bgpd_config *, struct peer *, struct network_head *,
-	    int[2], int[2]);
+	    struct filter_head *, int[2], int[2]);
 
 /* control.c */
 int	control_listen(void);
