@@ -307,13 +307,13 @@ mrt_usr1(struct mrt_config *conf, int rfd, int *rwait
 				break;
 			case MRT_STATE_DONE:
 				m->state = MRT_STATE_OPEN;
-				*rwait += imsg_compose(rfd,
-				    IMSG_MRT_REQ, m->id, NULL, 0);
+				*rwait += imsg_compose(rfd, IMSG_MRT_REQ,
+				    m->id, NULL, 0);
 				break;
 			default:
 				m->state = MRT_STATE_REOPEN;
-				*rwait += imsg_compose(rfd,
-				    IMSG_MRT_END, m->id, NULL, 0);
+				*rwait += imsg_compose(rfd, IMSG_MRT_END,
+				    m->id, NULL, 0);
 				break;
 			}
 

@@ -1322,6 +1322,5 @@ void
 session_up(struct peer *peer)
 {
 	s2r_queued_writes += imsg_compose(s2r_sock, IMSG_SESSION_UP,
-	    peer->conf.id, &peer->remote_bgpid,
-	    sizeof(peer->remote_bgpid));
+	    peer->conf.id, &peer->remote_bgpid, sizeof(peer->remote_bgpid));
 }
