@@ -580,6 +580,8 @@ parse_config(char *filename, struct bgpd_config *xconf,
 
 	yyparse();
 
+	fclose(fin);
+
 	/* Free macros and check which have not been used. */
 	for (sym = TAILQ_FIRST(&symhead); sym != NULL; sym = next) {
 		next = TAILQ_NEXT(sym, entries);
