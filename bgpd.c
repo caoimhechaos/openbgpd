@@ -432,6 +432,18 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 			else
 				reconfig = 1;
 			break;
+		case IMSG_CTL_FIB_COUPLE:
+			if (idx != PFD_PIPE_SESSION)
+				logit(LOG_CRIT, "couple request not from SE");
+			else
+				kroute_fib_couple();
+			break;
+		case IMSG_CTL_FIB_DECOUPLE:
+			if (idx != PFD_PIPE_SESSION)
+				logit(LOG_CRIT, "decouple request not from SE");
+			else
+				kroute_fib_decouple();
+			break;
 		default:
 			break;
 		}
