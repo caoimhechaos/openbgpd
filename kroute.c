@@ -121,11 +121,8 @@ retry:
 			return (-1);
 		}
 	}
-	if (n == sizeof(r))
-		return (0);
 
-	/* XXX we could not write everything... bad bad bad. cope. */
-	return (n);
+	return (0);
 }
 
 int
