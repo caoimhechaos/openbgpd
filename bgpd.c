@@ -137,7 +137,7 @@ main(int argc, char *argv[])
 	}
 
 	if (parse_config(conffile, &conf, &mrtconf))
-		fatal("config file has errors", 0);
+		exit (1);
 
 	signal(SIGTERM, sighdlr);
 	signal(SIGKILL, sighdlr);
