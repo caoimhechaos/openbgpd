@@ -160,6 +160,7 @@ struct filter_set {
 	u_int16_t	flags;
 	u_int32_t	localpref;
 	u_int32_t	med;
+	/*XXX this nexthop thing should be changed to one bgpd_addr */
 	struct in_addr	nexthop;
 	struct in6_addr	nexthop6;
 	u_int8_t	prepend;
