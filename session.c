@@ -1311,8 +1311,9 @@ session_write_imsg(int fd)
 void
 session_down(struct peer *peer)
 {
-	s2r_queued_writes += imsg_compose(s2r_sock, IMSG_SESSION_DOWN,
-	    peer->conf.id, NULL, 0);
+	if (!session_quit)
+		s2r_queued_writes += imsg_compose(s2r_sock, IMSG_SESSION_DOWN,
+		    peer->conf.id, NULL, 0);
 }
 
 void
