@@ -339,7 +339,7 @@ attr_compare(struct attr_flags *a, struct attr_flags *b)
 		return (-1);
 
 	for (oa = TAILQ_FIRST(&a->others), ob = TAILQ_FIRST(&b->others);
-	    oa != TAILQ_END(&a->others) && ob != TAILQ_END(&a->others);
+	    oa != NULL && ob != NULL;
 	    oa = TAILQ_NEXT(oa, attr_l), ob = TAILQ_NEXT(ob, attr_l)) {
 		if (oa->type > ob->type)
 			return (1);
@@ -355,9 +355,9 @@ attr_compare(struct attr_flags *a, struct attr_flags *b)
 		if (r < 0)
 			return (-1);
 	}
-	if (oa != TAILQ_END(&a->others))
+	if (oa != NULL)
 		return (1);
-	if (ob != TAILQ_END(&a->others))
+	if (ob != NULL)
 		return (-1);
 	return (0);
 }
