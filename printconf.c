@@ -147,6 +147,8 @@ print_peer(struct peer_config *p)
 		printf("%s\tholdtime %u\n", c, p->holdtime);
 	if (p->min_holdtime)
 		printf("%s\tholdtime min %u\n", c, p->min_holdtime);
+	if (p->capabilities == 0)
+		printf("%s\tannounce capabilities no\n", c);
 	if (p->announce_type == ANNOUNCE_SELF)
 		printf("%s\tannounce self\n", c);
 	else if (p->announce_type == ANNOUNCE_NONE)
