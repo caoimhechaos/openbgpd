@@ -432,6 +432,15 @@ struct filter_rule {
 	struct filter_set		set;
 };
 
+/* Address Family Numbers as per rfc1700 */
+#define AFI_IPv4	1
+#define AFI_IPv6	2
+
+/* Subsequent Address Family Identifier as per rfc2858 */
+#define SAFI_UNICAST	1
+#define SAFI_MULTICAST	2
+#define SAFI_BOTH	3
+
 /* prototypes */
 /* bgpd.c */
 void		 send_nexthop_update(struct kroute_nexthop *);
