@@ -759,7 +759,7 @@ check_state_main(void)
 {
 	if (pstate != PSTATE_MAIN) {
 		yyerror("This statement is only valid outside "
-		     "group or neighbor definitions");
+		    "group or neighbor definitions");
 		return (-1);
 	} else
 		return (0);

@@ -55,8 +55,7 @@ enum MRT_MSG_TYPES {
 };
 
 #define MRT_HEADER_SIZE		sizeof(struct mrt_header)
-#define MRT_DUMP_HEADER_SIZE	\
-	/* sizeof(struct mrt_dump_v4_header) */ 22
+#define MRT_DUMP_HEADER_SIZE	22	/* sizeof(struct mrt_dump_v4_header) */
 #define MRT_BGP4MP_HEADER_SIZE	\
 	sizeof(struct mrt_bgp4mp_header) + \
 	sizeof(struct mrt_bgp4mp_IPv4)

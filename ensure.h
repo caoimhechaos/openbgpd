@@ -24,8 +24,7 @@
 
 #if CHECK_ENSURE != 0
 #define ENSURE(cond) \
-	((void) ((cond) || \
-		 (fatal_ensure(__FILE__, __LINE__, #cond), 0)))
+	((void) ((cond) || (fatal_ensure(__FILE__, __LINE__, #cond), 0)))
 #else
 #define ENSURE(cond)
 #endif
