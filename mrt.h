@@ -51,7 +51,7 @@ enum MRT_MSG_TYPES {
 	MSG_PROTOCOL_BGP4PLUS1,	/* 10 msg is a BGP4+ (draft 01) packet */
 	MSG_PROTOCOL_OSPF,	/* 11 msg is an OSPF packet */
 	MSG_TABLE_DUMP,		/* 12 routing table dump */
-	MSG_PROTOCOL_BGP4MP=16,	/* 16 zebras own packet format */
+	MSG_PROTOCOL_BGP4MP=16	/* 16 zebras own packet format */
 };
 
 #define MRT_HEADER_SIZE		sizeof(struct mrt_header)
