@@ -515,10 +515,7 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 	if (old == NULL && new == NULL)
 		return;
 
-	if (old == NULL) {
-		type = IMSG_KROUTE_ADD;
-		p = new;
-	} else if (new == NULL || new->aspath->state == NEXTHOP_UNREACH) {
+	if (new == NULL || new->aspath->state == NEXTHOP_UNREACH) {
 		type = IMSG_KROUTE_DELETE;
 		p = old;
 	} else {

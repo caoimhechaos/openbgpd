@@ -335,17 +335,12 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 				break;
 			}
 			break;
-		case IMSG_KROUTE_ADD:
-			if (idx != PFD_PIPE_ROUTE)
-				fatal("route request not from RDE", 0);
-			if (kroute_change(rfd, imsg.data))
-				fatal("kroute_add error", errno);
-			break;
 		case IMSG_KROUTE_CHANGE:
 			if (idx != PFD_PIPE_ROUTE)
 				fatal("route request not from RDE", 0);
 			if (kroute_change(rfd, imsg.data))
 				fatal("kroute_change error", errno);
+			break;
 		case IMSG_KROUTE_DELETE:
 			if (idx != PFD_PIPE_ROUTE)
 				fatal("route request not from RDE", 0);
