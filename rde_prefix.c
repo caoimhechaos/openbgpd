@@ -75,7 +75,8 @@ u_long pthashsize[MAX_PREFIX + 1 - MIN_PREFIX] = {
 struct pt_table	pttable[MAX_PREFIX + 1 - MIN_PREFIX];
 
 #define PT_HASH(p, plen)				\
-	&pttable[plen].pt_hashtbl[((p >> plen) ^ (p >> (plen + 5))) & pttable[plen].pt_hashmask]
+	&pttable[plen].pt_hashtbl[((p >> plen) ^ (p >> (plen + 5))) & \
+	    pttable[plen].pt_hashmask]
 
 /*
  * Statistics collector.
