@@ -1421,7 +1421,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 {
 	ssize_t		n, rpos, av, left;
 	socklen_t	len;
-	int		error;
+	int		error, processed = 0;
 	u_int16_t	msglen;
 	u_int8_t	msgtype;
 
@@ -1537,6 +1537,8 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 					    "unknown type %u", msgtype);
 				}
 				rpos += msglen;
+				if (++processed > MSG_PROCESS_LIMIT)
+					break;
 			}
 			if (p->rbuf == NULL)
 				return (1);
