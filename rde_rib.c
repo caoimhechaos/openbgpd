@@ -1111,6 +1111,10 @@ nexthop_update(struct kroute_nexthop *msg)
 		memcpy(&nh->true_nexthop, &msg->gateway,
 		    sizeof(nh->true_nexthop));
 
+	nh->nexthop_netlen = msg->kr.prefixlen;
+	nh->nexthop_net.af = AF_INET;
+	nh->nexthop_net.v4.s_addr = msg->kr.prefix;
+
 	nh->connected = msg->connected;
 
 	LIST_FOREACH(asp, &nh->path_h, nexthop_l) {

@@ -155,6 +155,8 @@ struct nexthop {
 	struct aspath_head	path_h;
 	struct bgpd_addr	exit_nexthop;
 	struct bgpd_addr	true_nexthop;
+	struct bgpd_addr	nexthop_net;
+	u_int8_t		nexthop_netlen;
 	u_int8_t		connected;
 };
 
