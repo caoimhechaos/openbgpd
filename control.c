@@ -115,10 +115,9 @@ control_accept(int listenfd)
 	len = sizeof(sun);
 	if ((connfd = accept(listenfd,
 	    (struct sockaddr *)&sun, &len)) == -1) {
-		if (errno == EWOULDBLOCK || errno == EINTR)
-			return;
-		else
+		if (errno != EWOULDBLOCK && errno != EINTR)
 			log_warn("session_control_accept");
+		return;
 	}
 
 	session_socket_blockmode(connfd, BM_NONBLOCK);
