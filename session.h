@@ -157,6 +157,7 @@ int		  session_main(struct bgpd_config *, struct peer *, int[2],
 void		 bgp_fsm(struct peer *, enum session_events);
 struct peer	*getpeerbyip(in_addr_t);
 int		 imsg_compose_parent(int, pid_t, void *, u_int16_t);
+int		 imsg_compose_rde(int, pid_t, void *, u_int16_t);
 
 /* log.c */
 void		 log_statechange(const struct peer *, enum session_state,

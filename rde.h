@@ -168,6 +168,11 @@ struct nexthop {
 #define NEXTHOP_ANNOUNCE	0x2
 };
 
+struct path_table {
+	struct aspath_head	*path_hashtbl;
+	u_int32_t		 path_hashmask;
+};
+
 LIST_HEAD(prefix_head, prefix);
 
 struct rde_aspath {
