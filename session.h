@@ -150,6 +150,7 @@ struct peer_stats {
 	u_int64_t		 msg_sent_rrefresh;
 	time_t			 last_updown;
 	time_t			 last_read;
+	u_int32_t		 prefix_cnt;
 };
 
 struct peer_capa {

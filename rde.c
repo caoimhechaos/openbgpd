@@ -256,7 +256,9 @@ rde_dispatch_imsg_session(struct imsgbuf *ibuf)
 {
 	struct imsg		 imsg;
 	struct session_up	 sup;
+	struct peer		 p;
 	struct rrefresh		 r;
+	struct rde_peer		*peer;
 	pid_t			 pid;
 	int			 n;
 
@@ -352,6 +354,23 @@ rde_dispatch_imsg_session(struct imsgbuf *ibuf)
 			pid = imsg.hdr.pid;
 			rde_dump_prefix(imsg.data, pid);
 			imsg_compose_pid(&ibuf_se, IMSG_CTL_END, pid, NULL, 0);
+			break;
+		case IMSG_CTL_SHOW_NEIGHBOR:
+			if (imsg.hdr.len - IMSG_HEADER_SIZE !=
+			    sizeof(struct peer)) {
+				log_warnx("rde_dispatch: wrong imsg len");
+				break;
+			}
+			memcpy(&p, imsg.data, sizeof(struct peer));
+			peer = peer_get(p.conf.id);
+			if (peer != NULL)
+				p.stats.prefix_cnt = peer->prefix_cnt;
+			imsg_compose_pid(&ibuf_se, IMSG_CTL_SHOW_NEIGHBOR,
+			    imsg.hdr.pid, &p, sizeof(struct peer));
+			break;
+		case IMSG_CTL_END:
+			imsg_compose_pid(&ibuf_se, IMSG_CTL_END, imsg.hdr.pid,
+			    NULL, 0);
 			break;
 		default:
 			break;
