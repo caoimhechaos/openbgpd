@@ -432,19 +432,31 @@ up_generate_updates(struct prefix *new, struct prefix *old)
 		 * set.
 		 */
 
-		p = calloc(1, sizeof(struct update_prefix));
-		if (p == NULL)
-			fatal("up_queue_update");
-
 		if (new == NULL || new->aspath->nexthop == NULL ||
 		    new->aspath->nexthop->state != NEXTHOP_REACH) {
+			if (peer == old->peer)
+				/* Do not send routes back to sender */
+				continue;
+			
 			/* withdraw prefix */
+			p = calloc(1, sizeof(struct update_prefix));
+			if (p == NULL)
+				fatal("up_queue_update");
+
 			p->prefix = old->prefix->prefix;
 			p->prefixlen = old->prefix->prefixlen;
 			if (up_add(peer, p, NULL) == -1)
 				logit(LOG_CRIT, "queuing update failed.");
 		} else {
+			if (peer == new->peer)
+				/* Do not send routes back to sender */
+				continue;
+
 			/* generate update */
+			p = calloc(1, sizeof(struct update_prefix));
+			if (p == NULL)
+				fatal("up_queue_update");
+
 			a = calloc(1, sizeof(struct update_attr));
 			if (a == NULL)
 				fatal("up_queue_update");
