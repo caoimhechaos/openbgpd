@@ -334,9 +334,11 @@ mrt_type(enum mrt_type t)
 {
 	switch (t) {
 	case MRT_NONE:
-		return "unfluffy MRT";
+		break;
 	case MRT_TABLE_DUMP:
 		return "table";
+	case MRT_TABLE_DUMP_MP:
+		return "table-mp";
 	case MRT_ALL_IN:
 		return "all in";
 	case MRT_ALL_OUT:

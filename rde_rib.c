@@ -489,6 +489,24 @@ prefix_remove(struct rde_peer *peer, struct bgpd_addr *prefix, int prefixlen)
 		path_destroy(asp);
 }
 
+/* dump a prefix into specified buffer */
+int
+prefix_write(u_char *buf, int len, struct bgpd_addr *prefix, u_int8_t plen)
+{
+	int	totlen;
+
+	if (prefix->af != AF_INET)
+		return (-1);
+
+	totlen = PREFIX_SIZE(plen);
+
+	if (totlen > len)
+		return (-1);
+	*buf++ = plen;
+	memcpy(buf, &prefix->ba, totlen - 1);
+	return (totlen);
+}
+
 /*
  * Searches in the prefix list of specified pt_entry for a prefix entry
  * belonging to the peer peer. Returns NULL if no match found.
