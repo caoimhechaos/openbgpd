@@ -287,6 +287,8 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 		case IMSG_NETWORK_ADD:
 		case IMSG_NETWORK_REMOVE:
 		case IMSG_NETWORK_FLUSH:
+		case IMSG_NETWORK_DONE:
+		case IMSG_FILTER_SET:
 			imsg_compose_rde(imsg.hdr.type, 0,
 			    imsg.data, imsg.hdr.len - IMSG_HEADER_SIZE);
 			break;

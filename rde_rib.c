@@ -749,17 +749,20 @@ nexthop_update(struct kroute_nexthop *msg)
 }
 
 void
-nexthop_modify(struct rde_aspath *asp, struct bgpd_addr *nexthop, int flags,
-    sa_family_t af)
+nexthop_modify(struct rde_aspath *asp, struct bgpd_addr *nexthop,
+    enum action_types type, sa_family_t af)
 {
 	struct nexthop	*nh;
 
-	if (flags & SET_NEXTHOP_REJECT)
+	if (type == ACTION_SET_NEXTHOP_REJECT) {
 		asp->flags |= F_NEXTHOP_REJECT;
-	if (flags & SET_NEXTHOP_BLACKHOLE)
+		return;
+	}
+	if (type  == ACTION_SET_NEXTHOP_BLACKHOLE) {
 		asp->flags |= F_NEXTHOP_BLACKHOLE;
-	if (!(flags & SET_NEXTHOP) ||
-	    af != nexthop->af)
+		return;
+	}
+	if (af != nexthop->af)
 		return;
 
 	nh = nexthop_get(nexthop);
