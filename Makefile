@@ -9,7 +9,7 @@ CLFAGS+= -Wmissing-declarations -Wredundant-decls
 CFLAGS+= -Wshadow -Wpointer-arith -Wcast-qual
 CFLAGS+= -Wsign-compare
 YFLAGS=
-NOMAN=
+MAN= bgpd.8
 
 CFLAGS+=	-Wall
 
