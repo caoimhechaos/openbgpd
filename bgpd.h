@@ -34,6 +34,7 @@
 
 #define	MAX_PKTSIZE			4096
 #define	MIN_HOLDTIME			3
+#define	READ_BUF_SIZE			65535
 
 #define BGPD_OPT_VERBOSE		0x0001
 #define BGPD_OPT_VERBOSE2		0x0002
@@ -107,12 +108,9 @@ struct bgpd_config {
 };
 
 struct peer_buf_read {
-	u_char			 buf[MAX_PKTSIZE];
-	ssize_t			 read_len;
-	u_int16_t		 pkt_len;
-	u_int8_t		 type;
-	u_char			*wptr;
-	u_int8_t		 seen_hdr;
+	u_char			 buf[READ_BUF_SIZE];
+	u_char			*rptr;
+	ssize_t			 wpos;
 };
 
 struct peer_config {
