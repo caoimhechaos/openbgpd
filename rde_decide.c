@@ -203,6 +203,10 @@ prefix_evaluate(struct prefix *p, struct pt_entry *pte)
 				if (prefix_cmp(p, xp) > 0) {
 					LIST_INSERT_BEFORE(xp, p, prefix_l);
 					break;
+				} else if (LIST_NEXT(xp, prefix_l) == NULL) {
+					/* if xp last element ... */
+					LIST_INSERT_AFTER(xp, p, prefix_l);
+					break;
 				}
 		}
 	}
