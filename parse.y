@@ -167,7 +167,7 @@ conf_main	: AS number		{
 			conf->listen_addr.sin_addr.s_addr = $3.s_addr;
 		}
 		| FIBUPDATE yesno		{
-			if ($2 == 1)
+			if ($2 == 0)
 				conf->flags |= BGPD_FLAG_NO_FIB_UPDATE;
 			else
 				conf->flags &= ~BGPD_FLAG_NO_FIB_UPDATE;
