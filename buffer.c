@@ -85,12 +85,14 @@ buf_close(struct buf *buf)
 
 	int	n;
 
-	if ((n = buf_write(buf)) == -1)
-		return (-1);
+	if (buf->peer != NULL && buf->peer->queued_writes == 0) {
+		if ((n = buf_write(buf)) == -1)
+			return (-1);
 
-	if (n == 1) {		/* all data written out */
-		buf_free(buf);
-		return (0);
+		if (n == 1) {		/* all data written out */
+			buf_free(buf);
+			return (0);
+		}
 	}
 
 	/* we have to queue */
