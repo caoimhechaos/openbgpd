@@ -350,12 +350,12 @@ mrt_dump_entry_mp(struct mrt *mrt, struct prefix *p, u_int16_t snum,
 	switch (af) {
 	case AF_INET:
 		DUMP_SHORT(buf, AFI_IPv4);
-		DUMP_NLONG(buf, peer->local_addr.v4.s_addr);
+		DUMP_NLONG(buf, peer->local_v4_addr.v4.s_addr);
 		DUMP_NLONG(buf, peer->remote_addr.v4.s_addr);
 		break;
 	case AF_INET6:
 		DUMP_SHORT(buf, AFI_IPv6);
-		if (buf_add(buf, &peer->local_addr.v6,
+		if (buf_add(buf, &peer->local_v6_addr.v6,
 		    sizeof(struct in6_addr)) == -1 ||
 		    buf_add(buf, &peer->remote_addr.v6,
 		    sizeof(struct in6_addr)) == -1) {

@@ -54,7 +54,8 @@ struct rde_peer {
 	u_int32_t			 prefix_cnt;
 	u_int32_t			 remote_bgpid;
 	struct bgpd_addr		 remote_addr;
-	struct bgpd_addr		 local_addr;
+	struct bgpd_addr		 local_v4_addr;
+	struct bgpd_addr		 local_v6_addr;
 	u_int32_t			 up_pcnt;
 	u_int32_t			 up_acnt;
 	u_int32_t			 up_nlricnt;
