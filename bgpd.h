@@ -279,17 +279,17 @@ int		 msgbuf_write(struct msgbuf *);
 void		 log_init(int);
 void		 logit(int, const char *, ...);
 void		 vlog(int, const char *, va_list);
-void		 log_peer_err(struct peer *, const char *, ...);
-void		 log_peer_errx(struct peer *, const char *, ...);
+void		 log_peer_err(const struct peer *, const char *, ...);
+void		 log_peer_errx(const struct peer *, const char *, ...);
 void		 log_err(const char *, ...);
 void		 fatal(const char *);
 void		 fatalx(const char *);
 void		 fatal_ensure(const char *, int, const char *);
-void		 log_statechange(struct peer *, enum session_state,
+void		 log_statechange(const struct peer *, enum session_state,
 		    enum session_events);
-void		 log_notification(struct peer *, u_int8_t, u_int8_t,
+void		 log_notification(const struct peer *, u_int8_t, u_int8_t,
 		    u_char *, u_int16_t);
-void		 log_conn_attempt(struct peer *, struct in_addr);
+void		 log_conn_attempt(const struct peer *, struct in_addr);
 char		*log_ntoa(in_addr_t);
 
 /* parse.y */
