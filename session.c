@@ -54,7 +54,6 @@ void	session_sighdlr(int);
 int	setup_listener(void);
 void	init_conf(struct bgpd_config *);
 void	init_peer(struct peer *);
-void	bgp_fsm(struct peer *, enum session_events);
 int	timer_due(time_t);
 void	start_timer_holdtime(struct peer *);
 void	start_timer_keepalive(struct peer *);
