@@ -1080,10 +1080,11 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 					if (error)
 						errno = error;
 					log_peer_warn(&p->conf, "socket error");
+					bgp_fsm(p, EVNT_CON_OPENFAIL);
+					return (1);
 				}
-				bgp_fsm(p, EVNT_CON_OPENFAIL);
-			} else
-				bgp_fsm(p, EVNT_CON_OPEN);
+			}
+			bgp_fsm(p, EVNT_CON_OPEN);
 			return (1);
 		}
 		if (pfd->revents & POLLHUP) {
