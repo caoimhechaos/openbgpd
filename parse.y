@@ -715,7 +715,7 @@ lookup(char *s)
 		{ "table",		TABLE},
 		{ "tcp",		TCP},
 		{ "to",			TO},
-		{ "transit-AS",		TRANSITAS},
+		{ "transit-AS",		TRANSITAS}
 	};
 	const struct keywords	*p;
 
