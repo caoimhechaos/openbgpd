@@ -944,7 +944,7 @@ send_rtmsg(int fd, int action, struct kroute *kroute)
 	r.mask.sin_addr.s_addr = htonl(0xffffffff << (32 - kroute->prefixlen));
 
 retry:
-	if (write(fd, &r, sizeof(r)) == -1) {	/* XXX never partial? */
+	if (write(fd, &r, sizeof(r)) == -1) {
 		switch (errno) {
 		case ESRCH:
 			if (r.hdr.rtm_type == RTM_CHANGE) {
