@@ -563,7 +563,7 @@ aspath_write(void *p, u_int16_t len, struct aspath *aspath, u_int16_t myAS,
 	u_int8_t	 type, attr_flag = ATTR_WELL_KNOWN;
 
 	prepend = aspath->hdr.prepend + (ebgp ? 1 : 0);
-	
+
 	if (prepend > 255)
 		/* lunatic prepends need to be blocked in the parser */
 		return (-1);
