@@ -386,7 +386,7 @@ reconfigure(char *conffile, struct bgpd_config *conf, struct mrt_head *mrt_l,
 		    &p->conf, sizeof(struct peer_config)) == -1)
 			return (-1);
 	while ((n = TAILQ_FIRST(&net_l)) != NULL) {
-		if (imsg_compose(&ibuf_rde, IMSG_RECONF_NETWORK, 0,
+		if (imsg_compose(&ibuf_rde, IMSG_NETWORK_ADD, 0,
 		    &n->net, sizeof(struct network_config)) == -1)
 			return (-1);
 		TAILQ_REMOVE(&net_l, n, network_l);
