@@ -53,24 +53,28 @@ send_sa_msg(struct iovec *iov, int cnt, int len)
 
 	if ((n = writev(sd, iov, cnt)) == -1) {
 		log_warn("write");
+		close(sd);
 		return (-1);
 	}
 
 	if (n != len) {
 		log_warn("writev: should=%d has=%d", len, n);
+		close(sd);
 		return (-1);
 	}
 
 	if (read(sd, &sm, sizeof(sm)) != sizeof(sm)) {
 		log_warn("read");
+		close(sd);
 		return (-1);
 	}
+	close(sd);
+
 	if (sm.sadb_msg_errno != 0) {
 		errno = sm.sadb_msg_errno;
 		log_warn("pfkey");
 		return (-1);
 	}
-	close(sd);
 	return (0);
 }
 
