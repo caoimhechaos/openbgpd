@@ -660,7 +660,7 @@ rde_generate_updates(struct prefix *new, struct prefix *old)
 	 * On the other hand new may be UNREACH and then we should not
 	 * generate an update.
 	 */
-	if (old == NULL && (new == NULL || 
+	if (old == NULL && (new == NULL ||
 	    new->aspath->nexthop->state != NEXTHOP_REACH))
 		return;
 
