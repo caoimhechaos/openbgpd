@@ -227,11 +227,11 @@ main(int argc, char *argv[])
 	}
 
 	while (quit == 0) {
-		pfd[PFD_PIPE_SESSION].fd = ibuf_se.sock;
+		pfd[PFD_PIPE_SESSION].fd = ibuf_se.fd;
 		pfd[PFD_PIPE_SESSION].events = POLLIN;
 		if (ibuf_se.w.queued)
 			pfd[PFD_PIPE_SESSION].events |= POLLOUT;
-		pfd[PFD_PIPE_ROUTE].fd = ibuf_rde.sock;
+		pfd[PFD_PIPE_ROUTE].fd = ibuf_rde.fd;
 		pfd[PFD_PIPE_ROUTE].events = POLLIN;
 		if (ibuf_rde.w.queued)
 			pfd[PFD_PIPE_ROUTE].events |= POLLOUT;

@@ -1491,7 +1491,7 @@ add_mrtconfig(enum mrt_type type, char *name, time_t timeout, struct peer *p)
 		fatal("add_mrtconfig");
 
 	n->conf.type = type;
-	n->msgbuf.sock = -1;
+	n->msgbuf.fd = -1;
 	if (strlcpy(n->name, name, sizeof(n->name)) >= sizeof(n->name)) {
 		yyerror("filename \"%s\" too long: max %u",
 		    name, sizeof(n->name) - 1);

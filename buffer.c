@@ -116,7 +116,7 @@ void
 msgbuf_init(struct msgbuf *msgbuf)
 {
 	msgbuf->queued = 0;
-	msgbuf->sock = -1;
+	msgbuf->fd = -1;
 	TAILQ_INIT(&msgbuf->bufs);
 }
 
@@ -152,7 +152,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 		i++;
 	}
 
-	if ((n = writev(msgbuf->sock, iov, i)) == -1) {
+	if ((n = writev(msgbuf->fd, iov, i)) == -1) {
 		if (errno == EAGAIN)	/* cannot write immediately */
 			return (0);
 		else
@@ -195,7 +195,7 @@ msgbuf_writebound(struct msgbuf *msgbuf)
 		return (1);
 
 	buf = TAILQ_FIRST(&msgbuf->bufs);
-	if ((n = buf_write(msgbuf->sock, buf)) < 0)
+	if ((n = buf_write(msgbuf->fd, buf)) < 0)
 		return (n);
 
 	if (n == 1) {	/* everything written out */

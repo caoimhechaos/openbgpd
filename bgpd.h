@@ -85,7 +85,7 @@ struct buf {
 
 struct msgbuf {
 	u_int32_t		 queued;
-	int			 sock;
+	int			 fd;
 	TAILQ_HEAD(bufs, buf)	 bufs;
 };
 
@@ -217,7 +217,7 @@ struct network {
 #define	MAX_IMSGSIZE		8192
 
 struct imsgbuf {
-	int			sock;
+	int			fd;
 	pid_t			pid;
 	struct buf_read		r;
 	struct msgbuf		w;

@@ -137,7 +137,7 @@ control_connbyfd(int fd)
 {
 	struct ctl_conn	*c;
 
-	for (c = TAILQ_FIRST(&ctl_conns); c != NULL && c->ibuf.sock != fd;
+	for (c = TAILQ_FIRST(&ctl_conns); c != NULL && c->ibuf.fd != fd;
 	    c = TAILQ_NEXT(c, entries))
 		;	/* nothing */
 
@@ -169,7 +169,7 @@ control_close(int fd)
 	msgbuf_clear(&c->ibuf.w);
 	TAILQ_REMOVE(&ctl_conns, c, entries);
 
-	close(c->ibuf.sock);
+	close(c->ibuf.fd);
 	free(c);
 }
 
