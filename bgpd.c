@@ -359,11 +359,11 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 				if (wbuf == NULL)
 					return (-1);
 				if (buf_add(wbuf, imsg.data, len) == -1) {
-					free(wbuf);
+					buf_free(wbuf);
 					return (-1);
 				}
 				if ((n = buf_close(&m->msgbuf, wbuf)) < 0) {
-					free(wbuf);
+					buf_free(wbuf);
 					return (-1);
 				}
 				break;
