@@ -114,19 +114,19 @@ int		dispatch_rtmsg(void);
 int		fetchtable(void);
 int		fetchifs(int);
 
-RB_HEAD(kroute_tree, kroute_node)	kroute_tree, krt;
+RB_HEAD(kroute_tree, kroute_node)	krt;
 RB_PROTOTYPE(kroute_tree, kroute_node, entry, kroute_compare)
 RB_GENERATE(kroute_tree, kroute_node, entry, kroute_compare)
 
-RB_HEAD(kroute6_tree, kroute6_node)	kroute6_tree, krt6;
+RB_HEAD(kroute6_tree, kroute6_node)	krt6;
 RB_PROTOTYPE(kroute6_tree, kroute6_node, entry, kroute6_compare)
 RB_GENERATE(kroute6_tree, kroute6_node, entry, kroute6_compare)
 
-RB_HEAD(knexthop_tree, knexthop_node)	knexthop_tree, knt;
+RB_HEAD(knexthop_tree, knexthop_node)	knt;
 RB_PROTOTYPE(knexthop_tree, knexthop_node, entry, knexthop_compare)
 RB_GENERATE(knexthop_tree, knexthop_node, entry, knexthop_compare)
 
-RB_HEAD(kif_tree, kif_node)		kif_tree, kit;
+RB_HEAD(kif_tree, kif_node)		kit;
 RB_PROTOTYPE(kif_tree, kif_node, entry, kif_compare)
 RB_GENERATE(kif_tree, kif_node, entry, kif_compare)
 
