@@ -142,6 +142,9 @@ struct peer_auth {
 
 struct peer_capa {
 	u_int8_t	announce;
+	u_int8_t	mp_v4;		/* multiprotocol extensions, RFC 2858 */
+	u_int8_t	mp_v6;
+	u_int8_t	refresh;	/* route refresh, RFC 2918 */
 };
 
 struct peer {
