@@ -804,6 +804,8 @@ if_change(u_short ifindex, int flags)
 		return;
 	}
 
+	kif->flags = flags;
+
 	LIST_FOREACH(kkr, &kif->kroute_l, entry) {
 		if (flags & IFF_UP)
 			kkr->kr->r.flags &= ~F_DOWN;
