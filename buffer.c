@@ -132,12 +132,6 @@ msgbuf_clear(struct msgbuf *msgbuf)
 int
 msgbuf_write(struct msgbuf *msgbuf)
 {
-	/*
-	 * possible race here
-	 * when we cannot write out data completely from a buffer,
-	 * we MUST return and NOT try to write out stuff from later buffers -
-	 * the socket might have become writeable again
-	 */
 	struct iovec	 iov[IOV_MAX];
 	struct buf	*buf, *next;
 	int		 i = 0;
@@ -210,12 +204,6 @@ msgbuf_write(struct msgbuf *msgbuf)
 int
 msgbuf_writebound(struct msgbuf *msgbuf)
 {
-	/*
-	 * possible race here
-	 * when we cannot write out data completely from a buffer,
-	 * we MUST return and NOT try to write out stuff from later buffers -
-	 * the socket might have become writeable again
-	 */
 	struct buf	*buf;
 	int		 n;
 
