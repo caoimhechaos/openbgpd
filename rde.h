@@ -212,11 +212,15 @@ void		 rde_generate_updates(struct prefix *, struct prefix *);
 u_int16_t	 rde_local_as(void);
 
 /* rde_rib.c */
+void		 attr_init(struct attr_flags *);
+int		 attr_parse(u_char *, u_int16_t, struct attr_flags *, int,
+		     u_int16_t);
+u_char		*attr_error(u_char *, u_int16_t, u_int8_t *, u_int16_t *);
 int		 attr_compare(struct attr_flags *, struct attr_flags *);
 void		 attr_copy(struct attr_flags *, struct attr_flags *);
 int		 attr_write(void *, u_int16_t, u_int8_t, u_int8_t, void *,
 		     u_int16_t);
-void		 attr_optadd(struct attr_flags *, u_int8_t, u_int8_t,
+int		 attr_optadd(struct attr_flags *, u_int8_t, u_int8_t,
 		     u_char *, u_int16_t);
 void		 attr_optfree(struct attr_flags *);
 

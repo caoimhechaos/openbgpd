@@ -72,15 +72,6 @@ enum msg_type {
 	KEEPALIVE
 };
 
-enum err_codes {
-	ERR_HEADER = 1,
-	ERR_OPEN,
-	ERR_UPDATE,
-	ERR_HOLDTIMEREXPIRED,
-	ERR_FSM,
-	ERR_CEASE
-};
-
 enum suberr_header {
 	ERR_HDR_SYNC = 1,
 	ERR_HDR_LEN,
