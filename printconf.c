@@ -173,6 +173,8 @@ print_peer(struct peer_config *p)
 		printf("%s\tannounce none\n", c);
 	else if (p->announce_type == ANNOUNCE_ALL)
 		printf("%s\tannounce all\n", c);
+	else if (p->announce_type == ANNOUNCE_DEFAULT_ROUTE)
+		printf("%s\tannounce default-route\n", c);
 	else
 		printf("%s\tannounce ???\n", c);
 
