@@ -1083,13 +1083,7 @@ filter_set_opt	: LOCALPREF number		{
 			$$.med = $2;
 		}
 		| NEXTHOP address		{
-			if ($2.af == AF_INET) {
-				$$.flags = SET_NEXTHOP;
-				$$.nexthop.s_addr = $2.v4.s_addr;
-			} else {
-				yyerror("king bula sez: AF_INET only for now");
-				YYERROR;
-			}
+			memcpy(&$$.nexthop, &$2, sizeof($$.nexthop));
 		}
 		| NEXTHOP BLACKHOLE		{
 			$$.flags |= SET_NEXTHOP_BLACKHOLE;

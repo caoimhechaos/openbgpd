@@ -78,7 +78,7 @@ print_set(struct filter_set *set)
 		if (set->flags & SET_MED)
 			printf("med %u ", set->med);
 		if (set->flags & SET_NEXTHOP)
-			printf("nexthop %s ", inet_ntoa(set->nexthop));
+			printf("nexthop %s ", log_addr(&set->nexthop));
 		if (set->flags & SET_NEXTHOP_REJECT)
 			printf("nexthop reject ");
 		if (set->flags & SET_NEXTHOP_BLACKHOLE)

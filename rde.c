@@ -685,7 +685,7 @@ rde_update_dispatch(struct imsg *imsg)
 	}
 
 	/* apply default overrides */
-	rde_apply_set(asp, &peer->conf.attrset);
+	rde_apply_set(asp, &peer->conf.attrset, AF_INET);
 
 	/* parse nlri prefix */
 	while (nlri_len > 0) {
@@ -759,6 +759,9 @@ rde_update_dispatch(struct imsg *imsg)
 		}
 		mpp += pos;
 		mplen -= pos;
+
+		/* apply default overrides */
+		rde_apply_set(asp, &peer->conf.attrset, AF_INET6);
 
 		switch (afi) {
 		case AFI_IPv6:
@@ -1961,7 +1964,7 @@ network_add(struct network_config *nc, int flagstatic)
 	/* the nexthop is unset unless a default set overrides it */
 
 	/* apply default overrides */
-	rde_apply_set(asp, &nc->attrset);
+	rde_apply_set(asp, &nc->attrset, nc->prefix.af);
 
 	if (flagstatic)
 		path_update(&peerself, asp, &nc->prefix, nc->prefixlen);
