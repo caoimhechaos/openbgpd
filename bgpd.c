@@ -459,7 +459,8 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_head *mrt_l)
 				if (imsg.hdr.len != IMSG_HEADER_SIZE +
 				    sizeof(struct bgpd_addr))
 					log_warnx("wrong imsg len");
-				else kr_nexthop_delete(imsg.data);
+				else
+					kr_nexthop_delete(imsg.data);
 			break;
 		case IMSG_CTL_RELOAD:
 			if (idx != PFD_PIPE_SESSION)
