@@ -18,6 +18,8 @@
 #include <sys/types.h>
 #include <sys/queue.h>
 
+#include <string.h>
+
 #include "bgpd.h"
 #include "rde.h"
 
@@ -74,6 +76,8 @@ rde_apply_set(struct attr_flags *attrs, struct filter_set *set)
 		attrs->aspath->hdr.prepend += set->prepend;
 		attrs->aspath->hdr.as_cnt += set->prepend;
 	}
+	if (set->flags & SET_PFTABLE)
+		strlcpy(attrs->pftable, set->pftable, sizeof(attrs->pftable));
 }
 
 int

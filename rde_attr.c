@@ -354,7 +354,9 @@ attr_compare(struct attr_flags *a, struct attr_flags *b)
 		return (1);
 	if (a->lpref < b->lpref)
 		return (-1);
-	r = aspath_compare(a->aspath, b->aspath);
+	r = strcmp(a->pftable, b->pftable);
+	if (r == 0)
+		r = aspath_compare(a->aspath, b->aspath);
 	if (r > 0)
 		return (1);
 	if (r < 0)

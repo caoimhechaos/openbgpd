@@ -126,6 +126,7 @@ TAILQ_HEAD(attr_list, attr);
 struct attr_flags {
 	struct aspath			*aspath;
 	struct in_addr			 nexthop;	/* exit nexthop */
+	char				 pftable[PFTABLE_LEN];
 	u_int32_t			 med;		/* multi exit disc */
 	u_int32_t			 lpref;		/* local pref */
 	u_int8_t			 origin;
@@ -204,6 +205,10 @@ struct prefix {
 /* rde.c */
 void		 rde_send_kroute(struct prefix *, struct prefix *);
 void		 rde_send_nexthop(struct bgpd_addr *, int);
+void		 rde_send_pftable(const char *, struct bgpd_addr *,
+		     u_int8_t, int);
+void		 rde_send_pftable_commit(void);
+
 void		 rde_generate_updates(struct prefix *, struct prefix *);
 u_int16_t	 rde_local_as(void);
 int		 rde_noevaluate(void);
