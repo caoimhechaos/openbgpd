@@ -499,22 +499,28 @@ struct filter_peers {
 #define	COMMUNITY_NO_EXPSUBCONFED	0xff03
 #define	COMMUNITY_NO_PEER		0xff04	/* rfc3765 */
 
+struct filter_prefix {
+	struct bgpd_addr	addr;
+	u_int8_t		len;
+};
+
+struct filter_prefixlen {
+	sa_family_t		af;
+	enum comp_ops		op;
+	u_int8_t		len_min;
+	u_int8_t		len_max;
+};
+
+struct filter_community {
+	int			as;
+	int			type;
+};
+
 struct filter_match {
-	struct {
-		struct bgpd_addr	addr;
-		u_int8_t		len;
-	} prefix;
-	struct {
-		sa_family_t		af;
-		enum comp_ops		op;
-		u_int8_t		len_min;
-		u_int8_t		len_max;
-	} prefixlen;
-	struct as_filter		as;
-	struct {
-		int			as;
-		int			type;
-	} community;
+	struct filter_prefix	prefix;
+	struct filter_prefixlen	prefixlen;
+	struct as_filter	as;
+	struct filter_community	community;
 };
 
 TAILQ_HEAD(filter_head, filter_rule);
