@@ -762,8 +762,12 @@ kroute_validate(struct kroute *kr)
 		    kr->ifindex, inet_ntoa(kr->prefix),
 		    kr->prefixlen);
 		return (1);
-	} else
-		return (kif->k.link_state != LINK_STATE_DOWN);
+	}
+
+	if (!(kif->k.flags & IFF_UP))
+		return (0);
+
+	return (kif->k.link_state != LINK_STATE_DOWN);
 }
 
 void
