@@ -125,7 +125,7 @@ control_accept(int listenfd)
 	}
 
 	if (uid) {
-		log_err("Connection to control socket with uid %ld", uid);
+		logit(LOG_INFO, "Control connection attempt from uid %ld", uid);
 		return;
 	}
 
