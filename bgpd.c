@@ -93,7 +93,7 @@ int
 main(int argc, char *argv[])
 {
 	struct bgpd_config	 conf;
-	struct peer		*peer_l;
+	struct peer		*peer_l, *p;
 	struct mrt_head		 mrt_l;
 	struct network_head	 net_l;
 	struct filter_head	*rules_l;
@@ -320,6 +320,11 @@ main(int argc, char *argv[])
 	do {
 		pid = waitpid(-1, NULL, WNOHANG);
 	} while (pid > 0 || (pid == -1 && errno == EINTR));
+
+	while ((p = peer_l) != NULL) {
+		peer_l = p->next;
+		free(p);
+	}
 
 	free(rules_l);
 	control_cleanup();
