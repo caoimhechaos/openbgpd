@@ -29,6 +29,8 @@
 #include <poll.h>
 #include <stdarg.h>
 
+#include <leak.h>
+
 #define	BGP_VERSION			4
 #define	BGP_PORT			179
 #define	CONFFILE			"/etc/bgpd.conf"

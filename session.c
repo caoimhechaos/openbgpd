@@ -518,7 +518,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 
 	control_shutdown();
 	log_info("session engine exiting");
-	_exit(0);
+	exit(0);
 }
 
 void

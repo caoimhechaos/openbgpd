@@ -153,8 +153,10 @@ main(int argc, char *argv[])
 		}
 	}
 
-	if (parse_config(conffile, &conf, &mrt_l, &peer_l, &net_l, rules_l))
+	if (parse_config(conffile, &conf, &mrt_l, &peer_l, &net_l, rules_l)) {
+		free(rules_l);
 		exit(1);
+	}
 
 	if (conf.opts & BGPD_OPT_NOACTION) {
 		if (conf.opts & BGPD_OPT_VERBOSE)
