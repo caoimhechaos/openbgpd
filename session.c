@@ -1137,7 +1137,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 		if ((n = read(p->sock, p->rbuf->buf + p->rbuf->wpos,
 			    sizeof(p->rbuf->buf) - p->rbuf->wpos)) ==
 			    -1) {
-				if (errno != EINTR) {
+				if (errno != EINTR && errno != EAGAIN) {
 					log_peer_warn(&p->conf, "read error");
 					bgp_fsm(p, EVNT_CON_FATAL);
 				}
