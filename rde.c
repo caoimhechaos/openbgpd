@@ -591,6 +591,8 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 	} else {
 		type = IMSG_KROUTE_CHANGE;
 		p = new;
+		if (new->aspath->nexthop->state != NEXTHOP_REACH)
+			return;
 		kr.nexthop = p->aspath->nexthop->true_nexthop.s_addr;
 	}
 
