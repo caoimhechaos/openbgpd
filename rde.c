@@ -516,6 +516,9 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 	struct prefix	*p;
 	enum imsg_type	 type;
 
+	if (conf->flags & BGPD_FLAG_NO_FIB_UPDATE)
+		return;
+
 	if (old == NULL && new == NULL)
 		return;
 

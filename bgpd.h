@@ -39,6 +39,8 @@
 #define BGPD_OPT_VERBOSE2		0x0002
 #define BGPD_OPT_NOACTION		0x0004
 
+#define BGPD_FLAG_NO_FIB_UPDATE		0x0001
+
 enum {
 	PROC_MAIN,
 	PROC_SE,
@@ -99,6 +101,7 @@ struct bgpd_config {
 	u_int32_t		 bgpid;
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;
+	int			 flags;
 	struct sockaddr_in	 listen_addr;
 	struct peer		*peers;
 };

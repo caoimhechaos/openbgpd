@@ -82,7 +82,7 @@ typedef struct {
 %}
 
 %token	SET
-%token	AS BGPID HOLDTIME YMIN LISTEN ON
+%token	AS BGPID HOLDTIME YMIN LISTEN ON NO FIBUPDATE
 %token	GROUP NEIGHBOR
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP
 %token	ERROR
@@ -154,6 +154,9 @@ conf_main	: AS number		{
 		}
 		| LISTEN ON address	{
 			conf->listen_addr.sin_addr.s_addr = $3.s_addr;
+		}
+		| NO FIBUPDATE		{
+			conf->flags |= BGPD_FLAG_NO_FIB_UPDATE;
 		}
 		/*
 		 *  XXX this is bad.
@@ -301,6 +304,7 @@ lookup(char *s)
 		{ "AS",			AS},
 		{ "bgpid",		BGPID},
 		{ "descr",		DESCR},
+		{ "fib-update",		FIBUPDATE},
 		{ "group",		GROUP},
 		{ "holdtime",		HOLDTIME},
 		{ "listen",		LISTEN},
@@ -309,6 +313,7 @@ lookup(char *s)
 		{ "mrtdump",		MRTDUMP},
 		{ "multihop",		MULTIHOP},
 		{ "neighbor",		NEIGHBOR},
+		{ "no",			NO},
 		{ "on",			ON},
 		{ "remote-as",		REMOTEAS},
 		{ "set",		SET},

@@ -70,6 +70,8 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 	memcpy(&xconf->listen_addr, &conf->listen_addr,
 	    sizeof(xconf->listen_addr));
 
+	xconf->flags = conf->flags;
+
 	/*
 	 * as we cannot get the negotiated holdtime in the main process,
 	 * the session engine needs to check it against the possibly new values
