@@ -39,7 +39,7 @@ int
 get_imsg(int fd, struct imsg *imsg)
 {
 	struct imsg_hdr		*hdr;
-	size_t			 n, read_total = 0, datalen = 0;
+	ssize_t			 n, read_total = 0, datalen = 0;
 	u_char			*rptr;
 
 	do {

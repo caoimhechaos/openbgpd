@@ -308,7 +308,7 @@ dispatch_imsg(int fd, int idx, struct mrt_config *conf,
 	struct buf		*wbuf;
 	struct mrtdump_config	*m;
 	struct imsg		 imsg;
-	size_t			 len;
+	ssize_t			 len;
 	int			 n;
 
 	if (get_imsg(fd, &imsg) > 0) {
