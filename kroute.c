@@ -45,7 +45,7 @@ struct {
 struct kroute_node {
 	RB_ENTRY(kroute_node)	 entry;
 	struct kroute		 r;
-	int			 flags;
+	u_int8_t		 flags;
 	u_short			 ifindex;
 };
 
