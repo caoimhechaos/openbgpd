@@ -707,7 +707,7 @@ peer_up(u_int32_t id, u_int32_t rid)
 		logit(LOG_CRIT, "peer_up: unknown peer id %d", id);
 		return;
 	}
-	peer->remote_bgpid = rid;
+	peer->remote_bgpid = ntohl(rid);
 	peer->state = PEER_UP;
 }
 

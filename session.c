@@ -1199,7 +1199,7 @@ parse_open(struct peer *peer)
 		    NULL, 0);
 		return (-1);
 	} */
-	peer->remote_bgpid = ntohl(bgpid);
+	peer->remote_bgpid = bgpid;
 
 	memcpy(&optparamlen, p, sizeof(optparamlen));
 	p += sizeof(optparamlen);
