@@ -116,7 +116,7 @@ struct attr {
 	u_int8_t			 type;
 	u_int16_t			 len;
 	u_char				*data;
-	TAILQ_ENTRY(attr)		 attr_l;
+	TAILQ_ENTRY(attr)		 entry;
 };
 
 TAILQ_HEAD(attr_list, attr);

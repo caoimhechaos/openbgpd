@@ -379,12 +379,12 @@ print_config(struct bgpd_config *conf, struct network_head *net_l,
 	printf("\n");
 	print_mrt(0, 0, "");
 	printf("\n");
-	TAILQ_FOREACH(n, net_l, network_l)
+	TAILQ_FOREACH(n, net_l, entry)
 		print_network(&n->net);
 	printf("\n");
 	for (p = peer_l; p != NULL; p = p->next)
 		print_peer(&p->conf);
 	printf("\n");
-	TAILQ_FOREACH(r, rules_l, entries)
+	TAILQ_FOREACH(r, rules_l, entry)
 		print_rule(peer_l, r);
 }

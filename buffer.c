@@ -149,7 +149,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 
 	bzero(&iov, sizeof(iov));
 	bzero(&msg, sizeof(msg));
-	TAILQ_FOREACH(buf, &msgbuf->bufs, entries) {
+	TAILQ_FOREACH(buf, &msgbuf->bufs, entry) {
 		if (i >= IOV_MAX)
 			break;
 		iov[i].iov_base = buf->buf + buf->rpos;
@@ -189,7 +189,7 @@ msgbuf_write(struct msgbuf *msgbuf)
 
 	for (buf = TAILQ_FIRST(&msgbuf->bufs); buf != NULL && n > 0;
 	    buf = next) {
-		next = TAILQ_NEXT(buf, entries);
+		next = TAILQ_NEXT(buf, entry);
 		if (n >= buf->size - buf->rpos) {
 			n -= buf->size - buf->rpos;
 			buf_dequeue(msgbuf, buf);
@@ -244,14 +244,14 @@ msgbuf_unbounded(struct msgbuf *msgbuf)
 void
 buf_enqueue(struct msgbuf *msgbuf, struct buf *buf)
 {
-	TAILQ_INSERT_TAIL(&msgbuf->bufs, buf, entries);
+	TAILQ_INSERT_TAIL(&msgbuf->bufs, buf, entry);
 	msgbuf->queued++;
 }
 
 void
 buf_dequeue(struct msgbuf *msgbuf, struct buf *buf)
 {
-	TAILQ_REMOVE(&msgbuf->bufs, buf, entries);
+	TAILQ_REMOVE(&msgbuf->bufs, buf, entry);
 	msgbuf->queued--;
 	buf_free(buf);
 }

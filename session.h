@@ -131,7 +131,7 @@ struct bgpd_sysdep {
 };
 
 struct ctl_conn {
-	TAILQ_ENTRY(ctl_conn)	entries;
+	TAILQ_ENTRY(ctl_conn)	entry;
 	struct imsgbuf		ibuf;
 };
 

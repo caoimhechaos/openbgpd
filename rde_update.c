@@ -541,7 +541,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 	 *  3. transitive known attrs: announce unmodified
 	 *  4. transitive unknown attrs: set partial bit and re-announce
 	 */
-	TAILQ_FOREACH(oa, &a->others, attr_l) {
+	TAILQ_FOREACH(oa, &a->others, entry) {
 		switch (oa->type) {
 		case ATTR_ATOMIC_AGGREGATE:
 			if ((r = attr_write(up_attr_buf + wlen, len,

@@ -35,7 +35,7 @@ rde_filter(struct rde_peer *peer, struct attr_flags *attrs,
 	struct filter_rule	*f;
 	enum filter_actions	 action = ACTION_ALLOW; /* default allow */
 
-	TAILQ_FOREACH(f, rules_l, entries) {
+	TAILQ_FOREACH(f, rules_l, entry) {
 		if (dir != f->dir)
 			continue;
 		if (f->peer.groupid != 0 &&
