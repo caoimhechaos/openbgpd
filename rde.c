@@ -1477,7 +1477,7 @@ network_add(struct network_config *nc, int flagstatic)
 	attrs.aspath = aspath_create(NULL, 0);
 	attrs.nexthop.s_addr = INADDR_ANY;
 	/* med = 0 */
-	/* lpref = 0 */
+	attrs.lpref = DEFAULT_LPREF;
 	attrs.origin = ORIGIN_IGP;
 	TAILQ_INIT(&attrs.others);
 

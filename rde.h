@@ -127,6 +127,8 @@ TAILQ_HEAD(attr_list, attr);
 #define ORIGIN_EGP		1
 #define ORIGIN_INCOMPLETE	2
 
+#define DEFAULT_LPREF		100
+
 struct attr_flags {
 	struct aspath			*aspath;
 	struct in_addr			 nexthop;	/* exit nexthop */

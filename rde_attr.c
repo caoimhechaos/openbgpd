@@ -58,6 +58,7 @@ attr_init(struct attr_flags *a)
 {
 	bzero(a, sizeof(struct attr_flags));
 	a->origin = ORIGIN_INCOMPLETE;
+	a->lpref = DEFAULT_LPREF;
 	TAILQ_INIT(&a->others);
 }
 
