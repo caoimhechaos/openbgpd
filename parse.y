@@ -897,6 +897,12 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	}
 	infile = filename;
 
+	if (check_file_secrecy(fileno(fin), filename)) {
+		free(conf);
+		free(mrtconf);
+		return (-1);
+	}
+
 	yyparse();
 
 	fclose(fin);

@@ -386,6 +386,9 @@ const char	*log_addr(const struct bgpd_addr *);
 /* parse.y */
 int	 cmdline_symset(char *);
 
+/* config.c */
+int	 check_file_secrecy(int fd, const char *fname);
+
 /* imsg.c */
 void	 imsg_init(struct imsgbuf *, int);
 int	 imsg_read(struct imsgbuf *);
