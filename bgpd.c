@@ -333,6 +333,7 @@ main(int argc, char *argv[])
 	control_cleanup();
 	kr_shutdown();
 	pftable_clear_all();
+	free(conf.listen_addrs);
 
 	do {
 		if ((pid = wait(NULL)) == -1 &&
