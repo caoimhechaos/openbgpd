@@ -385,8 +385,10 @@ bgp_fsm(struct peer *peer, enum session_events event)
 			msgbuf_init(&peer->wbuf);
 
 			/* init pfkey */
-			if (pfkey_auth_establish(peer) == -1)
+			if (pfkey_auth_establish(peer) == -1) {
+				log_warnx("pfkey_auth setup failed");
 				return;
+			}
 
 			if (peer->conf.passive) {
 				change_state(peer, STATE_ACTIVE, event);
