@@ -87,7 +87,7 @@ buf_write(int sock, struct buf *buf)
 
 	if ((n = write(sock, buf->buf + buf->rpos,
 	    buf->size - buf->rpos)) == -1) {
-		if (errno == EAGAIN)	/* cannot write immediately */
+		if (errno == EAGAIN || errno == ENOBUFS)	/* try later */
 			return (0);
 		else
 			return (-1);
