@@ -285,7 +285,6 @@ void		 mrt_dump_upcall(struct pt_entry *, void *);
 int		 mrt_write(struct mrt *);
 void		 mrt_clean(struct mrt *);
 void		 mrt_init(struct imsgbuf *, struct imsgbuf *);
-void		 mrt_close(struct mrt *);
 int		 mrt_timeout(struct mrt_head *);
 void		 mrt_reconfigure(struct mrt_head *);
 void		 mrt_handler(struct mrt_head *);
