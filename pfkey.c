@@ -253,6 +253,8 @@ pfkey_reply(int sd, u_int32_t *spip)
 	}
 	if (read(sd, data, len) != len) {
 		log_warn("pfkey read");
+		bzero(data, len);
+		free(data);
 		return (-1);
 	}
 	msg = (struct sadb_msg *)data;
@@ -267,7 +269,7 @@ pfkey_reply(int sd, u_int32_t *spip)
 			break;
 		}
 	}
-	memset(data, len, 0);
+	bzero(data, len);
 	free(data);
 	return (0);
 }
