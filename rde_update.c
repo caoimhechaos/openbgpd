@@ -207,7 +207,7 @@ up_generate_updates(struct rde_peer *peer,
 	/*
 	 * Filtering should be hooked up here.
 	 * With filtering the decision if withdraw, update or nothing
-	 * needs to be done on a per peer basis -- acctually per filter
+	 * needs to be done on a per peer basis -- actually per filter
 	 * set.
 	 */
 

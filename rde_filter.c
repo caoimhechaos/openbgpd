@@ -67,7 +67,7 @@ rde_apply_set(struct attr_flags *attrs, struct filter_set *set)
 		attrs->nexthop = set->nexthop;
 	if (set->flags & SET_PREPEND) {
 		/*
-		 * The acctual prepending is done afterwards because 
+		 * The actual prepending is done afterwards because
 		 * This could overflow but somebody that uses that many
 		 * prepends is loony and needs professional help.
 		 */
