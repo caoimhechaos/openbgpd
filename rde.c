@@ -811,6 +811,7 @@ rde_update_get_prefix(u_char *p, u_int16_t len, struct bgpd_addr *prefix,
 	plen = 1;
 
 	bzero(prefix, sizeof(struct bgpd_addr));
+	addr.a32.s_addr = 0;
 	for (i = 0; i <= 3; i++) {
 		if (pfxlen > i * 8) {
 			if (len - plen < 1)
