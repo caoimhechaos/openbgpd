@@ -349,12 +349,6 @@ rde_update_dispatch(struct imsg *imsg)
 			rde_update_err(peer->conf.id, ERR_UPD_ATTRLIST);
 			return (-1);
 		}
-		/* XXX only for debugging. Used as debugger hook. */
-		if (prefixlen < 8 || prefixlen > 24) {
-			logit(LOG_DEBUG, "XXX XXX %s/%d\t[%d] {%d}\n",
-			    inet_ntoa(prefix), prefixlen, nlri_len,
-			    imsg->hdr.len - IMSG_HEADER_SIZE);
-		}
 		p += pos;
 		nlri_len -= pos;
 		path_update(peer, &attrs, prefix, prefixlen);
