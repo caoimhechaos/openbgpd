@@ -84,7 +84,7 @@ get_imsg(int fd, struct imsg *imsg)
 }
 
 int
-imsg_compose(int fd, int type, u_int32_t peerid, u_char *data,
+imsg_compose(int fd, int type, u_int32_t peerid, void *data,
     u_int16_t datalen)
 {
 	struct buf	*wbuf;
