@@ -99,7 +99,7 @@ rde_apply_set(struct rde_aspath *asp, struct filter_set_head *sh,
 			asp->med = set->action.metric;
 		case ACTION_SET_PREPEND_SELF:
 			/* don't apply if this is a incoming default override */
-			if (dir == DIR_DEFAULT_IN) 
+			if (dir == DIR_DEFAULT_IN)
 				break;
 			as = rde_local_as();
 			prepend = set->action.prepend;

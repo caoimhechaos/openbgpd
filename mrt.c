@@ -308,7 +308,7 @@ mrt_dump_entry_mp(struct mrt *mrt, struct prefix *p, u_int16_t snum,
 	attr_len = mrt_attr_length(p->aspath, 0);
 	p_len = PREFIX_SIZE(p->prefix->prefixlen);
 	pt_getaddr(p->prefix, &addr);
-	
+
 	af = peer->remote_addr.af == 0 ? addr.af : peer->remote_addr.af;
 	switch (af) {
 	case AF_INET:

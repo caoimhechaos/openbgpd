@@ -2045,7 +2045,7 @@ merge_filterset(struct filter_set_head *sh, struct filter_set *s)
 	SIMPLEQ_FOREACH(t, sh, entry) {
 		if (s->type != t->type)
 			continue;
-		
+
 		switch (s->type) {
 		case ACTION_SET_COMMUNITY:
 			if (s->action.community.as == t->action.community.as &&
