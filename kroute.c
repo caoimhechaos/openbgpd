@@ -529,7 +529,7 @@ kroute_dispatch_msg(void)
 		switch (rtm->rtm_type) {
 		case RTM_ADD:
 		case RTM_CHANGE:
-			if (nexthop == 0) {
+			if (nexthop == 0 && !(flags & F_CONNECTED)) {
 				logit(LOG_CRIT,
 				    "kroute_dispatch_msg: no nexthop for %s/%u",
 				    log_ntoa(s.r.prefix), s.r.prefixlen);
