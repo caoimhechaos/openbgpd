@@ -1087,12 +1087,12 @@ nexthop_update(struct kroute_nexthop *msg)
 
 	RIB_STAT(nexthop_update);
 
-	nh = nexthop_get(msg->nexthop);
+	nh = nexthop_get(msg->nexthop.v4.s_addr);
 	if (nh == NULL) {
 		logit(LOG_INFO, "nexthop_update: non-existent nexthop");
 		return;
 	}
-	ENSURE(nh->exit_nexthop.s_addr == msg->nexthop);
+	ENSURE(nh->exit_nexthop.s_addr == msg->nexthop.v4.s_addr);
 
 	if (msg->valid)
 		nh->state = NEXTHOP_REACH;
@@ -1102,7 +1102,7 @@ nexthop_update(struct kroute_nexthop *msg)
 	if (msg->connected)
 		nh->true_nexthop.s_addr = nh->exit_nexthop.s_addr;
 	else
-		nh->true_nexthop.s_addr = msg->gateway;
+		nh->true_nexthop.s_addr = msg->gateway.v4.s_addr;
 
 	nh->connected = msg->connected;
 

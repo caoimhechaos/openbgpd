@@ -204,10 +204,10 @@ struct kroute {
 };
 
 struct kroute_nexthop {
-	in_addr_t	nexthop;
-	u_int8_t	valid;
-	u_int8_t	connected;
-	in_addr_t	gateway;
+	struct bgpd_addr	nexthop;
+	u_int8_t		valid;
+	u_int8_t		connected;
+	struct bgpd_addr	gateway;
 };
 
 struct ctl_show_nexthop {
