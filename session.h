@@ -197,7 +197,7 @@ int	 merge_config(struct bgpd_config *, struct bgpd_config *,
 	    struct peer *);
 
 /* rde.c */
-int	 rde_main(struct bgpd_config *, struct peer *, struct network_head *,
+int	 rde_main(struct bgpd_config *, struct network_head *,
 	    struct filter_head *, struct mrt_head *, int[2], int[2]);
 
 /* control.c */
