@@ -87,6 +87,12 @@ enum suberr_open {
 	ERR_OPEN_HOLDTIME
 };
 
+enum opt_params {
+	OPT_PARAM_NONE,
+	OPT_PARAM_AUTH,
+	OPT_PARAM_CAPABILITIES
+};
+
 struct msg_header {
 	u_char			 marker[16];
 	u_int16_t		 len;
