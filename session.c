@@ -1469,11 +1469,9 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			    imsg.hdr.len < IMSG_HEADER_SIZE +
 			    MSGSIZE_UPDATE_MIN - MSGSIZE_HEADER)
 				logit(LOG_CRIT, "RDE sent invalid update");
-#if 0
 			else
 				session_update(imsg.hdr.peerid, imsg.data,
 				    imsg.hdr.len - IMSG_HEADER_SIZE);
-#endif
 			break;
 		default:
 			break;
