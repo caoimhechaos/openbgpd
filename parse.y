@@ -515,7 +515,7 @@ peeropts	: REMOTEAS asnumber	{
 				free($4);
 				YYERROR;
 			}
-			curpeer->conf.auth.method = MD5SIG;
+			curpeer->conf.auth.method = AUTH_MD5SIG;
 			free($4);
 		}
 		| TCP MD5SIG KEY string {
@@ -547,11 +547,11 @@ peeropts	: REMOTEAS asnumber	{
 				curpeer->conf.auth.md5key[i] =
 				    strtoul(s, NULL, 16);
 			}
-			curpeer->conf.auth.method = MD5SIG;
+			curpeer->conf.auth.method = AUTH_MD5SIG;
 			free($4);
 		}
 		| IPSEC IKE {
-			curpeer->conf.auth.method = IPSEC_IKE;
+			curpeer->conf.auth.method = AUTH_IPSEC_IKE;
 		}
 		| IPSEC ESP inout SPI number STRING STRING encspec {
 			unsigned	i;
@@ -559,7 +559,7 @@ peeropts	: REMOTEAS asnumber	{
 			u_int32_t	auth_alg;
 			u_int8_t	keylen;
 
-			curpeer->conf.auth.method = IPSEC_MANUAL_ESP;
+			curpeer->conf.auth.method = AUTH_IPSEC_MANUAL_ESP;
 
 			if (!strcmp($6, "sha1")) {
 				auth_alg = SADB_AALG_SHA1HMAC;

@@ -147,10 +147,10 @@ struct filter_set {
 };
 
 enum auth_method {
-	MD5SIG = 1,
-	IPSEC_MANUAL_ESP,
-	IPSEC_MANUAL_AH,
-	IPSEC_IKE
+	AUTH_MD5SIG = 1,
+	AUTH_IPSEC_MANUAL_ESP,
+	AUTH_IPSEC_MANUAL_AH,
+	AUTH_IPSEC_IKE
 };
 	
 struct peer_auth {

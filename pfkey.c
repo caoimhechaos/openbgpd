@@ -496,7 +496,7 @@ pfkey_sa_remove(struct bgpd_addr *src, struct bgpd_addr *dst, u_int32_t *spi)
 int
 pfkey_auth_establish(struct peer *p)
 {
-	if (p->conf.auth.method != MD5SIG)
+	if (p->conf.auth.method != AUTH_MD5SIG)
 		return (0);
 
 	if (!p->conf.auth.spi_out)
@@ -515,7 +515,7 @@ pfkey_auth_establish(struct peer *p)
 int
 pfkey_auth_remove(struct peer *p)
 {
-	if (p->conf.auth.method != MD5SIG)
+	if (p->conf.auth.method != AUTH_MD5SIG)
 		return (0);
 
 	if (p->conf.auth.spi_out)

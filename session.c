@@ -795,7 +795,7 @@ session_accept(int listenfd)
 				return;
 			}
 		}
-		if (p->conf.auth.method == MD5SIG) {
+		if (p->conf.auth.method == AUTH_MD5SIG) {
 			len = sizeof(opt);
 			if (getsockopt(connfd, IPPROTO_TCP, TCP_MD5SIG,
 			    &opt, &len) == -1)
@@ -844,7 +844,7 @@ session_connect(struct peer *peer)
 		return (-1);
 	}
 
-	if (peer->conf.auth.method == MD5SIG)
+	if (peer->conf.auth.method == AUTH_MD5SIG)
 		if (setsockopt(peer->sock, IPPROTO_TCP, TCP_MD5SIG,
 		    &opt, sizeof(opt)) == -1) {
 			log_peer_warn(&peer->conf, "setsockopt md5sig");
