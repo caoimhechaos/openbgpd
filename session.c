@@ -1277,7 +1277,7 @@ session_dispatch_imsg(int fd, int idx)
 					p->conf.reconf_action = RECONF_DELETE;
 			free(nconf);
 			pending_reconf = 0;
-			logit(LOG_INFO, "got new configuration");
+			logit(LOG_INFO, "SE reconfigured");
 			break;
 		default:
 		}
