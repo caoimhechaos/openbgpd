@@ -497,7 +497,7 @@ prefix_write(u_char *buf, int len, struct bgpd_addr *prefix, u_int8_t plen)
 {
 	int	totlen;
 
-	if (prefix->af != AF_INET)
+	if (prefix->af != AF_INET && prefix->af != AF_INET6)
 		return (-1);
 
 	totlen = PREFIX_SIZE(plen);
