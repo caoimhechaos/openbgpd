@@ -1587,8 +1587,6 @@ parse_capabilities(struct peer *peer, u_char *d, u_int16_t dlen)
 
 		switch (capa_code) {
 		default:
-			log_peer_warnx(&peer->conf, "got capability %u len %u",
-			    capa_code, capa_len);
 			break;
 		}
 	}
