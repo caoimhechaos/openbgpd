@@ -211,7 +211,7 @@ prefix_evaluate(struct prefix *p, struct pt_entry *pte)
 		 */
 		rde_send_kroute(xp, pte->active);
 
-		if (xp != NULL || xp->aspath->state == NEXTHOP_UNREACH)
+		if (xp == NULL || xp->aspath->state == NEXTHOP_UNREACH)
 			pte->active = NULL;
 		else {
 			pte->active = xp;
