@@ -130,13 +130,21 @@ retry:
 int
 kroute_add(int fd, struct kroute *kroute)
 {
-	struct kroute_node	*kr;
+	struct kroute_node	*kr, s;
 	int			 n;
+	int			 action = RTM_ADD;
 
-	if ((n = kroute_msg(fd, RTM_ADD, kroute)) == -2) /* connected route */
-		return (0);
+	s.r.prefix = kroute->prefix;
+	s.r.prefixlen = kroute->prefixlen;
 
-	if (n == -1)
+	if ((kr = RB_FIND(kroute_tree, &krt, &s)) != NULL) {
+		if (kr->flags & F_BGPD_INSERTED)
+			action = RTM_CHANGE;
+		else
+			return (0);
+	}
+
+	if ((n = kroute_msg(fd, RTM_ADD, kroute)) == -1)
 		return (-1);
 
 	if ((kr = calloc(1, sizeof(struct kroute_node))) == NULL)
