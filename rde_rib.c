@@ -117,6 +117,7 @@ path_update(struct rde_peer *peer, struct attr_flags *attrs,
 		if (attr_compare(&asp->flags, attrs) == 0) {
 			/* path are equal, just add prefix */
 			pte = prefix_add(asp, prefix, prefixlen);
+			attr_free(attrs);
 		} else {
 			/* non equal path attributes create new path */
 			if ((p = prefix_get(asp, prefix, prefixlen)) == NULL) {
@@ -159,7 +160,7 @@ path_add(struct rde_peer *peer, struct attr_flags *attr)
 
 	asp = path_alloc();
 
-	attr_copy(&asp->flags, attr);
+	attr_move(&asp->flags, attr);
 
 	path_link(asp, peer);
 	return asp;

@@ -226,6 +226,7 @@ u_char		*attr_error(u_char *, u_int16_t, struct attr_flags *,
 u_int8_t	 attr_missing(struct attr_flags *, int);
 int		 attr_compare(struct attr_flags *, struct attr_flags *);
 void		 attr_copy(struct attr_flags *, struct attr_flags *);
+void		 attr_move(struct attr_flags *, struct attr_flags *);
 void		 attr_free(struct attr_flags *);
 int		 attr_write(void *, u_int16_t, u_int8_t, u_int8_t, void *,
 		     u_int16_t);
