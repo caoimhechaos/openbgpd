@@ -519,7 +519,7 @@ mrt_mergeconfig(struct mrt_head *xconf, struct mrt_head *nconf)
 			LIST_INSERT_HEAD(xconf, xm, entry);
 		} else {
 			/* MERGE */
-			if (strlcpy(MRT2MC(xm)->name, MRT2MC(xm)->name,
+			if (strlcpy(MRT2MC(xm)->name, MRT2MC(m)->name,
 			    sizeof(MRT2MC(xm)->name)) >=
 			    sizeof(MRT2MC(xm)->name))
 				fatalx("mrt_mergeconfig: strlcpy");
