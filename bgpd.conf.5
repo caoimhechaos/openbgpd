@@ -131,8 +131,13 @@ listen on 127.0.0.1
 .Ed
 .It Ar log updates
 Log received and sent updates.
-.It Ar no fib-update
-Do not update the Forward Information Base aka the kernel routing table.
+.It Ar fib-update
+If set to
+.Em no ,
+do not update the Forward Information Base aka the kernel
+routing table.
+The default is
+.Em yes . 
 .El
 .Sh NEIGHBORS AND GROUPS
 .Ar bgpd
