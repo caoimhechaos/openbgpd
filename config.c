@@ -40,6 +40,9 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 {
 	struct peer		*p;
 
+	/* preserve cmd line opts */
+	conf->opts = xconf->opts;
+
 	if (!conf->as) {
 		log_warnx("configuration error: AS not given");
 		return (1);
