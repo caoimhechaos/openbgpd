@@ -268,7 +268,8 @@ session_main(struct bgpd_config *config, struct peer *cpeers, int pipe_m2s[2],
 				nextaction = p->IdleHoldResetTimer;
 
 			/* are we waiting for a write? */
-			if (p->wbuf.queued > 0)
+			p->events = POLLIN;
+			if (p->wbuf.queued > 0 || p->state == STATE_CONNECT)
 				p->events |= POLLOUT;
 
 			/* poll events */
