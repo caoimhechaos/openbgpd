@@ -2173,7 +2173,7 @@ sa_cmp(struct bgpd_addr *a, struct sockaddr *b)
 		break;
 	default:
 		fatal("king bula sez: unknown address family");
-		/* not reached */
+		/* NOTREACHED */
 	}
 
 	return (0);
