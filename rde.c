@@ -619,7 +619,8 @@ rde_send_nexthop(struct bgpd_addr *next, int valid)
 		type = IMSG_NEXTHOP_REMOVE;
 
 	/* XXX change to bgpd_addr */
-	if (imsg_compose(&ibuf_main, type, 0, next, sizeof(in_addr_t)) == -1)
+	if (imsg_compose(&ibuf_main, type, 0, next,
+	    sizeof(struct bgpd_addr)) == -1)
 		fatal("imsg_compose error");
 }
 
