@@ -300,7 +300,7 @@ prefix		: STRING '/' number	{
 
 			if (asprintf(&s, "%s/%u", $1, $3) == -1)
 				fatal(NULL);
-				
+
 			if (!host(s, &$$.prefix, &$$.len)) {
 				free(s);
 				yyerror("could not parse address \"%s/%s\"",
