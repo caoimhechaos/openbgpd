@@ -77,7 +77,7 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 		else
 			kroute_fib_decouple();
 	}
-	
+
 	xconf->flags = conf->flags;
 	xconf->log = conf->log;
 
