@@ -23,9 +23,10 @@
 #define	INTERVAL_CONNECTRETRY		120
 #define	INTERVAL_HOLD_INITIAL		240
 #define	INTERVAL_HOLD			90
-#define INTERVAL_IDLE_HOLD_INITIAL	90
-#define MSGSIZE_HEADER			19
-#define MSGSIZE_HEADER_MARKER		16
+#define	INTERVAL_IDLE_HOLD_INITIAL	90
+#define	MAX_IDLE_HOLD			3600
+#define	MSGSIZE_HEADER			19
+#define	MSGSIZE_HEADER_MARKER		16
 #define	MSGSIZE_NOTIFICATION_MIN	21	/* 19 hdr + 1 code + 1 sub */
 #define	MSGSIZE_OPEN_MIN		29
 #define	MSGSIZE_UPDATE_MIN		23
@@ -139,6 +140,7 @@ struct peer {
 	time_t			 KeepaliveTimer;
 	time_t			 HoldTimer;
 	time_t			 IdleHoldTimer;
+	time_t			 IdleHoldResetTimer;
 	u_int			 IdleHoldTime;
 	int			 sock;
 	int			 events;
