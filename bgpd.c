@@ -36,14 +36,15 @@
 #include "bgpd.h"
 #include "session.h"
 
-void	sighdlr(int);
-void	usage(void);
-int	main(int, char *[]);
-int	check_child(pid_t, const char *);
-int	send_filterset(struct imsgbuf *, struct filter_set_head *, int, int);
-int	reconfigure(char *, struct bgpd_config *, struct mrt_head *,
-	    struct peer **, struct filter_head *);
-int	dispatch_imsg(struct imsgbuf *, int);
+void		sighdlr(int);
+__dead void	usage(void);
+int		main(int, char *[]);
+int		check_child(pid_t, const char *);
+int		send_filterset(struct imsgbuf *, struct filter_set_head *,
+		    int, int);
+int		reconfigure(char *, struct bgpd_config *, struct mrt_head *,
+		    struct peer **, struct filter_head *);
+int		dispatch_imsg(struct imsgbuf *, int);
 
 int			 rfd = -1;
 volatile sig_atomic_t	 mrtdump = 0;
@@ -74,7 +75,7 @@ sighdlr(int sig)
 	}
 }
 
-void
+__dead void
 usage(void)
 {
 	extern char *__progname;
