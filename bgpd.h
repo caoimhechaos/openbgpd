@@ -409,6 +409,11 @@ struct ctl_show_nexthop {
 	u_int8_t		valid;
 };
 
+struct ctl_neighbor {
+	struct bgpd_addr	addr;
+	char			descr[PEER_DESCR_LEN];
+};
+
 #define	F_RIB_ELIGIBLE	0x01
 #define	F_RIB_ACTIVE	0x02
 #define	F_RIB_INTERNAL	0x04
