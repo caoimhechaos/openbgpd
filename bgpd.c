@@ -404,11 +404,20 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 void
 send_nexthop_update(struct kroute_nexthop *msg)
 {
-	logit(LOG_INFO, "nexthop %s now %s%s%s%s", log_ntoa(msg->nexthop),
+	char	*gw = NULL;
+
+	if (msg->gateway)
+		if (asprintf(&gw, ": via %s", log_ntoa(msg->gateway)) == -1) {
+			log_err("send_nexthop_update");
+			quit = 1;
+		}
+
+	logit(LOG_INFO, "nexthop %s now %s%s%s", log_ntoa(msg->nexthop),
 	    msg->valid ? "valid" : "invalid",
 	    msg->connected ? ": directly connected" : "",
-	    msg->gateway ? ": via " : "",
-	    msg->gateway ? log_ntoa(msg->gateway) : "");
+	    msg->gateway ? gw : "");
+
+	free(gw);
 
 	if (imsg_compose(&ibuf_rde, IMSG_NEXTHOP_UPDATE, 0,
 	    msg, sizeof(struct kroute_nexthop)) == -1)
