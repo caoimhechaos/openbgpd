@@ -125,7 +125,8 @@ pt_shutdown(void)
 	for (i = MIN_PREFIX; i <= MAX_PREFIX; i++) {
 		for (j = 0; j < pthashsize[i]; j++)
 			if (!LIST_EMPTY(&pttable[i].pt_hashtbl[j]))
-				log_warnx("pt_free: free non-free table [%d][%d]", i, j);
+				log_warnx("pt_free: free non-free table "
+				    "[%d][%d]", i, j);
 		free(pttable[i].pt_hashtbl);
 	}
 }

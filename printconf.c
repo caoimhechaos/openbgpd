@@ -250,7 +250,7 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 			printf("* ");
 		else
 			printf("%d ", r->match.community.type);
-	} 
+	}
 
 	print_set(&r->set);
 

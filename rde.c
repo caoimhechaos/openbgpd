@@ -197,7 +197,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	}
 
 	rde_shutdown();
-	
+
 	msgbuf_write(&ibuf_se.w);
 	msgbuf_clear(&ibuf_se.w);
 	msgbuf_write(&ibuf_main.w);
