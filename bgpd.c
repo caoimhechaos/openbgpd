@@ -269,9 +269,9 @@ main(int argc, char *argv[])
 	if (rde_pid)
 		kill(rde_pid, SIGTERM);
 
-        do {
-                i = waitpid(-1, NULL, WNOHANG);
-        } while (i > 0 || (i == -1 && errno == EINTR));
+	do {
+		i = waitpid(-1, NULL, WNOHANG);
+	} while (i > 0 || (i == -1 && errno == EINTR));
 
 	logit(LOG_CRIT, "Terminating");
 	return (0);
