@@ -574,7 +574,7 @@ change_state(struct peer *peer, enum session_state state,
 		/*
 		 * we must start the timer for the next EVNT_START
 		 * if we are coming here due to an error and the
-		 * session was not established successfull before, the
+		 * session was not established successfully before, the
 		 * starttimerinterval needs to be exponentially increased
 		 */
 		peer->events = 0;
