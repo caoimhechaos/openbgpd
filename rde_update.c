@@ -52,11 +52,11 @@ int	up_prefix_cmp(struct update_prefix *, struct update_prefix *);
 int	up_attr_cmp(struct update_attr *, struct update_attr *);
 int	up_add(struct rde_peer *, struct update_prefix *, struct update_attr *);
 
-RB_PROTOTYPE(uptree_prefix, update_prefix, entry, up_prefix_cmp);
-RB_GENERATE(uptree_prefix, update_prefix, entry, up_prefix_cmp);
+RB_PROTOTYPE(uptree_prefix, update_prefix, entry, up_prefix_cmp)
+RB_GENERATE(uptree_prefix, update_prefix, entry, up_prefix_cmp)
 
-RB_PROTOTYPE(uptree_attr, update_attr, entry, up_attr_cmp);
-RB_GENERATE(uptree_attr, update_attr, entry, up_attr_cmp);
+RB_PROTOTYPE(uptree_attr, update_attr, entry, up_attr_cmp)
+RB_GENERATE(uptree_attr, update_attr, entry, up_attr_cmp)
 
 void
 up_init(struct rde_peer *peer)

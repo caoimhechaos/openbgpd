@@ -105,16 +105,16 @@ int		fetchtable(void);
 int		fetchifs(int);
 
 RB_HEAD(kroute_tree, kroute_node)	kroute_tree, krt;
-RB_PROTOTYPE(kroute_tree, kroute_node, entry, kroute_compare);
-RB_GENERATE(kroute_tree, kroute_node, entry, kroute_compare);
+RB_PROTOTYPE(kroute_tree, kroute_node, entry, kroute_compare)
+RB_GENERATE(kroute_tree, kroute_node, entry, kroute_compare)
 
 RB_HEAD(knexthop_tree, knexthop_node)	knexthop_tree, knt;
-RB_PROTOTYPE(knexthop_tree, knexthop_node, entry, knexthop_compare);
-RB_GENERATE(knexthop_tree, knexthop_node, entry, knexthop_compare);
+RB_PROTOTYPE(knexthop_tree, knexthop_node, entry, knexthop_compare)
+RB_GENERATE(knexthop_tree, knexthop_node, entry, knexthop_compare)
 
 RB_HEAD(kif_tree, kif_node)		kif_tree, kit;
-RB_PROTOTYPE(kif_tree, kif_node, entry, kif_compare);
-RB_GENERATE(kif_tree, kif_node, entry, kif_compare);
+RB_PROTOTYPE(kif_tree, kif_node, entry, kif_compare)
+RB_GENERATE(kif_tree, kif_node, entry, kif_compare)
 
 /*
  * exported functions
