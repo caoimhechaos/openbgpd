@@ -142,6 +142,7 @@ pftable_add(const char *name)
 	bzero(pft, sizeof(*pft));
 	if (strlcpy(pft->name, name, sizeof(pft->name)) >= sizeof(pft->name)) {
 		log_warn("pf_table name too long");
+		free(pft);
 		return (-1);
 	}
 
