@@ -52,9 +52,10 @@ void		get_rtaddrs(int, struct sockaddr *, struct sockaddr **);
 u_int8_t	prefixlen_classful(in_addr_t);
 u_int8_t	mask2prefixlen(in_addr_t);
 int		kroute_fetchtable(void);
+void		kroute_remove(struct kroute_node *);
+void		kroute_validate_nexthop(in_addr_t, struct kroute_nexthop *);
 int		knexthop_compare(struct knexthop_node *,
 		    struct knexthop_node *);
-void		kroute_remove(struct kroute_node *);
 
 struct kroute_node * kroute_match(in_addr_t);
 
