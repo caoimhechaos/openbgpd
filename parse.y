@@ -1274,6 +1274,7 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	infile = filename;
 
 	if (check_file_secrecy(fileno(fin), filename)) {
+		fclose(fin);
 		free(conf);
 		free(mrtconf);
 		return (-1);
