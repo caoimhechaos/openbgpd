@@ -246,7 +246,8 @@ enum imsg_type {
 	IMSG_CTL_SHOW_INTERFACE,
 	IMSG_CTL_SHOW_RIB,
 	IMSG_CTL_SHOW_RIB_AS,
-	IMSG_CTL_SHOW_RIB_PREFIX
+	IMSG_CTL_SHOW_RIB_PREFIX,
+	IMSG_REFRESH
 };
 
 struct imsg_hdr {
@@ -456,6 +457,11 @@ struct filter_rule {
 	struct filter_peers		peer;
 	struct filter_match		match;
 	struct filter_set		set;
+};
+
+struct rrefresh {
+	u_int16_t	afi;
+	u_int8_t	safi;
 };
 
 /* Address Family Numbers as per rfc1700 */
