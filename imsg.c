@@ -86,8 +86,7 @@ imsg_read(struct imsgbuf *ibuf)
 int
 imsg_get(struct imsgbuf *ibuf, struct imsg *imsg)
 {
-	ssize_t			 datalen = 0;
-	size_t			 av, left;
+	size_t			 av, left, datalen;
 
 	av = ibuf->r.wpos;
 

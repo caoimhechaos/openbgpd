@@ -143,7 +143,7 @@ struct bgpd_config {
 struct buf_read {
 	u_char			 buf[READ_BUF_SIZE];
 	u_char			*rptr;
-	ssize_t			 wpos;
+	size_t			 wpos;
 };
 
 enum announce_type {
