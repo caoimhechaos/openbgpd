@@ -1177,7 +1177,6 @@ fetchtable(void)
 		default:
 			free(kr);
 			continue;
-			/* not reached */
 		}
 
 		if ((sa = rti_info[RTAX_GATEWAY]) != NULL)
@@ -1334,7 +1333,6 @@ dispatch_rtmsg(void)
 				break;
 			default:
 				continue;
-				/* not reached */
 			}
 		}
 

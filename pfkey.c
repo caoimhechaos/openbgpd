@@ -97,7 +97,6 @@ pfkey_send(int sd, uint8_t satype, uint8_t mtype, uint8_t dir,
 		break;
 	default:
 		return (-1);
-		/* not reached */
 	}
 	smask.ss_family = ssrc.ss_family;
 	smask.ss_len = ssrc.ss_len;
@@ -124,7 +123,6 @@ pfkey_send(int sd, uint8_t satype, uint8_t mtype, uint8_t dir,
 		break;
 	default:
 		return (-1);
-		/* not reached */
 	}
 	dmask.ss_family = sdst.ss_family;
 	dmask.ss_len = sdst.ss_len;

@@ -1784,7 +1784,6 @@ parse_open(struct peer *peer)
 			peer->IdleHoldTimer = time(NULL);	/* no punish */
 			peer->IdleHoldTime /= 2;
 			return (-1);
-			/* not reached */
 		}
 	}
 
@@ -2326,7 +2325,7 @@ la_cmp(struct listen_addr *a, struct listen_addr *b)
 		break;
 	default:
 		fatal("king bula sez: unknown address family");
-		/* not reached */
+		/* NOTREACHED */
 	}
 
 	return (0);
