@@ -79,7 +79,7 @@ get_bgpid(void)
 	struct ifaddrs		*ifap, *ifa;
 	u_int32_t		 ip = 0, cur, localnet;
 
-	localnet = inet_addr("127.0.0.0");
+	localnet = htonl(INADDR_LOOPBACK & IN_CLASSA_NET);
 
 	if (getifaddrs(&ifap) == -1)
 		fatal("getifaddrs");
