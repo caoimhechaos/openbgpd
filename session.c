@@ -1619,14 +1619,26 @@ session_up(struct peer *peer)
 	switch (peer->sa_local.ss_family) {
 	case AF_INET:
 		sup.local_addr.af = AF_INET;
-		sup.local_addr.v4 =
-		    ((struct sockaddr_in *)&peer->sa_local)->sin_addr;
+		memcpy(&sup.local_addr.v4,
+		    &((struct sockaddr_in *)&peer->sa_local)->sin_addr,
+		    sizeof(sup.local_addr.v4));
 		sup.remote_addr.af = AF_INET;
-		sup.remote_addr.v4 =
-		    ((struct sockaddr_in *)&peer->sa_remote)->sin_addr;
+		memcpy(&sup.remote_addr.v4,
+		    &((struct sockaddr_in *)&peer->sa_remote)->sin_addr,
+		    sizeof(sup.remote_addr.v4));
+		break;
+	case AF_INET6:
+		sup.local_addr.af = AF_INET6;
+		memcpy(&sup.local_addr.v6,
+		    &((struct sockaddr_in6 *)&peer->sa_local)->sin6_addr,
+		    sizeof(sup.local_addr.v6));
+		sup.remote_addr.af = AF_INET6;
+		memcpy(&sup.remote_addr.v6,
+		    &((struct sockaddr_in6 *)&peer->sa_remote)->sin6_addr,
+		    sizeof(sup.remote_addr.v6));
 		break;
 	default:
-		fatalx("session_up: only AF_INET supported");
+		fatalx("session_up: unsupported address family");
 	}
 
 	peer->stats.last_updown = time(NULL);
