@@ -558,12 +558,19 @@ peeropts	: REMOTEAS asnumber	{
 			curpeer->conf.auth.method = AUTH_MD5SIG;
 			free($4);
 		}
-		| IPSEC IKE {
+		| IPSEC ESP IKE {
 			if (curpeer->conf.auth.method) {
 				yyerror("auth method cannot be redefined");
 				YYERROR;
 			}
-			curpeer->conf.auth.method = AUTH_IPSEC_IKE;
+			curpeer->conf.auth.method = AUTH_IPSEC_IKE_ESP;
+		}
+		| IPSEC AH IKE {
+			if (curpeer->conf.auth.method) {
+				yyerror("auth method cannot be redefined");
+				YYERROR;
+			}
+			curpeer->conf.auth.method = AUTH_IPSEC_IKE_AH;
 		}
 		| IPSEC ESP inout SPI number STRING STRING encspec {
 			unsigned	i;

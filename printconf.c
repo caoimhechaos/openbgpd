@@ -183,8 +183,10 @@ print_peer(struct peer_config *p)
 			printf(" %s XXXXXX",
 			    print_enc_alg(p->auth.enc_alg_out));
 		printf("\n");
-	} else if (p->auth.method == AUTH_IPSEC_IKE)
-		printf("%s\tipsec ike\n", c);
+	} else if (p->auth.method == AUTH_IPSEC_IKE_AH)
+		printf("%s\tipsec ah ike\n", c);
+	else if (p->auth.method == AUTH_IPSEC_IKE_ESP)
+		printf("%s\tipsec esp ike\n", c);
 
 	if (p->attrset.flags)
 		printf("%s\t", c);

@@ -150,7 +150,8 @@ enum auth_method {
 	AUTH_MD5SIG = 1,
 	AUTH_IPSEC_MANUAL_ESP,
 	AUTH_IPSEC_MANUAL_AH,
-	AUTH_IPSEC_IKE
+	AUTH_IPSEC_IKE_ESP,
+	AUTH_IPSEC_IKE_AH
 };
 
 struct peer_auth {
