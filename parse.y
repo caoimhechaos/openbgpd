@@ -877,7 +877,7 @@ filter_prefix_m	: filter_prefix_l
 				p->next = $4;
 			$$ = $2;
 		}
-		;			
+		;
 
 filter_prefix_l	: filter_prefix				{ $$ = $1; }
 		| filter_prefix_l comma filter_prefix	{
@@ -940,7 +940,7 @@ filter_as_l_h	: filter_as_l
 				a->next = $4;
 			$$ = $2;
 		}
-		;			
+		;
 
 filter_as_l	: filter_as
 		| filter_as_l comma filter_as	{
