@@ -360,13 +360,13 @@ prefixlen_classful(in_addr_t ina)
 {
 	/* it hurt to write this. */
 
-	if (ina >= 0xf0000000)		/* class E */
+	if (ina >= 0xf0000000U)		/* class E */
 		return (32);
-	else if (ina >= 0xe0000000)	/* class D */
+	else if (ina >= 0xe0000000U)	/* class D */
 		return (4);
-	else if (ina >= 0xc0000000)	/* class C */
+	else if (ina >= 0xc0000000U)	/* class C */
 		return (24);
-	else if (ina >= 0x80000000)	/* class B */
+	else if (ina >= 0x80000000U)	/* class B */
 		return (16);
 	else				/* class A */
 		return (8);
