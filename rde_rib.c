@@ -456,6 +456,10 @@ prefix_updateall(struct rde_aspath *asp, enum nexthop_state state)
 	RIB_STAT(prefix_updateall);
 	ENSURE(asp != NULL);
 
+	if (rde_noevaluate())
+		/* if the decision process is turned off this is a no-op */
+		return;
+
 	LIST_FOREACH(p, &asp->prefix_h, path_l) {
 		/* redo the route decision */
 		LIST_REMOVE(p, prefix_l);

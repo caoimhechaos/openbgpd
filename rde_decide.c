@@ -191,6 +191,14 @@ prefix_evaluate(struct prefix *p, struct pt_entry *pte)
 {
 	struct prefix	*xp;
 
+	if (rde_noevaluate()) {
+		/* decision process is turned off */
+		if (p != NULL)
+			LIST_INSERT_HEAD(&pte->prefix_h, p, prefix_l);
+		ENSURE(pte->active == NULL);
+		return;
+	}
+
 	if (p != NULL) {
 		if (LIST_EMPTY(&pte->prefix_h))
 			LIST_INSERT_HEAD(&pte->prefix_h, p, prefix_l);
