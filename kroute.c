@@ -1166,8 +1166,10 @@ fetchtable(void)
 		if (rtm->rtm_flags & RTF_LLINFO)	/* arp cache */
 			continue;
 
+#ifdef RTF_MPATH
 		if (rtm->rtm_flags & RTF_MPATH)		/* multipath */
 			continue;
+#endif
 
 		if ((kr = calloc(1, sizeof(struct kroute_node))) == NULL) {
 			log_warn("fetchtable");
