@@ -115,6 +115,12 @@ struct msg_open {
 	u_int8_t		 optparamlen;
 };
 
+struct capa_mp {
+	u_int16_t		afi;
+	u_int8_t		pad;
+	u_int8_t		safi;
+};
+
 struct ctl_conn {
 	TAILQ_ENTRY(ctl_conn)	entries;
 	struct imsgbuf		ibuf;
