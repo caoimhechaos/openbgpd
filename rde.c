@@ -176,10 +176,16 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 	u_int32_t		 rid;
 	int			 n;
 
-	if ((n = imsg_get(ibuf, &imsg)) == -1)
-		fatal("imsg_get error");
+	if (imsg_read(ibuf) == -1)
+		fatal("rde_dispatch_imsg: imsg_read error");
 
-	if (n > 0) {
+	for (;;) {
+		if ((n = imsg_get(ibuf, &imsg)) == -1)
+			fatal("rde_dispatch_imsg: imsg_read error");
+
+		if (n == 0)
+			break;
+
 		switch (imsg.hdr.type) {
 		case IMSG_RECONF_CONF:
 			if (idx != PFD_PIPE_MAIN)

@@ -1250,10 +1250,16 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 	enum reconf_action	 reconf;
 	int			 n;
 
-	if ((n = imsg_get(ibuf, &imsg)) == -1)
-		fatal("imsg_get error");
+	if (imsg_read(ibuf) == -1)
+		fatal("session_dispatch_imsg: imsg_read error");
 
-	if (n > 0) {
+	for (;;) {
+		if ((n = imsg_get(ibuf, &imsg)) == -1)
+			fatal("session_dispatch_imsg: imsg_get error");
+
+		if (n == 0)
+			break;
+
 		switch (imsg.hdr.type) {
 		case IMSG_RECONF_CONF:
 			if (idx != PFD_PIPE_MAIN)

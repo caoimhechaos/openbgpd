@@ -294,6 +294,7 @@ int	 merge_config(struct bgpd_config *, struct bgpd_config *);
 
 /* imsg.c */
 void	 imsg_init(struct imsgbuf *, int);
+int	 imsg_read(struct imsgbuf *);
 int	 imsg_get(struct imsgbuf *, struct imsg *);
 int	 imsg_compose(struct imsgbuf *, int, u_int32_t, void *, u_int16_t);
 void	 imsg_free(struct imsg *);

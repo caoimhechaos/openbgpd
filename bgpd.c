@@ -340,10 +340,16 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx, struct mrt_config *conf)
 	int			 n;
 	in_addr_t		 ina;
 
-	if ((n = imsg_get(ibuf, &imsg)) == -1)
+	if (imsg_read(ibuf) == -1)
 		return (-1);
 
-	if (n > 0) {
+	for (;;) {
+		if ((n = imsg_get(ibuf, &imsg)) == -1)
+			return (-1);
+
+		if (n == 0)
+			break;
+
 		switch (imsg.hdr.type) {
 		case IMSG_MRT_MSG:
 		case IMSG_MRT_END:
