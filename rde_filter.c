@@ -67,7 +67,7 @@ rde_apply_set(struct rde_aspath *asp, struct filter_set *set, sa_family_t af,
 		return;
 
 	if (set->flags & SET_PREPEND_SELF && dir != DIR_DEFAULT_IN) {
-		/* don't apply if this is a incomming default override */
+		/* don't apply if this is a incoming default override */
 		as = rde_local_as();
 		prepend = set->prepend_self;
 		new = aspath_prepend(asp->aspath, as, prepend);
