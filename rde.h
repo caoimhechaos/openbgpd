@@ -346,7 +346,7 @@ void		 pt_dump(void (*)(struct pt_entry *, void *), void *,
 enum filter_actions rde_filter(struct rde_peer *, struct rde_aspath *,
     struct bgpd_addr *, u_int8_t, enum directions);
 void		 rde_apply_set(struct rde_aspath *, struct filter_set *,
-		     sa_family_t);
+		     sa_family_t, struct rde_peer *, enum directions);
 int		 rde_filter_community(struct rde_aspath *, int, int);
 
 #endif /* __RDE_H__ */

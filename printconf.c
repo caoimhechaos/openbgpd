@@ -83,8 +83,10 @@ print_set(struct filter_set *set)
 			printf("nexthop reject ");
 		if (set->flags & SET_NEXTHOP_BLACKHOLE)
 			printf("nexthop blackhole ");
-		if (set->flags & SET_PREPEND)
-			printf("prepend-self %u ", set->prepend);
+		if (set->flags & SET_PREPEND_SELF)
+			printf("prepend-self %u ", set->prepend_self);
+		if (set->flags & SET_PREPEND_PEER)
+			printf("prepend-neighbor %u ", set->prepend_peer);
 		printf("}");
 	}
 }
