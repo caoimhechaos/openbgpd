@@ -488,7 +488,7 @@ attr_optadd(struct attr_flags *attr, u_int8_t flags, u_int8_t type,
 		a->data = NULL;
 
 	/* keep a sorted list */
-	TAILQ_FOREACH_REVERSE(p, &attr->others, attr_l, attr_list) {
+	TAILQ_FOREACH_REVERSE(p, &attr->others, attr_list, attr_l) {
 		if (type == p->type) {
 			/* attribute only once allowed */
 			free(a->data);
