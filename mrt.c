@@ -342,7 +342,7 @@ mrt_close(struct mrt *mrt)
 	if (msgbuf_unbounded(&mrt->msgbuf))
 		return (0);
 
-	if (mrt->msgbuf.sock == -1) {
+	if (mrt->msgbuf.sock != -1) {
 		close(mrt->msgbuf.sock);
 		mrt->msgbuf.sock = -1;
 	}
