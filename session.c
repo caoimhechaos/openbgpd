@@ -1776,7 +1776,8 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			}
 			/* find peers to be deleted */
 			for (p = peers; p != NULL; p = p->next)
-				if (p->conf.reconf_action == RECONF_NONE)
+				if (p->conf.reconf_action == RECONF_NONE &&
+				    !p->conf.cloned)
 					p->conf.reconf_action = RECONF_DELETE;
 			free(nconf);
 			nconf = NULL;
