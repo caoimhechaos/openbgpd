@@ -147,7 +147,6 @@ struct peer_stats {
 };
 
 struct peer_capa {
-	u_int8_t	announce;
 	u_int8_t	ann_mp_v4;
 	u_int8_t	ann_mp_v6;
 	u_int8_t	ann_refresh;
