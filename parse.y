@@ -1183,8 +1183,13 @@ add_mrtconfig(enum mrt_type type, char *name, time_t timeout, struct peer *p)
 	}
 	n->ReopenTimerInterval = timeout;
 	if (p != NULL) {
-		n->conf.peer_id = p->conf.id;
-		n->conf.group_id = p->conf.groupid;
+		if (curgroup == p) {
+			n->conf.peer_id = 0;
+			n->conf.group_id = p->conf.id;
+		} else {
+			n->conf.peer_id = p->conf.id;
+			n->conf.group_id = 0;
+		}
 	}
 
 	LIST_INSERT_HEAD(mrtconf, n, list);
