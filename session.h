@@ -199,4 +199,5 @@ int	pfkey_auth_remove(struct peer *p);
 int	pfkey_init(void);
 
 /* printconf.c */
-void	print_config(struct bgpd_config *, struct peer *, struct filter_head *);
+void	print_config(struct bgpd_config *, struct network_head *, struct peer *,
+	    struct filter_head *);

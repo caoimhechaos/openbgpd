@@ -155,7 +155,7 @@ main(int argc, char *argv[])
 
 	if (conf.opts & BGPD_OPT_NOACTION) {
 		if (conf.opts & BGPD_OPT_VERBOSE)
-			print_config(&conf, peer_l, rules_l);
+			print_config(&conf, &net_l, peer_l, rules_l);
 		else
 			fprintf(stderr, "configuration OK\n");
 		exit(0);
@@ -522,5 +522,3 @@ send_imsg_session(int type, pid_t pid, void *data, u_int16_t datalen)
 {
 	imsg_compose_pid(&ibuf_se, type, pid, data, datalen);
 }
-
-
