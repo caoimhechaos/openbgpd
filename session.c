@@ -980,6 +980,7 @@ session_open(struct peer *p)
 		op_len += 6;	/* 1 code + 1 len + 4 data */
 
 		/* route refresh, RFC 2918 */
+		op_len += 2;	/* 1 code + 1 len, no data */
 
 		if (op_len > 0)
 			optparamlen = sizeof(op_type) + sizeof(op_len) + op_len;
