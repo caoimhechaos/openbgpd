@@ -533,10 +533,8 @@ init_peer(struct peer *p)
 {
 	p->fd = p->wbuf.fd = -1;
 
-	p->capa.ann.mp_v4 = SAFI_UNICAST;
-	p->capa.ann.mp_v6 = SAFI_NONE;
-	p->capa.ann.refresh = 1;
-	if (!p->conf.capabilities)
+	memcpy(&p->capa.ann, &p->conf.capabilities, sizeof(p->capa.ann));
+	if (!p->conf.announce_capa)
 		session_capa_ann_none(p);
 
 	if (p->conf.if_depend[0])
@@ -848,6 +846,7 @@ change_state(struct peer *peer, enum session_state state,
 		msgbuf_clear(&peer->wbuf);
 		free(peer->rbuf);
 		peer->rbuf = NULL;
+		bzero(&peer->capa.peer, sizeof(peer->capa.peer));
 		if (peer->state == STATE_ESTABLISHED)
 			session_down(peer);
 		if (event != EVNT_STOP) {

@@ -146,12 +146,6 @@ struct peer_stats {
 	u_int32_t		 prefix_cnt;
 };
 
-struct capabilities {
-	u_int8_t	mp_v4;		/* multiprotocol extensions, RFC 2858 */
-	u_int8_t	mp_v6;
-	u_int8_t	refresh;	/* route refresh, RFC 2918 */
-};
-
 struct peer {
 	struct peer_config	 conf;
 	struct peer_stats	 stats;
