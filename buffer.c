@@ -62,10 +62,10 @@ buf_add(struct buf *buf, void *data, ssize_t len)
 	return (0);
 }
 
-u_char *
+void *
 buf_reserve(struct buf *buf, ssize_t len)
 {
-	u_char	*b;
+	void	*b;
 
 	if (buf->wpos + len > buf->size)
 		return (NULL);
