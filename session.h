@@ -170,6 +170,7 @@ struct peer {
 	struct sockaddr_storage	 sa_remote;
 	struct msgbuf		 wbuf;
 	struct buf_read		*rbuf;
+	u_int8_t		 auth_established;
 	struct peer		*next;
 };
 

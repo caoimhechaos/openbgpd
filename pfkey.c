@@ -504,6 +504,8 @@ pfkey_md5sig_establish(struct peer *p)
 		if (pfkey_sa_add(&p->conf.remote_addr, &p->conf.local_addr,
 		    p->conf.auth.md5key, &p->conf.auth.spi_in) == -1)
 			return (-1);
+
+	p->auth_established = 1;
 	return (0);
 }
 
@@ -563,6 +565,7 @@ pfkey_ipsec_establish(struct peer *p)
 	    &p->conf.remote_addr, &p->conf.local_addr, BGP_PORT, 0) < 0)
 		return (-1);
 
+	p->auth_established = 1;
 	return (0);
 }
 
@@ -616,7 +619,7 @@ pfkey_establish(struct peer *p)
 int
 pfkey_remove(struct peer *p)
 {
-	if (!p->conf.auth.method)
+	if (!p->auth_established)
 		return (0);
 	else if (p->conf.auth.method == AUTH_MD5SIG)
 		return (pfkey_md5sig_remove(p));
