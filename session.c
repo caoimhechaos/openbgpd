@@ -1276,6 +1276,7 @@ session_dispatch_imsg(int fd, int idx)
 				if (p->conf.reconf_action == RECONF_NONE)
 					p->conf.reconf_action = RECONF_DELETE;
 			free(nconf);
+			nconf = NULL;
 			pending_reconf = 0;
 			logit(LOG_INFO, "SE reconfigured");
 			break;
