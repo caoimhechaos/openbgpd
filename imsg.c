@@ -81,7 +81,7 @@ imsg_read(struct imsgbuf *ibuf)
 			ifd->fd = fd;
 			TAILQ_INSERT_TAIL(&ibuf->fds, ifd, entry);
 		} else
-			log_warn("imsg_read: got unexpected ctl data lvel %d"
+			log_warn("imsg_read: got unexpected ctl data level %d "
 			    "type %d", cmsg->cmsg_level, cmsg->cmsg_type);
 	}
 
