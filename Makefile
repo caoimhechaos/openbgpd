@@ -1,5 +1,5 @@
 #	$OpenBSD$
 
-SUBDIR=	bgpd
+SUBDIR=	bgpd bgpdctl
 
 .include <bsd.subdir.mk>
