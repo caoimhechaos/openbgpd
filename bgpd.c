@@ -147,13 +147,6 @@ main(int argc, char *argv[])
 	if (geteuid())
 		errx(1, "need root privileges");
 
-	signal(SIGTERM, sighdlr);
-	signal(SIGINT, sighdlr);
-	signal(SIGCHLD, sighdlr);
-	signal(SIGHUP, sighdlr);
-	signal(SIGALRM, sighdlr);
-	signal(SIGUSR1, sighdlr);
-
 	log_init(debug);
 
 	if (!debug)
@@ -184,6 +177,13 @@ main(int argc, char *argv[])
 		fatal("could not start session engine", 0);
 
 	setproctitle("parent");
+
+	signal(SIGTERM, sighdlr);
+	signal(SIGINT, sighdlr);
+	signal(SIGCHLD, sighdlr);
+	signal(SIGHUP, sighdlr);
+	signal(SIGALRM, sighdlr);
+	signal(SIGUSR1, sighdlr);
 
 	close(pipe_m2s[1]);
 	close(pipe_m2r[1]);
