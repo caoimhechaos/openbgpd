@@ -188,7 +188,8 @@ LIST_HEAD(mrt_head, mrt);
 
 /* error subcode for UPDATE; needed in SE and RDE */
 enum suberr_update {
-	ERR_UPD_ATTRLIST = 1,
+	ERR_UPD_UNSPECIFIC,
+	ERR_UPD_ATTRLIST,
 	ERR_UPD_UNKNWN_WK_ATTR,
 	ERR_UPD_MISSNG_WK_ATTR,
 	ERR_UPD_ATTRFLAGS,

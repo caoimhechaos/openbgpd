@@ -40,7 +40,8 @@
 enum peer_state {
 	PEER_NONE,
 	PEER_DOWN,
-	PEER_UP
+	PEER_UP,
+	PEER_ERR	/* error occured going to PEER_DOWN state */
 };
 
 /*
