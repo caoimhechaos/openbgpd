@@ -167,7 +167,7 @@ pt_add(struct bgpd_addr *prefix, int prefixlen)
 	}
 	LIST_INIT(&p->prefix_h);
 
-	if (RB_INSERT(pt_tree, &pttable4, p) != NULL) {
+	if (RB_INSERT(pt_tree, tree, p) != NULL) {
 		log_warnx("prefix_add: insert failed");
 		return (NULL);
 	}
