@@ -732,7 +732,7 @@ add_mrtconfig(enum mrtdump_type type, char *name, time_t timeout)
 		fatal("add_mrtconfig", errno);
 
 	n->type = MRT_TABLE_DUMP;
-	n->fd = -1;
+	n->msgbuf.sock = -1;
 	if (strlcpy(n->name, name, sizeof(n->name)) > sizeof(n->name)) {
 		yyerror("filename \"%s\" too long: max %u",
 		    name, sizeof(n->name) - 1);

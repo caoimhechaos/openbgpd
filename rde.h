@@ -244,8 +244,7 @@ struct pt_entry	*pt_get(struct in_addr, int);
 struct pt_entry *pt_add(struct in_addr, int);
 void		 pt_remove(struct pt_entry *);
 struct pt_entry	*pt_lookup(struct in_addr);
-void		 pt_dump(void (*)(struct pt_entry *, int, int *, void *),
-			    int, int *, void *);
+void		 pt_dump(void (*)(struct pt_entry *, void *), void *);
 
 
 #endif /* __RDE_H__ */
