@@ -1555,7 +1555,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			data = imsg.data;
 			errcode = *data++;
 			subcode = *data++;
-			
+
 			if (imsg.hdr.len == IMSG_HEADER_SIZE + 2)
 				data = NULL;
 
