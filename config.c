@@ -31,8 +31,6 @@
 #include "bgpd.h"
 #include "session.h"
 
-void			*sconf;
-
 u_int32_t	get_bgpid(void);
 int		host_v4(const char *, struct bgpd_addr *, u_int8_t *);
 int		host_v6(const char *, struct bgpd_addr *);
