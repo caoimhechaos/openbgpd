@@ -210,7 +210,7 @@ struct imsg_hdr {
 
 struct imsg {
 	struct imsg_hdr	 hdr;
-	u_char		*data;
+	void		*data;
 };
 
 /* error subcode for UPDATE; needed in SE and RDE */
