@@ -1697,15 +1697,15 @@ parse_open(struct peer *peer)
 	memcpy(&bgpid, p, sizeof(bgpid));
 	p += sizeof(bgpid);
 
-	/* check bgpid for validity, must be a valid ip address - HOW? */
-	/* if ( bgpid invalid ) {
+	/* check bgpid for validity - just disallow 0 */
+	if (ntohl(bgpid) == 0) {
 		log_peer_warnx(&peer->conf, "peer BGPID %lu unacceptable",
 		    ntohl(bgpid));
 		session_notification(peer, ERR_OPEN, ERR_OPEN_BGPID,
 		    NULL, 0);
 		change_state(peer, STATE_IDLE, EVNT_RCVD_OPEN);
 		return (-1);
-	} */
+	}
 	peer->remote_bgpid = bgpid;
 
 	memcpy(&optparamlen, p, sizeof(optparamlen));
