@@ -1482,6 +1482,7 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	id = 1;
 	filter_l = xfilter_l;
 	TAILQ_INIT(filter_l);
+	conf->opts = xconf->opts;
 
 	if ((fin = fopen(filename, "r")) == NULL) {
 		warn("%s", filename);
