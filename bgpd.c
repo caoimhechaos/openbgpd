@@ -282,6 +282,8 @@ main(int argc, char *argv[])
 		i = waitpid(-1, NULL, WNOHANG);
 	} while (i > 0 || (i == -1 && errno == EINTR));
 
+	kroute_shutdown(rfd);
+
 	logit(LOG_CRIT, "Terminating");
 	return (0);
 }

@@ -42,8 +42,6 @@ void		 init_attr_flags(struct attr_flags *);
 int		 rde_update_get_attr(u_char *, u_int16_t, struct attr_flags *);
 void		 rde_update_err(u_int32_t, enum suberr_update);
 
-void		 rde_dump_kroute(struct pt_entry *pt, void *ptr);
-
 void		 peer_init(struct bgpd_config *, u_long);
 struct rde_peer	*peer_add(u_int32_t, struct peer_config *);
 void		 peer_remove(struct rde_peer *);
@@ -255,7 +253,6 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			    imsg.hdr.peerid, NULL, 0);
 			break;
 		case IMSG_SHUTDOWN_REQUEST:
-			pt_dump(rde_dump_kroute, NULL);
 			imsg_compose(&ibuf_main, IMSG_SHUTDOWN_DONE, 0,
 			    NULL, 0);
 			break;
@@ -538,14 +535,6 @@ rde_send_kroute(struct prefix *new, struct prefix *old)
 	kr.nexthop = p->aspath->flags.nexthop.s_addr;
 
 	imsg_compose(&ibuf_main, type, 0, &kr, sizeof(kr));
-}
-
-void
-rde_dump_kroute(struct pt_entry *pt, void *ptr)
-{
-	if (pt->active == NULL)
-		return;
-	rde_send_kroute(NULL, pt->active);
 }
 
 /*

@@ -305,5 +305,6 @@ int	kroute_init(void);
 int	kroute_add(int, struct kroute *);
 int	kroute_change(int, struct kroute *);
 int	kroute_delete(int, struct kroute *);
+void	kroute_shutdown(int);
 
 #endif /* __BGPD_H__ */

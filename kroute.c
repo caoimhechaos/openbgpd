@@ -214,3 +214,13 @@ kroute_compare(struct kroute_node *a, struct kroute_node *b)
 		return (1);
 	return (0);
 }
+
+void
+kroute_shutdown(int fd)
+{
+	struct kroute_node	*kr;
+
+	RB_FOREACH(kr, kroute_tree, &krt)
+		if ((kr->flags & F_BGPD_INSERTED))
+			kroute_msg(fd, RTM_DELETE, &kr->r);
+}
