@@ -23,6 +23,7 @@
 #include <errno.h>
 #include <ifaddrs.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "bgpd.h"
@@ -65,6 +66,9 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 		conf->min_holdtime = xconf->min_holdtime;
 	if (!xconf->min_holdtime)
 		xconf->min_holdtime = conf->min_holdtime = MIN_HOLDTIME;
+
+	memcpy(&xconf->listen_addr, &conf->listen_addr,
+	    sizeof(xconf->listen_addr));
 
 	/*
 	 * as we cannot get the negotiated holdtime in the main process,

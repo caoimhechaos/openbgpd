@@ -99,6 +99,7 @@ struct bgpd_config {
 	u_int32_t		 bgpid;
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;
+	struct sockaddr_in	 listen_addr;
 	struct peer		*peers;
 };
 
