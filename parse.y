@@ -537,6 +537,9 @@ peeropts	: REMOTEAS asnumber	{
 				curpeer->conf.announce_type = ANNOUNCE_NONE;
 			else if (!strcmp($2, "all"))
 				curpeer->conf.announce_type = ANNOUNCE_ALL;
+			else if (!strcmp($2, "default-route"))
+				curpeer->conf.announce_type =
+				    ANNOUNCE_DEFAULT_ROUTE;
 			else {
 				free($2);
 				YYERROR;

@@ -1432,6 +1432,11 @@ peer_dump(u_int32_t id, u_int16_t afi, u_int8_t safi)
 	if (afi == AFI_ALL || afi == AFI_IPv4)
 		if (safi == SAFI_ALL || safi == SAFI_UNICAST ||
 		    safi == SAFI_BOTH) {
+			if (peer->conf.announce_type ==
+			    ANNOUNCE_DEFAULT_ROUTE) {
+				up_generate_default(peer, AF_INET);
+				return;
+			}
 			pt_dump(up_dump_upcall, peer, AF_INET);
 			return;
 		}
