@@ -968,7 +968,7 @@ filter_set_opt	: LOCALPREF number		{
 			}
 			free($2);
 			if ($$.community.as <= 0 || $$.community.as > 0xffff) {
-				yyerror("Invalid comminity");
+				yyerror("Invalid community");
 				YYERROR;
 			}
 			/* Don't allow setting of unknown well-known types */

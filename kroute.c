@@ -997,7 +997,7 @@ if_change(u_short ifindex, int flags, struct if_data *ifd)
 	LIST_FOREACH(kkr, &kif->kroute_l, entry) {
 		/*
 		 * we treat link_state == LINK_STATE_UNKNOWN as valid
-		 * not all interfaces have a conecpt of "link state" and/or
+		 * not all interfaces have a concept of "link state" and/or
 		 * do not report up
 		 */
 		if (reachable)

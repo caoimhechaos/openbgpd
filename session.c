@@ -1867,7 +1867,7 @@ parse_notification(struct peer *peer)
 		if (datalen == 0) {	/* zebra likes to send those.. humbug */
 			log_peer_warnx(&peer->conf, "received \"unsupported "
 			    "capability\" notification without data part, "
-			    "disabling capability announcements alltogether");
+			    "disabling capability announcements altogether");
 			peer->capa.announce = 0;
 		}
 
@@ -1907,7 +1907,7 @@ parse_notification(struct peer *peer)
 				log_peer_warnx(&peer->conf, "received "
 				    "\"unsupported capability\" notification "
 				    "for unknown capability %u, disabling "
-				    "capability announcements alltogether",
+				    "capability announcements altogether",
 				    capa_code);
 				peer->capa.announce = 0;
 				break;

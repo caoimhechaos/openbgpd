@@ -262,7 +262,7 @@ up_generate_updates(struct rde_peer *peer,
 		if (old->aspath->peer->conf.ebgp == 0 && peer->conf.ebgp == 0) {
 			/*
 			 * redistribution rules:
-			 * 1. if annouce is set			-> announce
+			 * 1. if announce is set		-> announce
 			 * 2. old non-client, new non-client	-> no 
 			 * 3. old client, new non-client	-> yes
 			 * 4. old non-client, new client	-> yes
@@ -357,7 +357,7 @@ up_generate_updates(struct rde_peer *peer,
 		if (new->aspath->peer->conf.ebgp == 0 && peer->conf.ebgp == 0) {
 			/*
 			 * redistribution rules:
-			 * 1. if annouce is set			-> announce
+			 * 1. if announce is set		-> announce
 			 * 2. old non-client, new non-client	-> no 
 			 * 3. old client, new non-client	-> yes
 			 * 4. old non-client, new client	-> yes

@@ -869,8 +869,8 @@ aspath_neighbor(struct aspath *aspath)
 {
 	/*
 	 * Empty aspath is OK -- internal as route.
-	 * But what is the neighbor? For now let's return 0 that
-	 * should not break anything.
+	 * But what is the neighbor? For now let's return 0.
+	 * That should not break anything.
 	 */
 
 	if (aspath->hdr.len == 0)
