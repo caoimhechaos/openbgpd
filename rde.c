@@ -186,6 +186,11 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 		rde_update_queue_runner();
 	}
 
+	msgbuf_write(&ibuf_se.w);
+	msgbuf_clear(&ibuf_se.w);
+	msgbuf_write(&ibuf_main.w);
+	msgbuf_clear(&ibuf_main.w);
+
 	log_info("route decision engine exiting");
 	_exit(0);
 }
