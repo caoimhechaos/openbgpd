@@ -1565,7 +1565,7 @@ str2key(char *s, char *dest, size_t max_len)
 	unsigned	i;
 	char		t[3];
 
-	if (strlen(s) / 2 >= max_len) {
+	if (strlen(s) / 2 > max_len) {
 		yyerror("key too long");
 		return (-1);
 	}
