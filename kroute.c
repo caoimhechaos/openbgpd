@@ -533,16 +533,11 @@ knexthop_remove(struct knexthop_node *kn)
 struct kif_node *
 kif_find(int ifindex)
 {
-	struct kif_node	*kif, s;
+	struct kif_node	s;
 
 	bzero(&s, sizeof(s));
 	s.k.ifindex = ifindex;
 
-	if ((kif = RB_FIND(kif_tree, &kit, &s)) != NULL)
-		return (kif);
-
-	/* check wether the interface showed up now */
-	fetchifs(ifindex);
 	return (RB_FIND(kif_tree, &kit, &s));
 }
 
