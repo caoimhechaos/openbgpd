@@ -1221,6 +1221,7 @@ dispatch_rtmsg(void)
 				kr->r.prefixlen = prefixlen;
 				kr->r.nexthop.s_addr = nexthop.s_addr;
 				kr->r.flags = flags;
+				kr->r.ifindex = ifindex;
 
 				kroute_insert(kr);
 			}
