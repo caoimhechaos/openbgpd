@@ -299,7 +299,6 @@ int	 mrt_mergeconfig(struct mrt_config *, struct mrt_config *);
 /* kroute.c */
 int	kroute_init(void);
 int	kroute_add(int, struct kroute *);
-int	kroute_change(int, struct kroute *);
 int	kroute_delete(int, struct kroute *);
 void	kroute_shutdown(int);
 
