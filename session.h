@@ -117,8 +117,14 @@ struct ctl_conn {
 TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
 
 struct peer_stats {
-	u_int64_t		 msg_rcvd;
-	u_int64_t		 msg_send;
+	u_int64_t		 msg_rcvd_open;
+	u_int64_t		 msg_rcvd_update;
+	u_int64_t		 msg_rcvd_notification;
+	u_int64_t		 msg_rcvd_keepalive;
+	u_int64_t		 msg_sent_open;
+	u_int64_t		 msg_sent_update;
+	u_int64_t		 msg_sent_notification;
+	u_int64_t		 msg_sent_keepalive;
 	time_t			 last_updown;
 	time_t			 last_read;
 };
