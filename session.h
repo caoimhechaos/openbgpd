@@ -17,6 +17,7 @@
  */
 
 #include <sys/types.h>
+#include <sys/socket.h>
 #include <time.h>
 
 #define	MAX_BACKLOG			5
@@ -144,6 +145,8 @@ struct peer {
 	u_int			 IdleHoldTime;
 	int			 sock;
 	int			 events;
+	struct sockaddr_storage	 sa_local;
+	struct sockaddr_storage	 sa_remote;
 	struct msgbuf		 wbuf;
 	struct buf_read		*rbuf;
 	struct peer		*next;
