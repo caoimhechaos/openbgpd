@@ -146,21 +146,29 @@ struct filter_set {
 	u_int8_t	prepend;
 };
 
+enum auth_method {
+	MD5SIG = 1,
+	IPSEC_MANUAL_ESP,
+	IPSEC_MANUAL_AH,
+	IPSEC_IKE
+};
+	
 struct peer_ipsec {
-	u_int32_t	spi_in;
-	u_int32_t	spi_out;
-	u_int8_t	auth_alg_in;
-	u_int8_t	auth_alg_out;
-	char		auth_key_in[IPSEC_AUTH_KEY_LEN];
-	char		auth_key_out[IPSEC_AUTH_KEY_LEN];
-	u_int8_t	auth_keylen_in;
-	u_int8_t	auth_keylen_out;
-	u_int8_t	enc_alg_in;
-	u_int8_t	enc_alg_out;
-	char		enc_key_in[IPSEC_ENC_KEY_LEN];
-	char		enc_key_out[IPSEC_ENC_KEY_LEN];
-	u_int8_t	enc_keylen_in;
-	u_int8_t	enc_keylen_out;
+	enum auth_method	method;
+	u_int32_t		spi_in;
+	u_int32_t		spi_out;
+	u_int8_t		auth_alg_in;
+	u_int8_t		auth_alg_out;
+	char			auth_key_in[IPSEC_AUTH_KEY_LEN];
+	char			auth_key_out[IPSEC_AUTH_KEY_LEN];
+	u_int8_t		auth_keylen_in;
+	u_int8_t		auth_keylen_out;
+	u_int8_t		enc_alg_in;
+	u_int8_t		enc_alg_out;
+	char			enc_key_in[IPSEC_ENC_KEY_LEN];
+	char			enc_key_out[IPSEC_ENC_KEY_LEN];
+	u_int8_t		enc_keylen_in;
+	u_int8_t		enc_keylen_out;
 };
 
 struct peer_config {
