@@ -371,9 +371,9 @@ kr_show_route(struct imsg *imsg)
 int
 kroute_compare(struct kroute_node *a, struct kroute_node *b)
 {
-	if (a->r.prefix.s_addr < b->r.prefix.s_addr)
+	if (ntohl(a->r.prefix.s_addr) < ntohl(b->r.prefix.s_addr))
 		return (-1);
-	if (a->r.prefix.s_addr > b->r.prefix.s_addr)
+	if (ntohl(a->r.prefix.s_addr) > ntohl(b->r.prefix.s_addr))
 		return (1);
 	if (a->r.prefixlen < b->r.prefixlen)
 		return (-1);
