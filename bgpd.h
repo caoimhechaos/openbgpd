@@ -248,7 +248,7 @@ struct imsg_fd {
 struct imsgbuf {
 	int				fd;
 	pid_t				pid;
-	TAILQ_HEAD(fds, imsg_fd)	fds;	
+	TAILQ_HEAD(fds, imsg_fd)	fds;
 	struct buf_read			r;
 	struct msgbuf			w;
 };

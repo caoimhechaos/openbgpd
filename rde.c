@@ -196,7 +196,7 @@ rde_main(struct bgpd_config *config, struct network_head *net_l,
 			pfd[PFD_MRT_FILE].events = POLLOUT;
 			i++;
 		}
-				
+
 		if ((nfds = poll(pfd, i, INFTIM)) == -1)
 			if (errno != EINTR)
 				fatal("poll error");

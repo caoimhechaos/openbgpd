@@ -266,5 +266,5 @@ imsg_get_fd(struct imsgbuf *ibuf)
 	TAILQ_REMOVE(&ibuf->fds, ifd, entry);
 	free(ifd);
 
-	return(fd);
+	return (fd);
 }

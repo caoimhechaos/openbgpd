@@ -133,7 +133,7 @@ pt_get(struct bgpd_addr *prefix, int prefixlen)
 			fatalx("pt_get: bad IPv4 prefixlen");
 		pte4.af = AF_INET;
 		addr_hbo = ntohl(prefix->v4.s_addr);
-		pte4.prefix4.s_addr = htonl(addr_hbo & 
+		pte4.prefix4.s_addr = htonl(addr_hbo &
 		    prefixlen2mask(prefixlen));
 		pte4.prefixlen = prefixlen;
 		return RB_FIND(pt_tree, &pttable4, (struct pt_entry *)&pte4);
@@ -170,7 +170,7 @@ pt_add(struct bgpd_addr *prefix, int prefixlen)
 		p4->af = AF_INET;
 		p4->prefixlen = prefixlen;
 		addr_hbo = ntohl(prefix->v4.s_addr);
-		p4->prefix4.s_addr = htonl(addr_hbo & 
+		p4->prefix4.s_addr = htonl(addr_hbo &
 		    prefixlen2mask(prefixlen));
 		p = (struct pt_entry *)p4;
 		tree = &pttable4;

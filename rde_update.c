@@ -111,7 +111,7 @@ up_prefix_cmp(struct update_prefix *a, struct update_prefix *b)
 		return (-1);
 	if (a->prefix.af > b->prefix.af)
 		return (1);
-	
+
 	switch (a->prefix.af) {
 	case AF_INET:
 		if (ntohl(a->prefix.v4.s_addr) < ntohl(b->prefix.v4.s_addr))

@@ -774,7 +774,7 @@ nexthop_update(struct kroute_nexthop *msg)
 	/* should I trust in the parent ??? */
 	if (nh->exit_nexthop.af != msg->nexthop.af ||
 	    (nh->exit_nexthop.af == AF_INET &&
-	    nh->exit_nexthop.v4.s_addr != msg->nexthop.v4.s_addr)) { 
+	    nh->exit_nexthop.v4.s_addr != msg->nexthop.v4.s_addr)) {
 		log_warnx("nexthop_update: bad nexthop returned");
 		return;
 	}

@@ -255,7 +255,7 @@ main(int argc, char *argv[])
 		timeout = mrt_timeout(&mrt_l);
 		if (timeout > MAX_TIMEOUT)
 			timeout = MAX_TIMEOUT;
-		
+
 		if ((nfds = poll(pfd, POLL_MAX, timeout * 1000)) == -1)
 			if (errno != EINTR) {
 				log_warn("poll error");

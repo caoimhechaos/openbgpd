@@ -593,10 +593,10 @@ attr_mp_nexthop_check(u_char *data, u_int16_t len, u_int16_t afi)
 
 	nh_len = *data++;
 	len--;
-	
+
 	if (nh_len > len)
 		return (-1);
-	
+
 	switch (afi) {
 	case AFI_IPv6:
 		if (nh_len != 16 && nh_len != 32) {
