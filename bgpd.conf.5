@@ -191,6 +191,12 @@ If this is not the case the
 statement defines the maximum hops the neighbor is away.
 .It Ar passive
 Do not attempt to actively open a TCP connection to the neighbor system.
+.It Ar holdtime
+Set the holdtime in seconds.
+Inherit from the global configuration if not given.
+.It Ar holdtime min
+Set the minimal acceptable holdtime.
+Inherit from the global configuration if not given.
 .El
 .Sh FILES
 .Bl -tag -width "/etc/bgpd.conf" -compact
