@@ -165,7 +165,7 @@ print_peer(struct peer_config *p)
 		printf("%s\tannounce all\n", c);
 	else
 		printf("%s\tannounce ???\n", c);
-	if (p->tcp_md5_key[0])
+	if (p->auth.method == MD5SIG)
 		printf("%s\ttcp md5sig\n", c);
 
 	if (p->attrset.flags)
