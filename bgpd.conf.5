@@ -358,6 +358,26 @@ messages to announcements of the local AS.
 The default for IBGP peers is
 .Ic all .
 .Pp
+.It Ic depend on Ar interface
+The neighbor session will be kept in state
+.Em IDLE
+as long as
+.Ar interface
+reports no link.
+For
+.Xr carp 4
+interfaces, no link means that the interface is currently
+.Em backup .
+This is primarily intended to be used with
+.Xr carp 4
+to reduce failover times.
+.Pp
+The state of the network interfaces on the system can be viewed
+using the
+.Cm show interfaces
+command to
+.Xr bgpctl 8 .
+.Pp
 .It Ic descr Ar description
 Add a description.
 The description is used when logging neighbor events, in status
