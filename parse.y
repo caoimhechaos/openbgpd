@@ -344,8 +344,13 @@ peeropts	: REMOTEAS number	{
 			curpeer->conf.max_prefix = $2;
 		}
 		| TCP MD5SIG PASSWORD string {
-			strlcpy(curpeer->conf.tcp_md5_key, $4,
-			    sizeof(curpeer->conf.tcp_md5_key));
+			if (strlcpy(curpeer->conf.tcp_md5_key, $4,
+			    sizeof(curpeer->conf.tcp_md5_key)) >=
+			    sizeof(curpeer->conf.tcp_md5_key)) {
+				yyerror("tcp md5sig password too long: max %u",
+				    sizeof(curpeer->conf.tcp_md5_key) - 1);
+				YYERROR;
+			}
 		}
 		| TCP MD5SIG KEY string {
 			unsigned	i;
