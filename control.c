@@ -125,7 +125,7 @@ control_accept(int listenfd)
 	}
 
 	if (uid) {
-		logit(LOG_INFO, "Control connection attempt from uid %ld", uid);
+		log_info("Control connection attempt from uid %ld", uid);
 		return;
 	}
 
@@ -246,10 +246,10 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 				if (p != NULL)
 					bgp_fsm(p, EVNT_START);
 				else
-					logit(LOG_CRIT, "IMSG_CTL_NEIGHBOR_UP "
+					log_warnx("IMSG_CTL_NEIGHBOR_UP "
 					    "with unknown neighbor");
 			} else
-				logit(LOG_CRIT, "got IMSG_CTL_NEIGHBOR_UP with "
+				log_warnx("got IMSG_CTL_NEIGHBOR_UP with "
 				    "wrong length");
 			break;
 		case IMSG_CTL_NEIGHBOR_DOWN:
@@ -260,10 +260,10 @@ control_dispatch_msg(struct pollfd *pfd, int i)
 				if (p != NULL)
 					bgp_fsm(p, EVNT_STOP);
 				else
-					logit(LOG_CRIT, "IMSG_CTL_NEIGHBOR_DOWN"
+					log_warnx("IMSG_CTL_NEIGHBOR_DOWN"
 					    " with unknown neighbor");
 			} else
-				logit(LOG_CRIT, "got IMSG_CTL_NEIGHBOR_DOWN "
+				log_warnx("got IMSG_CTL_NEIGHBOR_DOWN "
 				    "with wrong length");
 			break;
 		case IMSG_CTL_KROUTE:

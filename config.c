@@ -42,7 +42,7 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 
 	/* merge conf (new) into xconf (old)  */
 	if (!conf->as) {
-		logit(LOG_CRIT, "configuration error: AS not given");
+		log_warnx("configuration error: AS not given");
 		return (1);
 	}
 	if (xconf->as != conf->as)
