@@ -1125,6 +1125,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 			else
 				log_peer_warn(&p->conf, "Write error");
 			bgp_fsm(p, EVNT_CON_FATAL);
+			return (1);
 		}
 		if (!(pfd->revents & POLLIN))
 			return (1);
