@@ -862,6 +862,7 @@ filter_peer	: ANY		{
 				}
 			if ($$->p.peerid == 0) {
 				yyerror("no such peer: %s", log_addr(&$1));
+				free($$);
 				YYERROR;
 			}
 		}
@@ -881,6 +882,7 @@ filter_peer	: ANY		{
 			if ($$->p.groupid == 0) {
 				yyerror("no such group: \"%s\"", $2);
 				free($2);
+				free($$);
 				YYERROR;
 			}
 			free($2);
