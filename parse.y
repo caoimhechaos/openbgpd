@@ -835,15 +835,17 @@ filter_match	: /* empty */			{ bzero(&$$, sizeof($$)); }
 				free($2);
 				YYERROR;
 			}
-			free($2);
 			if (i == 0 || i == USHRT_MAX) {
-				yyerror("Bad community as number");
+				free($2);
+				yyerror("Bad community AS number");
 				YYERROR;
 			}
 			$$.community.as = i;
 			if ((i = getcommunity(p)) == COMMUNITY_ERROR) {
+				free($2);
 				YYERROR;
 			}
+			free($2);
 			$$.community.type = i;
 		}
 		;
