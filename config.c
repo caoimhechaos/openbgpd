@@ -98,5 +98,5 @@ get_id(struct peer *p)
 	/*
 	 * XXX this collides with multiviews and will need more clue later XXX
 	 */
-	return (ntohl(p->conf.remote_addr.sin_addr.s_addr));
+	return (ntohl(p->conf.remote_addr.v4.s_addr));
 }
