@@ -433,6 +433,9 @@ reconfigure(char *conffile, struct bgpd_config *conf, struct mrt_head *mrt_l,
 			return (-1);
 		if (send_filterset(ibuf_rde, &n->net.attrset, 0, 1) == -1)
 			return (-1);
+		if (imsg_compose(ibuf_rde, IMSG_NETWORK_DONE, 0, 0, -1,
+		    NULL, 0) == -1)
+			return (-1);
 		TAILQ_REMOVE(&net_l, n, entry);
 		free(n);
 	}
