@@ -267,6 +267,10 @@ group		: GROUP string optnl '{' optnl {
 				    $2, sizeof(curgroup->conf.group) - 1);
 				YYERROR;
 			}
+			if (get_id(curgroup)) {
+				yyerror("get_id failed");
+				YYERROR;
+			}
 		}
 		    groupopts_l '}' {
 			free(curgroup);
@@ -845,6 +849,7 @@ new_peer(void)
 		if (strlcpy(p->conf.descr, curgroup->conf.descr,
 		    sizeof(p->conf.descr)) >= sizeof(p->conf.descr))
 			fatalx("new_peer descr strlcpy");
+		p->conf.groupid = curgroup->conf.id;
 	}
 	p->next = NULL;
 
@@ -892,12 +897,14 @@ get_id(struct peer *newpeer)
 {
 	struct peer	*p;
 
-	for (p = peer_l_old; p != NULL; p = p->next)
-		if (!memcmp(&p->conf.remote_addr, &newpeer->conf.remote_addr,
-		    sizeof(p->conf.remote_addr))) {
-			newpeer->conf.id = p->conf.id;
-			return (0);
-		}
+	if (newpeer->conf.remote_addr.af)
+		for (p = peer_l_old; p != NULL; p = p->next)
+			if (!memcmp(&p->conf.remote_addr,
+			    &newpeer->conf.remote_addr,
+			    sizeof(p->conf.remote_addr))) {
+				newpeer->conf.id = p->conf.id;
+				return (0);
+			}
 
 	/* new one */
 	for (; id < UINT_MAX; id++) {

@@ -126,6 +126,7 @@ enum announce_type {
 
 struct peer_config {
 	u_int32_t		 id;
+	u_int32_t		 groupid;
 	char			 group[PEER_DESCR_LEN];
 	char			 descr[PEER_DESCR_LEN];
 	struct bgpd_addr	 remote_addr;
