@@ -101,16 +101,19 @@ imsg_compose(struct imsgbuf *ibuf, int type, u_int32_t peerid, void *data,
 	}
 	if (buf_add(wbuf, &hdr, sizeof(hdr)) == -1) {
 		logit(LOG_CRIT, "imsg_compose: buf_add error");
+		free(wbuf);
 		return (-1);
 	}
 	if (datalen)
 		if (buf_add(wbuf, data, datalen) == -1) {
 			logit(LOG_CRIT, "imsg_compose: buf_add error");
+			free(wbuf);
 			return (-1);
 		}
 
 	if ((n = buf_close(&ibuf->w, wbuf)) < 0) {
 			logit(LOG_CRIT, "imsg_compose: buf_add error");
+			free(wbuf);
 			return (-1);
 	}
 	return (n);
