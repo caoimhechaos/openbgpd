@@ -57,9 +57,6 @@ kroute_init(void)
 	if ((s = socket(AF_ROUTE, SOCK_RAW, 0)) < 0)
 		fatal("route socket", errno);
 
-	if (fcntl(s, F_SETFL, O_NONBLOCK) == -1)
-		fatal(NULL, errno);
-
 	/* not intrested in my own messages */
 	if (setsockopt(s, SOL_SOCKET, SO_USELOOPBACK, &opt, sizeof(opt)) == -1)
 		fatal("route setsockopt", errno);

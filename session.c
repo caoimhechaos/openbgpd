@@ -115,10 +115,6 @@ setup_listener(void)
 		close(fd);
 		return (-1);
 	}
-	if (fcntl(fd, F_SETFL, O_NONBLOCK) == -1) {
-		close(fd);
-		return (-1);
-	}
 
 	return (fd);
 }
@@ -687,12 +683,6 @@ session_connect(struct peer *peer)
 			bgp_fsm(peer, EVNT_CON_OPENFAIL);
 			return (-1);
 		}
-
-	if (fcntl(peer->sock, F_SETFL, O_NONBLOCK) == -1) {
-		log_err(peer, "session_connect fcntl");
-		bgp_fsm(peer, EVNT_CON_OPENFAIL);
-		return (-1);
-	}
 
 	if (session_setup_socket(peer)) {
 		bgp_fsm(peer, EVNT_CON_OPENFAIL);
