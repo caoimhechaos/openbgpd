@@ -17,6 +17,7 @@
  */
 
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <errno.h>
@@ -38,21 +39,37 @@ struct ctl_conn	*control_connbyfd(int);
 int
 control_init(void)
 {
-	struct sockaddr_un	sun;
-	int			fd;
+	struct sockaddr_un	 sun;
+	int			 fd;
+	mode_t			 old_umask;
 
 	if ((fd = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
 		log_err("control_init: socket");
 		return (-1);
 	}
 
+	old_umask = umask(S_IWGRP|S_IWOTH|S_IROTH|S_IXOTH);
 	bzero(&sun, sizeof(sun));
 	sun.sun_family = AF_UNIX;
 	strlcpy(sun.sun_path, SOCKET_NAME, sizeof(sun.sun_path));
+
+	if (unlink(SOCKET_NAME) == -1)
+		if (errno != ENOENT) {
+			log_err("unlink %s", SOCKET_NAME);
+			return (-1);
+		}
+
 	if (bind(fd, (struct sockaddr *)&sun, sizeof(sun)) == -1) {
 		log_err("control_init: bind: %s", SOCKET_NAME);
 		return (-1);
 	}
+
+	if (chmod(SOCKET_NAME, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP) == -1) {
+		log_err("control_init chmod");
+		return (-1);
+	}
+
+	umask(old_umask);
 
 	control_state.fd = fd;
 
