@@ -2390,6 +2390,18 @@ getpeerbyaddr(struct bgpd_addr *addr)
 }
 
 struct peer *
+getpeerbydesc(const char *descr)
+{
+	struct peer *p;
+
+	for (p = peers; p != NULL && strcmp(p->conf.descr, descr);
+	    p = p->next)
+		;	/* nothing */
+
+	return (p);
+}
+
+struct peer *
 getpeerbyip(struct sockaddr *ip)
 {
 	struct peer	*p, *newpeer, *loose = NULL;
