@@ -264,7 +264,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	free(ibuf_main);
 
 	log_info("route decision engine exiting");
-	exit(0);
+	_exit(0);
 }
 
 struct network_config	 netconf_s, netconf_p;
