@@ -95,7 +95,7 @@ main(int argc, char *argv[])
 	struct mrt_config	 mrtconf;
 	struct mrtdump_config	*mconf, *(mrt[POLL_MAX]);
 	struct pollfd		 pfd[POLL_MAX];
-	pid_t			 io_pid = 0, rde_pid = 0;
+	pid_t			 io_pid = 0, rde_pid = 0, pid;
 	char			*conffile;
 	int			 debug = 0;
 	int			 ch, i, j, n, nfds, csock;
@@ -299,8 +299,8 @@ main(int argc, char *argv[])
 		kill(rde_pid, SIGTERM);
 
 	do {
-		i = waitpid(-1, NULL, WNOHANG);
-	} while (i > 0 || (i == -1 && errno == EINTR));
+		pid = waitpid(-1, NULL, WNOHANG);
+	} while (pid > 0 || (pid == -1 && errno == EINTR));
 
 	control_cleanup();
 	kroute_shutdown();
