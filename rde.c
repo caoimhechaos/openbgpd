@@ -410,6 +410,7 @@ rde_update_dispatch(struct imsg *imsg)
 
 	/* need to free allocated attribute memory that is no longer used */
 	aspath_destroy(attrs.aspath);
+	attr_optfree(&attrs);
 
 	return (0);
 }
@@ -878,7 +879,7 @@ network_init(struct network_head *net_l)
 	peerself.conf.max_prefix = ULONG_MAX;
 	peerself.conf.remote_as = conf->as;
 	snprintf(peerself.conf.descr, sizeof(peerself.conf.descr),
-	    "LOCAL AS %hd", conf->as);
+	    "LOCAL AS %hu", conf->as);
 
 	for (n = TAILQ_FIRST(net_l); n != TAILQ_END(net_l);
 	    n = TAILQ_FIRST(net_l)) {
