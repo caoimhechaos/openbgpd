@@ -606,6 +606,8 @@ bgp_fsm(struct peer *peer, enum session_events event)
 			session_tcp_established(peer);
 			session_open(peer);
 			peer->ConnectRetryTimer = 0;
+			peer->holdtime = INTERVAL_HOLD_INITIAL;
+			start_timer_holdtime(peer);
 			change_state(peer, STATE_OPENSENT, event);
 			break;
 		case EVNT_CON_OPENFAIL:
