@@ -160,7 +160,7 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 			return (asp1->flags.med - asp2->flags.med);
 
 	/*
-	 * 6. EBGP is cooler than IBGP 
+	 * 6. EBGP is cooler than IBGP
 	 * It is absolutely important that the ebgp value in peer_config.ebgp
 	 * is bigger than all other ones (IBGP, confederations)
 	 */
@@ -599,7 +599,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 	 *  2. non-transitive attrs: don't re-announce
 	 *  3. transitive known attrs: announce unmodified
 	 *  4. transitive unknown attrs: set partial bit and re-announce
-	 */ 
+	 */
 	TAILQ_FOREACH(oa, &a->others, attr_l) {
 		switch (oa->type) {
 		case ATTR_ATOMIC_AGGREGATE:

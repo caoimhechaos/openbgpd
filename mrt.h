@@ -80,7 +80,7 @@ enum MRT_BGP4MP_TYPES {
 /* If the type is PROTOCOL_BGP4MP and the subtype is either BGP4MP_STATE_CHANGE
  * or BGP4MP_MESSAGE the message consists of a common header plus the payload.
  * Header format:
- * 
+ *
  * +--------+--------+--------+--------+
  * |    source_as    |     dest_as     |
  * +--------+--------+--------+--------+

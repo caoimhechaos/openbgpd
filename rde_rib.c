@@ -909,7 +909,7 @@ prefix_destroy(struct prefix *p)
 
 /*
  * helper function to clean up the connected networks after a reload
- */ 
+ */
 void
 prefix_network_clean(struct rde_peer *peer, time_t reloadtime)
 {
