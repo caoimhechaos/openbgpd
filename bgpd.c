@@ -105,7 +105,7 @@ main(int argc, char *argv[])
 	log_init(1);		/* log to stderr until daemonized */
 
 	if (geteuid())
-		fatal("need root privileges", 0);
+		errx(1, "need root privileges");
 
 	bzero(&conf, sizeof(conf));
 	bzero(&mrtconf, sizeof(mrtconf));
