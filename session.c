@@ -363,7 +363,7 @@ init_conf(struct bgpd_config *c)
 void
 init_peer(struct peer *p)
 {
-	p->sock = -1;
+	p->sock = p->wbuf.sock = -1;
 
 	change_state(p, STATE_IDLE, EVNT_NONE);
 	p->IdleHoldTimer = time(NULL);	/* start ASAP */
