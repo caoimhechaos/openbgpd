@@ -189,7 +189,7 @@ struct peer	*peers;
 void		 session_socket_blockmode(int, enum blockmodes);
 int		 session_main(struct bgpd_config *, struct peer *,
 		    struct network_head *, struct filter_head *,
-		    struct mrt_head *, int[2], int[2]);
+		    struct mrt_head *, int[2], int[2], int[2]);
 void		 bgp_fsm(struct peer *, enum session_events);
 struct peer	*getpeerbyaddr(struct bgpd_addr *);
 int		 imsg_compose_parent(int, pid_t, void *, u_int16_t);
@@ -214,7 +214,7 @@ void	 prepare_listeners(struct bgpd_config *);
 
 /* rde.c */
 int	 rde_main(struct bgpd_config *, struct network_head *,
-	    struct filter_head *, struct mrt_head *, int[2], int[2]);
+	    struct filter_head *, struct mrt_head *, int[2], int[2], int[2]);
 
 /* control.c */
 int	control_listen(void);
