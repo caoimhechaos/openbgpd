@@ -681,6 +681,7 @@ encspec		: /* nada */	{
 				$$.enc_key[i] = strtoul(s, NULL, 16);
 			}
 			free($2);
+			$$.enc_key_len = strlen($2) / 2;
 		}
 		;
 
