@@ -264,9 +264,9 @@ enum imsg_type {
 	IMSG_UPDATE_ERR,
 	IMSG_SESSION_UP,
 	IMSG_SESSION_DOWN,
-	IMSG_MRT_REQ,
-	IMSG_MRT_MSG,
-	IMSG_MRT_END,
+	IMSG_MRT_OPEN,
+	IMSG_MRT_REOPEN,
+	IMSG_MRT_CLOSE,
 	IMSG_KROUTE_CHANGE,
 	IMSG_KROUTE_DELETE,
 	IMSG_NEXTHOP_ADD,
@@ -551,6 +551,7 @@ struct buf	*buf_open(ssize_t);
 int		 buf_add(struct buf *, void *, ssize_t);
 void		*buf_reserve(struct buf *, ssize_t);
 int		 buf_close(struct msgbuf *, struct buf *);
+int		 buf_write(int, struct buf *);
 void		 buf_free(struct buf *);
 void		 msgbuf_init(struct msgbuf *);
 void		 msgbuf_clear(struct msgbuf *);
