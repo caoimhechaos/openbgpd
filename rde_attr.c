@@ -686,10 +686,6 @@ aspath_loopfree(struct aspath *aspath, u_int16_t myAS)
 	u_int16_t	 len, seg_size;
 	u_int8_t	 i, seg_len, seg_type;
 
-	if (len & 1)
-		/* odd lenght aspath are invalid */
-		return AS_ERR_BAD;
-
 	seg = aspath->data;
 	for (len = aspath->hdr.len; len > 0; len -= seg_size, seg += seg_size) {
 		seg_type = seg[0];
