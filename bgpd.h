@@ -118,6 +118,7 @@ struct buf_read {
 };
 
 enum announce_type {
+	ANNOUNCE_UNDEF,
 	ANNOUNCE_SELF,
 	ANNOUNCE_NONE,
 	ANNOUNCE_ALL

@@ -437,6 +437,7 @@ up_generate_updates(struct rde_peer *peer,
 
 		/* announce type handling */
 		switch (peer->conf.announce_type) {
+		case ANNOUNCE_UNDEF:
 		case ANNOUNCE_NONE:
 			return;
 		case ANNOUNCE_ALL:
@@ -471,6 +472,7 @@ up_generate_updates(struct rde_peer *peer,
 
 		/* announce type handling */
 		switch (peer->conf.announce_type) {
+		case ANNOUNCE_UNDEF:
 		case ANNOUNCE_NONE:
 			return;
 		case ANNOUNCE_ALL:

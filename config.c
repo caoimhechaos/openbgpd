@@ -56,6 +56,9 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 
 	for (p = peer_l; p != NULL; p = p->next) {
 		p->conf.ebgp = (p->conf.remote_as != conf->as);
+		if (p->conf.announce_type == ANNOUNCE_UNDEF)
+			p->conf.announce_type = p->conf.ebgp == 0 ?
+			    ANNOUNCE_ALL : ANNOUNCE_SELF;
 		if (!p->conf.id)
 			p->conf.id = get_id(p);
 	}
