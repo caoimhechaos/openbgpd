@@ -1629,6 +1629,7 @@ parse_config(char *filename, struct bgpd_config *xconf,
 {
 	struct sym		*sym, *next;
 	struct peer		*p, *pnext;
+	struct listen_addr	*la;
 
 	if ((fin = fopen(filename, "r")) == NULL) {
 		warn("%s", filename);
@@ -1681,13 +1682,22 @@ parse_config(char *filename, struct bgpd_config *xconf,
 		}
 	}
 
-	errors += merge_config(xconf, conf, peer_l, listen_addrs);
-	errors += mrt_mergeconfig(xmconf, mrtconf);
-	*xpeers = peer_l;
+	if (errors) {
+		/* XXX more leaks in this case? */
+		while ((la = TAILQ_FIRST(listen_addrs)) != NULL) {
+			TAILQ_REMOVE(listen_addrs, la, entry);
+			free(la);
+		}
+		free(listen_addrs);
+	} else {
+		errors += merge_config(xconf, conf, peer_l, listen_addrs);
+		errors += mrt_mergeconfig(xmconf, mrtconf);
+		*xpeers = peer_l;
 
-	for (p = peer_l_old; p != NULL; p = pnext) {
-		pnext = p->next;
-		free(p);
+		for (p = peer_l_old; p != NULL; p = pnext) {
+			pnext = p->next;
+			free(p);
+		}
 	}
 
 	free(conf);
