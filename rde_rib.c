@@ -899,18 +899,6 @@ static void		 nexthop_free(struct nexthop *);
  * may be passed to the external neighbor if the neighbor and the exit nexthop
  * reside in the same subnet -- directly connected.
  */
-struct nexthop {
-	LIST_ENTRY(nexthop)	nexthop_l;
-	enum nexthop_state	state;
-#if 0
-	u_int32_t		costs;
-#endif
-	struct aspath_head	path_h;
-	struct in_addr		exit_nexthop;
-	struct in_addr		true_nexthop;
-	u_int8_t		connected;
-};
-
 struct nexthop_table {
 	LIST_HEAD(, nexthop)	*nexthop_hashtbl;
 	u_long			 nexthop_hashmask;

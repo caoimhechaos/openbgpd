@@ -145,7 +145,17 @@ enum nexthop_state {
 	NEXTHOP_REACH
 };
 
-struct nexthop;
+struct nexthop {
+	LIST_ENTRY(nexthop)	nexthop_l;
+	enum nexthop_state	state;
+#if 0
+	u_int32_t		costs;
+#endif
+	struct aspath_head	path_h;
+	struct in_addr		exit_nexthop;
+	struct in_addr		true_nexthop;
+	u_int8_t		connected;
+};
 
 LIST_HEAD(prefix_head, prefix);
 
