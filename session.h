@@ -144,9 +144,11 @@ struct peer {
 struct peer	*peers;
 
 /* session.c */
-void		 session_socket_blockmode(int, enum blockmodes);
-int		 session_main(struct bgpd_config *, struct peer *, int[2],
+void		  session_socket_blockmode(int, enum blockmodes);
+int		  session_main(struct bgpd_config *, struct peer *, int[2],
 		    int[2]);
+struct peer	*getpeerbyip(in_addr_t);
+
 
 /* log.c */
 void		 log_peer_err(const struct peer *, const char *, ...);

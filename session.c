@@ -78,8 +78,6 @@ void	session_dispatch_imsg(struct imsgbuf *, int);
 void	session_up(struct peer *);
 void	session_down(struct peer *);
 
-struct peer	*getpeerbyip(in_addr_t);
-
 struct bgpd_config	*conf, *nconf = NULL;
 struct peer		*npeers;
 volatile sig_atomic_t	 session_quit = 0;

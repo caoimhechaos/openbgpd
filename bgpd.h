@@ -75,6 +75,16 @@ struct msgbuf {
 	TAILQ_HEAD(bufs, buf)	 bufs;
 };
 
+struct bgpd_addr {
+	sa_family_t	af;
+	union {
+		struct in_addr		v4;
+		struct in6_addr		v6;
+	} ba;		    /* 128-bit address */
+#define v4	ba.v4
+#define v6	ba.v6
+};
+
 struct bgpd_config {
 	int			 opts;
 	u_int16_t		 as;
