@@ -193,6 +193,8 @@ print_peer(struct peer_config *p, struct bgpd_config *conf)
 			    inet_ntoa(ina));
 		}
 	}
+	if (p->if_depend[0])
+		printf("%s\tdepend on \"%s\"\n", c, p->if_depend);
 
 	if (p->auth.method == AUTH_MD5SIG)
 		printf("%s\ttcp md5sig\n", c);

@@ -545,6 +545,14 @@ dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			else
 				kr_show_route(&imsg);
 			break;
+		case IMSG_IFINFO:
+			if (idx != PFD_PIPE_SESSION)
+				log_warnx("IFINFO request not from SE");
+			else if (imsg.hdr.len != IMSG_HEADER_SIZE + IFNAMSIZ)
+				log_warnx("IFINFO request with wrong len");
+			else
+				kr_ifinfo(imsg.data);
+			break;
 		default:
 			break;
 		}

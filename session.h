@@ -180,6 +180,7 @@ struct peer {
 	struct msgbuf		 wbuf;
 	struct buf_read		*rbuf;
 	u_int8_t		 auth_established;
+	u_int8_t		 depend_ok;
 	struct peer		*next;
 };
 
