@@ -155,8 +155,7 @@ main(int argc, char *argv[])
 
 	if (conf.opts & BGPD_OPT_NOACTION) {
 		if (conf.opts & BGPD_OPT_VERBOSE)
-			TAILQ_FOREACH(r, rules_l, entries)
-				print_rule(peer_l, r);
+			print_config(&conf, peer_l, rules_l);
 		else
 			fprintf(stderr, "configuration OK\n");
 		exit(0);
