@@ -19,9 +19,11 @@
 #define	__BGPD_H__
 
 #include <sys/types.h>
+#include <sys/socket.h>
 #include <sys/queue.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <net/if.h>
 
 #include <poll.h>
 #include <stdarg.h>
@@ -230,6 +232,7 @@ struct kroute_nexthop {
 struct kif {
 	u_short			 ifindex;
 	int			 flags;
+	char			 ifname[IFNAMSIZ];
 };
 
 struct session_up {
