@@ -1532,8 +1532,8 @@ parse_open(struct peer *peer)
 		p += sizeof(op_type);
 		plen -= sizeof(op_type);
 		memcpy(&op_len, p, sizeof(op_len));
-		p += sizeof(op_type);
-		plen -= sizeof(op_type);
+		p += sizeof(op_len);
+		plen -= sizeof(op_len);
 		if (op_len > 0) {
 			if (plen < op_len) {
 				log_peer_warnx(&peer->conf,
