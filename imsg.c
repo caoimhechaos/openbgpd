@@ -47,7 +47,7 @@ imsg_read(struct imsgbuf *ibuf)
 {
 	struct msghdr		 msg;
 	struct cmsghdr		*cmsg;
-	char			 cmsgbuf[CMSG_SPACE(sizeof(int))];
+	char			 cmsgbuf[CMSG_SPACE(sizeof(int) * 16)];
 	struct iovec		 iov;
 	ssize_t			 n;
 	int			 fd;
@@ -71,7 +71,8 @@ imsg_read(struct imsgbuf *ibuf)
 
 	ibuf->r.wpos += n;
 
-	if ((cmsg = CMSG_FIRSTHDR(&msg)) != NULL) {
+	for (cmsg = CMSG_FIRSTHDR(&msg); cmsg != NULL;
+	    cmsg = CMSG_NXTHDR(&msg, cmsg)) {
 		if (cmsg->cmsg_level == SOL_SOCKET &&
 		    cmsg->cmsg_type == SCM_RIGHTS) {
 			fd = (*(int *)CMSG_DATA(cmsg));
