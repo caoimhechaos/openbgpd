@@ -1599,7 +1599,9 @@ rde_shutdown(void)
 
 	nexthop_shutdown();
 	path_shutdown();
+	aspath_shutdown();
 	pt_shutdown();
 	peer_shutdown();
+	free(mrt);
 }
 

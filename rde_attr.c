@@ -720,12 +720,24 @@ aspath_init(u_int32_t hashsize)
 		;
 	astable.hashtbl = calloc(hs, sizeof(struct aspath_list));
 	if (astable.hashtbl == NULL)
-		fatal("path_init");
+		fatal("aspath_init");
 
 	for (i = 0; i < hs; i++)
 		LIST_INIT(&astable.hashtbl[i]);
 
 	astable.hashmask = hs - 1;
+}
+
+void
+aspath_shutdown(void)
+{
+	u_int32_t	i;
+
+	for (i = 0; i <= astable.hashmask; i++)
+		if (!LIST_EMPTY(&astable.hashtbl[i]))
+			log_warnx("path_free: free non-free table");
+
+	free(astable.hashtbl);
 }
 
 struct aspath *

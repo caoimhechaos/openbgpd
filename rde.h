@@ -256,6 +256,7 @@ int		 aspath_verify(void *, u_int16_t);
 #define		 AS_ERR_TYPE	-2
 #define		 AS_ERR_BAD	-3
 void		 aspath_init(u_int32_t);
+void		 aspath_shutdown(void);
 struct aspath	*aspath_get(void *, u_int16_t);
 void		 aspath_put(struct aspath *);
 u_char		*aspath_dump(struct aspath *);
