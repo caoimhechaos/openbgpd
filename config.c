@@ -28,7 +28,6 @@
 #include "bgpd.h"
 
 void			*sconf;
-static u_int32_t	 max_id = 1;	/* reserve 0 */
 
 u_int32_t	get_bgpid(void);
 u_int32_t	get_id(struct peer *);
@@ -118,5 +117,8 @@ get_bgpid(void)
 u_int32_t
 get_id(struct peer *p)
 {
-	return (max_id++);
+	/*
+	 * XXX this collides with multiviews and will need more clue later XXX
+	 */
+	return (ntohl(p->conf.remote_addr.sin_addr.s_addr));
 }
