@@ -171,7 +171,7 @@ host_v4(const char *s, struct bgpd_addr *h, u_int8_t *len)
 	struct in_addr		 ina;
 	int			 bits = 32;
 
-	memset(&ina, 0, sizeof(struct in_addr));
+	bzero(&ina, sizeof(struct in_addr));
 	if (strrchr(s, '/') != NULL) {
 		if ((bits = inet_net_pton(AF_INET, s, &ina, sizeof(ina))) == -1)
 			return (0);
@@ -192,7 +192,7 @@ host_v6(const char *s, struct bgpd_addr *h)
 {
 	struct addrinfo		 hints, *res;
 
-	memset(&hints, 0, sizeof(hints));
+	bzero(&hints, sizeof(hints));
 	hints.ai_family = AF_INET6;
 	hints.ai_socktype = SOCK_DGRAM; /*dummy*/
 	hints.ai_flags = AI_NUMERICHOST;
