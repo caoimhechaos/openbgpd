@@ -233,6 +233,7 @@ main(int argc, char *argv[])
 
 	while ((la = TAILQ_FIRST(conf.listen_addrs)) != NULL) {
 		TAILQ_REMOVE(conf.listen_addrs, la, entry);
+		close(la->fd);
 		free(la);
 	}
 

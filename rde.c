@@ -162,6 +162,7 @@ rde_main(struct bgpd_config *config, struct network_head *net_l,
 
 	while ((la = TAILQ_FIRST(config->listen_addrs)) != NULL) {
 		TAILQ_REMOVE(config->listen_addrs, la, entry);
+		close(la->fd);
 		free(la);
 	}
 	free(config->listen_addrs);
