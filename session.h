@@ -172,14 +172,15 @@ void		 log_conn_attempt(const struct peer *, struct in_addr);
 
 /* parse.y */
 int	 parse_config(char *, struct bgpd_config *, struct mrt_head *,
-	    struct peer **);
+	    struct peer **, struct network_head *);
 
 /* config.c */
 int	 merge_config(struct bgpd_config *, struct bgpd_config *,
 	    struct peer *);
 
 /* rde.c */
-int	 rde_main(struct bgpd_config *, struct peer *, int[2], int[2]);
+int	 rde_main(struct bgpd_config *, struct peer *, struct network_head *,
+	    int[2], int[2]);
 
 /* control.c */
 int	control_listen(void);
