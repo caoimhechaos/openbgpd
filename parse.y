@@ -101,7 +101,7 @@ typedef struct {
 %token	GROUP NEIGHBOR NETWORK
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE MAXPREFIX ANNOUNCE
 %token	DUMP MSG IN TABLE
-%token	LOG UPDATES
+%token	LOG
 %token	TCP MD5SIG PASSWORD KEY
 %token	ALLOW DENY MATCH
 %token	QUICK
@@ -207,8 +207,11 @@ conf_main	: AS number		{
 			else
 				conf->flags &= ~BGPD_FLAG_NO_FIB_UPDATE;
 		}
-		| LOG UPDATES		{
-			conf->log |= BGPD_LOG_UPDATES;
+		| LOG string		{
+			if (!strcmp($2, "updates"))
+				conf->log |= BGPD_LOG_UPDATES;
+			else
+				YYERROR;
 		}
 		| DUMP MSG STRING IN STRING optnumber	{
 			int action;
@@ -709,7 +712,6 @@ lookup(char *s)
 		{ "tcp",		TCP},
 		{ "to",			TO},
 		{ "transit-AS",		TRANSITAS},
-		{ "updates",		UPDATES},
 	};
 	const struct keywords	*p;
 
