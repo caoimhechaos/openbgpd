@@ -82,7 +82,7 @@ typedef struct {
 %}
 
 %token	SET
-%token	AS BGPID HOLDTIME HOLDTIME_MIN LISTEN ON
+%token	AS BGPID HOLDTIME YMIN LISTEN ON
 %token	GROUP NEIGHBOR
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP
 %token	ERROR
@@ -144,13 +144,13 @@ conf_main	: AS number		{
 			}
 			conf->holdtime = $2;
 		}
-		| HOLDTIME_MIN number	{
-			if ($2 < MIN_HOLDTIME) {
-				yyerror("holdtime_min must be at least %u",
+		| HOLDTIME YMIN number	{
+			if ($3 < MIN_HOLDTIME) {
+				yyerror("holdtime min must be at least %u",
 				    MIN_HOLDTIME);
 				YYERROR;
 			}
-			conf->min_holdtime = $2;
+			conf->min_holdtime = $3;
 		}
 		| LISTEN ON address	{
 			conf->listen_addr.sin_addr.s_addr = $3.s_addr;
@@ -303,9 +303,9 @@ lookup(char *s)
 		{ "descr",		DESCR},
 		{ "group",		GROUP},
 		{ "holdtime",		HOLDTIME},
-		{ "holdtime_min",	HOLDTIME_MIN},
 		{ "listen",		LISTEN},
 		{ "local-address",	LOCALADDR},
+		{ "min",		YMIN},
 		{ "mrtdump",		MRTDUMP},
 		{ "multihop",		MULTIHOP},
 		{ "neighbor",		NEIGHBOR},
