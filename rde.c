@@ -1282,6 +1282,13 @@ rde_shutdown(void)
 		path_remove(asp);
 	}
 
+	peerdynamic.remote_bgpid = 0;
+	peerdynamic.state = PEER_DOWN;
+	for (asp = LIST_FIRST(&peerdynamic.path_h); asp != NULL; asp = nasp) {
+		nasp = LIST_NEXT(asp, peer_l);
+		path_remove(asp);
+	}
+
 	/* free filters */
 	while ((r = TAILQ_FIRST(rules_l)) != NULL) {
 		TAILQ_REMOVE(rules_l, r, entries);
