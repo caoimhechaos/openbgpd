@@ -147,7 +147,8 @@ struct filter_set {
 };
 
 enum auth_method {
-	AUTH_MD5SIG = 1,
+	AUTH_NONE,
+	AUTH_MD5SIG,
 	AUTH_IPSEC_MANUAL_ESP,
 	AUTH_IPSEC_MANUAL_AH,
 	AUTH_IPSEC_IKE_ESP,

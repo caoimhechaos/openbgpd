@@ -892,6 +892,7 @@ session_setup_socket(struct peer *p)
 	int	ttl = p->conf.distance;
 	int	pre = IPTOS_PREC_INTERNETCONTROL;
 	int	nodelay = 1;
+	int	bsize;
 
 	if (p->conf.ebgp && p->sa_remote.ss_family == AF_INET)
 		/* set TTL to foreign router's distance - 1=direct n=multihop */
@@ -926,6 +927,19 @@ session_setup_socket(struct peer *p)
 		    "session_setup_socket setsockopt TOS");
 		return (-1);
 	}
+
+	/* only increase bufsize (and thus window) if md5 or ipsec is in use */
+	if (p->conf.auth.method != AUTH_NONE) {
+		/* try to increase bufsize. no biggie if it fails */
+		bsize = 65535;
+		while (setsockopt(p->fd, SOL_SOCKET, SO_RCVBUF, &bsize,
+		    sizeof(bsize)) == -1)
+			bsize /= 2;
+		bsize = 65535;
+		while (setsockopt(p->fd, SOL_SOCKET, SO_SNDBUF, &bsize,
+		    sizeof(bsize)) == -1)
+			bsize /= 2;
+ 	}
 
 	return (0);
 }
