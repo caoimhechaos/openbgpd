@@ -57,6 +57,7 @@
 #define	F_NEXTHOP		0x08
 #define	F_DOWN			0x10
 #define	F_STATIC		0x20
+#define	F_LONGER		0x40
 
 enum {
 	PROC_MAIN,

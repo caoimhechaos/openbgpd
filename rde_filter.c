@@ -91,8 +91,7 @@ rde_filter_match(struct filter_rule *f, struct attr_flags *attrs,
 	    f->match.prefix.addr.af == prefix->af) {
 		switch (f->match.prefix.addr.af) {
 		case AF_INET:
-			mask = 0xffffffff << (32 - f->match.prefix.len);
-			mask = htonl(mask);
+			mask = htonl(0xffffffff << (32 - f->match.prefix.len));
 			if ((prefix->v4.s_addr & mask) !=
 			    (f->match.prefix.addr.v4.s_addr & mask))
 				return (0);
