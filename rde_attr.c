@@ -303,7 +303,7 @@ attr_error(u_char *p, u_int16_t len, struct attr_flags *attr,
 		}
 		TAILQ_FOREACH(a, &attr->others, attr_l)
 			if (type == a->type) {
-				*size = NULL;
+				*size = 0;
 				*suberr = ERR_UPD_ATTRLIST;
 				return (NULL);
 			}
