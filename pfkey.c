@@ -242,8 +242,11 @@ pfkey_reply(int sd, u_int32_t *spip)
 	}
 
 	if (hdr.sadb_msg_type == SADB_GETSPI) {
-		if (spip == NULL)
+		if (spip == NULL) {
+			bzero(data, len);
+			free(data);
 			return (0);
+		}
 
 		msg = (struct sadb_msg *)data;
 		for (ext = (struct sadb_ext *)(msg + 1);
