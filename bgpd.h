@@ -323,7 +323,4 @@ int	control_init(void);
 void	control_cleanup(void);
 int	control_imsg_relay(struct imsg *);
 
-/* pfkey.c */
-int	pfkey_setkey(struct bgpd_addr *, struct bgpd_addr *, char *);
-
 #endif /* __BGPD_H__ */

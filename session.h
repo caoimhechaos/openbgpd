@@ -131,9 +131,15 @@ struct peer_stats {
 	time_t			 last_read;
 };
 
+struct peer_auth {
+	u_int32_t	spi_in;
+	u_int32_t	spi_out;
+};
+
 struct peer {
 	struct peer_config	 conf;
 	struct peer_stats	 stats;
+	struct peer_auth	 auth;
 	u_int32_t		 remote_bgpid;
 	u_int16_t		 holdtime;
 	enum session_state	 state;
@@ -186,3 +192,7 @@ void	control_shutdown(void);
 int	control_dispatch_msg(struct pollfd *, int);
 void	control_accept(int);
 void	control_close(int);
+
+/* pfkey.c */
+int	pfkey_auth_establish(struct peer *p);
+int	pfkey_auth_remove(struct peer *p);
