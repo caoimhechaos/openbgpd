@@ -196,6 +196,29 @@ log_peer_errx(struct peer *peer, const char *emsg, ...)
 }
 
 void
+log_err(const char *emsg, ...)
+{
+	char	*nfmt;
+	va_list	 ap;
+
+	/* best effort to even work in out of memory situations */
+
+	va_start(ap, emsg);
+
+	if (emsg == NULL)
+		logit(LOG_CRIT, "%s", strerror(errno));
+	else {
+		if (asprintf(&nfmt, "%s: %s", emsg, strerror(errno)) == -1) {
+			/* we tried it... */
+			vlog(LOG_CRIT, emsg, ap);
+			logit(LOG_CRIT, "%s", strerror(errno));
+		} else
+			vlog(LOG_CRIT, nfmt, ap);
+	}
+	va_end(ap);
+}
+
+void
 fatal(const char *emsg, int error)
 {
 	if (emsg == NULL)

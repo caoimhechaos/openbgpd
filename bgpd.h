@@ -281,6 +281,7 @@ void		 logit(int, const char *, ...);
 void		 vlog(int, const char *, va_list);
 void		 log_peer_err(struct peer *, const char *, ...);
 void		 log_peer_errx(struct peer *, const char *, ...);
+void		 log_err(const char *, ...);
 void		 fatal(const char *, int);
 void		 fatal_ensure(const char *, int, const char *);
 void		 log_statechange(struct peer *, enum session_state,
