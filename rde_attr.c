@@ -774,7 +774,7 @@ aspath_match(struct aspath *a, enum as_spec type, u_int16_t as)
 	int		 final;
 	u_int16_t	 len, seg_size;
 	u_int8_t	 i, seg_type, seg_len;
-	
+
 	final = 0;
 	seg = a->data;
 	for (len = a->hdr.len; len > 0; len -= seg_size, seg += seg_size) {
