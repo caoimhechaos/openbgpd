@@ -105,8 +105,10 @@ buf_write(int sock, struct buf *buf)
 			return (-1);
 	}
 
-	if (n == 0)			/* connection closed */
+	if (n == 0) {			/* connection closed */
+		errno = 0;
 		return (-2);
+	}
 
 	if (n < buf->size - buf->rpos) {	/* not all data written yet */
 		buf->rpos += n;
