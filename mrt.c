@@ -297,7 +297,7 @@ mrt_dump_upcall(struct pt_entry *pt, void *ptr)
 	 */
 	LIST_FOREACH(p, &pt->prefix_h, prefix_l)
 		mrt_dump_entry(mrtbuf, p, sequencenum++,
-		    &p->aspath->peer->conf);
+		    &p->peer->conf);
 }
 
 static int
