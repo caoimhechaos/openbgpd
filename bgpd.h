@@ -160,6 +160,7 @@ struct peer_config {
 	enum announce_type	 announce_type;
 	enum enforce_as		 enforce_as;
 	char			 tcp_md5_key[TCP_MD5_KEY_LEN];
+	u_int8_t		 capabilities;
 	enum reconf_action	 reconf_action;
 };
 
