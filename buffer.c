@@ -122,14 +122,10 @@ msgbuf_init(struct msgbuf *msgbuf)
 void
 msgbuf_clear(struct msgbuf *msgbuf)
 {
-	struct buf	*buf, *next;
+	struct buf	*buf;
 
-	for (buf = TAILQ_FIRST(&msgbuf->bufs); buf != NULL; buf = next) {
-		next = TAILQ_NEXT(buf, entries);
+	while ((buf = TAILQ_FIRST(&msgbuf->bufs)) != NULL)
 		buf_dequeue(msgbuf, buf);
-	}
-	msgbuf->queued = 0;
-	msgbuf->sock = -1;
 }
 
 int
