@@ -118,7 +118,7 @@ log_fmt_peer(const struct peer_config *peer)
 		if (asprintf(&p, "%s/%u", ip, peer->remote_masklen) == -1)
 			fatal(NULL);
 	} else {
-		if((p = strdup(ip)) == NULL)
+		if ((p = strdup(ip)) == NULL)
 			fatal(NULL);
 	}
 
