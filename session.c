@@ -911,7 +911,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *peer)
 	if (peer->state == STATE_CONNECT) {
 		if (pfd->revents & POLLOUT) {
 			if (pfd->revents & POLLIN) {
-				/* error occured */
+				/* error occurred */
 				len = sizeof(error);
 				if (getsockopt(pfd->fd, SOL_SOCKET, SO_ERROR,
 				    &error, &len) == -1)

@@ -82,7 +82,7 @@ static const char *suberr_open_names[] = {
 	"AS unacceptable",
 	"BGPID invalid",
 	"optional parameter error",
-	"Authentification error",
+	"Authentication error",
 	"unacceptable holdtime"
 };
 

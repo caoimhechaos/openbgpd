@@ -94,7 +94,7 @@ kroute_init(int fs)
 		return (-1);
 	}
 
-	/* not intrested in my own messages */
+	/* not interested in my own messages */
 	if (setsockopt(kr_state.fd, SOL_SOCKET, SO_USELOOPBACK,
 	    &opt, sizeof(opt)) == -1)
 		log_err("kroute_init: setsockopt");	/* not fatal */
@@ -557,7 +557,7 @@ kroute_dispatch_msg(void)
 				return (-1);
 			break;
 		default:
-			/* ingnore for now */
+			/* ignore for now */
 			break;
 		}
 	}
