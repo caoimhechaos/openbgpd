@@ -2392,13 +2392,23 @@ getpeerbyaddr(struct bgpd_addr *addr)
 struct peer *
 getpeerbydesc(const char *descr)
 {
-	struct peer *p;
+	struct peer	*p, *res = NULL;
+	int		 match = 0;
 
-	for (p = peers; p != NULL && strcmp(p->conf.descr, descr);
-	    p = p->next)
-		;	/* nothing */
+	for (p = peers; p != NULL; p = p->next)
+		if (!strcmp(p->conf.descr, descr)) {
+			res = p;
+			match++;
+		}
 
-	return (p);
+	if (match > 1)
+		log_info("neighbor description \"%s\" not unique, request "
+		    "aborted", descr);
+
+	if (match == 1)
+		return (res);
+	else
+		return (NULL);
 }
 
 struct peer *
