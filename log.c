@@ -197,7 +197,7 @@ log_peer_errx(const struct peer *peer, const char *emsg, ...)
 }
 
 void
-log_err(const char *emsg, ...)
+log_warn(const char *emsg, ...)
 {
 	char	*nfmt;
 	va_list	 ap;

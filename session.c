@@ -823,10 +823,10 @@ session_tcp_established(struct peer *peer)
 	session_socket_blockmode(peer->sock, BM_NORMAL);
 	if (getsockname(peer->sock, (struct sockaddr *)&peer->sa_local,
 	    &len) == -1)
-		log_err("getsockname");
+		log_warn("getsockname");
 	if (getpeername(peer->sock, (struct sockaddr *)&peer->sa_remote,
 	    &len) == -1)
-		log_err("getpeername");
+		log_warn("getpeername");
 }
 
 void
