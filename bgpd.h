@@ -108,17 +108,28 @@ struct bgpd_addr {
 #define addr32	ba.addr32
 };
 
+#define DEFAULT_LISTENER	0x01
+
+struct listen_addr {
+	TAILQ_ENTRY(listen_addr)	 entry;
+	struct sockaddr_storage		 sa;
+	int				 fd;
+	enum reconf_action		 reconf;
+	u_int8_t			 flags;
+};
+
+TAILQ_HEAD(listen_addrs, listen_addr);
+
 struct bgpd_config {
-	int			 opts;
-	u_int16_t		 as;
-	u_int32_t		 bgpid;
-	u_int32_t		 clusterid;
-	u_int16_t		 holdtime;
-	u_int16_t		 min_holdtime;
-	int			 flags;
-	int			 log;
-	struct sockaddr_in	 listen_addr;
-	struct sockaddr_in6	 listen6_addr;
+	int					 opts;
+	u_int16_t				 as;
+	u_int32_t				 bgpid;
+	u_int32_t				 clusterid;
+	u_int16_t				 holdtime;
+	u_int16_t				 min_holdtime;
+	int					 flags;
+	int					 log;
+	struct listen_addrs			*listen_addrs;
 };
 
 struct buf_read {
@@ -239,6 +250,7 @@ enum imsg_type {
 	IMSG_RECONF_CONF,
 	IMSG_RECONF_PEER,
 	IMSG_RECONF_FILTER,
+	IMSG_RECONF_LISTENER,
 	IMSG_RECONF_DONE,
 	IMSG_UPDATE,
 	IMSG_UPDATE_ERR,

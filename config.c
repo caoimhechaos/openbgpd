@@ -37,10 +37,11 @@ int		host_v6(const char *, struct bgpd_addr *);
 
 int
 merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
-    struct peer *peer_l)
+    struct peer *peer_l, struct listen_addrs *listen_addrs)
 {
-	struct peer	*p;
-	int		 errs = 0;
+	struct peer				*p;
+	struct listen_addr			*la;
+	int					 errs = 0;
 
 	/* preserve cmd line opts */
 	conf->opts = xconf->opts;
@@ -75,7 +76,17 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 		}
 	}
 
+	if (xconf->listen_addrs != NULL) {
+		while ((la = TAILQ_FIRST(xconf->listen_addrs)) != NULL) {
+			TAILQ_REMOVE(xconf->listen_addrs, la, entry);
+			free(la);
+		}
+		free(xconf->listen_addrs);
+	}
+
 	memcpy(xconf, conf, sizeof(struct bgpd_config));
+
+	xconf->listen_addrs = listen_addrs;
 
 	return (errs);
 }

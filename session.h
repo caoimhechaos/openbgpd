@@ -207,7 +207,7 @@ int	 parse_config(char *, struct bgpd_config *, struct mrt_head *,
 
 /* config.c */
 int	 merge_config(struct bgpd_config *, struct bgpd_config *,
-	    struct peer *);
+	    struct peer *, struct listen_addrs *);
 
 /* rde.c */
 int	 rde_main(struct bgpd_config *, struct network_head *,
