@@ -634,7 +634,7 @@ rde_update_queue_runner(void)
 {
 	struct rde_peer		*peer;
 	int			 r, sent;
-	u_int16_t	 	 len, wd_len, wpos;
+	u_int16_t		 len, wd_len, wpos;
 
 	len = sizeof(queue_buf) - MSGSIZE_HEADER;
 	do {
