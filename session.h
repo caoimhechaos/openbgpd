@@ -123,6 +123,11 @@ struct capa_mp {
 	u_int8_t		safi;
 };
 
+struct bgpd_sysdep {
+	u_int8_t		no_pfkey;
+	u_int8_t		no_md5sig;
+};
+
 struct ctl_conn {
 	TAILQ_ENTRY(ctl_conn)	entries;
 	struct imsgbuf		ibuf;
@@ -216,9 +221,9 @@ void	control_accept(int);
 void	control_close(int);
 
 /* pfkey.c */
-int	pfkey_establish(struct peer *p);
-int	pfkey_remove(struct peer *p);
-int	pfkey_init(void);
+int	pfkey_establish(struct peer *);
+int	pfkey_remove(struct peer *);
+int	pfkey_init(struct bgpd_sysdep *);
 
 /* printconf.c */
 void	print_config(struct bgpd_config *, struct network_head *, struct peer *,
