@@ -204,7 +204,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	msgbuf_clear(&ibuf_main.w);
 
 	log_info("route decision engine exiting");
-	exit(0);
+	_exit(0);
 }
 
 void
