@@ -282,6 +282,9 @@ kroute_fetchtable(void)
 		if ((sa_in = (struct sockaddr_in *)rti_info[RTAX_DST]) == NULL)
 			continue;
 
+		if (rtm->rtm_flags & RTF_LLINFO)
+			continue;
+
 		if ((kr = calloc(1, sizeof(struct kroute_node))) == NULL)
 			fatal(NULL, errno);
 
