@@ -372,7 +372,8 @@ path_init(u_long hashsize)
 {
 	u_long	hs, i;
 
-	for (hs = 1; hs < hashsize; hs <<= 1) ;
+	for (hs = 1; hs < hashsize; hs <<= 1)
+		;
 	pathtable.path_hashtbl = calloc(hs, sizeof(struct aspath_head));
 	if (pathtable.path_hashtbl == NULL)
 		fatal("path_init", errno);
@@ -892,7 +893,8 @@ nexthop_init(u_long hashsize)
 {
 	u_long hs, i;
 
-	for (hs = 1; hs < hashsize; hs <<= 1) ;
+	for (hs = 1; hs < hashsize; hs <<= 1)
+		;
 	nexthoptable.nexthop_hashtbl = calloc(hs, sizeof(struct aspath_head));
 	if (nexthoptable.nexthop_hashtbl == NULL)
 		fatal("nextop_init", errno);

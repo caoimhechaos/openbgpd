@@ -188,7 +188,8 @@ pt_lookup(struct in_addr prefix)
 	PT_STAT(pt_lookup);
 	for (i = MAX_PREFIX; i >= MIN_PREFIX; i--) {
 		p = pt_get(prefix, i);
-		if (p != NULL) return p;
+		if (p != NULL)
+			return p;
 	}
 	return NULL;
 }

@@ -523,7 +523,8 @@ peer_init(struct bgpd_config *bgpconf, u_long hashsize)
 	struct peer	*p, *next;
 	u_long		 hs, i;
 
-	for (hs = 1; hs < hashsize; hs <<= 1) ;
+	for (hs = 1; hs < hashsize; hs <<= 1)
+		;
 	peertable.peer_hashtbl = calloc(hs, sizeof(struct rde_peer_head));
 	if (peertable.peer_hashtbl == NULL)
 		fatal("peer_init", errno);
