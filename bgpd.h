@@ -404,6 +404,8 @@ struct session_up {
 	struct bgpd_addr	local_addr;
 	struct bgpd_addr	remote_addr;
 	struct peer_config	conf;
+	struct capabilities	capa_announced;
+	struct capabilities	capa_received;
 };
 
 struct pftable_msg {
