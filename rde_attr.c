@@ -53,7 +53,7 @@ attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
 		memcpy(b, &tmp, sizeof(tmp));
 		b += 2;
 	} else
-		*b++ = (u_char)(data_len & 0xff);
+		*b++ = (u_char)data_len;
 
 	if (data_len != 0)
 		memcpy(b, data, data_len);
