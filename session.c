@@ -1459,6 +1459,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			if (idx != PFD_PIPE_MAIN)
 				fatalx("ctl kroute request not from parent");
 			control_imsg_relay(&imsg);
+			break;
 		case IMSG_UPDATE:
 			if (idx != PFD_PIPE_ROUTE)
 				fatalx("update request not from RDE");
