@@ -1040,6 +1040,7 @@ nexthop_add(struct rde_aspath *asp)
 	if (nh == NULL) {
 		nh = nexthop_alloc();
 		nh->state = NEXTHOP_LOOKUP;
+		nh->exit_nexthop.af = AF_INET;
 		nh->exit_nexthop.v4.s_addr = asp->flags.nexthop;
 		LIST_INSERT_HEAD(NEXTHOP_HASH(asp->flags.nexthop), nh,
 		    nexthop_l);
