@@ -63,7 +63,7 @@ imsg_get(struct imsgbuf *ibuf, struct imsg *imsg)
 	ssize_t			 datalen = 0;
 	size_t			 av, left;
 
-	av = ibuf->r.wpos; 
+	av = ibuf->r.wpos;
 
 	if (IMSG_HEADER_SIZE > av)
 		return (0);

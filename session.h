@@ -75,3 +75,19 @@ struct msg_open {
 	u_int32_t		 bgpid;
 	u_int8_t		 optparamlen;
 };
+
+struct ctl_conn {
+	TAILQ_ENTRY(ctl_conn)	entries;
+	struct imsgbuf		ibuf;
+};
+
+TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
+
+struct bgpd_config	*conf;
+
+/* control.c */
+int	control_listen(void);
+void	control_shutdown(void);
+int	control_dispatch_msg(struct pollfd *, int);
+void	control_accept(int);
+void	control_close(int);
