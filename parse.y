@@ -87,6 +87,7 @@ typedef struct {
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE
 %token	ERROR
 %token	MRTDUMP
+%token	LOG UPDATES
 %token	<v.string>	STRING
 %type	<v.number>	number
 %type	<v.string>	string
@@ -157,6 +158,9 @@ conf_main	: AS number		{
 		}
 		| NO FIBUPDATE		{
 			conf->flags |= BGPD_FLAG_NO_FIB_UPDATE;
+		}
+		| LOG UPDATES		{
+			conf->log |= BGPD_LOG_UPDATES;
 		}
 		/*
 		 *  XXX this is bad.
@@ -313,6 +317,7 @@ lookup(char *s)
 		{ "holdtime",		HOLDTIME},
 		{ "listen",		LISTEN},
 		{ "local-addr",		LOCALADDR},
+		{ "log",		LOG},
 		{ "min",		YMIN},
 		{ "mrtdump",		MRTDUMP},
 		{ "multihop",		MULTIHOP},
@@ -322,6 +327,7 @@ lookup(char *s)
 		{ "passive",		PASSIVE},
 		{ "remote-as",		REMOTEAS},
 		{ "set",		SET},
+		{ "updates",		UPDATES},
 	};
 	const struct keywords	*p;
 

@@ -43,6 +43,8 @@
 
 #define	BGPD_FLAG_NO_FIB_UPDATE		0x0001
 
+#define BGPD_LOG_UPDATES		0x0001
+
 enum {
 	PROC_MAIN,
 	PROC_SE,
@@ -104,6 +106,7 @@ struct bgpd_config {
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;
 	int			 flags;
+	int			 log;
 	struct sockaddr_in	 listen_addr;
 	struct peer		*peers;
 };

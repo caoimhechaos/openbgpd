@@ -71,6 +71,7 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf)
 	    sizeof(xconf->listen_addr));
 
 	xconf->flags = conf->flags;
+	xconf->log = conf->log;
 
 	/*
 	 * as we cannot get the negotiated holdtime in the main process,
