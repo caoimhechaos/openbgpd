@@ -468,10 +468,8 @@ kroute_remove(struct kroute_node *kr)
 				 */
 				bzero(&nh, sizeof(nh));
 				kroute_validate_nexthop(s->nexthop, &nh);
-#if 0
 				if (nh.valid == 0)	/* no alternate route */
 					send_nexthop_update(&nh);
-#endif
 			}
 
 	free(kr);
@@ -515,9 +513,7 @@ kroute_nexthop_check(in_addr_t key)
 		}
 	} else
 		kroute_validate_nexthop(key, &nh);
-#if 0
 	send_nexthop_update(&nh);
-#endif
 }
 
 void

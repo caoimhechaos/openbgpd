@@ -259,6 +259,9 @@ struct kroute_nexthop {
 };
 
 /* prototypes */
+/* bgpd.c */
+void		 send_nexthop_update(struct kroute_nexthop *);
+
 /* session.c */
 int		 session_main(struct bgpd_config *, int[2], int[2]);
 
