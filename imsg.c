@@ -76,8 +76,10 @@ get_imsg(int fd, struct imsg *imsg)
 			}
 		}
 	} while (n > 0);
-	if (read_total == 0)	/* connection closed ? */
-		fatal("pipe closed", 0);
+
+	if (read_total == 0)	/* connection closed */
+		return (0);
+
 	return (datalen + IMSG_HEADER_SIZE);
 }
 
