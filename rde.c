@@ -1163,11 +1163,11 @@ rde_shutdown(void)
 				nasp = LIST_NEXT(asp, peer_l);
 				path_remove(asp);
 			}
-			/* finaly remove peer */
+			/* finally remove peer */
 			peer_remove(p);
 		}
 
-	/* free annoced network prefixes */
+	/* free announced network prefixes */
 	peerself.remote_bgpid = 0;
 	peerself.state = PEER_DOWN;
 	for (asp = LIST_FIRST(&peerself.path_h); asp != NULL; asp = nasp) {

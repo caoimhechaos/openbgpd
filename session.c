@@ -814,7 +814,7 @@ session_connect(struct peer *peer)
 
 	/*
 	 * we do not need the overcomplicated collision detection rfc1771
-	 * decribes; we simply make sure there is only ever one concurrent
+	 * describes; we simply make sure there is only ever one concurrent
 	 * tcp connection per peer.
 	 */
 	if (peer->sock != -1)

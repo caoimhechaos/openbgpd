@@ -262,7 +262,7 @@ up_generate_updates(struct rde_peer *peer,
 			break;
 		}
 
-		/* well known communites */
+		/* well known communities */
 		if (rde_filter_community(&old->aspath->flags,
 		    COMMUNITY_WELLKNOWN, COMMUNITY_NO_ADVERTISE))
 			return;
@@ -338,7 +338,7 @@ up_generate_updates(struct rde_peer *peer,
 			break;
 		}
 
-		/* well known communites */
+		/* well known communities */
 		if (rde_filter_community(&new->aspath->flags,
 		    COMMUNITY_WELLKNOWN, COMMUNITY_NO_ADVERTISE)) {
 			up_generate_updates(peer, NULL, old);
