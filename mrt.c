@@ -283,7 +283,14 @@ mrt_state(struct mrtdump_config *m, enum imsg_type type,
 			return (0);
 		}
 		break;
-	default:
+	case MRT_STATE_RUNNING:
+		if (type == IMSG_MRT_END) {
+			if (m->msgbuf.sock != -1)
+				close(m->msgbuf.sock);
+			m->msgbuf.sock = -1;
+			m->state = MRT_STATE_DONE;
+			return (0);
+		}
 		break;
 	}
 	return (1);
