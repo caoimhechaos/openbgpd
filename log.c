@@ -221,6 +221,26 @@ log_warn(const char *emsg, ...)
 }
 
 void
+log_warnx(const char *emsg, ...)
+{
+	va_list	 ap;
+
+	va_start(ap, emsg);
+	vlog(LOG_CRIT, emsg, ap);
+	va_end(ap);
+}
+
+void
+log_info(const char *emsg, ...)
+{
+	va_list	 ap;
+
+	va_start(ap, emsg);
+	vlog(LOG_INFO, emsg, ap);
+	va_end(ap);
+}
+
+void
 fatal(const char *emsg)
 {
 	if (emsg == NULL)
