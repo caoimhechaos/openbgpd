@@ -181,7 +181,7 @@ address		: STRING		{
 		}
 		;
 
-optnl		: '\n' optnl 
+optnl		: '\n' optnl
 		|
 		;
 
