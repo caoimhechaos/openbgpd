@@ -199,9 +199,11 @@ log_debug(const char *emsg, ...)
 {
 	va_list	 ap;
 
-	va_start(ap, emsg);
-	vlog(LOG_DEBUG, emsg, ap);
-	va_end(ap);
+	if (debug) {
+		va_start(ap, emsg);
+		vlog(LOG_DEBUG, emsg, ap);
+		va_end(ap);
+	}
 }
 
 void
