@@ -262,7 +262,7 @@ main(int argc, char *argv[])
 
 		for (j = PFD_MRT_START; j < i && nfds > 0 ; j++) {
 			if (pfd[j].revents & POLLOUT) {
-				if ((n = mrt_write(mrt[i])) < 0) {
+				if ((n = mrt_write(mrt[j])) < 0) {
 					log_err("mrt write error");
 				}
 			}
