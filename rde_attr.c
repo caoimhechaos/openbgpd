@@ -907,7 +907,10 @@ aspath_strlen(void *data, u_int16_t len)
 		seg_size = 2 + 2 * seg_len;
 
 		if (seg_type == AS_SET)
-			total_size += 2;
+			if (total_size != 0)
+				total_size += 3;
+			else
+				total_size += 2;
 		else if (total_size != 0)
 			total_size += 1;
 
