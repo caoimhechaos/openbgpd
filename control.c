@@ -71,6 +71,7 @@ control_init(void)
 	if (chmod(SOCKET_NAME, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP) == -1) {
 		log_warn("control_init chmod");
 		close(fd);
+		(void)unlink(SOCKET_NAME);
 		return (-1);
 	}
 
