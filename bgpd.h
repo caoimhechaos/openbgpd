@@ -475,11 +475,13 @@ struct rrefresh {
 /* Address Family Numbers as per rfc1700 */
 #define AFI_IPv4	1
 #define AFI_IPv6	2
+#define AFI_ALL		0xffff
 
 /* Subsequent Address Family Identifier as per rfc2858 */
 #define SAFI_UNICAST	1
 #define SAFI_MULTICAST	2
 #define SAFI_BOTH	3
+#define SAFI_ALL	0xff
 
 /* prototypes */
 /* bgpd.c */
