@@ -75,6 +75,7 @@ void
 rde_sighdlr(int sig)
 {
 	switch (sig) {
+	case SIGINT:
 	case SIGTERM:
 		rde_quit = 1;
 		break;
@@ -124,6 +125,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	endpwent();
 
 	signal(SIGTERM, rde_sighdlr);
+	signal(SIGINT, rde_sighdlr);
 
 	close(pipe_s2r[0]);
 	close(pipe_m2r[0]);
