@@ -166,6 +166,10 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		return (pid);
 	}
 
+	/* control socket is outside chroot */
+	if ((csock = control_init()) == -1)
+		fatalx("control socket setup failed");
+
 	if ((pw = getpwnam(BGPD_USER)) == NULL)
 		fatal(NULL);
 
