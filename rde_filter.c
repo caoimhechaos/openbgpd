@@ -45,7 +45,9 @@ rde_filter(struct rde_peer *peer, struct rde_aspath *asp,
 		    f->peer.peerid != peer->conf.id)
 			continue;
 		if (rde_filter_match(f, asp, prefix, prefixlen)) {
-			rde_apply_set(asp, &f->set, prefix->af, asp->peer, dir);
+			if (asp != NULL)
+				rde_apply_set(asp, &f->set, prefix->af,
+				    asp->peer, dir);
 			if (f->action != ACTION_NONE)
 				action = f->action;
 			if (f->quick)
