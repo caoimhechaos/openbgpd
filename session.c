@@ -1471,6 +1471,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			break;
 		case IMSG_CTL_KROUTE:
 		case IMSG_CTL_KROUTE_ADDR:
+		case IMSG_CTL_SHOW_NEXTHOP:
 		case IMSG_CTL_END:
 			if (idx != PFD_PIPE_MAIN)
 				fatalx("ctl kroute request not from parent");
