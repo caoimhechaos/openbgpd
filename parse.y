@@ -515,6 +515,7 @@ peeropts	: REMOTEAS asnumber	{
 				free($4);
 				YYERROR;
 			}
+			curpeer->conf.auth.method = MD5SIG;
 			free($4);
 		}
 		| TCP MD5SIG KEY string {
@@ -546,6 +547,7 @@ peeropts	: REMOTEAS asnumber	{
 				curpeer->conf.auth.md5key[i] =
 				    strtoul(s, NULL, 16);
 			}
+			curpeer->conf.auth.method = MD5SIG;
 			free($4);
 		}
 		| IPSEC IKE {
