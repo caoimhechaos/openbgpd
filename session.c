@@ -1777,6 +1777,8 @@ parse_notification(struct peer *peer)
 				break;
 			}
 		}
+
+		return (1);
 	}
 
 	if (errcode == ERR_OPEN && subcode == ERR_OPEN_OPT) {
