@@ -1173,7 +1173,7 @@ filter_set_opt	: LOCALPREF number		{
 				fatal(NULL);
 			$$->type = ACTION_SET_PREPEND_SELF;
 			if ($2 > 128) {
-				yyerror("to many prepends");
+				yyerror("too many prepends");
 				YYERROR;
 			}
 			$$->action.prepend = $2;
@@ -1183,7 +1183,7 @@ filter_set_opt	: LOCALPREF number		{
 				fatal(NULL);
 			$$->type = ACTION_SET_PREPEND_PEER;
 			if ($2 > 128) {
-				yyerror("to many prepends");
+				yyerror("too many prepends");
 				YYERROR;
 			}
 			$$->action.prepend = $2;
