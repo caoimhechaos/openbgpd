@@ -100,6 +100,7 @@ main(int argc, char *argv[])
 	int			 m2r_writes_queued = 0;
 
 	conffile = CONFFILE;
+	bgpd_process = PROC_MAIN;
 
 	log_init(1);		/* log to stderr until daemonized */
 

@@ -95,7 +95,9 @@ rde_main(struct bgpd_config *config, int pipe_m2r[2], int pipe_s2r[2])
 	if (chroot(pw->pw_dir) < 0)
 		fatal("chroot failed", errno);
 	chdir("/");
+
 	setproctitle("route decision engine");
+	bgpd_process = PROC_RDE;
 
 	if (setgroups(1, &pw->pw_gid) ||
 	    setegid(pw->pw_gid) || setgid(pw->pw_gid) ||

@@ -38,6 +38,12 @@
 #define BGPD_OPT_VERBOSE		0x0001
 #define BGPD_OPT_VERBOSE2		0x0002
 
+enum {
+	PROC_MAIN,
+	PROC_SE,
+	PROC_RDE
+} bgpd_process;
+
 enum session_state {
 	STATE_NONE,
 	STATE_IDLE,
