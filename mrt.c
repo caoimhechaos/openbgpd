@@ -139,7 +139,7 @@ mrt_dump_state(struct mrt *mrt, u_int16_t old_state, u_int16_t new_state,
 	DUMP_SHORT(buf, bgp->as);
 	DUMP_SHORT(buf, peer->remote_as);
 	DUMP_SHORT(buf, /* ifindex */ 0);
-	DUMP_SHORT(buf, 4);
+	DUMP_SHORT(buf, AFI_IPv4);
 	DUMP_NLONG(buf, peer->local_addr.v4.s_addr);
 	DUMP_NLONG(buf, peer->remote_addr.v4.s_addr);
 
