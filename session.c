@@ -1298,11 +1298,6 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			pending_reconf = 0;
 			logit(LOG_INFO, "SE reconfigured");
 			break;
-		case IMSG_SHUTDOWN_REQUEST:
-			session_terminate();
-			imsg_compose(&ibuf_main, IMSG_SHUTDOWN_DONE, 0,
-			    NULL, 0);
-			break;
 		default:
 		}
 		imsg_free(&imsg);

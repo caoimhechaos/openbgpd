@@ -252,10 +252,6 @@ rde_dispatch_imsg(struct imsgbuf *ibuf, int idx)
 			imsg_compose(&ibuf_main, IMSG_MRT_END,
 			    imsg.hdr.peerid, NULL, 0);
 			break;
-		case IMSG_SHUTDOWN_REQUEST:
-			imsg_compose(&ibuf_main, IMSG_SHUTDOWN_DONE, 0,
-			    NULL, 0);
-			break;
 		default:
 			break;
 		}
