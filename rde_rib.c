@@ -440,7 +440,7 @@ prefix_remove(struct rde_peer *peer, struct bgpd_addr *prefix, int prefixlen)
 
 	rde_send_pftable(asp->flags.pftable, prefix, prefixlen, 1);
 	rde_send_pftable_commit();
-    
+
 	prefix_unlink(p);
 	prefix_free(p);
 

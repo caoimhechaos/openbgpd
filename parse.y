@@ -579,14 +579,17 @@ peeropts	: REMOTEAS asnumber	{
 			}
 
 			if ($2)
-				curpeer->conf.auth.method = AUTH_IPSEC_MANUAL_ESP;
+				curpeer->conf.auth.method =
+				    AUTH_IPSEC_MANUAL_ESP;
 			else {
 				if ($8.enc_alg) {
-					yyerror("\"ipsec ah\" doesn't take encryption keys");
+					yyerror("\"ipsec ah\" doesn't take "
+					    "encryption keys");
 					free($7);
 					YYERROR;
 				}
-				curpeer->conf.auth.method = AUTH_IPSEC_MANUAL_AH;
+				curpeer->conf.auth.method =
+				    AUTH_IPSEC_MANUAL_AH;
 			}
 
 			if ($3 == 1) {

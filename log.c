@@ -405,7 +405,8 @@ log_sockaddr(struct sockaddr *sa)
 {
 	static char	buf[NI_MAXHOST];
 
-	if (getnameinfo(sa, sa->sa_len, buf, sizeof(buf), NULL, 0, NI_NUMERICHOST))
+	if (getnameinfo(sa, sa->sa_len, buf, sizeof(buf), NULL, 0,
+	    NI_NUMERICHOST))
 		return ("(unknown)");
 	else
 		return (buf);
