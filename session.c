@@ -171,6 +171,9 @@ session_main(struct bgpd_config *config, struct peer *cpeers, int pipe_m2s[2],
 	if ((sock = setup_listener()) == -1)
 		fatalx("listener setup failed");
 
+	if (pfkey_init() == -1)
+		fatalx("pfkey setup failed");
+
 	if (setgroups(1, &pw->pw_gid) ||
 	    setegid(pw->pw_gid) || setgid(pw->pw_gid) ||
 	    seteuid(pw->pw_uid) || setuid(pw->pw_uid))
