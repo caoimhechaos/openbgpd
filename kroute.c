@@ -128,7 +128,7 @@ retry:
 }
 
 int
-kroute_add(int fd, struct kroute *kroute)
+kroute_change(int fd, struct kroute *kroute)
 {
 	struct kroute_node	*kr, s;
 	int			 n;
