@@ -25,6 +25,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <poll.h>
+#include <pwd.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -154,6 +155,10 @@ main(int argc, char *argv[])
 
 	if (geteuid())
 		errx(1, "need root privileges");
+
+	if (getpwnam(BGPD_USER) == NULL)
+		errx(1, "unknown user %s", BGPD_USER);
+	endpwent();
 
 	log_init(debug);
 
