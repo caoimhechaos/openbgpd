@@ -170,8 +170,9 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		fatal(NULL);
 
 	if (chroot(pw->pw_dir) == -1)
-		fatal("chroot failed");
-	chdir("/");
+		fatal("chroot");
+	if (chdir("/") == -1)
+		fatal("chdir(\"/\")");
 
 	setproctitle("session engine");
 	bgpd_process = PROC_SE;

@@ -119,8 +119,9 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 		fatal("getpwnam");
 
 	if (chroot(pw->pw_dir) == -1)
-		fatal("chroot failed");
-	chdir("/");
+		fatal("chroot");
+	if (chdir("/") == -1)
+		fatal("chdir(\"/\")");
 
 	setproctitle("route decision engine");
 	bgpd_process = PROC_RDE;
