@@ -488,6 +488,7 @@ print_config(struct bgpd_config *conf, struct network_head *net_l,
 	struct network		*n;
 
 	xmrt_l = mrt_l;
+	printf("\n");
 	print_mainconf(conf);
 	printf("\n");
 	print_mrt(0, 0, "", "");
