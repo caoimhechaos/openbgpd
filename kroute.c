@@ -778,10 +778,11 @@ kroute_validate(struct kroute *kr)
 	struct kif_node		*kif;
 
 	if ((kif = kif_find(kr->ifindex)) == NULL) {
-		log_warnx("interface with index %d not found, "
-		    "referenced from route for %s/%u",
-		    kr->ifindex, inet_ntoa(kr->prefix),
-		    kr->prefixlen);
+		if (kr->ifindex)
+			log_warnx("interface with index %d not found, "
+			    "referenced from route for %s/%u",
+			    kr->ifindex, inet_ntoa(kr->prefix),
+			    kr->prefixlen);
 		return (1);
 	}
 
