@@ -128,6 +128,10 @@ path_compare(struct rde_aspath *a, struct rde_aspath *b)
 		return (1);
 	if (a->lpref < b->lpref)
 		return (-1);
+	if (a->weight > b->weight)
+		return (1);
+	if (a->weight < b->weight)
+		return (-1);
 
 	r = strcmp(a->pftable, b->pftable);
 	if (r == 0)
@@ -266,6 +270,7 @@ path_copy(struct rde_aspath *asp)
 	nasp->nexthop = asp->nexthop;
 	nasp->med = asp->med;
 	nasp->lpref = asp->lpref;
+	nasp->weight = asp->weight;
 	nasp->origin = asp->origin;
 
 	nasp->flags = asp->flags & ~F_ATTR_LINKED;
@@ -290,6 +295,7 @@ path_get(void)
 	asp->origin = ORIGIN_INCOMPLETE;
 	asp->lpref = DEFAULT_LPREF;
 	/* med = 0 */
+	/* weight = 0 */
 
 	return (asp);
 }

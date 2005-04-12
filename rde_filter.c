@@ -131,6 +131,24 @@ rde_apply_set(struct rde_aspath *asp, struct filter_set_head *sh,
 					asp->med += set->action.relative;
 			}
 			break;
+		case ACTION_SET_WEIGHT:
+			asp->weight = set->action.metric;
+			break;
+		case ACTION_SET_RELATIVE_WEIGHT:
+			if (set->action.relative > 0) {
+				if (set->action.relative + asp->weight <
+				    asp->weight)
+					asp->weight = UINT_MAX;
+				else
+					asp->weight += set->action.relative;
+			} else {
+				if ((u_int32_t)-set->action.relative >
+				    asp->weight)
+					asp->weight = 0;
+				else
+					asp->weight += set->action.relative;
+			}
+			break;
 		case ACTION_SET_PREPEND_SELF:
 			/* don't apply if this is a incoming default override */
 			if (dir == DIR_DEFAULT_IN)

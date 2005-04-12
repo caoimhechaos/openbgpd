@@ -161,6 +161,7 @@ struct rde_aspath {
 	char				 pftable[PFTABLE_LEN];
 	u_int32_t			 med;		/* multi exit disc */
 	u_int32_t			 lpref;		/* local pref */
+	u_int32_t			 weight;	/* low prio lpref */
 	u_int16_t			 flags;	/* internally used */
 	u_int16_t			 prefix_cnt; /* # of prefixes */
 	u_int16_t			 active_cnt; /* # of active prefixes */

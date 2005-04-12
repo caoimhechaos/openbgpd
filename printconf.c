@@ -95,6 +95,12 @@ print_set(struct filter_set_head *set)
 		case ACTION_SET_RELATIVE_MED:
 			printf("metric %+d ", s->action.relative);
 			break;
+		case ACTION_SET_WEIGHT:
+			printf("weight %u ", s->action.metric);
+			break;
+		case ACTION_SET_RELATIVE_WEIGHT:
+			printf("weight %+d ", s->action.relative);
+			break;
 		case ACTION_SET_NEXTHOP:
 			printf("nexthop %s ", log_addr(&s->action.nexthop));
 			break;
