@@ -1136,7 +1136,7 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| LOCALPREF '+' number		{
 			if ($3 > INT_MAX) {
-				yyerror("metric to small: max %u", INT_MAX);
+				yyerror("localpref to big: max %u", INT_MAX);
 				YYERROR;
 			}
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
@@ -1146,7 +1146,7 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| LOCALPREF '-' number		{
 			if ($3 > INT_MAX) {
-				yyerror("metric to small: min -%u", INT_MAX);
+				yyerror("localpref to small: min -%u", INT_MAX);
 				YYERROR;
 			}
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
@@ -1162,7 +1162,7 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| MED '+' number			{
 			if ($3 > INT_MAX) {
-				yyerror("metric to small: max %u", INT_MAX);
+				yyerror("metric to big: max %u", INT_MAX);
 				YYERROR;
 			}
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
@@ -1188,7 +1188,7 @@ filter_set_opt	: LOCALPREF number		{
 		}
 		| METRIC '+' number			{
 			if ($3 > INT_MAX) {
-				yyerror("metric to small: max %u", INT_MAX);
+				yyerror("metric to big: max %u", INT_MAX);
 				YYERROR;
 			}
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
