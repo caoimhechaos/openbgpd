@@ -334,8 +334,12 @@ conf_main	: AS asnumber		{
 			memcpy(&n->net.prefix, &$2.prefix,
 			    sizeof(n->net.prefix));
 			n->net.prefixlen = $2.len;
-			memcpy(&n->net.attrset, &$3,
-			    sizeof(n->net.attrset));
+			if ($3 == NULL || SIMPLEQ_EMPTY($3))
+				SIMPLEQ_INIT(&n->net.attrset);
+			else
+				memcpy(&n->net.attrset, $3,
+				    sizeof(n->net.attrset));
+			free($3);
 
 			TAILQ_INSERT_TAIL(netconf, n, entry);
 		}
@@ -2040,6 +2044,7 @@ expand_rule(struct filter_rule *rule, struct filter_peers_l *peer,
 	struct filter_peers_l	*p, *pnext;
 	struct filter_prefix_l	*prefix, *prefix_next;
 	struct filter_as_l	*a, *anext;
+	struct filter_set	*s;
 
 	p = peer;
 	do {
@@ -2099,6 +2104,13 @@ expand_rule(struct filter_rule *rule, struct filter_peers_l *peer,
 		anext = a->next;
 		free(a);
 	}
+
+	while ((s = SIMPLEQ_FIRST(set)) != NULL) {
+		SIMPLEQ_REMOVE_HEAD(set, entry);
+		free(s);
+	}
+	free(set);
+
 	return (0);
 }
 
