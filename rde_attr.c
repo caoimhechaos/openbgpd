@@ -554,10 +554,13 @@ aspath_asprint(char **ret, void *data, u_int16_t len)
 		return (-1);
 
 	plen = aspath_snprint(*ret, slen, data, len);
-	if (plen == -1)
+	if (plen == -1) {
 		free(*ret);
+		*ret = NULL;
+		return (-1);
+	}
 
-	return (plen);
+	return (0);
 }
 
 size_t
