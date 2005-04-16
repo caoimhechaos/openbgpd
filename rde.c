@@ -1422,7 +1422,7 @@ rde_update_log(const char *message,
 
 	if (asprintf(&p, "%s/%u", log_addr(prefix), prefixlen) == -1)
 		p = NULL;
-	log_info("neighbor %s (AS%u) %s %s/%u %s",
+	log_info("neighbor %s (AS%u) %s %s %s",
 	    log_addr(&peer->conf.remote_addr), peer->conf.remote_as, message,
 	    p ? p : "out of memory", nexthop ? nexthop : "");
 
