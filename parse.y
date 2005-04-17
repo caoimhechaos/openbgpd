@@ -2105,7 +2105,7 @@ expand_rule(struct filter_rule *rule, struct filter_peers_l *peer,
 		free(a);
 	}
 
-	while ((s = SIMPLEQ_FIRST(set)) != NULL) {
+	while (set != NULL && (s = SIMPLEQ_FIRST(set)) != NULL) {
 		SIMPLEQ_REMOVE_HEAD(set, entry);
 		free(s);
 	}
