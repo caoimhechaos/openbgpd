@@ -497,10 +497,10 @@ print_config(struct bgpd_config *conf, struct network_head *net_l,
 	printf("\n");
 	print_mainconf(conf);
 	printf("\n");
-	print_mrt(0, 0, "", "");
-	printf("\n");
 	TAILQ_FOREACH(n, net_l, entry)
 		print_network(&n->net);
+	printf("\n");
+	print_mrt(0, 0, "", "");
 	printf("\n");
 	print_groups(conf, peer_l);
 	printf("\n");
