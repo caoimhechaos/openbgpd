@@ -534,9 +534,6 @@ kroute_insert(struct kroute_node *kr)
 	}
 
 	if (kr->r.flags & F_KERNEL) {
-		if (!(kr->r.flags & F_CONNECTED))
-			kr->r.flags |= F_STATIC;
-
 		mask = prefixlen2mask(kr->r.prefixlen);
 		ina = ntohl(kr->r.prefix.s_addr);
 		RB_FOREACH(h, knexthop_tree, &knt)
@@ -1218,6 +1215,8 @@ fetchtable(void)
 			kr->r.prefix.s_addr =
 			    ((struct sockaddr_in *)sa)->sin_addr.s_addr;
 			sa_in = (struct sockaddr_in *)rti_info[RTAX_NETMASK];
+			if (rtm->rtm_flags & RTF_STATIC)
+				kr->r.flags |= F_STATIC;
 			if (sa_in != NULL) {
 				if (sa_in->sin_len == 0)
 					break;
@@ -1374,6 +1373,8 @@ dispatch_rtmsg(void)
 				    ((struct sockaddr_in *)sa)->sin_addr.s_addr;
 				sa_in = (struct sockaddr_in *)
 				    rti_info[RTAX_NETMASK];
+				if (rtm->rtm_flags & RTF_STATIC)
+					flags |= F_STATIC;
 				if (sa_in != NULL) {
 					if (sa_in->sin_len != 0)
 						prefixlen = mask2prefixlen(
