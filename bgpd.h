@@ -93,7 +93,7 @@ struct buf {
 };
 
 struct msgbuf {
-	TAILQ_HEAD(bufs, buf)	 bufs;
+	TAILQ_HEAD(, buf)	 bufs;
 	u_int32_t		 queued;
 	int			 fd;
 };
