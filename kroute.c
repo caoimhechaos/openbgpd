@@ -1308,9 +1308,12 @@ fetchifs(int ifindex)
 		if ((sa = rti_info[RTAX_IFP]) != NULL)
 			if (sa->sa_family == AF_LINK) {
 				sdl = (struct sockaddr_dl *)sa;
-				if (sdl->sdl_nlen > 0)
+				if (sdl->sdl_nlen >= sizeof(kif->k.ifname))
 					strlcpy(kif->k.ifname, sdl->sdl_data,
 					    sizeof(kif->k.ifname));
+				else if (sdl->sdl_nlen > 0)
+					strlcpy(kif->k.ifname, sdl->sdl_data,
+					    sdl->sdl_nlen + 1);
 			}
 
 		kif_insert(kif);
