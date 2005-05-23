@@ -152,8 +152,6 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid))
 		fatal("can't drop privileges");
 
-	endpwent();
-
 	signal(SIGTERM, rde_sighdlr);
 	signal(SIGINT, rde_sighdlr);
 	signal(SIGPIPE, SIG_IGN);

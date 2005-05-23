@@ -215,8 +215,6 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 	    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid))
 		fatal("can't drop privileges");
 
-	endpwent();
-
 	listener_cnt = 0;
 	setup_listeners(&listener_cnt);
 
