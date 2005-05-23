@@ -177,7 +177,6 @@ main(int argc, char *argv[])
 
 	if (getpwnam(BGPD_USER) == NULL)
 		errx(1, "unknown user %s", BGPD_USER);
-	endpwent();
 
 	log_init(debug);
 
