@@ -1331,11 +1331,6 @@ filter_set_opt	: LOCALPREF number		{
 				YYERROR;
 			}
 			free($2);
-			if ($$->action.community.as <= 0 ||
-			    $$->action.community.as > 0xffff) {
-				yyerror("Invalid community");
-				YYERROR;
-			}
 			/* Don't allow setting of unknown well-known types */
 			if ($$->action.community.as == COMMUNITY_WELLKNOWN) {
 				switch ($$->action.community.type) {
