@@ -618,7 +618,7 @@ bgp_fsm(struct peer *peer, enum session_events event)
 			peer->ConnectRetryTimer =
 			    time(NULL) + INTERVAL_CONNECTRETRY;
 			session_connect(peer);
-		break;
+			break;
 		default:
 			change_state(peer, STATE_IDLE, event);
 			break;
