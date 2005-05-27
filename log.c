@@ -344,6 +344,17 @@ log_addr(const struct bgpd_addr *addr)
 }
 
 const char *
+log_in6addr(const struct in6_addr *addr)
+{
+	static char	buf[48];
+
+	if (inet_ntop(AF_INET6, addr, buf, sizeof(buf)) == NULL)
+		return ("?");
+	else
+		return (buf);
+}
+
+const char *
 log_sockaddr(struct sockaddr *sa)
 {
 	static char	buf[NI_MAXHOST];
