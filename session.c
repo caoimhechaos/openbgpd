@@ -2119,7 +2119,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 					log_warnx("expected to receive fd for "
 					    "%s but didn't receive any",
 					    log_sockaddr((struct sockaddr *)
-					    &la->sa));
+					    &nla->sa));
 
 				la = calloc(1, sizeof(struct listen_addr));
 				if (la == NULL)
