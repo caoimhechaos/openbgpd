@@ -2342,7 +2342,21 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 
 			session_notification(p, errcode, subcode,
 			    data, imsg.hdr.len - IMSG_HEADER_SIZE - 2);
-			bgp_fsm(p, EVNT_CON_FATAL);
+			switch (errcode) {
+			case ERR_CEASE:
+				switch (subcode) {
+				case ERR_CEASE_MAX_PREFIX:
+					bgp_fsm(p, EVNT_STOP);
+					break;
+				default:
+					bgp_fsm(p, EVNT_CON_FATAL);
+					break;
+				}
+				break;
+			default:
+				bgp_fsm(p, EVNT_CON_FATAL);
+				break;
+			}
 			break;
 		default:
 			break;
