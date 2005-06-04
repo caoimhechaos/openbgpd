@@ -1366,6 +1366,7 @@ session_notification(struct peer *peer, u_int8_t errcode, u_int8_t subcode,
 	struct mrt		*mrt;
 	ssize_t			 len;
 	int			 errs = 0;
+	u_int8_t		 null8 = 0;
 
 	if (peer->stats.last_sent_errcode)	/* some notifctn already sent */
 		return;
@@ -1384,7 +1385,10 @@ session_notification(struct peer *peer, u_int8_t errcode, u_int8_t subcode,
 	errs += buf_add(buf, &msg.len, sizeof(msg.len));
 	errs += buf_add(buf, &msg.type, sizeof(msg.type));
 	errs += buf_add(buf, &errcode, sizeof(errcode));
-	errs += buf_add(buf, &subcode, sizeof(subcode));
+	if (errcode == ERR_CEASE)
+		errs += buf_add(buf, &null8, sizeof(null8));
+	else
+		errs += buf_add(buf, &subcode, sizeof(subcode));
 
 	if (datalen > 0)
 		errs += buf_add(buf, data, datalen);
