@@ -2269,6 +2269,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 			}
 			break;
 		case IMSG_CTL_KROUTE:
+		case IMSG_CTL_KROUTE6:
 		case IMSG_CTL_KROUTE_ADDR:
 		case IMSG_CTL_SHOW_NEXTHOP:
 		case IMSG_CTL_SHOW_INTERFACE:
