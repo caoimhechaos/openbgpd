@@ -578,6 +578,9 @@ bgp_fsm(struct peer *peer, enum session_events event)
 				return;
 			}
 
+			peer->stats.last_sent_errcode = 0;
+			peer->stats.last_sent_suberr = 0;
+
 			if (!peer->depend_ok)
 				peer->ConnectRetryTimer = 0;
 			else if (peer->conf.passive || peer->conf.template) {
@@ -1404,7 +1407,10 @@ session_notification(struct peer *peer, u_int8_t errcode, u_int8_t subcode,
 		bgp_fsm(peer, EVNT_CON_FATAL);
 		return;
 	}
+
 	peer->stats.msg_sent_notification++;
+	peer->stats.last_sent_errcode = errcode;
+	peer->stats.last_sent_suberr = subcode;
 }
 
 int
