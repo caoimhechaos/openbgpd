@@ -86,6 +86,18 @@ static const char * const suberr_update_names[] = {
 	"AS-Path unacceptable"
 };
 
+static const char * const suberr_cease_names[] = {
+	"none",
+	"max-prefix exceeded",
+	"administratively down",
+	"peer unconfigured",
+	"administrative reset",
+	"connection rejected",
+	"other config change",
+	"collision",
+	"ressource exhaustion"
+};
+
 static const char * const procnames[] = {
 	"parent",
 	"SE",
