@@ -498,12 +498,6 @@ kr_show_route(struct imsg *imsg)
 			if (!flags || kr->r.flags & flags)
 				send_imsg_session(IMSG_CTL_KROUTE,
 				    imsg->hdr.pid, &kr->r, sizeof(kr->r));
-	case IMSG_CTL_KROUTE6:
-		if (imsg->hdr.len != IMSG_HEADER_SIZE + sizeof(flags)) {
-			log_warnx("kr_show_route: wrong imsg len");
-			return;
-		}
-		memcpy(&flags, imsg->data, sizeof(flags));
 		RB_FOREACH(kr6, kroute6_tree, &krt6)
 			if (!flags || kr6->r.flags & flags)
 				send_imsg_session(IMSG_CTL_KROUTE6,
