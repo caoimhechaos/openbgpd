@@ -1438,7 +1438,11 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 				    &error, &len) == -1 || error) {
 					if (error)
 						errno = error;
-					log_peer_warn(&p->conf, "socket error");
+					if (errno != p->lasterr) {
+						log_peer_warn(&p->conf,
+						    "socket error");
+						p->lasterr = errno;
+					}
 					bgp_fsm(p, EVNT_CON_OPENFAIL);
 					return (1);
 				}
