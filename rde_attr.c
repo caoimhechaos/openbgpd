@@ -40,8 +40,10 @@ attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
 	if (data_len > 255) {
 		tot_len += 2 + data_len;
 		flags |= ATTR_EXTLEN;
-	} else
+	} else {
 		tot_len += 1 + data_len;
+		flags &= ~ATTR_EXTLEN;
+	}
 
 	if (tot_len > p_len)
 		return (-1);
