@@ -703,11 +703,12 @@ community_set(struct attr *attr, int as, int type)
 	if (i >= ncommunities) {
 		if (attr->len > 0xffff - 4) /* overflow */
 			return (0);
-		attr->len += 4;
-		if ((p = realloc(attr->data, attr->len)) == NULL)
+		i = attr->len + 4;
+		if ((p = realloc(attr->data, i)) == NULL)
 			return (0);
 
 		attr->data = p;
+		attr->len = i;
 		p = attr->data + attr->len - 4;
 	}
 	p[0] = as >> 8;
