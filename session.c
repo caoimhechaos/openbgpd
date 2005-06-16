@@ -2518,7 +2518,7 @@ session_match_mask(struct peer *p, struct sockaddr *ip)
 	struct in6_addr	 mask;
 
 	if (p->conf.remote_addr.af == AF_INET) {
-		v4mask = htonl(0xffffffff << (32 - p->conf.remote_masklen));
+		v4mask = htonl(prefixlen2mask(p->conf.remote_masklen));
 		if (p->conf.remote_addr.v4.s_addr ==
 		    ((((struct sockaddr_in *)ip)->sin_addr.s_addr) & v4mask))
 			return (1);
