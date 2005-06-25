@@ -698,4 +698,10 @@ int	pftable_addr_add(struct pftable_msg *);
 int	pftable_addr_remove(struct pftable_msg *);
 int	pftable_commit(void);
 
+/* name2id.c */
+u_int16_t	 rtlabel_name2id(char *);
+const char	*rtlabel_id2name(u_int16_t);
+void		 rtlabel_unref(u_int16_t);
+
+
 #endif /* __BGPD_H__ */
