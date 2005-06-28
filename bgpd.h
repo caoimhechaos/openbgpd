@@ -455,17 +455,17 @@ struct ctl_show_rib {
 	u_int16_t		prefix_cnt;
 	u_int16_t		active_cnt;
 	u_int16_t		aspath_len;
+	u_int16_t		flags;
 	u_int8_t		prefixlen;
 	u_int8_t		origin;
-	u_int8_t		flags;
 	/* plus a aspath_len bytes long aspath */
 };
 
 struct ctl_show_rib_prefix {
 	struct bgpd_addr	prefix;
 	time_t			lastchange;
+	u_int16_t		flags;
 	u_int8_t		prefixlen;
-	u_int8_t		flags;
 };
 
 enum as_spec {
