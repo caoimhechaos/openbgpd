@@ -126,6 +126,13 @@ print_set(struct filter_set_head *set)
 		case ACTION_PFTABLE:
 			printf("pftable %s ", s->action.pftable);
 			break;
+		case ACTION_RTLABEL:
+			printf("rtlabel %s ", s->action.rtlabel);
+			break;
+		case ACTION_RTLABEL_ID:
+			/* not possible */
+			printf("rtlabel id %d ", s->action.id);
+			break;
 		}
 	}
 	printf("}");

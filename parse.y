@@ -153,7 +153,7 @@ typedef struct {
 %token	CONNECTED STATIC
 %token	PREFIX PREFIXLEN SOURCEAS TRANSITAS COMMUNITY
 %token	SET LOCALPREF MED METRIC NEXTHOP REJECT BLACKHOLE NOMODIFY
-%token	PREPEND_SELF PREPEND_PEER PFTABLE WEIGHT
+%token	PREPEND_SELF PREPEND_PEER PFTABLE WEIGHT RTLABEL
 %token	ERROR
 %token	IPSEC ESP AH SPI IKE
 %token	<v.string>		STRING
@@ -1357,6 +1357,19 @@ filter_set_opt	: LOCALPREF number		{
 			}
 			free($2);
 		}
+		| RTLABEL string		{
+			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
+				fatal(NULL);
+			$$->type = ACTION_RTLABEL;
+			if (strlcpy($$->action.rtlabel, $2,
+			    sizeof($$->action.rtlabel)) >=
+			    sizeof($$->action.rtlabel)) {
+				yyerror("rtlabel name too long");
+				free($2);
+				YYERROR;
+			}
+			free($2);
+		}
 		| COMMUNITY STRING		{
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
 				fatal(NULL);
@@ -1492,6 +1505,7 @@ lookup(char *s)
 		{ "route-collector",	ROUTECOLL},
 		{ "route-reflector",	REFLECTOR},
 		{ "router-id",		ROUTERID},
+		{ "rtlabel",		RTLABEL},
 		{ "set",		SET},
 		{ "source-as",		SOURCEAS},
 		{ "spi",		SPI},

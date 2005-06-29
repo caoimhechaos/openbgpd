@@ -162,7 +162,8 @@ struct rde_aspath {
 	u_int32_t			 med;		/* multi exit disc */
 	u_int32_t			 lpref;		/* local pref */
 	u_int32_t			 weight;	/* low prio lpref */
-	u_int16_t			 flags;	/* internally used */
+	u_int16_t			 rtlabelid;	/* route label id */
+	u_int16_t			 flags;		/* internally used */
 	u_int16_t			 prefix_cnt; /* # of prefixes */
 	u_int16_t			 active_cnt; /* # of active prefixes */
 	u_int8_t			 origin;
