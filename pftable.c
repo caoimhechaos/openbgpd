@@ -76,7 +76,7 @@ pftable_change(struct pf_table *pft)
 	if (ret == -1) {
 		if (errno == EINVAL)
 			return (0);
-		log_warn("pftable_change ioctl %s", strerror(errno));
+		log_warn("pftable_change ioctl");
 	}
 
 	return (ret);
@@ -95,7 +95,7 @@ pftable_clear(const char *name)
 	    sizeof(tio.pfrio_table.pfrt_name));
 
 	if (ioctl(devpf, DIOCRCLRADDRS, &tio) != 0) {
-		log_warn("pftable_clear ioctl %s", strerror(errno));
+		log_warn("pftable_clear ioctl");
 		return (-1);
 	}
 

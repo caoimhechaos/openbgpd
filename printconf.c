@@ -130,8 +130,9 @@ print_set(struct filter_set_head *set)
 			printf("rtlabel %s ", s->action.rtlabel);
 			break;
 		case ACTION_RTLABEL_ID:
+		case ACTION_PFTABLE_ID:
 			/* not possible */
-			printf("rtlabel id %d ", s->action.id);
+			printf("king bula saiz: config broken");
 			break;
 		}
 	}
