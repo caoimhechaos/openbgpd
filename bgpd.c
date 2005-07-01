@@ -395,7 +395,7 @@ send_filterset(struct imsgbuf *i, struct filter_set_head *set, int id)
 {
 	struct filter_set	*s;
 
-	SIMPLEQ_FOREACH(s, set, entry)
+	TAILQ_FOREACH(s, set, entry)
 		if (imsg_compose(i, IMSG_FILTER_SET, id, 0, -1, s,
 		    sizeof(struct filter_set)) == -1)
 			return (-1);
