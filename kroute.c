@@ -366,7 +366,7 @@ kr6_delete(struct kroute6_label *kl)
 
 	rtlabel_unref(kl->kr.labelid);
 
- 	if (kroute6_remove(kr6) == -1)
+	if (kroute6_remove(kr6) == -1)
 		return (-1);
 
 	return (0);
