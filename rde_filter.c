@@ -303,11 +303,10 @@ filterset_free(struct filter_set_head *sh)
 	while ((s = TAILQ_FIRST(sh)) != NULL) {
 		TAILQ_REMOVE(sh, s, entry);
 		if (s->type == ACTION_RTLABEL_ID)
-		       	rtlabel_unref(s->action.id);
+			rtlabel_unref(s->action.id);
 		else if (s->type == ACTION_PFTABLE_ID)
 			pftable_unref(s->action.id);
 		free(s);
 	}
-	
 }
 
