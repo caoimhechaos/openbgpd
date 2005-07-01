@@ -59,17 +59,6 @@ rde_filter(struct rde_peer *peer, struct rde_aspath *asp,
 }
 
 void
-rde_free_set(struct filter_set_head *sh)
-{
-	struct filter_set	*set;
-
-	while ((set = SIMPLEQ_FIRST(sh)) != NULL) {
-		SIMPLEQ_REMOVE_HEAD(sh, entry);
-		free(set);
-	}
-}
-
-void
 rde_apply_set(struct rde_aspath *asp, struct filter_set_head *sh,
     sa_family_t af, struct rde_peer *peer, enum directions dir)
 {
