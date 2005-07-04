@@ -316,7 +316,7 @@ conf_main	: AS asnumber		{
 			else
 				conf->flags &= ~BGPD_FLAG_DECISION_TRANS_AS;
 		}
-		| LOG string		{
+		| LOG STRING		{
 			if (!strcmp($2, "updates"))
 				conf->log |= BGPD_LOG_UPDATES;
 			else {
@@ -1307,7 +1307,7 @@ filter_set_opt	: LOCALPREF number		{
 			}
 			$$->action.prepend = $2;
 		}
-		| PFTABLE string		{
+		| PFTABLE STRING		{
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
 				fatal(NULL);
 			$$->type = ACTION_PFTABLE;
@@ -1331,7 +1331,7 @@ filter_set_opt	: LOCALPREF number		{
 			}
 			free($2);
 		}
-		| RTLABEL string		{
+		| RTLABEL STRING		{
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
 				fatal(NULL);
 			$$->type = ACTION_RTLABEL;
