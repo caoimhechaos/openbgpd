@@ -309,7 +309,7 @@ prepare_listeners(struct bgpd_config *conf)
 		opt = 1;
 		if (setsockopt(la->fd, SOL_SOCKET, SO_REUSEADDR,
 		    &opt, sizeof(opt)) == -1)
-			fatal("setsockopt SO_REUSEPORT");
+			fatal("setsockopt SO_REUSEADDR");
 
 		if (bind(la->fd, (struct sockaddr *)&la->sa, la->sa.ss_len) ==
 		    -1) {
