@@ -1455,6 +1455,8 @@ lookup(char *s)
 	/* this has to be sorted always */
 	static const struct keywords keywords[] = {
 		{ "AS",			AS},
+		{ "IPv4",		IPV4},
+		{ "IPv6",		IPV6},
 		{ "ah",			AH},
 		{ "allow",		ALLOW},
 		{ "announce",		ANNOUNCE},
@@ -1474,8 +1476,6 @@ lookup(char *s)
 		{ "from",		FROM},
 		{ "group",		GROUP},
 		{ "holdtime",		HOLDTIME},
-		{ "IPv4",		IPV4},
-		{ "IPv6",		IPV6},
 		{ "ignore",		IGNORE},
 		{ "ike",		IKE},
 		{ "in",			IN},
