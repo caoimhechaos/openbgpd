@@ -165,6 +165,9 @@ print_mainconf(struct bgpd_config *conf)
 	if (conf->flags & BGPD_FLAG_DECISION_ROUTEAGE)
 		printf("rde route-age evaluate\n");
 
+	if (conf->flags & BGPD_FLAG_DECISION_MED_ALWAYS)
+		printf("rde med compare always\n");
+
 	if (conf->flags & BGPD_FLAG_DECISION_TRANS_AS)
 		printf("transparent-as yes\n");
 

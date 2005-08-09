@@ -137,7 +137,8 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 		return (asp2->origin - asp1->origin);
 
 	/* 5. MED decision, only comparable between the same neighboring AS */
-	if (aspath_neighbor(asp1->aspath) == aspath_neighbor(asp2->aspath))
+	if (rde_decisionflags() & BGPD_FLAG_DECISION_MED_ALWAYS ||
+	    aspath_neighbor(asp1->aspath) == aspath_neighbor(asp2->aspath))
 		/* lowest value wins */
 		if ((asp2->med - asp1->med) != 0)
 			return (asp2->med - asp1->med);

@@ -242,6 +242,23 @@ section.
 .Pp
 .It Xo
 .Ic rde
+.Ic med
+.Ic compare
+.Pq Ic always Ns \&| Ns Ic strict
+.Xc
+If set to
+.Ic always ,
+the
+.Em MED
+attributes will be comapared always.
+The default is
+.Ic strict
+where the
+.Em MED
+is only compared between peers belonging to the same AS.
+.Pp
+.It Xo
+.Ic rde
 .Ic route-age
 .Pq Ic ignore Ns \&| Ns Ic evaluate
 .Xc

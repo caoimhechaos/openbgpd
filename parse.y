@@ -142,7 +142,7 @@ typedef struct {
 %}
 
 %token	AS ROUTERID HOLDTIME YMIN LISTEN ON FIBUPDATE
-%token	RDE EVALUATE IGNORE
+%token	RDE EVALUATE IGNORE COMPARE
 %token	GROUP NEIGHBOR NETWORK
 %token	REMOTEAS DESCR LOCALADDR MULTIHOP PASSIVE MAXPREFIX ANNOUNCE
 %token	ENFORCE NEIGHBORAS CAPABILITIES REFLECTOR DEPEND
@@ -414,6 +414,19 @@ conf_main	: AS asnumber		{
 				YYERROR;
 			}
 			free($2);
+		}
+		| RDE MED COMPARE STRING	{
+			if (!strcmp($4, "always"))
+				conf->flags |= BGPD_FLAG_DECISION_MED_ALWAYS;
+			else if (!strcmp($4, "strict"))
+				conf->flags &= ~BGPD_FLAG_DECISION_MED_ALWAYS;
+			else {
+				yyerror("rde med compare: "
+				    "unknown setting \"%s\"", $4);
+				free($4);
+				YYERROR;
+			}
+			free($4);
 		}
 		;
 
@@ -1464,6 +1477,7 @@ lookup(char *s)
 		{ "blackhole",		BLACKHOLE},
 		{ "capabilities",	CAPABILITIES},
 		{ "community",		COMMUNITY},
+		{ "compare",		COMPARE},
 		{ "connected",		CONNECTED},
 		{ "deny",		DENY},
 		{ "depend",		DEPEND},
