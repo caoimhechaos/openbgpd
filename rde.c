@@ -706,7 +706,7 @@ rde_update_dispatch(struct imsg *imsg)
 		}
 
 		/* input filter */
-		if (rde_filter(peer, NULL, &prefix, prefixlen,
+		if (rde_filter(peer, NULL, &prefix, prefixlen, peer,
 		    DIR_IN) == ACTION_DENY)
 			continue;
 
@@ -763,7 +763,7 @@ rde_update_dispatch(struct imsg *imsg)
 
 				/* input filter */
 				if (rde_filter(peer, NULL, &prefix, prefixlen,
-				    DIR_IN) == ACTION_DENY)
+				    peer, DIR_IN) == ACTION_DENY)
 					continue;
 
 				rde_update_log("withdraw", peer, NULL,
@@ -825,7 +825,7 @@ rde_update_dispatch(struct imsg *imsg)
 		 */
 		fasp = path_copy(asp);
 		/* input filter */
-		if (rde_filter(peer, fasp, &prefix, prefixlen,
+		if (rde_filter(peer, fasp, &prefix, prefixlen, peer,
 		    DIR_IN) == ACTION_DENY) {
 			path_put(fasp);
 			continue;
@@ -909,8 +909,8 @@ rde_update_dispatch(struct imsg *imsg)
 
 				fasp = path_copy(asp);
 				/* input filter */
-				if (rde_filter(peer, fasp, &prefix,
-				    prefixlen, DIR_IN) == ACTION_DENY) {
+				if (rde_filter(peer, fasp, &prefix, prefixlen,
+				    peer, DIR_IN) == ACTION_DENY) {
 					path_put(fasp);
 					continue;
 				}
