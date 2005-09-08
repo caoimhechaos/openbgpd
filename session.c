@@ -531,10 +531,6 @@ init_peer(struct peer *p)
 {
 	p->fd = p->wbuf.fd = -1;
 
-	memcpy(&p->capa.ann, &p->conf.capabilities, sizeof(p->capa.ann));
-	if (!p->conf.announce_capa)
-		session_capa_ann_none(p);
-
 	if (p->conf.if_depend[0])
 		imsg_compose(ibuf_main, IMSG_IFINFO, 0, 0, -1,
 		    p->conf.if_depend, sizeof(p->conf.if_depend));
@@ -856,6 +852,13 @@ change_state(struct peer *peer, enum session_state state,
 			if (event != EVNT_NONE &&
 			    peer->IdleHoldTime < MAX_IDLE_HOLD/2)
 				peer->IdleHoldTime *= 2;
+		}
+		if (event != EVNT_RCVD_OPEN) {	/* capa negotiation */
+			/* initialize capability negotiation structures */
+			memcpy(&peer->capa.ann, &peer->conf.capabilities,
+			    sizeof(peer->capa.ann));
+			if (!peer->conf.announce_capa)
+				session_capa_ann_none(peer);
 		}
 		break;
 	case STATE_CONNECT:
