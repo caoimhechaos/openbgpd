@@ -390,12 +390,13 @@ rde_dispatch_imsg_session(struct imsgbuf *ibuf)
 			    NULL, 0);
 			break;
 		case IMSG_CTL_SHOW_RIB:
-			if (imsg.hdr.len != IMSG_HEADER_SIZE) {
+			if (imsg.hdr.len != IMSG_HEADER_SIZE + sizeof(af)) {
 				log_warnx("rde_dispatch: wrong imsg len");
 				break;
 			}
 			pid = imsg.hdr.pid;
-			pt_dump(rde_dump_upcall, &pid, AF_UNSPEC);
+			memcpy(&af, imsg.data, sizeof(af));
+			pt_dump(rde_dump_upcall, &pid, af);
 			imsg_compose(ibuf_se, IMSG_CTL_END, 0, pid, -1,
 			    NULL, 0);
 			break;
