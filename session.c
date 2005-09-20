@@ -2318,6 +2318,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 		case IMSG_CTL_SHOW_RIB:
 		case IMSG_CTL_SHOW_RIB_PREFIX:
 		case IMSG_CTL_SHOW_NETWORK:
+		case IMSG_CTL_SHOW_NETWORK6:
 		case IMSG_CTL_SHOW_NEIGHBOR:
 			if (idx != PFD_PIPE_ROUTE)
 				fatalx("ctl rib request not from RDE");
