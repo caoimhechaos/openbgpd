@@ -1249,6 +1249,9 @@ kroute_validate(struct kroute *kr)
 {
 	struct kif_node		*kif;
 
+	if (kr->flags & (F_REJECT | F_BLACKHOLE))
+		return (0);
+
 	if ((kif = kif_find(kr->ifindex)) == NULL) {
 		if (kr->ifindex)
 			log_warnx("interface with index %d not found, "
@@ -1265,6 +1268,9 @@ int
 kroute6_validate(struct kroute6 *kr)
 {
 	struct kif_node		*kif;
+
+	if (kr->flags & (F_REJECT | F_BLACKHOLE))
+		return (0);
 
 	if ((kif = kif_find(kr->ifindex)) == NULL) {
 		if (kr->ifindex)
