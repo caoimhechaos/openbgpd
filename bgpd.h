@@ -231,6 +231,7 @@ struct peer_config {
 	u_int8_t		 ebgp;		/* 1 = ebgp, 0 = ibgp */
 	u_int8_t		 distance;	/* 1 = direct, >1 = multihop */
 	u_int8_t		 passive;
+	u_int8_t		 down;
 	u_int8_t		 announce_capa;
 	u_int8_t		 reflector_client;
 };
