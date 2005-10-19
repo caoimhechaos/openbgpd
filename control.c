@@ -266,7 +266,8 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 					break;
 				case IMSG_CTL_NEIGHBOR_CLEAR:
 					bgp_fsm(p, EVNT_STOP);
-					bgp_fsm(p, EVNT_START);
+					p->IdleHoldTimer = time(NULL) +
+					    SESSION_CLEAR_DELAY;
 					break;
 				default:
 					fatal("king bula wants more humppa");
