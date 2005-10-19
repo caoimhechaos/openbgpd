@@ -103,3 +103,8 @@ static const char * const procnames[] = {
 	"SE",
 	"RDE"
 };
+
+static const char * const ctl_res_strerror[] = {
+	"no error",
+	"no such neighbor"
+};
