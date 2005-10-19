@@ -1043,7 +1043,7 @@ up_dump_mp_reach(u_char *buf, u_int16_t *len, struct rde_peer *peer)
 	datalen += upa->mpattr_len;
 	wpos -= upa->mpattr_len;
 	memcpy(buf + wpos, upa->mpattr, upa->mpattr_len);
-	
+
 	if (datalen > 255) {
 		wpos -= 2;
 		tmp = htons(datalen);
