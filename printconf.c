@@ -380,7 +380,7 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 		    p = p->next)
 			;	/* nothing */
 		if (p == NULL)
-			printf("?");
+			printf("? ");
 		else
 			printf("%s ", log_addr(&p->conf.remote_addr));
 	} else if (r->peer.groupid) {
