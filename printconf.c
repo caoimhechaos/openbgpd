@@ -390,7 +390,7 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 		if (p == NULL)
 			printf("group ? ");
 		else
-			printf("group %s ", p->conf.group);
+			printf("group \"%s\" ", p->conf.group);
 	} else
 		printf("any ");
 
