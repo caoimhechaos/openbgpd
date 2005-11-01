@@ -1276,7 +1276,7 @@ filter_set_opt	: LOCALPREF number		{
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
 				fatal(NULL);
 			$$->type = ACTION_SET_RELATIVE_MED;
-			$$->action.metric = $3;
+			$$->action.relative = $3;
 		}
 		| MED '-' number			{
 			if ($3 > INT_MAX) {
@@ -1328,7 +1328,7 @@ filter_set_opt	: LOCALPREF number		{
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
 				fatal(NULL);
 			$$->type = ACTION_SET_RELATIVE_WEIGHT;
-			$$->action.metric = $3;
+			$$->action.relative = $3;
 		}
 		| WEIGHT '-' number			{
 			if ($3 > INT_MAX) {
