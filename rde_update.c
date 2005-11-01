@@ -432,7 +432,7 @@ up_generate_updates(struct rde_peer *peer,
 		case ANNOUNCE_DEFAULT_ROUTE:
 			/*
 			 * no need to withdraw old prefix as this will be
-			 * filtered out to.
+			 * filtered out as well.
 			 */
 			return;
 		case ANNOUNCE_ALL:
@@ -468,13 +468,6 @@ up_generate_updates(struct rde_peer *peer,
 
 		/* copy attributes for output filter */
 		fasp = path_copy(new->aspath);
-
-		/*
-		 * apply default outgoing overrides,
-		 * actually only prepend-self and nexthop no-modify
-		 */
-		rde_apply_set(fasp, &peer->conf.attrset, new->prefix->af,
-		    new->aspath->peer, DIR_DEFAULT_OUT);
 
 		if (rde_filter(peer, fasp, &addr, new->prefix->prefixlen,
 		    new->peer, DIR_OUT) == ACTION_DENY) {

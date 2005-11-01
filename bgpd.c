@@ -433,9 +433,6 @@ reconfigure(char *conffile, struct bgpd_config *conf, struct mrt_head *mrt_l,
 		if (imsg_compose(ibuf_se, IMSG_RECONF_PEER, p->conf.id, 0, -1,
 		    &p->conf, sizeof(struct peer_config)) == -1)
 			return (-1);
-		if (send_filterset(ibuf_se, &p->conf.attrset,
-		    p->conf.id) == -1)
-			return (-1);
 	}
 	while ((n = TAILQ_FIRST(&net_l)) != NULL) {
 		if (imsg_compose(ibuf_rde, IMSG_NETWORK_ADD, 0, 0, -1,

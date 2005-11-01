@@ -212,7 +212,6 @@ struct peer_config {
 	struct bgpd_addr	 local_addr;
 	struct peer_auth	 auth;
 	struct capabilities	 capabilities;
-	struct filter_set_head	 attrset;
 	char			 group[PEER_DESCR_LEN];
 	char			 descr[PEER_DESCR_LEN];
 	char			 if_depend[IFNAMSIZ];
@@ -498,9 +497,7 @@ enum filter_actions {
 
 enum directions {
 	DIR_IN = 1,
-	DIR_OUT,
-	DIR_DEFAULT_IN,		/* only needed to apply default set */
-	DIR_DEFAULT_OUT
+	DIR_OUT
 };
 
 enum from_spec {
