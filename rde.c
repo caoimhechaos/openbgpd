@@ -522,7 +522,8 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 			parent_set = NULL;
 			prefix_network_clean(&peerself, reloadtime);
 			
-			pt_dump(rde_softreconfig_out, NULL, AF_UNSPEC);
+			if (!rde_filter_equal(rules_l, newrules, DIR_OUT))
+				pt_dump(rde_softreconfig_out, NULL, AF_UNSPEC);
 			while ((r = TAILQ_FIRST(rules_l)) != NULL) {
 				TAILQ_REMOVE(rules_l, r, entry);
 				filterset_free(&r->set);
