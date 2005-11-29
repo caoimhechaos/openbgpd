@@ -306,7 +306,7 @@ rde_filter_equal(struct filter_head *a, struct filter_head *b,
 		if ((fa == NULL && fb != NULL) || (fa != NULL && fb == NULL))
 			/* new rule added or removed */
 			return (0);
-		
+
 		if (fa->action != fb->action || fa->quick != fb->quick)
 			return (0);
 		if (memcmp(&fa->peer, &fb->peer, sizeof(fa->peer)))
@@ -429,7 +429,7 @@ filterset_equal(struct filter_set_head *ah, struct filter_set_head *bh)
 				bs = pftable_id2name(b->action.id);
 			else
 				break;
-			
+
 			if (a->type == ACTION_PFTABLE)
 				as = a->action.pftable;
 			else
@@ -446,7 +446,7 @@ filterset_equal(struct filter_set_head *ah, struct filter_set_head *bh)
 				bs = rtlabel_id2name(b->action.id);
 			else
 				break;
-			
+
 			if (a->type == ACTION_RTLABEL)
 				as = a->action.rtlabel;
 			else
