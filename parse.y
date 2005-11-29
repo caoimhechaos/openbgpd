@@ -181,7 +181,7 @@ typedef struct {
 %type	<v.filter_prefix>	filter_prefix filter_prefix_l
 %type	<v.filter_prefix>	filter_prefix_h filter_prefix_m
 %type	<v.u8>			unaryop binaryop filter_as_type
-%type	<v.encspec>		encspec;
+%type	<v.encspec>		encspec
 %%
 
 grammar		: /* empty */
