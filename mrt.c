@@ -508,9 +508,11 @@ mrt_dump_upcall(struct pt_entry *pt, void *ptr)
 	 */
 	LIST_FOREACH(p, &pt->prefix_h, prefix_l)
 		if (mrtbuf->type == MRT_TABLE_DUMP)
-			mrt_dump_entry(mrtbuf, p, sequencenum++, p->peer);
+			mrt_dump_entry(mrtbuf, p, sequencenum++,
+			    p->aspath->peer);
 		else
-			mrt_dump_entry_mp(mrtbuf, p, sequencenum++, p->peer);
+			mrt_dump_entry_mp(mrtbuf, p, sequencenum++,
+			    p->aspath->peer);
 }
 
 static int

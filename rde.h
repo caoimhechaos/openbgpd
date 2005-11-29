@@ -232,8 +232,8 @@ struct prefix {
 	LIST_ENTRY(prefix)		 prefix_l, path_l;
 	struct rde_aspath		*aspath;
 	struct pt_entry			*prefix;
-	struct rde_peer			*peer;
 	time_t				 lastchange;
+	u_int32_t			 flags;
 };
 
 /* prototypes */
