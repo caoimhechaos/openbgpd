@@ -708,11 +708,6 @@ rde_update_dispatch(struct imsg *imsg)
 			return (-1);
 		}
 
-		/* input filter */
-		if (rde_filter(rules_l, peer, NULL, &prefix, prefixlen, peer,
-		    DIR_IN) == ACTION_DENY)
-			continue;
-
 		rde_update_log("withdraw", peer, NULL, &prefix, prefixlen);
 		prefix_remove(peer, &prefix, prefixlen);
 	}
@@ -763,11 +758,6 @@ rde_update_dispatch(struct imsg *imsg)
 
 				mpp += pos;
 				mplen -= pos;
-
-				/* input filter */
-				if (rde_filter(rules_l, peer, NULL, &prefix,
-				    prefixlen, peer, DIR_IN) == ACTION_DENY)
-					continue;
 
 				rde_update_log("withdraw", peer, NULL,
 				    &prefix, prefixlen);
