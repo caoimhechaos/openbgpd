@@ -1773,7 +1773,7 @@ parse_open(struct peer *peer)
 	memcpy(&optparamlen, p, sizeof(optparamlen));
 	p += sizeof(optparamlen);
 
-	if (optparamlen > msglen - MSGSIZE_OPEN_MIN) {
+	if (optparamlen != msglen - MSGSIZE_OPEN_MIN) {
 			log_peer_warnx(&peer->conf,
 			    "corrupt OPEN message received: length mismatch");
 			session_notification(peer, ERR_OPEN, 0, NULL, 0);
