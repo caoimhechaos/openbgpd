@@ -1151,6 +1151,7 @@ rde_attr_error(u_char *p, u_int16_t len, struct rde_aspath *attr,
 		if (len - plen < 2)
 			return (op);
 		UPD_READ(&attr_len, p, plen, 2);
+		attr_len = ntohs(attr_len);
 	} else {
 		UPD_READ(&tmp8, p, plen, 1);
 		attr_len = tmp8;
