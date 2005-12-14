@@ -2071,11 +2071,12 @@ fetchifs(int ifindex)
 			if (sa->sa_family == AF_LINK) {
 				sdl = (struct sockaddr_dl *)sa;
 				if (sdl->sdl_nlen >= sizeof(kif->k.ifname))
-					strlcpy(kif->k.ifname, sdl->sdl_data,
-					    sizeof(kif->k.ifname));
+					memcpy(kif->k.ifname, sdl->sdl_data,
+					    sizeof(kif->k.ifname) - 1);
 				else if (sdl->sdl_nlen > 0)
-					strlcpy(kif->k.ifname, sdl->sdl_data,
-					    sdl->sdl_nlen + 1);
+					memcpy(kif->k.ifname, sdl->sdl_data,
+					    sdl->sdl_nlen);
+				/* string already terminated via calloc() */
 			}
 
 		kif_insert(kif);
