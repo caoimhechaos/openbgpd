@@ -98,7 +98,7 @@ attr_optadd(struct rde_aspath *asp, u_int8_t flags, u_int8_t type,
 	/* keep a sorted list */
 	TAILQ_FOREACH_REVERSE(p, &asp->others, attr_list, entry) {
 		if (type == p->type) {
-			/* attribute only once allowed */
+			/* attribute allowed only once */
 			free(a->data);
 			free(a);
 			return (-1);
