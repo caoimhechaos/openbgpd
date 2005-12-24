@@ -252,6 +252,7 @@ main(int argc, char *argv[])
 	mrt_reconfigure(&mrt_l);
 
 	while (quit == 0) {
+		bzero(pfd, sizeof(pfd));
 		pfd[PFD_PIPE_SESSION].fd = ibuf_se->fd;
 		pfd[PFD_PIPE_SESSION].events = POLLIN;
 		if (ibuf_se->w.queued)
