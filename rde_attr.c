@@ -65,15 +65,6 @@ attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
 }
 
 int
-attr_optlen(struct attr *a)
-{
-	if (a->len > 255)
-		return (4 + a->len);
-	else
-		return (3 + a->len);
-}
-
-int
 attr_optadd(struct rde_aspath *asp, u_int8_t flags, u_int8_t type,
     void *data, u_int16_t len)
 {
