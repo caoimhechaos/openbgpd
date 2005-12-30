@@ -257,8 +257,6 @@ int		 attr_optadd(struct rde_aspath *, u_int8_t, u_int8_t,
 		     void *, u_int16_t);
 struct attr	*attr_optget(const struct rde_aspath *, u_int8_t);
 void		 attr_optfree(struct rde_aspath *);
-int		 attr_mp_nexthop(u_char *, u_int16_t, u_int16_t,
-		     struct rde_aspath *);
 
 int		 aspath_verify(void *, u_int16_t);
 #define		 AS_ERR_LEN	-1
