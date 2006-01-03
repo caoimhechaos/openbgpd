@@ -199,7 +199,6 @@ void		 log_statechange(struct peer *, enum session_state,
 void		 log_notification(const struct peer *, u_int8_t, u_int8_t,
 		    u_char *, u_int16_t);
 void		 log_conn_attempt(const struct peer *, struct sockaddr *);
-const char *	 log_sockaddr(struct sockaddr *);
 
 /* parse.y */
 int	 parse_config(char *, struct bgpd_config *, struct mrt_head *,
