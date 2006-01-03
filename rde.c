@@ -216,9 +216,11 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 			i++;
 		}
 
-		if (poll(pfd, i, INFTIM) == -1)
+		if (poll(pfd, i, INFTIM) == -1) {
 			if (errno != EINTR)
 				fatal("poll error");
+			continue;
+		}
 
 		if ((pfd[PFD_PIPE_MAIN].revents & POLLOUT) &&
 		    ibuf_main->w.queued)
