@@ -237,6 +237,7 @@ main(int argc, char *argv[])
 
 	while ((net = TAILQ_FIRST(&net_l)) != NULL) {
 		TAILQ_REMOVE(&net_l, net, entry);
+		filterset_free(&net->net.attrset);
 		free(net);
 	}
 
