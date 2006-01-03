@@ -289,6 +289,7 @@ pt_alloc4(void)
 	p = calloc(1, sizeof(*p));
 	if (p == NULL)
 		fatal("pt_alloc");
+	rdemem.pt4_cnt++;
 	return (p);
 }
 
@@ -300,12 +301,23 @@ pt_alloc6(void)
 	p = calloc(1, sizeof(*p));
 	if (p == NULL)
 		fatal("pt_alloc");
+	rdemem.pt6_cnt++;
 	return (p);
 }
 
 static void
 pt_free(struct pt_entry *pte)
 {
+	switch (pte->af) {
+	case AF_INET:
+		rdemem.pt4_cnt--;
+		break;
+	case AF_INET6:
+		rdemem.pt6_cnt--;
+		break;
+	default:
+		break;
+	}
 	free(pte);
 }
 

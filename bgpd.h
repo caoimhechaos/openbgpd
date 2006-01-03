@@ -315,6 +315,7 @@ enum imsg_type {
 	IMSG_CTL_SHOW_RIB_PREFIX,
 	IMSG_CTL_SHOW_NETWORK,
 	IMSG_CTL_SHOW_NETWORK6,
+	IMSG_CTL_SHOW_RIB_MEM,
 	IMSG_REFRESH,
 	IMSG_IFINFO
 };
@@ -627,6 +628,19 @@ struct filter_set {
 struct rrefresh {
 	u_int16_t	afi;
 	u_int8_t	safi;
+};
+
+struct rde_memstats {
+	int64_t		path_cnt;
+	int64_t		prefix_cnt;
+	int64_t		pt4_cnt;
+	int64_t		pt6_cnt;
+	int64_t		nexthop_cnt;
+	int64_t		aspath_cnt;
+	int64_t		aspath_size;
+	int64_t		aspath_refs;
+	int64_t		attr_cnt;
+	int64_t		attr_data;
 };
 
 /* Address Family Numbers as per rfc1700 */

@@ -97,6 +97,7 @@ struct filter_head	*rules_l, *newrules;
 struct imsgbuf		*ibuf_se;
 struct imsgbuf		*ibuf_main;
 struct mrt		*mrt;
+struct rde_memstats	 rdemem;
 
 void
 rde_sighdlr(int sig)
@@ -434,6 +435,10 @@ rde_dispatch_imsg_session(struct imsgbuf *ibuf)
 		case IMSG_CTL_END:
 			imsg_compose(ibuf_se, IMSG_CTL_END, 0, imsg.hdr.pid,
 			    -1, NULL, 0);
+			break;
+		case IMSG_CTL_SHOW_RIB_MEM:
+			imsg_compose(ibuf_se, IMSG_CTL_SHOW_RIB_MEM, 0,
+			    imsg.hdr.pid, -1, &rdemem, sizeof(rdemem));
 			break;
 		default:
 			break;

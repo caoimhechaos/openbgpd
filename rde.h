@@ -236,6 +236,8 @@ struct prefix {
 	u_int32_t			 flags;
 };
 
+extern struct rde_memstats rdemem;
+
 /* prototypes */
 /* rde.c */
 void		 rde_send_kroute(struct prefix *, struct prefix *);
