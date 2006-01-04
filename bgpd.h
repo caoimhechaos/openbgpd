@@ -641,6 +641,7 @@ struct rde_memstats {
 	int64_t		aspath_refs;
 	int64_t		attr_cnt;
 	int64_t		attr_data;
+	int64_t		attr_dcnt;
 };
 
 /* Address Family Numbers as per rfc1700 */
