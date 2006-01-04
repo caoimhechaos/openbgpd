@@ -208,8 +208,10 @@ prefix_evaluate(struct prefix *p, struct pt_entry *pte)
 		/* decision process is turned off */
 		if (p != NULL)
 			LIST_INSERT_HEAD(&pte->prefix_h, p, prefix_l);
-		if (pte->active != NULL)
+		if (pte->active != NULL) {
+			pte->active->aspath->active_cnt--;
 			pte->active = NULL;
+		}
 		return;
 	}
 
