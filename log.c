@@ -229,17 +229,6 @@ fatalx(const char *emsg)
 }
 
 void
-fatal_ensure(const char *file, int line, const char *cond)
-{
-	logit(LOG_CRIT, "ENSURE (%s) failed in file %s on line %d",
-	    cond, file, line);
-
-	/* XXX check which process we are and notify others! */
-	sleep(10);
-	_exit(1);
-}
-
-void
 log_statechange(struct peer *peer, enum session_state nstate,
     enum session_events event)
 {

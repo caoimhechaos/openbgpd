@@ -687,7 +687,6 @@ void		 log_info(const char *, ...);
 void		 log_debug(const char *, ...);
 void		 fatal(const char *);
 void		 fatalx(const char *);
-void		 fatal_ensure(const char *, int, const char *);
 
 /* parse.y */
 int	 cmdline_symset(char *);
