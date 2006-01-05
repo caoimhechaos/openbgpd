@@ -640,6 +640,7 @@ struct rde_memstats {
 	int64_t		aspath_size;
 	int64_t		aspath_refs;
 	int64_t		attr_cnt;
+	int64_t		attr_refs;
 	int64_t		attr_data;
 	int64_t		attr_dcnt;
 };
