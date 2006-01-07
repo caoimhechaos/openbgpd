@@ -1435,6 +1435,7 @@ filter_set_opt	: LOCALPREF number		{
 				case COMMUNITY_NO_EXPORT:
 				case COMMUNITY_NO_ADVERTISE:
 				case COMMUNITY_NO_EXPSUBCONFED:
+				case COMMUNITY_NO_PEER:
 					/* valid */
 					break;
 				default:
