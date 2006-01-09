@@ -206,7 +206,7 @@ void
 path_destroy(struct rde_aspath *asp)
 {
 	/* path_destroy can only unlink and free empty rde_aspath */
-	if (asp->prefix_cnt == 0 && asp->active_cnt == 0)
+	if (asp->prefix_cnt != 0 || asp->active_cnt != 0)
 		log_warnx("path_destroy: prefix count out of sync");
 
 	nexthop_unlink(asp);
