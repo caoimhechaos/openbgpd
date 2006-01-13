@@ -406,8 +406,7 @@ up_generate_updates(struct filter_head *rules, struct rde_peer *peer,
 	if (peer->state != PEER_UP)
 		return;
 
-	if (new == NULL || (new->aspath->nexthop != NULL &&
-	    new->aspath->nexthop->state != NEXTHOP_REACH)) {
+	if (new == NULL) {
 		if (up_test_update(peer, old) != 1)
 			return;
 
