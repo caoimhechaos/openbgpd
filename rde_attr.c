@@ -232,7 +232,7 @@ attr_compare(struct rde_aspath *a, struct rde_aspath *b)
 		for (; l < b->others_len; l++)
 			if (b->others[l] != NULL)
 				return (-1);
-	} else if (a->others_len < b->others_len) {
+	} else if (a->others_len > b->others_len) {
 		for (; l < a->others_len; l++)
 			if (a->others[l] != NULL)
 				return (1);
