@@ -2177,6 +2177,8 @@ network_add(struct network_config *nc, int flagstatic)
 		    DIR_IN);
 		path_update(&peerdynamic, asp, &nc->prefix, nc->prefixlen);
 	}
+
+	path_put(asp);
 	filterset_free(&nc->attrset);
 }
 
