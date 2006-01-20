@@ -461,8 +461,9 @@ struct ctl_show_rib {
 	time_t			lastchange;
 	u_int32_t		local_pref;
 	u_int32_t		med;
-	u_int16_t		prefix_cnt;
-	u_int16_t		active_cnt;
+	u_int32_t		prefix_cnt;
+	u_int32_t		active_cnt;
+	u_int32_t		adjrib_cnt;
 	u_int16_t		aspath_len;
 	u_int16_t		flags;
 	u_int8_t		prefixlen;

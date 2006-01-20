@@ -1434,6 +1434,7 @@ rde_dump_rib_as(struct prefix *p, pid_t pid)
 	rib.med = p->aspath->med;
 	rib.prefix_cnt = p->aspath->prefix_cnt;
 	rib.active_cnt = p->aspath->active_cnt;
+	rib.adjrib_cnt = p->aspath->adjrib_cnt;
 	if (p->aspath->nexthop != NULL)
 		memcpy(&rib.nexthop, &p->aspath->nexthop->true_nexthop,
 		    sizeof(rib.nexthop));
