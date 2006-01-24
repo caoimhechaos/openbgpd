@@ -94,6 +94,13 @@ instead of the default
 .It Fl n
 Configtest mode.
 Only check the configuration file for validity.
+.It Fl r Ar path
+Open a second, restricted control socket that
+.Xr bgpctl 8
+can use.
+Only
+.Em show
+requests are allowed on this socket.
 .It Fl v
 Produce more verbose output.
 .El
