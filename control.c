@@ -30,11 +30,6 @@
 
 #define	CONTROL_BACKLOG	5
 
-struct {
-	int	fd;
-	int	restricted_fd;
-} control_state;
-
 struct ctl_conn	*control_connbyfd(int);
 struct ctl_conn	*control_connbypid(pid_t);
 int		 control_close(int);
