@@ -47,6 +47,7 @@ merge_config(struct bgpd_config *xconf, struct bgpd_config *conf,
 
 	/* preserve cmd line opts */
 	conf->opts = xconf->opts;
+	conf->rcsock = xconf->rcsock;
 
 	if (!conf->as) {
 		log_warnx("configuration error: AS not given");

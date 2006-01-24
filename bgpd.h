@@ -142,6 +142,7 @@ struct bgpd_config {
 	struct filter_set_head			 staticset;
 	struct filter_set_head			 staticset6;
 	struct listen_addrs			*listen_addrs;
+	char					*rcsock;
 	int					 opts;
 	int					 flags;
 	int					 log;
@@ -334,7 +335,8 @@ struct imsg {
 
 enum ctl_results {
 	CTL_RES_OK,
-	CTL_RES_NOSUCHPEER
+	CTL_RES_NOSUCHPEER,
+	CTL_RES_DENIED
 };
 
 /* needed for session.h parse prototype */
@@ -730,8 +732,7 @@ void		 inet6applymask(struct in6_addr *, const struct in6_addr *,
 		    int);
 
 /* control.c */
-int	control_init(void);
-void	control_cleanup(void);
+void	control_cleanup(const char *);
 int	control_imsg_relay(struct imsg *);
 
 /* pftable.c */
