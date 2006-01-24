@@ -1966,8 +1966,9 @@ parse_notification(struct peer *peer)
 			datalen -= sizeof(capa_len);
 			if (datalen < capa_len) {
 				log_peer_warnx(&peer->conf,
-				    "parse_notification: capa_len %u exceeds"
-				    "remaining msg length", capa_len);
+				    "parse_notification: capa_len %u exceeds "
+				    "remaining msg length %u", capa_len,
+				    datalen);
 				return (-1);
 			}
 			p += capa_len;
