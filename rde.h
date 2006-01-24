@@ -294,7 +294,7 @@ int		 community_set(struct rde_aspath *, int, int);
 void		 path_init(u_int32_t);
 void		 path_shutdown(void);
 void		 path_update(struct rde_peer *, struct rde_aspath *,
-		     struct bgpd_addr *, int);
+		     struct bgpd_addr *, int, u_int32_t);
 int		 path_compare(struct rde_aspath *, struct rde_aspath *);
 struct rde_aspath *path_lookup(struct rde_aspath *, struct rde_peer *);
 void		 path_remove(struct rde_aspath *);
