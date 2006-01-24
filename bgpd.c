@@ -303,7 +303,7 @@ main(int argc, char *argv[])
 
 		if (nfds == -1 || nfds == 0)
 			continue;
-	
+
 		if (pfd[PFD_PIPE_SESSION].revents & POLLOUT)
 			if (msgbuf_write(&ibuf_se->w) < 0) {
 				log_warn("pipe write error (to SE)");

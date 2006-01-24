@@ -451,7 +451,7 @@ prefix_move(struct rde_aspath *asp, struct prefix *p, u_int32_t flags)
 		p->flags &= ~flags;
 		PREFIX_COUNT(p->aspath, flags, -1);
 		/* as before peer count needs no update because of move */
-		
+
 		/* redo the route decision for p */
 		LIST_REMOVE(p, prefix_l);
 		/* If the prefix is the active one remove it first. */
