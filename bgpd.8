@@ -28,6 +28,7 @@
 .Fl D Ar macro Ns = Ns Ar value Oc
 .Xc
 .Op Fl f Ar file
+.Op Fl r Ar path
 .Ek
 .Sh DESCRIPTION
 .Nm
@@ -95,7 +96,7 @@ instead of the default
 Configtest mode.
 Only check the configuration file for validity.
 .It Fl r Ar path
-Open a second, restricted control socket that
+Open a second, restricted, control socket that
 .Xr bgpctl 8
 can use.
 Only
