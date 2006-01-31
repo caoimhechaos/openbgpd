@@ -680,6 +680,10 @@ kr_redistribute6(int type, struct kroute6 *kr6)
 	if (!(kr6->flags & F_KERNEL))
 		return (0);
 
+	/* Dynamic routes are not redistributable. */
+	if (kr6->flags & F_DYNAMIC)
+		return (0);
+
 	/*
 	 * We consider unspecified, loopback, multicast, link- and site-local,
 	 * IPv4 mapped and IPv4 compatible addresses as not redistributable.
