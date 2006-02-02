@@ -417,13 +417,18 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 	}
 
 	if (r->match.community.as != 0) {
+		printf("community ");
 		if (r->match.community.as == COMMUNITY_ANY)
 			printf("*:");
+		else if (r->match.community.as == COMMUNITY_NEIGHBOR_AS)
+			printf("neighbor-as:");
 		else
 			printf("%d:", r->match.community.as);
 
 		if (r->match.community.type == COMMUNITY_ANY)
 			printf("* ");
+		else if (r->match.community.type == COMMUNITY_NEIGHBOR_AS)
+			printf("neighbor-as ");
 		else
 			printf("%d ", r->match.community.type);
 	}

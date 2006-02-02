@@ -2268,7 +2268,7 @@ network_add(struct network_config *nc, int flagstatic)
 	else
 		p = &peerdynamic;
 
-	rde_apply_set(asp, &nc->attrset, nc->prefix.af, p, DIR_IN);
+	rde_apply_set(asp, &nc->attrset, nc->prefix.af, p, p);
 	path_update(p, asp, &nc->prefix, nc->prefixlen, F_ORIGINAL);
 	path_update(p, asp, &nc->prefix, nc->prefixlen, F_LOCAL);
 
