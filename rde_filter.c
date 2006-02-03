@@ -181,7 +181,7 @@ rde_apply_set(struct rde_aspath *asp, struct filter_set_head *sh,
 				type = peer->conf.remote_as;
 				break;
 			default:
-				type = set->action.community.as;
+				type = set->action.community.type;
 				break;
 			}
 
@@ -241,7 +241,7 @@ rde_filter_match(struct filter_rule *f, struct rde_aspath *asp,
 			type = peer->conf.remote_as;
 			break;
 		default:
-			type = f->match.community.as;
+			type = f->match.community.type;
 			break;
 		}
 
