@@ -873,7 +873,7 @@ change_state(struct peer *peer, enum session_state state,
 			    peer->IdleHoldTime < MAX_IDLE_HOLD/2)
 				peer->IdleHoldTime *= 2;
 		}
-		if (event != EVNT_RCVD_OPEN) {	/* capa negotiation */
+		if (peer->state == STATE_NONE || peer->state == STATE_ESTABLISHED) {
 			/* initialize capability negotiation structures */
 			memcpy(&peer->capa.ann, &peer->conf.capabilities,
 			    sizeof(peer->capa.ann));
