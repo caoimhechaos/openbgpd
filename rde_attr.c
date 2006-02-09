@@ -201,6 +201,10 @@ attr_diff(struct attr *oa, struct attr *ob)
 {
 	int	r;
 
+	if (ob == NULL)
+		return (1);
+	if (oa == NULL)
+		return (-1);
 	if (oa->flags > ob->flags)
 		return (1);
 	if (oa->flags < ob->flags)
@@ -254,14 +258,13 @@ attr_free(struct rde_aspath *asp, struct attr *attr)
 	for (l = 0; l < asp->others_len; l++)
 		if (asp->others[l] == attr) {
 			attr_put(asp->others[l]);
-			asp->others[l] = NULL;
-			--asp->others_len;
-			for (; l < asp->others_len; l++)
-				asp->others[l] = asp->others[l + 1];
+			for (++l; l < asp->others_len; l++)
+				asp->others[l - 1] = asp->others[l];
+			asp->others[asp->others_len - 1] = NULL;
 			return;
 		}
 
-	/* no realloc() others because the slot will be reused soon */
+	/* no realloc() because the slot may be reused soon */
 }
 
 void
