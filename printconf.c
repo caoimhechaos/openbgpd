@@ -120,6 +120,10 @@ print_set(struct filter_set_head *set)
 		case ACTION_SET_PREPEND_PEER:
 			printf("prepend-neighbor %u ", s->action.prepend);
 			break;
+		case ACTION_DEL_COMMUNITY:
+			printf("community delete %u:%u ",
+			    s->action.community.as, s->action.community.type);
+			break;
 		case ACTION_SET_COMMUNITY:
 			printf("community %u:%u ", s->action.community.as,
 			    s->action.community.type);

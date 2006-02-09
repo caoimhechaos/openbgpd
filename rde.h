@@ -291,6 +291,7 @@ struct aspath	*aspath_prepend(struct aspath *, u_int16_t, int);
 int		 aspath_match(struct aspath *, enum as_spec, u_int16_t);
 int		 community_match(void *, u_int16_t, int, int);
 int		 community_set(struct rde_aspath *, int, int);
+void		 community_delete(struct rde_aspath *, int, int);
 
 /* rde_rib.c */
 void		 path_init(u_int32_t);
