@@ -307,6 +307,17 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 	printf("%s\tannounce IPv4 %s\n", c, print_safi(p->capabilities.mp_v4));
 	printf("%s\tannounce IPv6 %s\n", c, print_safi(p->capabilities.mp_v6));
 
+	if (p->softreconfig_in == 1)
+		printf("%s\tsoftreconfig in yes\n", c);
+	else
+		printf("%s\tsoftreconfig in no\n", c);
+
+	if (p->softreconfig_out == 1)
+		printf("%s\tsoftreconfig out yes\n", c);
+	else
+		printf("%s\tsoftreconfig out no\n", c);
+
+
 	print_mrt(p->id, p->groupid, c, "\t");
 
 	printf("%s}\n", c);
