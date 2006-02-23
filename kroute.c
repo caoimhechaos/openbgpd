@@ -1738,6 +1738,8 @@ send_rtmsg(int fd, int action, struct kroute *kroute)
 		r.hdr.rtm_flags |= RTF_BLACKHOLE;
 	if (kroute->flags & F_REJECT)
 		r.hdr.rtm_flags |= RTF_REJECT;
+	if (action == RTM_CHANGE)	/* reset these flags on change */
+		r.hdr.rtm_fmask = RTF_REJECT|RTF_BLACKHOLE;
 	r.hdr.rtm_seq = kr_state.rtseq++;	/* overflow doesn't matter */
 	r.hdr.rtm_addrs = RTA_DST|RTA_GATEWAY|RTA_NETMASK|RTA_LABEL;
 	r.prefix.sin_len = sizeof(r.prefix);
