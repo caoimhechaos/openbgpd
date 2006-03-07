@@ -601,6 +601,12 @@ set localpref 300
 See also the
 .Sx ATTRIBUTE SET
 section.
+Set parameters are applied to the received prefixes; the only exceptions are
+.Ic prepend-self
+and
+.Ic nexthop no-modify .
+These sets are rewritten into filter rules and can be viewed with
+.Dq bgpd -nv .
 .Pp
 .It Xo
 .Ic softreconfig
