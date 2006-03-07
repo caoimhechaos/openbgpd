@@ -2200,18 +2200,25 @@ get_id(struct peer *newpeer)
 {
 	struct peer	*p;
 
-	if (newpeer->conf.remote_addr.af)
-		for (p = peer_l_old; p != NULL; p = p->next)
+	for (p = peer_l_old; p != NULL; p = p->next)
+		if (newpeer->conf.remote_addr.af) {
 			if (!memcmp(&p->conf.remote_addr,
 			    &newpeer->conf.remote_addr,
 			    sizeof(p->conf.remote_addr))) {
 				newpeer->conf.id = p->conf.id;
 				return (0);
 			}
+		} else {	/* newpeer is a group */
+			if (strcmp(newpeer->conf.group, p->conf.group) == 0) {
+				newpeer->conf.id = p->conf.groupid;
+				return (0);
+			}
+		}
 
 	/* new one */
 	for (; id < UINT_MAX / 2; id++) {
-		for (p = peer_l_old; p != NULL && p->conf.id != id; p = p->next)
+		for (p = peer_l_old; p != NULL &&
+		    p->conf.id != id && p->conf.groupid != id; p = p->next)
 			;	/* nothing */
 		if (p == NULL) {	/* we found a free id */
 			newpeer->conf.id = id++;
