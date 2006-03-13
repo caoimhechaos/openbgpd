@@ -343,7 +343,22 @@ rde_dispatch_imsg_session(struct imsgbuf *ibuf)
 				break;
 			}
 			session_set = NULL;
-			network_add(&netconf_s, 0);
+			switch (netconf_s.prefix.af) {
+			case AF_INET:
+				if (netconf_s.prefixlen > 32)
+					goto badnet;
+				network_add(&netconf_s, 0);
+				break;
+			case AF_INET6:
+				if (netconf_s.prefixlen > 128)
+					goto badnet;
+				network_add(&netconf_s, 0);
+				break;
+			default:
+badnet:
+				log_warnx("rde_dispatch: bad network");
+				break;
+			}
 			break;
 		case IMSG_NETWORK_REMOVE:
 			if (imsg.hdr.len - IMSG_HEADER_SIZE !=
