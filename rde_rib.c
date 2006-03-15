@@ -952,7 +952,7 @@ nexthop_compare(struct nexthop *na, struct nexthop *nb)
 {
 	struct bgpd_addr	*a, *b;
 
-	if (na == NULL && nb == NULL)
+	if (na == nb)
 		return (0);
 	if (na == NULL)
 		return (-1);
