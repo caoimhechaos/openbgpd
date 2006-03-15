@@ -29,6 +29,7 @@
 .Xc
 .Op Fl f Ar file
 .Op Fl r Ar path
+.Op Fl s Ar path
 .Ek
 .Sh DESCRIPTION
 .Nm
@@ -102,6 +103,10 @@ can use.
 Only
 .Em show
 requests are allowed on this socket.
+.It Fl s Ar path
+Use an alternate location for the main control socket than
+.Xr bgpctl 8
+can use.
 .It Fl v
 Produce more verbose output.
 .El
