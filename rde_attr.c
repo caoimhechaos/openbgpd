@@ -774,6 +774,7 @@ community_set(struct rde_aspath *asp, int as, int type)
 
 	attr_optadd(asp, f, t, p, ncommunities << 2);
 
+	free(p);
 	return (1);
 }
 
@@ -836,5 +837,6 @@ community_delete(struct rde_aspath *asp, int as, int type)
 
 	attr_free(asp, attr);
 	attr_optadd(asp, f, t, n, len);
+	free(n);
 }
 
