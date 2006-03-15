@@ -86,7 +86,7 @@ usage(void)
 	extern char *__progname;
 
 	fprintf(stderr, "usage: %s [-dnv] ", __progname);
-	fprintf(stderr, "[-D macro=value] [-f file] [-s path] [-r path]\n");
+	fprintf(stderr, "[-D macro=value] [-f file] [-r path] [-s path]\n");
 	exit(1);
 }
 
