@@ -142,6 +142,7 @@ struct bgpd_config {
 	struct filter_set_head			 staticset;
 	struct filter_set_head			 staticset6;
 	struct listen_addrs			*listen_addrs;
+	char					*csock;
 	char					*rcsock;
 	int					 opts;
 	int					 flags;

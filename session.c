@@ -194,7 +194,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 	}
 
 	/* control socket is outside chroot */
-	if ((csock = control_init(0, SOCKET_NAME)) == -1)
+	if ((csock = control_init(0, conf->csock)) == -1)
 		fatalx("control socket setup failed");
 	if (conf->rcsock != NULL &&
 	    (rcsock = control_init(1, conf->rcsock)) == -1)
