@@ -182,6 +182,11 @@ print_mainconf(struct bgpd_config *conf)
 		printf("listen on %s\n",
 		    log_sockaddr((struct sockaddr *)&la->sa));
 
+	if (conf->flags & BGPD_FLAG_NEXTHOP_BGP)
+		printf("nexthop qualify via bgp\n");
+	if (conf->flags & BGPD_FLAG_NEXTHOP_DEFAULT)
+		printf("nexthop qualify via default\n");
+
 	if (conf->flags & BGPD_FLAG_REDIST_CONNECTED) {
 		printf("network inet connected");
 		if (!TAILQ_EMPTY(&conf->connectset))
