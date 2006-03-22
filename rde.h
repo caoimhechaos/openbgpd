@@ -272,6 +272,8 @@ struct attr	*attr_optget(const struct rde_aspath *, u_int8_t);
 void		 attr_copy(struct rde_aspath *, struct rde_aspath *);
 int		 attr_compare(struct rde_aspath *, struct rde_aspath *);
 void		 attr_freeall(struct rde_aspath *);
+#define		 attr_optlen(x)	\
+    ((x)->len > 255 ? (x)->len + 4 : (x)->len + 3)
 
 int		 aspath_verify(void *, u_int16_t);
 #define		 AS_ERR_LEN	-1
