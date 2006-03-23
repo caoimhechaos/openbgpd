@@ -241,6 +241,23 @@ See also the
 section.
 .Pp
 .It Xo
+.Ic nexthop
+.Ic qualify
+.Ic via
+.Pq Ic bgp Ns \&| Ns Ic default
+.Xc
+If set to
+.Ic bgp ,
+.Xr bgpd 8
+may use BGP routes to verify nexthops.
+If set to
+.Ic default ,
+bgpd may use the default route to verify nexthops.
+By default bgpd will only use static routes or routes added by other routing
+daemons like
+.Xr ospfd 8 .
+.Pp
+.It Xo
 .Ic rde
 .Ic med
 .Ic compare
