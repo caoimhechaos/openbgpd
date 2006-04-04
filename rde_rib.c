@@ -880,6 +880,10 @@ nexthop_modify(struct rde_aspath *asp, struct bgpd_addr *nexthop,
 		asp->flags |= F_NEXTHOP_NOMODIFY;
 		return;
 	}
+	if (type == ACTION_SET_NEXTHOP_SELF) {
+		asp->flags |= F_NEXTHOP_SELF;
+		return;
+	}
 	if (af != nexthop->af)
 		return;
 

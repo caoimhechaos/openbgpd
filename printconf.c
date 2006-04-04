@@ -114,6 +114,9 @@ print_set(struct filter_set_head *set)
 		case ACTION_SET_NEXTHOP_NOMODIFY:
 			printf("nexthop no-modify ");
 			break;
+		case ACTION_SET_NEXTHOP_SELF:
+			printf("nexthop self ");
+			break;
 		case ACTION_SET_PREPEND_SELF:
 			printf("prepend-self %u ", s->action.prepend);
 			break;

@@ -513,7 +513,9 @@ up_get_nexthop(struct rde_peer *peer, struct rde_aspath *a)
 			return (peer->local_v4_addr.v4.s_addr);
 		else
 			return (a->nexthop->exit_nexthop.v4.s_addr);
-	} else if (!peer->conf.ebgp) {
+	} else if (a->flags & F_NEXTHOP_SELF)
+		return (peer->local_v4_addr.v4.s_addr);
+	else if (!peer->conf.ebgp) {
 		/*
 		 * If directly connected use peer->local_v4_addr
 		 * this is only true for announced networks.
