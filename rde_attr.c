@@ -29,8 +29,6 @@
 #include "bgpd.h"
 #include "rde.h"
 
-void	attr_free(struct rde_aspath *, struct attr *);
-
 int
 attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
     void *data, u_int16_t data_len)
