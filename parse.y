@@ -697,9 +697,7 @@ peeropts	: REMOTEAS asnumber	{
 			curpeer->conf.announce_type = ANNOUNCE_SELF;
 		}
 		| ANNOUNCE STRING {
-			if (!strcmp($2, "self"))
-				curpeer->conf.announce_type = ANNOUNCE_SELF;
-			else if (!strcmp($2, "none"))
+			if (!strcmp($2, "none"))
 				curpeer->conf.announce_type = ANNOUNCE_NONE;
 			else if (!strcmp($2, "all"))
 				curpeer->conf.announce_type = ANNOUNCE_ALL;
