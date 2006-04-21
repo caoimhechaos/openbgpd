@@ -30,7 +30,6 @@ int		up_generate_mp_reach(struct rde_peer *, struct update_attr *,
 		    struct rde_aspath *, sa_family_t);
 int		up_generate_attr(struct rde_peer *, struct update_attr *,
 		    struct rde_aspath *, sa_family_t);
-int		up_set_prefix(u_char *, int, struct bgpd_addr *, u_int8_t);
 
 /* update stuff. */
 struct update_prefix {
