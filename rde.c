@@ -193,7 +193,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	pt_init();
 	path_init(pathhashsize);
 	aspath_init(pathhashsize);
-	attr_init(pathhashsize);
+	attr_init(attrhashsize);
 	nexthop_init(nexthophashsize);
 	peer_init(peerhashsize);
 	rules_l = rules;
