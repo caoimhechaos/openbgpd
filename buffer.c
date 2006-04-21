@@ -202,39 +202,6 @@ msgbuf_write(struct msgbuf *msgbuf)
 	return (0);
 }
 
-int
-msgbuf_writebound(struct msgbuf *msgbuf)
-{
-	struct buf	*buf;
-	int		 n;
-
-	if (!msgbuf_unbounded(msgbuf))
-		return (1);
-
-	buf = TAILQ_FIRST(&msgbuf->bufs);
-	if ((n = buf_write(msgbuf->fd, buf)) < 0)
-		return (n);
-
-	if (n == 1) {	/* everything written out */
-		buf_dequeue(msgbuf, buf);
-		return (1);
-	} else
-		return (0);
-}
-
-int
-msgbuf_unbounded(struct msgbuf *msgbuf)
-{
-	struct buf	*buf;
-
-	/* return 1 if last buffer was not completely written. */
-	buf = TAILQ_FIRST(&msgbuf->bufs);
-	if (buf != NULL && buf->rpos != 0)
-		return (1);
-	else
-		return (0);
-}
-
 void
 buf_enqueue(struct msgbuf *msgbuf, struct buf *buf)
 {

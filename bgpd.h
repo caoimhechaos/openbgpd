@@ -692,8 +692,6 @@ void		 buf_free(struct buf *);
 void		 msgbuf_init(struct msgbuf *);
 void		 msgbuf_clear(struct msgbuf *);
 int		 msgbuf_write(struct msgbuf *);
-int		 msgbuf_writebound(struct msgbuf *);
-int		 msgbuf_unbounded(struct msgbuf *msgbuf);
 
 /* log.c */
 void		 log_init(int);
