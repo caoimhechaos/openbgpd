@@ -702,8 +702,8 @@ void		 log_warn(const char *, ...);
 void		 log_warnx(const char *, ...);
 void		 log_info(const char *, ...);
 void		 log_debug(const char *, ...);
-void		 fatal(const char *);
-void		 fatalx(const char *);
+void		 fatal(const char *) __dead;
+void		 fatalx(const char *) __dead;
 
 /* parse.y */
 int	 cmdline_symset(char *);
