@@ -2432,7 +2432,7 @@ merge_filterset(struct filter_set_head *sh, struct filter_set *s)
 				yyerror("community is already set");
 			else
 				yyerror("redefining set parameter %s",
-				    filterset_names[s->type]);
+				    filterset_name(s->type));
 			return (-1);
 		}
 	}

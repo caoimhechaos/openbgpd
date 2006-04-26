@@ -607,27 +607,6 @@ enum action_types {
 	ACTION_RTLABEL_ID
 };
 
-static const char * const filterset_names[] = {
-	"localpref",
-	"localpref",
-	"metric",
-	"metric",
-	"weight",
-	"weight",
-	"prepend-self",
-	"prepend-peer",
-	"nexthop",
-	"nexthop",
-	"nexthop",
-	"nexthop",
-	"community",
-	"community delete",
-	"pftable",
-	"pftable",
-	"rtlabel",
-	"rtlabel"
-};
-
 struct filter_set {
 	TAILQ_ENTRY(filter_set)		entry;
 	union {
@@ -771,6 +750,7 @@ void		 pftable_ref(u_int16_t);
 /* rde_filter.c */
 void		 filterset_free(struct filter_set_head *);
 int		 filterset_cmp(struct filter_set *, struct filter_set *);
+const char	*filterset_name(enum action_types);
 
 /* util.c */
 const char	*log_addr(const struct bgpd_addr *);
