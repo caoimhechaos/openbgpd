@@ -73,25 +73,25 @@ rtlabel_ref(u_int16_t id)
 u_int16_t
 pftable_name2id(const char *name)
 {
-	return (_name2id(&rt_labels, name));
+	return (_name2id(&pftable_labels, name));
 }
 
 const char *
 pftable_id2name(u_int16_t id)
 {
-	return (_id2name(&rt_labels, id));
+	return (_id2name(&pftable_labels, id));
 }
 
 void
 pftable_unref(u_int16_t id)
 {
-	_unref(&rt_labels, id);
+	_unref(&pftable_labels, id);
 }
 
 void
 pftable_ref(u_int16_t id)
 {
-	_ref(&rt_labels, id);
+	_ref(&pftable_labels, id);
 }
 
 u_int16_t
