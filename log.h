@@ -107,5 +107,6 @@ static const char * const procnames[] = {
 static const char * const ctl_res_strerror[] = {
 	"no error",
 	"no such neighbor",
-	"permission denied"
+	"permission denied",
+	"neighbor does not have this capability"
 };

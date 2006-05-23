@@ -189,6 +189,7 @@ pid_t		 session_main(struct bgpd_config *, struct peer *,
 		    struct network_head *, struct filter_head *,
 		    struct mrt_head *, int[2], int[2], int[2]);
 void		 bgp_fsm(struct peer *, enum session_events);
+int		 session_neighbor_rrefresh(struct peer *p);
 struct peer	*getpeerbyaddr(struct bgpd_addr *);
 struct peer	*getpeerbydesc(const char *);
 int		 imsg_compose_parent(int, pid_t, void *, u_int16_t);
