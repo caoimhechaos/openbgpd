@@ -220,7 +220,7 @@ int	control_init(int, char *);
 int	control_listen(int);
 void	control_shutdown(int);
 int	control_dispatch_msg(struct pollfd *, u_int *);
-int	control_accept(int, int);
+unsigned int	control_accept(int, int);
 
 /* pfkey.c */
 int	pfkey_establish(struct peer *);

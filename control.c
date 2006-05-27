@@ -111,7 +111,7 @@ control_cleanup(const char *path)
 		unlink(path);
 }
 
-int
+unsigned int
 control_accept(int listenfd, int restricted)
 {
 	int			 connfd;
