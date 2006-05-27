@@ -799,9 +799,11 @@ community_delete(struct rde_aspath *asp, int as, int type)
 		etype <<= 8;
 		etype |= *p++;
 
-		if (as != COMMUNITY_ANY && (u_int16_t)as != eas &&
-		    type != COMMUNITY_ANY && (u_int16_t)type != etype)
-			len += 4;
+		if ((as == COMMUNITY_ANY || (u_int16_t)as == eas) &&
+		    (type == COMMUNITY_ANY || (u_int16_t)type == etype))
+			/* match */
+			continue;
+		len += 4;
 	}
 
 	if (len == 0) {
@@ -821,13 +823,14 @@ community_delete(struct rde_aspath *asp, int as, int type)
 		etype <<= 8;
 		etype |= *p++;
 
-		if (as != COMMUNITY_ANY && (u_int16_t)as != eas &&
-		    type != COMMUNITY_ANY && (u_int16_t)type != etype) {
-			n[l++] = eas >> 8;
-			n[l++] = eas & 0xff;
-			n[l++] = etype >> 8;
-			n[l++] = etype & 0xff;
-		}
+		if ((as == COMMUNITY_ANY || (u_int16_t)as == eas) &&
+		    (type == COMMUNITY_ANY || (u_int16_t)type == etype))
+			/* match */
+			continue;
+		n[l++] = eas >> 8;
+		n[l++] = eas & 0xff;
+		n[l++] = etype >> 8;
+		n[l++] = etype & 0xff;
 	}
 
 	f = attr->flags;
