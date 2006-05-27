@@ -158,7 +158,8 @@ imsg_create(struct imsgbuf *ibuf, enum imsg_type type, u_int32_t peerid,
 	hdr.len = datalen + IMSG_HEADER_SIZE;
 	hdr.type = type;
 	hdr.peerid = peerid;
-	hdr.pid = pid;
+	if ((hdr.pid = pid) == 0)
+		hdr.pid = ibuf->pid;
 	if ((wbuf = buf_open(hdr.len)) == NULL) {
 		log_warn("imsg_create: buf_open");
 		return (NULL);
