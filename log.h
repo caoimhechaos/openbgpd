@@ -108,5 +108,6 @@ static const char * const ctl_res_strerror[] = {
 	"no error",
 	"no such neighbor",
 	"permission denied",
-	"neighbor does not have this capability"
+	"neighbor does not have this capability",
+	"config file has errors, reload failed"
 };

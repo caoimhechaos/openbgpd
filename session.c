@@ -2394,6 +2394,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 			control_imsg_relay(&imsg);
 			break;
 		case IMSG_CTL_END:
+		case IMSG_CTL_RESULT:
 			control_imsg_relay(&imsg);
 			break;
 		case IMSG_UPDATE:

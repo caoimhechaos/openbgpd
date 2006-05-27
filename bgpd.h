@@ -346,7 +346,8 @@ enum ctl_results {
 	CTL_RES_OK,
 	CTL_RES_NOSUCHPEER,
 	CTL_RES_DENIED,
-	CTL_RES_NOCAP
+	CTL_RES_NOCAP,
+	CTL_RES_PARSE_ERROR
 };
 
 /* needed for session.h parse prototype */
