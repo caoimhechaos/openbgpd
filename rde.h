@@ -201,6 +201,7 @@ struct nexthop {
 	 */
 	u_int32_t		costs;
 #endif
+	int			refcnt;	/* filterset reference counter */
 	enum nexthop_state	state;
 	u_int8_t		nexthop_netlen;
 	u_int8_t		flags;

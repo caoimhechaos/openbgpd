@@ -918,6 +918,9 @@ nexthop_unlink(struct rde_aspath *asp)
 	nh = asp->nexthop;
 	asp->nexthop = NULL;
 
+	if (nh->refcnt > 0)
+		return;
+
 	if (LIST_EMPTY(&nh->path_h)) {
 		LIST_REMOVE(nh, nexthop_l);
 		rde_send_nexthop(&nh->exit_nexthop, 0);
