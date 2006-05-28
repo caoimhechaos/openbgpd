@@ -439,13 +439,8 @@ filterset_free(struct filter_set_head *sh)
 		else if (s->type == ACTION_SET_NEXTHOP &&
 		    bgpd_process == PROC_RDE) {
 			nh = nexthop_get(&s->action.nexthop);
-			if (--nh->refcnt <= 0 && LIST_EMPTY(&nh->path_h)) {
-				LIST_REMOVE(nh, nexthop_l);
-				rde_send_nexthop(&nh->exit_nexthop, 0);
-
-				rdemem.nexthop_cnt--;
-				free(nh);
-			}
+			--nh->refcnt;
+			(void)nexthop_delete(nh);
 		}
 		free(s);
 	}

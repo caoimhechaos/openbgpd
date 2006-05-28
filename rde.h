@@ -335,6 +335,7 @@ void		 nexthop_modify(struct rde_aspath *, struct bgpd_addr *,
 		     enum action_types, sa_family_t);
 void		 nexthop_link(struct rde_aspath *);
 void		 nexthop_unlink(struct rde_aspath *);
+int		 nexthop_delete(struct nexthop *);
 void		 nexthop_update(struct kroute_nexthop *);
 struct nexthop	*nexthop_get(struct bgpd_addr *);
 int		 nexthop_compare(struct nexthop *, struct nexthop *);
