@@ -1420,6 +1420,7 @@ filter_set_opt	: LOCALPREF number		{
 			    pftable_exists($2) != 0) {
 				yyerror("pftable name does not exist");
 				free($2);
+				free($$);
 				YYERROR;
 			}
 			if (strlcpy($$->action.pftable, $2,
@@ -1427,11 +1428,13 @@ filter_set_opt	: LOCALPREF number		{
 			    sizeof($$->action.pftable)) {
 				yyerror("pftable name too long");
 				free($2);
+				free($$);
 				YYERROR;
 			}
 			if (pftable_add($2) != 0) {
 				yyerror("Couldn't register table");
 				free($2);
+				free($$);
 				YYERROR;
 			}
 			free($2);
@@ -1445,6 +1448,7 @@ filter_set_opt	: LOCALPREF number		{
 			    sizeof($$->action.rtlabel)) {
 				yyerror("rtlabel name too long");
 				free($2);
+				free($$);
 				YYERROR;
 			}
 			free($2);
