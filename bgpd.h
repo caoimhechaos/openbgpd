@@ -508,6 +508,15 @@ struct filter_as {
 	u_int16_t	as;
 };
 
+struct ctl_show_rib_request {
+	struct bgpd_addr	prefix;
+	struct filter_as	as;
+	pid_t			pid;
+	u_int16_t		flags;
+	sa_family_t		af;
+	u_int8_t		prefixlen;
+};
+
 enum filter_actions {
 	ACTION_NONE,
 	ACTION_ALLOW,
