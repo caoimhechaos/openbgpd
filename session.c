@@ -2616,6 +2616,7 @@ getpeerbyip(struct sockaddr *ip)
 		newpeer->conf.template = 0;
 		newpeer->conf.cloned = 1;
 		newpeer->state = newpeer->prev_state = STATE_NONE;
+		newpeer->conf.reconf_action = RECONF_REINIT;
 		newpeer->rbuf = NULL;
 		init_peer(newpeer);
 		bgp_fsm(newpeer, EVNT_START);
