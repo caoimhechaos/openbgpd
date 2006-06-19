@@ -145,6 +145,11 @@ carp_demote_set(char *group, int demote)
 		return (-1);
 
 	c->changed_by += demote;
+
+	/* enable demotion when we return to 0, i. e. all sessions up */
+	if (demote < 0 && c->changed_by == 0)
+		c->do_demote = 1;
+
 	return (0);
 }
 
