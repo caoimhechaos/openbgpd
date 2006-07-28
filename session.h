@@ -106,6 +106,12 @@ enum capa_codes {
 	CAPA_REFRESH
 };
 
+struct bgp_msg {
+	struct buf	*buf;
+	enum msg_type	 type;
+	u_int16_t	 len;
+};
+
 struct msg_header {
 	u_char			 marker[MSGSIZE_HEADER_MARKER];
 	u_int16_t		 len;
