@@ -1550,7 +1550,7 @@ session_dispatch_msg(struct pollfd *pfd, struct peer *p)
 			return (1);
 	}
 
-	if (pfd->revents & POLLIN) {
+	if (p->rbuf && pfd->revents & POLLIN) {
 		if ((n = read(p->fd, p->rbuf->buf + p->rbuf->wpos,
 		    sizeof(p->rbuf->buf) - p->rbuf->wpos)) == -1) {
 			if (errno != EINTR && errno != EAGAIN) {
