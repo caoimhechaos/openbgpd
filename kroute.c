@@ -2018,10 +2018,19 @@ fetchtable(void)
 				break;
 			}
 
-		if (sa->sa_family == AF_INET)
-			kroute_insert(kr);
-		else if (sa->sa_family == AF_INET6)
-			kroute6_insert(kr6);
+		if (sa->sa_family == AF_INET) {
+			if (rtm->rtm_flags & RTF_PROTO1)  {
+				send_rtmsg(kr_state.fd, RTM_DELETE, &kr->r);
+				free(kr);
+			} else
+				kroute_insert(kr);
+		} else if (sa->sa_family == AF_INET6) {
+			if (rtm->rtm_flags & RTF_PROTO1)  {
+				send_rt6msg(kr_state.fd, RTM_DELETE, &kr6->r);
+				free(kr6);
+			} else
+				kroute6_insert(kr6);
+		}
 
 	}
 	free(buf);
