@@ -228,6 +228,7 @@ struct peer_config {
 	enum announce_type	 announce_type;
 	enum enforce_as		 enforce_as;
 	enum reconf_action	 reconf_action;
+	u_int16_t		 max_prefix_restart;
 	u_int16_t		 remote_as;
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;

@@ -2413,6 +2413,10 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 				switch (subcode) {
 				case ERR_CEASE_MAX_PREFIX:
 					bgp_fsm(p, EVNT_STOP);
+					if (p->conf.max_prefix_restart)
+						p->IdleHoldTimer =
+						    time(NULL) + 60 *
+						    p->conf.max_prefix_restart;
 					break;
 				default:
 					bgp_fsm(p, EVNT_CON_FATAL);
