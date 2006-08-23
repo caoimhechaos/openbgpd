@@ -80,6 +80,8 @@
 #define	F_BLACKHOLE		0x0100
 #define	F_LONGER		0x0200
 #define	F_CTL_DETAIL		0x1000	/* only used by bgpctl */
+#define	F_CTL_ADJ_IN		0x2000
+#define	F_CTL_ADJ_OUT		0x4000
 
 enum {
 	PROC_MAIN,
@@ -518,8 +520,10 @@ struct filter_as {
 };
 
 struct ctl_show_rib_request {
+	struct ctl_neighbor	neighbor;
 	struct bgpd_addr	prefix;
 	struct filter_as	as;
+	u_int32_t		peerid;
 	pid_t			pid;
 	u_int16_t		flags;
 	sa_family_t		af;
