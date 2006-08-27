@@ -1499,6 +1499,7 @@ session_rrefresh(struct peer *p, u_int16_t afi, u_int8_t safi)
 		return;
 	}
 
+	afi = htons(afi);
 	errs += buf_add(buf->buf, &afi, sizeof(afi));
 	errs += buf_add(buf->buf, &null8, sizeof(null8));
 	errs += buf_add(buf->buf, &safi, sizeof(safi));
