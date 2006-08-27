@@ -689,6 +689,7 @@ int		 bgpd_filternexthop(struct kroute *, struct kroute6 *);
 
 /* buffer.c */
 struct buf	*buf_open(size_t);
+struct buf	*buf_grow(struct buf *, size_t);
 int		 buf_add(struct buf *, const void *, size_t);
 void		*buf_reserve(struct buf *, size_t);
 int		 buf_close(struct msgbuf *, struct buf *);

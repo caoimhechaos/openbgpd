@@ -48,6 +48,23 @@ buf_open(size_t len)
 	return (buf);
 }
 
+struct buf *
+buf_grow(struct buf *buf, size_t len)
+{
+	void	*p;
+
+	if ((p = realloc(buf->buf, buf->size + len)) == NULL) {
+		free(buf->buf);
+		free(buf);
+		return (NULL);
+	}
+
+	buf->buf = p;
+	buf->size += len;
+
+	return (buf);
+}
+
 int
 buf_add(struct buf *buf, const void *data, size_t len)
 {
