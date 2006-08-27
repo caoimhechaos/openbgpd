@@ -103,7 +103,8 @@ enum opt_params {
 enum capa_codes {
 	CAPA_NONE,
 	CAPA_MP,
-	CAPA_REFRESH
+	CAPA_REFRESH,
+	CAPA_RESTART = 64
 };
 
 struct bgp_msg {

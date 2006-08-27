@@ -2172,6 +2172,7 @@ alloc_peer(void)
 	p->conf.capabilities.mp_v4 = SAFI_UNICAST;
 	p->conf.capabilities.mp_v6 = SAFI_NONE;
 	p->conf.capabilities.refresh = 1;
+	p->conf.capabilities.restart = 0;
 	p->conf.softreconfig_in = 1;
 	p->conf.softreconfig_out = 1;
 
