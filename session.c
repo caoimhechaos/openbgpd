@@ -1341,7 +1341,7 @@ session_open(struct peer *p)
 			u_char	c[4];
 
 			bzero(&c, 4);
-			c[0] = 0x01;
+			c[0] = 0x80;
 			errs += buf_add(opb, &c, 4);
 			optparamlen += op_len;
 		}
