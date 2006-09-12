@@ -424,7 +424,7 @@ announced and processed.
 .It Ic demote Ar group
 Increase the
 .Xr carp 4
-demotion counter on the given group, usually
+demotion counter on the given interface group, usually
 .Ar carp ,
 when the session is not in state
 .Em ESTABLISHED .
@@ -437,6 +437,12 @@ For neighbors added at runtime, the demotion counter is only increased after
 the session has been
 .Em ESTABLISHED
 at least once before dropping.
+.Pp
+For more information on interface groups,
+see the
+.Ic group
+keyword in
+.Xr ifconfig 8 .
 .Pp
 .It Ic depend on Ar interface
 The neighbor session will be kept in state
