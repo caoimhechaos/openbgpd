@@ -1317,7 +1317,7 @@ session_open(struct peer *p)
 		errs += session_capa_add(p, opb, CAPA_REFRESH, 0, &optparamlen);
 
 	/* End-of-RIB marker, draft-ietf-idr-restart */
-	if (p->capa.ann.refresh) {	/* 4 bytes data */
+	if (p->capa.ann.restart) {	/* 4 bytes data */
 		u_char	c[4];
 
 		bzero(&c, 4);
