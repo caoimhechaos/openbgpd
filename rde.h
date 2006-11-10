@@ -356,8 +356,8 @@ void		 up_generate_default(struct filter_head *, struct rde_peer *,
 int		 up_dump_prefix(u_char *, int, struct uplist_prefix *,
 		     struct rde_peer *);
 int		 up_dump_attrnlri(u_char *, int, struct rde_peer *);
-char		*up_dump_mp_unreach(u_char *, u_int16_t *, struct rde_peer *);
-char		*up_dump_mp_reach(u_char *, u_int16_t *, struct rde_peer *);
+u_char		*up_dump_mp_unreach(u_char *, u_int16_t *, struct rde_peer *);
+u_char		*up_dump_mp_reach(u_char *, u_int16_t *, struct rde_peer *);
 
 /* rde_prefix.c */
 void		 pt_init(void);

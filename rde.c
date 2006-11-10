@@ -2035,7 +2035,7 @@ void
 rde_update6_queue_runner(void)
 {
 	struct rde_peer		*peer;
-	char			*b;
+	u_char			*b;
 	int			 sent;
 	u_int16_t		 len;
 
