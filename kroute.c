@@ -1897,7 +1897,7 @@ fetchtable(void)
 	mib[5] = 0;
 	mib[6] = 0;	/* rtableid */
 
-	if (sysctl(mib, 6, NULL, &len, NULL, 0) == -1) {
+	if (sysctl(mib, 7, NULL, &len, NULL, 0) == -1) {
 		log_warn("sysctl");
 		return (-1);
 	}
@@ -1905,7 +1905,7 @@ fetchtable(void)
 		log_warn("fetchtable");
 		return (-1);
 	}
-	if (sysctl(mib, 6, buf, &len, NULL, 0) == -1) {
+	if (sysctl(mib, 7, buf, &len, NULL, 0) == -1) {
 		log_warn("sysctl");
 		free(buf);
 		return (-1);
