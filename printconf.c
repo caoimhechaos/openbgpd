@@ -241,6 +241,8 @@ print_mainconf(struct bgpd_config *conf)
 		print_set(&conf->staticset6);
 		printf("\n");
 	}
+	if (conf->rtableid)
+		printf("rtable %u\n", conf->rtableid);
 }
 
 void

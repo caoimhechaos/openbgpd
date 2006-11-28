@@ -304,6 +304,14 @@ router-id 10.0.0.1
 If not given, the BGP ID is determined as the biggest IP address assigned
 to the local machine.
 .Pp
+.It Ic rtable Ar number
+Work with the given kernel routing table
+instead of the default table,
+.Ar 0 .
+Note that this table is used for nexthop verification as well.
+Directly connected networks are always taken into account, even though
+their routes live in table 0.
+.Pp
 .It Xo
 .Ic transparent-as
 .Pq Ic yes Ns \&| Ns Ic no

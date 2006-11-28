@@ -153,6 +153,7 @@ struct bgpd_config {
 	int					 opts;
 	int					 flags;
 	int					 log;
+	u_int					 rtableid;
 	u_int32_t				 bgpid;
 	u_int32_t				 clusterid;
 	u_int16_t				 as;
@@ -733,7 +734,7 @@ void	 imsg_free(struct imsg *);
 int	 imsg_get_fd(struct imsgbuf *);
 
 /* kroute.c */
-int		 kr_init(int);
+int		 kr_init(int, u_int);
 int		 kr_change(struct kroute_label *);
 int		 kr_delete(struct kroute_label *);
 int		 kr6_change(struct kroute6_label *);
