@@ -158,7 +158,7 @@ typedef struct {
 %token	ENFORCE NEIGHBORAS CAPABILITIES REFLECTOR DEPEND DOWN SOFTRECONFIG
 %token	DUMP IN OUT
 %token	LOG ROUTECOLL TRANSPARENT
-%token	TCP MD5SIG PASSWORD KEY
+%token	TCP MD5SIG PASSWORD KEY TTLSECURITY
 %token	ALLOW DENY MATCH
 %token	QUICK
 %token	FROM TO ANY
@@ -881,6 +881,9 @@ peeropts	: REMOTEAS asnumber	{
 				curpeer->conf.auth.auth_keylen_out = keylen;
 			}
 			free($7);
+		}
+		| TTLSECURITY yesno	{
+			curpeer->conf.ttlsec = $2;
 		}
 		| SET filter_set_opt	{
 			struct filter_rule	*r;
@@ -1683,6 +1686,7 @@ lookup(char *s)
 		{ "to",			TO},
 		{ "transit-as",		TRANSITAS},
 		{ "transparent-as",	TRANSPARENT},
+		{ "ttl-security",	TTLSECURITY},
 		{ "via",		VIA},
 		{ "weight",		WEIGHT}
 	};

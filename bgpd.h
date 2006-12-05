@@ -247,6 +247,7 @@ struct peer_config {
 	u_int8_t		 reflector_client;
 	u_int8_t		 softreconfig_in;
 	u_int8_t		 softreconfig_out;
+	u_int8_t		 ttlsec;	/* TTL security hack */
 };
 
 struct network_config {
