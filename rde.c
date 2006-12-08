@@ -2575,7 +2575,7 @@ sa_cmp(struct bgpd_addr *a, struct sockaddr *b)
 		break;
 	case AF_INET6:
 		in6_b = (struct sockaddr_in6 *)b;
-#if defined(__KAME__) && defined(KAME_SCOPEID)
+#ifdef __KAME__
 		/* directly stolen from sbin/ifconfig/ifconfig.c */
 		if (IN6_IS_ADDR_LINKLOCAL(&in6_b->sin6_addr)) {
 			in6_b->sin6_scope_id =
