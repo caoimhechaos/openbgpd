@@ -391,6 +391,8 @@ prefix_compare(const struct bgpd_addr *a, const struct bgpd_addr *b,
 			return (aa - ba);
 		return (0);
 	case AF_INET6:
+		if (prefixlen > 128)
+			fatalx("prefix_cmp: bad IPv6 prefixlen");
 		for (i = 0; i < prefixlen / 8; i++)
 			if (a->v6.s6_addr[i] != b->v6.s6_addr[i])
 				return (a->v6.s6_addr[i] - b->v6.s6_addr[i]);
