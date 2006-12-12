@@ -227,8 +227,9 @@ path_remove(struct rde_aspath *asp)
 	while ((p = LIST_FIRST(&asp->prefix_h)) != NULL) {
 		/* Commit is done in peer_down() */
 		pt_getaddr(p->prefix, &addr);
-		rde_send_pftable(p->aspath->pftableid,
-		    &addr, p->prefix->prefixlen, 1);
+		if (p->flags & F_LOCAL)
+			rde_send_pftable(p->aspath->pftableid, &addr,
+			    p->prefix->prefixlen, 1);
 
 		prefix_destroy(p);
 	}
