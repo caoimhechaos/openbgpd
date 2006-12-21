@@ -143,6 +143,9 @@ attr_optadd(struct rde_aspath *asp, u_int8_t flags, u_int8_t type,
 	}
 
 	/* no empty slot found, need to realloc */
+	if (asp->others_len == UCHAR_MAX)
+		fatalx("attr_optadd: others_len overflow");
+
 	asp->others_len++;
 	if ((p = realloc(asp->others,
 	    asp->others_len * sizeof(struct attr *))) == NULL)
