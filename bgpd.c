@@ -228,6 +228,7 @@ main(int argc, char *argv[])
 	signal(SIGHUP, sighdlr);
 	signal(SIGALRM, sighdlr);
 	signal(SIGUSR1, sighdlr);
+	signal(SIGPIPE, SIG_IGN);
 
 	close(pipe_m2s[1]);
 	close(pipe_m2r[1]);
