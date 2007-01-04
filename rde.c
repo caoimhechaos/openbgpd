@@ -124,7 +124,8 @@ u_int32_t	nexthophashsize = 64;
 pid_t
 rde_main(struct bgpd_config *config, struct peer *peer_l,
     struct network_head *net_l, struct filter_head *rules,
-    struct mrt_head *mrt_l, int pipe_m2r[2], int pipe_s2r[2], int pipe_m2s[2])
+    struct mrt_head *mrt_l, int pipe_m2r[2], int pipe_s2r[2], int pipe_m2s[2],
+    int debug)
 {
 	pid_t			 pid;
 	struct passwd		*pw;
@@ -271,7 +272,9 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 		rde_update6_queue_runner();
 	}
 
-	rde_shutdown();
+	/* do not clean up on shutdown on production, it takes ages. */
+	if (debug)
+		rde_shutdown();
 
 	msgbuf_write(&ibuf_se->w);
 	msgbuf_clear(&ibuf_se->w);

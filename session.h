@@ -228,7 +228,8 @@ void	 prepare_listeners(struct bgpd_config *);
 
 /* rde.c */
 pid_t	 rde_main(struct bgpd_config *, struct peer *, struct network_head *,
-	    struct filter_head *, struct mrt_head *, int[2], int[2], int[2]);
+	    struct filter_head *, struct mrt_head *, int[2], int[2], int[2],
+	    int);
 
 /* control.c */
 int	control_init(int, char *);
