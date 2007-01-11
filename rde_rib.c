@@ -137,7 +137,7 @@ path_update(struct rde_peer *peer, struct rde_aspath *nasp,
 	}
 
 	/* Do not try to move a prefix that is in the wrong RIB. */
-	if (p != NULL && (p->flags & flags) == 0)
+	if (p == NULL || (p->flags & flags) == 0)
 		p = oldp;
 
 	/*
