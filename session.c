@@ -1188,7 +1188,7 @@ session_socket_blockmode(int fd, enum blockmodes bm)
 	int	flags;
 
 	if ((flags = fcntl(fd, F_GETFL, 0)) == -1)
-		fatal("fnctl F_GETFL");
+		fatal("fcntl F_GETFL");
 
 	if (bm == BM_NONBLOCK)
 		flags |= O_NONBLOCK;
@@ -1196,7 +1196,7 @@ session_socket_blockmode(int fd, enum blockmodes bm)
 		flags &= ~O_NONBLOCK;
 
 	if ((flags = fcntl(fd, F_SETFL, flags)) == -1)
-		fatal("fnctl F_SETFL");
+		fatal("fcntl F_SETFL");
 }
 
 void
