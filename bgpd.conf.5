@@ -433,6 +433,17 @@ are supported) are announced during the capabilities negotiation.
 Only routes for that address family and subsequent address family will be
 announced and processed.
 .Pp
+.It Xo
+.Ic announce capabilities
+.Pq Ic yes Ns \&| Ns Ic no
+.Xc
+If set to
+.Ic no ,
+capability negotiation is disabled during the establishment of the session.
+This can be helpful to connect to old or broken BGP implementations.
+The default is
+.Ic yes .
+.Pp
 .It Ic demote Ar group
 Increase the
 .Xr carp 4
