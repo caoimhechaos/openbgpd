@@ -217,8 +217,8 @@ number		: STRING			{
 		;
 
 asnumber	: number			{
-			if ($1 > USHRT_MAX) {
-				yyerror("AS too big: max %u", USHRT_MAX);
+			if ($1 >= USHRT_MAX) {
+				yyerror("AS too big: max %u", USHRT_MAX - 1);
 				YYERROR;
 			}
 		}
