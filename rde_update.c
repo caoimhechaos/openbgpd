@@ -283,15 +283,6 @@ up_test_update(struct rde_peer *peer, struct prefix *p)
 		break;
 	}
 
-	if (peer->conf.ebgp && !aspath_loopfree(p->aspath->aspath,
-	    peer->conf.remote_as)) {
-		/*
-		 * Do not send routes back to sender which would
-		 * cause an aspath loop.
-		 */
-		return (0);
-	}
-
 	if (p->aspath->peer->conf.ebgp == 0 && peer->conf.ebgp == 0) {
 		/*
 		 * route reflector redistribution rules:
