@@ -2029,8 +2029,6 @@ fetchtable(u_int rtableid, int connected_only)
 			}
 
 		if (sa->sa_family == AF_INET) {
-log_debug("fetchtable id %u, %s/%u, %s", rtableid, inet_ntoa(kr->r.prefix), kr->r.prefixlen,
-kr->r.flags & F_CONNECTED ? "connected" : "");
 			if (rtm->rtm_flags & RTF_PROTO1)  {
 				send_rtmsg(kr_state.fd, RTM_DELETE, &kr->r);
 				free(kr);
