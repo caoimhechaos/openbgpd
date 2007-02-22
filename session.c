@@ -150,8 +150,8 @@ setup_listeners(u_int *la_cnt)
 		}
 
 		/* set ttl to 255 so that ttl-security works */
-		if (setsockopt(la->fd, IPPROTO_IP, IP_TTL, &ttl,
-		    sizeof(ttl)) == -1) {
+		if (la->sa.ss_family == AF_INET && setsockopt(la->fd,
+		    IPPROTO_IP, IP_TTL, &ttl, sizeof(ttl)) == -1) {
 			log_warn("setup_listeners setsockopt TTL");
 			continue;
 		}
