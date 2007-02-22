@@ -2142,7 +2142,7 @@ symget(const char *nam)
 int
 getcommunity(char *s)
 {
-	int	 	 val;
+	int		 val;
 	const char	*errstr;
 
 	if (strcmp(s, "*") == 0)

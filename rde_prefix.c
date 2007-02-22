@@ -402,7 +402,7 @@ pt_restart(struct pt_context *ctx)
 	 */
 	if (comp < 0)
 		return (prev);
-	
+
 	/* backtrack until parent is bigger */
 	do {
 		prev = RB_PARENT(prev, pt_e);

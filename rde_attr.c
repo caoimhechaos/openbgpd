@@ -794,7 +794,7 @@ community_delete(struct rde_aspath *asp, int as, int type)
 	if (attr == NULL)
 		/* no attr nothing to do */
 		return;
-	
+
 	p = attr->data;
 	for (l = 0; l < attr->len; l += 4) {
 		eas = *p++;

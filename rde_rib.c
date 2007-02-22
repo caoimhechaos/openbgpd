@@ -90,7 +90,6 @@ path_update(struct rde_peer *peer, struct rde_aspath *nasp,
 	struct rde_aspath	*asp;
 	struct prefix		*p, *oldp = NULL;
 
-	
 	if (flags & F_LOCAL) {
 		rde_send_pftable(nasp->pftableid, prefix, prefixlen, 0);
 		rde_send_pftable_commit();
@@ -810,7 +809,7 @@ nexthop_shutdown(void)
 	struct nexthop		*nh, *nnh;
 
 	for (i = 0; i <= nexthoptable.nexthop_hashmask; i++) {
-		for(nh = LIST_FIRST(&nexthoptable.nexthop_hashtbl[i]);
+		for (nh = LIST_FIRST(&nexthoptable.nexthop_hashtbl[i]);
 		    nh != NULL; nh = nnh) {
 			nnh = LIST_NEXT(nh, nexthop_l);
 			nh->state = NEXTHOP_UNREACH;
