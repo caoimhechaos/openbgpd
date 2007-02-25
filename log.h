@@ -66,7 +66,7 @@ static const char * const suberr_open_names[] = {
 	"AS unacceptable",
 	"BGPID invalid",
 	"optional parameter error",
-	"Authentication error",
+	"authentication error",
 	"unacceptable holdtime",
 	"unsupported capability"
 };
@@ -95,7 +95,7 @@ static const char * const suberr_cease_names[] = {
 	"connection rejected",
 	"other config change",
 	"collision",
-	"ressource exhaustion"
+	"resource exhaustion"
 };
 
 static const char * const procnames[] = {
