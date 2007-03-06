@@ -467,6 +467,8 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 			printf("source-as %u ", r->match.as.as);
 		else if (r->match.as.type == AS_TRANSIT)
 			printf("transit-as %u ", r->match.as.as);
+		else if (r->match.as.type == AS_PEER)
+			printf("peer-as %u ", r->match.as.as);
 		else
 			printf("unfluffy-as %u ", r->match.as.as);
 	}

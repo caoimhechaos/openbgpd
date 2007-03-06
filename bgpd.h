@@ -524,6 +524,7 @@ enum as_spec {
 	AS_ALL,
 	AS_SOURCE,
 	AS_TRANSIT,
+	AS_PEER,
 	AS_EMPTY
 };
 
