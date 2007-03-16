@@ -515,7 +515,7 @@ up_get_nexthop(struct rde_peer *peer, struct rde_aspath *a)
 		else if (a->nexthop->exit_nexthop.v4.s_addr ==
 		    peer->remote_addr.v4.s_addr)
 			/*
-			 * per rfc: if remote peer address is equal to
+			 * per RFC: if remote peer address is equal to
 			 * the nexthop set the nexthop to our local address.
 			 * This reduces the risk of routing loops.
 			 */
