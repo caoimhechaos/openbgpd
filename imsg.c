@@ -61,7 +61,7 @@ imsg_read(struct imsgbuf *ibuf)
 			log_warn("imsg_read: pipe read error");
 			return (-1);
 		}
-		return (0);
+		return (-2);
 	}
 
 	ibuf->r.wpos += n;
