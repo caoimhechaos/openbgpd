@@ -1162,7 +1162,7 @@ session_setup_socket(struct peer *p)
 
 	if (p->conf.ebgp && p->conf.remote_addr.af == AF_INET6)
 		/* set hoplimit to foreign router's distance */
-		if (setsockopt(p->fd, IPPROTO_IPV6, IPV6_HOPLIMIT, &ttl,
+		if (setsockopt(p->fd, IPPROTO_IPV6, IPV6_UNICAST_HOPS, &ttl,
 		    sizeof(ttl)) == -1) {
 			log_peer_warn(&p->conf,
 			    "session_setup_socket setsockopt hoplimit");
