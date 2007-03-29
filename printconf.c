@@ -447,6 +447,13 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 		printf("prefix %s/%u ", log_addr(&r->match.prefix.addr),
 		    r->match.prefix.len);
 
+	if (r->match.prefix.addr.af == 0 && r->match.prefixlen.af) {
+		if (r->match.prefixlen.af == AF_INET)
+			printf("inet ");
+		if (r->match.prefixlen.af == AF_INET6)
+			printf("inet6 ");
+	}
+
 	if (r->match.prefixlen.op) {
 		if (r->match.prefixlen.op == OP_RANGE ||
 		    r->match.prefixlen.op == OP_XRANGE) {
