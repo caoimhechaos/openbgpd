@@ -890,6 +890,14 @@ if enclosed in curly brackets:
 deny from { 128.251.16.1, 251.128.16.2, group hojo }
 .Ed
 .Pp
+.It Pq Ic inet Ns \&| Ns Ic inet6
+This rule applies only to routes matching the stated address family.
+The address family needs to be set only in rules that use
+.Ic prefixlen
+without specifying a
+.Ic prefix
+beforehand.
+.Pp
 .It Xo
 .Ic prefix
 .Ar address Ns Li / Ns Ar len
