@@ -292,7 +292,7 @@ path_link(struct rde_aspath *asp, struct rde_peer *peer)
 }
 
 /*
- * copy asp to a new UNLINKED one manly for filtering
+ * copy asp to a new UNLINKED one mainly for filtering
  */
 struct rde_aspath *
 path_copy(struct rde_aspath *asp)
