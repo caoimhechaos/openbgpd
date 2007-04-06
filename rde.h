@@ -61,6 +61,10 @@ struct rde_peer {
 	struct uplist_prefix		 withdraws6;
 	struct capabilities		 capa_announced;
 	struct capabilities		 capa_received;
+	u_int64_t			 prefix_rcvd_update;
+	u_int64_t			 prefix_rcvd_withdraw;
+	u_int64_t			 prefix_sent_update;
+	u_int64_t			 prefix_sent_withdraw;
 	u_int32_t			 prefix_cnt; /* # of prefixes */
 	u_int32_t			 adjrib_cnt; /* # of p. in Adj-RIB-In */
 	u_int32_t			 remote_bgpid; /* host byte order! */

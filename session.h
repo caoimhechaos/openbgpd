@@ -152,6 +152,10 @@ struct peer_stats {
 	u_int64_t		 msg_sent_notification;
 	u_int64_t		 msg_sent_keepalive;
 	u_int64_t		 msg_sent_rrefresh;
+	u_int64_t		 prefix_rcvd_update;
+	u_int64_t		 prefix_rcvd_withdraw;
+	u_int64_t		 prefix_sent_update;
+	u_int64_t		 prefix_sent_withdraw;
 	time_t			 last_updown;
 	time_t			 last_read;
 	u_int32_t		 prefix_cnt;
