@@ -66,7 +66,7 @@ carp_demote_init(char *group, int force)
 			return (-1);
 		}
 		if ((c->group = strdup(group)) == NULL) {
-			log_warn("carp_demote_init calloc");
+			log_warn("carp_demote_init strdup");
 			free(c);
 			return (-1);
 		}
