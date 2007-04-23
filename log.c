@@ -33,7 +33,6 @@
 
 int	debug;
 
-char	*log_fmt_peer(const struct peer_config *);
 void	 logit(int, const char *, ...);
 
 char *
