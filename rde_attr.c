@@ -505,7 +505,7 @@ aspath_inflate(void *data, u_int16_t len, u_int16_t *newlen)
 		seg_size = 2 + sizeof(u_int16_t) * seg_len;
 		nlen += 2 + sizeof(u_int32_t) * seg_len;
 
-		if (seg_size > len)
+		if (seg_size > olen)
 			fatalx("aspath_inflate: bula bula");
 	}
 
