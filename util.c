@@ -237,7 +237,7 @@ aspath_strlen(void *data, u_int16_t len)
 /*
  * Extract the asnum out of the as segment at the specified position.
  * Direct access is not possible because of non-aligned reads.
- * ATTENTION: no bounds check are done.
+ * ATTENTION: no bounds checks are done.
  */
 u_int32_t
 aspath_extract(const void *seg, int pos)

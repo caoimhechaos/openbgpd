@@ -514,7 +514,7 @@ reconfigure(char *conffile, struct bgpd_config *conf, struct mrt_head *mrt_l,
 		free(r);
 	}
 
-	/* singal both childs to replace their config */
+	/* signal both childs to replace their config */
 	if (imsg_compose(ibuf_se, IMSG_RECONF_DONE, 0, 0, -1, NULL, 0) == -1 ||
 	    imsg_compose(ibuf_rde, IMSG_RECONF_DONE, 0, 0, -1, NULL, 0) == -1)
 		return (-1);

@@ -115,7 +115,7 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 	if (p2 == NULL)
 		return (1);
 
-	/* only prefix in the Local-RIB are eligible */
+	/* only prefixes in the Local-RIB are eligible */
 	if (!(p1->flags & F_LOCAL))
 		return (-1);
 	if (!(p2->flags & F_LOCAL))
@@ -163,8 +163,8 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 
 	/*
 	 * 7. local tie-breaker, this weight is here to tip equal long AS
-	 * pathes in one or the other direction. It happens more and more
-	 * that AS pathes are equally long and so traffic engineering needs
+	 * paths in one or the other direction. It happens more and more
+	 * that AS paths are equally long and so traffic engineering needs
 	 * a metric that weights a prefix at a very late stage in the
 	 * decision process.
 	 */

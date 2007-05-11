@@ -472,7 +472,7 @@ filterset_cmp(struct filter_set *a, struct filter_set *b)
 
 	if (a->type == ACTION_SET_NEXTHOP && b->type == ACTION_SET_NEXTHOP) {
 		/*
-		 * This is the only intresting case, all others are considered
+		 * This is the only interesting case, all others are considered
 		 * equal. It does not make sense to e.g. set a nexthop and
 		 * reject it at the same time. Allow one IPv4 and one IPv6
 		 * per filter set or only one of the other nexthop modifiers.

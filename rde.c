@@ -700,7 +700,7 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 				    "but didn't receive any");
 
 			if (xmrt->type == MRT_TABLE_DUMP) {
-				/* do not dump if a other is still running */
+				/* do not dump if another is still running */
 				if (mrt == NULL || mrt->queued == 0) {
 					free(mrt);
 					mrt = xmrt;
@@ -854,7 +854,7 @@ rde_update_dispatch(struct imsg *imsg)
 	if (attrpath_len == 0) /* 0 = no NLRI information in this message */
 		return (0);
 
-	/* withdraw MP_UNREACH_NRLI if available */
+	/* withdraw MP_UNREACH_NLRI if available */
 	if (mpa.unreach_len != 0) {
 		mpp = mpa.unreach;
 		mplen = mpa.unreach_len;
