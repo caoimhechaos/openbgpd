@@ -224,8 +224,8 @@ struct capabilities {
 	u_int8_t	mp_v4;		/* multiprotocol extensions, RFC 4760 */
 	u_int8_t	mp_v6;
 	u_int8_t	refresh;	/* route refresh, RFC 2918 */
-	u_int8_t	restart;	/* draft-ietf-idr-restart */
-	u_int8_t	as4byte;
+	u_int8_t	restart;	/* graceful restart, RFC 4724 */
+	u_int8_t	as4byte;	/* draft-ietf-idr-as4bytes-13 */
 };
 
 struct peer_config {
