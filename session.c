@@ -1372,7 +1372,7 @@ session_open(struct peer *p)
 	if (p->capa.ann.refresh)	/* no data */
 		errs += session_capa_add(p, opb, CAPA_REFRESH, 0, &optparamlen);
 
-	/* End-of-RIB marker, draft-ietf-idr-restart */
+	/* End-of-RIB marker, RFC 4724 */
 	if (p->capa.ann.restart) {	/* 4 bytes data */
 		u_char	c[4];
 
@@ -1382,7 +1382,7 @@ session_open(struct peer *p)
 		errs += buf_add(opb, &c, 4);
 	}
 
-	/* 4-bytes AS numbers, draft-ietf-idr-as4bytes-12 */
+	/* 4-bytes AS numbers, draft-ietf-idr-as4bytes-13 */
 	if (p->capa.ann.as4byte) {	/* 4 bytes data */
 		u_int32_t	nas;
 
