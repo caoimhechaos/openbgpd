@@ -273,6 +273,8 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 		printf("%s\tdescr \"%s\"\n", c, p->descr);
 	if (p->remote_as)
 		printf("%s\tremote-as %s\n", c, log_as(p->remote_as));
+	if (p->down)
+		printf("%s\tdown\n", c);
 	if (p->distance > 1)
 		printf("%s\tmultihop %u\n", c, p->distance);
 	if (p->passive)
