@@ -594,7 +594,7 @@ aspath_merge(struct rde_aspath *a, struct attr *attr)
 	}
 
 	diff = a->aspath->ascnt - ascnt;
-	if (attr->len > 2 && attr->data[0] == AS_SEQUENCE)
+	if (diff && attr->len > 2 && attr->data[0] == AS_SEQUENCE)
 		hroom = attr->data[1];
 	difflen = aspath_countlength(a->aspath, diff, hroom);
 	nlen = attr->len + difflen;
