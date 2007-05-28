@@ -256,7 +256,7 @@ rde_filter_match(struct filter_rule *f, struct rde_aspath *asp,
 		    f->match.as.as) == 0)
 			return (0);
 
-	if (asp != NULL && f->match.community.as != 0) {
+	if (asp != NULL && f->match.community.as != COMMUNITY_UNSET) {
 		switch (f->match.community.as) {
 		case COMMUNITY_ERROR:
 			fatalx("rde_apply_set bad community string");

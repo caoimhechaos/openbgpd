@@ -594,6 +594,7 @@ struct filter_peers {
 #define	COMMUNITY_ERROR			-1
 #define	COMMUNITY_ANY			-2
 #define	COMMUNITY_NEIGHBOR_AS		-3
+#define	COMMUNITY_UNSET			-4
 #define	COMMUNITY_WELLKNOWN		0xffff
 #define	COMMUNITY_NO_EXPORT		0xff01
 #define	COMMUNITY_NO_ADVERTISE		0xff02

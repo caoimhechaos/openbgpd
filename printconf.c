@@ -484,7 +484,7 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 			printf("unfluffy-as %s ", log_as(r->match.as.as));
 	}
 
-	if (r->match.community.as != 0) {
+	if (r->match.community.as != COMMUNITY_UNSET) {
 		printf("community ");
 		print_community(r->match.community.as,
 		    r->match.community.type);
