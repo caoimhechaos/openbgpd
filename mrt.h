@@ -26,10 +26,6 @@
 /*
  * MRT binary packet format as used by zebra.
  * For more info see:
- * http://www.mrtd.net/mrt_doc/html/mrtprogrammer.html#_Toc412283890
- * or
- * http://www.mrtd.net/mrt_doc/PDF/mrtprogrammer.pdf (Chapter 12)
- * and
  * http://www.quagga.net/docs/docs-multi/Packet-Binary-Dump-Format.html
  */
 
