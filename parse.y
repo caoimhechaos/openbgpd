@@ -2695,6 +2695,7 @@ get_rule(enum action_types type)
 		r->quick = 0;
 		r->dir = out ? DIR_OUT : DIR_IN;
 		r->action = ACTION_NONE;
+		r->match.community.as = COMMUNITY_UNSET;
 		TAILQ_INIT(&r->set);
 		if (curpeer == curgroup) {
 			/* group */
