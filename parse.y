@@ -2270,6 +2270,10 @@ parsecommunity(char *s, int *as, int *type)
 
 	if ((i = getcommunity(s)) == COMMUNITY_ERROR)
 		return (-1);
+	if (i == USHRT_MAX) {
+		yyerror("Bad community AS number");
+		return (-1);
+	}
 	*as = i;
 
 	if ((i = getcommunity(p)) == COMMUNITY_ERROR)
