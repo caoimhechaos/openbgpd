@@ -332,7 +332,6 @@ void		 path_update(struct rde_peer *, struct rde_aspath *,
 int		 path_compare(struct rde_aspath *, struct rde_aspath *);
 struct rde_aspath *path_lookup(struct rde_aspath *, struct rde_peer *);
 void		 path_remove(struct rde_aspath *);
-void		 path_updateall(struct rde_aspath *, enum nexthop_state);
 void		 path_destroy(struct rde_aspath *);
 int		 path_empty(struct rde_aspath *);
 struct rde_aspath *path_copy(struct rde_aspath *);

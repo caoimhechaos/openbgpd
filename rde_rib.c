@@ -235,16 +235,6 @@ path_remove(struct rde_aspath *asp)
 	path_destroy(asp);
 }
 
-void
-path_updateall(struct rde_aspath *asp, enum nexthop_state state)
-{
-	if (rde_noevaluate())
-		/* if the decision process is turned off this is a no-op */
-		return;
-
-	prefix_updateall(asp, state);
-}
-
 /* this function is only called by prefix_remove and path_remove */
 void
 path_destroy(struct rde_aspath *asp)
@@ -876,7 +866,7 @@ nexthop_update(struct kroute_nexthop *msg)
 		return;
 
 	LIST_FOREACH(asp, &nh->path_h, nexthop_l) {
-		path_updateall(asp, nh->state);
+		prefix_updateall(asp, nh->state);
 	}
 }
 
