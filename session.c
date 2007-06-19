@@ -244,6 +244,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 	signal(SIGTERM, session_sighdlr);
 	signal(SIGINT, session_sighdlr);
 	signal(SIGPIPE, SIG_IGN);
+	signal(SIGHUP, SIG_IGN);
 	log_info("session engine ready");
 	close(pipe_m2s[0]);
 	close(pipe_s2r[1]);

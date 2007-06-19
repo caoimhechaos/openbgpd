@@ -186,6 +186,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 	signal(SIGTERM, rde_sighdlr);
 	signal(SIGINT, rde_sighdlr);
 	signal(SIGPIPE, SIG_IGN);
+	signal(SIGHUP, SIG_IGN);
 
 	close(pipe_s2r[0]);
 	close(pipe_s2rctl[0]);
