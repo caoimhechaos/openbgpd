@@ -447,7 +447,7 @@ struct kroute_nexthop {
 
 struct kif {
 	char			 ifname[IFNAMSIZ];
-	u_long			 baudrate;
+	u_int64_t		 baudrate;
 	int			 flags;
 	u_short			 ifindex;
 	u_int8_t		 media_type;
