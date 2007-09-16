@@ -1542,6 +1542,7 @@ rde_update_log(const char *message,
     const struct rde_peer *peer, const struct bgpd_addr *next,
     const struct bgpd_addr *prefix, u_int8_t prefixlen)
 {
+	char		*l = NULL;
 	char		*n = NULL;
 	char		*p = NULL;
 
@@ -1553,10 +1554,12 @@ rde_update_log(const char *message,
 			n = NULL;
 	if (asprintf(&p, "%s/%u", log_addr(prefix), prefixlen) == -1)
 		p = NULL;
+	l = log_fmt_peer(&peer->conf);
 	log_info("%s AS%s: %s %s%s",
-	    log_fmt_peer(&peer->conf), log_as(peer->conf.remote_as), message,
+	    l, log_as(peer->conf.remote_as), message,
 	    p ? p : "out of memory", n ? n : "");
 
+	free(l);
 	free(n);
 	free(p);
 }
