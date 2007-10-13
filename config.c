@@ -154,29 +154,6 @@ get_bgpid(void)
 }
 
 int
-check_file_secrecy(int fd, const char *fname)
-{
-	struct stat	st;
-
-	if (fstat(fd, &st)) {
-		log_warn("cannot stat %s", fname);
-		return (-1);
-	}
-
-	if (st.st_uid != 0 && st.st_uid != getuid()) {
-		log_warnx("%s: owner not root or current user", fname);
-		return (-1);
-	}
-
-	if (st.st_mode & (S_IRWXG | S_IRWXO)) {
-		log_warnx("%s: group/world readable/writeable", fname);
-		return (-1);
-	}
-
-	return (0);
-}
-
-int
 host(const char *s, struct bgpd_addr *h, u_int8_t *len)
 {
 	int			 done = 0;

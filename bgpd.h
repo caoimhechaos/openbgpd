@@ -738,7 +738,6 @@ void		 fatalx(const char *) __dead;
 int	 cmdline_symset(char *);
 
 /* config.c */
-int	 check_file_secrecy(int, const char *);
 int	 host(const char *, struct bgpd_addr *, u_int8_t *);
 
 /* imsg.c */
