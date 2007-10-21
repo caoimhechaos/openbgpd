@@ -1131,6 +1131,8 @@ otherwise it will be set to
 .Ar number .
 .Em Weight
 is a local non-transitive attribute and a bgpd-specific extension.
+For prefixes with equally long paths, the prefix with the larger weight
+is selected.
 .El
 .Sh FILES
 .Bl -tag -width "/etc/bgpd.conf" -compact
