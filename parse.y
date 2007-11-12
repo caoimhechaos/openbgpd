@@ -1901,14 +1901,6 @@ lgetc(int quotec)
 		yylval.lineno = file->lineno;
 		file->lineno++;
 	}
-	if (c == '\t' || c == ' ') {
-		/* Compress blanks to a single space. */
-		do {
-			c = getc(file->stream);
-		} while (c == '\t' || c == ' ');
-		ungetc(c, file->stream);
-		c = ' ';
-	}
 
 	while (c == EOF) {
 		if (popfile() == EOF)
@@ -1965,7 +1957,7 @@ yylex(void)
 
 top:
 	p = buf;
-	while ((c = lgetc(0)) == ' ')
+	while ((c = lgetc(0)) == ' ' || c == '\t')
 		; /* nothing */
 
 	yylval.lineno = file->lineno;
