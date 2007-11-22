@@ -316,6 +316,8 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 			    inet_ntoa(ina));
 		}
 	}
+	if (p->demote_group[0])
+		printf("%s\tdemote %s\n", c, p->demote_group);
 	if (p->if_depend[0])
 		printf("%s\tdepend on \"%s\"\n", c, p->if_depend);
 
