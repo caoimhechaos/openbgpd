@@ -2170,6 +2170,8 @@ fetchifs(int ifindex)
 	lim = buf + len;
 	for (next = buf; next < lim; next += ifm.ifm_msglen) {
 		memcpy(&ifm, next, sizeof(ifm));
+		if (ifm.ifm_version != RTM_VERSION)
+			continue;
 		if (ifm.ifm_type != RTM_IFINFO)
 			continue;
 
