@@ -1988,7 +1988,7 @@ fetchtable(u_int rtableid, int connected_only)
 	mib[6] = rtableid;
 
 	if (sysctl(mib, 7, NULL, &len, NULL, 0) == -1) {
-		if (rtableid != 0 && errno == EINVAL)	/* table nonexistant */
+		if (rtableid != 0 && errno == EINVAL)	/* table nonexistent */
 			return (0);
 		log_warn("sysctl");
 		return (-1);
