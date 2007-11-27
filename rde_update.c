@@ -270,6 +270,9 @@ up_test_update(struct rde_peer *peer, struct prefix *p)
 		/* Do not send routes back to sender */
 		return (0);
 
+	if (p->aspath->flags & F_ATTR_LOOP)
+		fatalx("try to send out a looped path");
+
 	pt_getaddr(p->prefix, &addr);
 	switch (addr.af) {
 	case AF_INET:
