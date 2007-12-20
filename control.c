@@ -303,8 +303,8 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 					break;
 				case IMSG_CTL_NEIGHBOR_CLEAR:
 					bgp_fsm(p, EVNT_STOP);
-					p->IdleHoldTimer = time(NULL) +
-					    SESSION_CLEAR_DELAY;
+					timer_set(p, Timer_IdleHold,
+					    SESSION_CLEAR_DELAY);
 					control_result(c, CTL_RES_OK);
 					break;
 				case IMSG_CTL_NEIGHBOR_RREFRESH:
