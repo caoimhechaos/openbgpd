@@ -48,7 +48,7 @@ timer_due(struct peer *p, enum Timer timer)
 {
 	time_t	*t = timer_get(p, timer);
 
-	if (*t > 0 && *t <= time(NULL))
+	if (t != NULL && *t > 0 && *t <= time(NULL))
 		return (1);
 	return (0);
 }
@@ -58,9 +58,11 @@ timer_running(struct peer *p, enum Timer timer, time_t *left)
 {
 	time_t	*t = timer_get(p, timer);
 
-	*left = *t - time(NULL);
-	if (*t > 0)
+	if (t != NULL && *t > 0) {
+		if (left != NULL)
+			*left = *t - time(NULL);
 		return (1);
+	}
 	return (0);
 }
 
@@ -77,5 +79,6 @@ timer_stop(struct peer *p, enum Timer timer)
 {
 	time_t	*t = timer_get(p, timer);
 
-	*t = 0;
+	if (t != NULL)
+		*t = 0;
 }
