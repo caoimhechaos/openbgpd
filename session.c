@@ -992,8 +992,7 @@ session_accept(int listenfd)
 	p = getpeerbyip((struct sockaddr *)&cliaddr);
 
 	if (p != NULL && p->state == STATE_IDLE && p->errcnt < 2) {
-		time_t	*t = timer_get(p, Timer_IdleHold);
-		if (*t > 0) {
+		if (timer_running(p, Timer_IdleHold, NULL)) {
 			/* fast reconnect after clear */
 			p->passive = 1;
 			bgp_fsm(p, EVNT_START);
