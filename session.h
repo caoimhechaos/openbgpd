@@ -278,6 +278,7 @@ int	 carp_demote_set(char *, int);
 /* timer.c */
 time_t		*timer_get(struct peer *, enum Timer);
 int		 timer_due(struct peer *, enum Timer);
+time_t		 timer_nextduein(struct peer *);
 int		 timer_running(struct peer *, enum Timer, time_t *);
 void		 timer_set(struct peer *, enum Timer, u_int);
 void		 timer_stop(struct peer *, enum Timer);

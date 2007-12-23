@@ -55,6 +55,20 @@ timer_due(struct peer *p, enum Timer timer)
 	return (0);
 }
 
+time_t
+timer_nextduein(struct peer *p)
+{
+	u_int	i;
+	time_t	d, r = -1;
+
+	for (i = 1; i < Timer_Max; i++)
+		if (timer_running(p, i, &d))
+			if (r == -1 || d < r)
+				r = d;
+
+	return (r);
+}
+
 int
 timer_running(struct peer *p, enum Timer timer, time_t *left)
 {
