@@ -111,3 +111,13 @@ static const char * const ctl_res_strerror[] = {
 	"neighbor does not have this capability",
 	"config file has errors, reload failed"
 };
+
+static const char * const timernames[] = {
+	"None",
+	"ConnectRetryTimer",
+	"KeepaliveTimer",
+	"HoldTimer",
+	"IdleHoldTimer",
+	"IdleHoldResetTimer",
+	""
+};

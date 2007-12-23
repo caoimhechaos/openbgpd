@@ -346,6 +346,7 @@ enum imsg_type {
 	IMSG_CTL_SHOW_NETWORK6,
 	IMSG_CTL_SHOW_RIB_MEM,
 	IMSG_CTL_SHOW_TERSE,
+	IMSG_CTL_SHOW_TIMER,
 	IMSG_REFRESH,
 	IMSG_IFINFO,
 	IMSG_DEMOTE
@@ -479,6 +480,7 @@ struct ctl_show_nexthop {
 struct ctl_neighbor {
 	struct bgpd_addr	addr;
 	char			descr[PEER_DESCR_LEN];
+	int			show_timers;
 };
 
 struct kroute_label {

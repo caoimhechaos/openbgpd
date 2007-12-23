@@ -210,7 +210,13 @@ enum Timer {
 	Timer_Keepalive,
 	Timer_Hold,
 	Timer_IdleHold,
-	Timer_IdleHoldReset
+	Timer_IdleHoldReset,
+	Timer_Max
+};
+
+struct ctl_timer {
+	enum Timer	type;
+	time_t		val;
 };
 
 /* session.c */

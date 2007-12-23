@@ -38,6 +38,8 @@ timer_get(struct peer *p, enum Timer timer)
 		return (&p->IdleHoldTimer);
 	case Timer_IdleHoldReset:
 		return (&p->IdleHoldResetTimer);
+	case Timer_Max:
+		fatal("timer_get called with Timer_Max");
 	}
 
 	fatal("King Bula lost in time");
