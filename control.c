@@ -131,6 +131,7 @@ control_accept(int listenfd, int restricted)
 
 	if ((ctl_conn = malloc(sizeof(struct ctl_conn))) == NULL) {
 		log_warn("session_control_accept");
+		close(connfd);
 		return (0);
 	}
 
