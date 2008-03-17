@@ -79,7 +79,7 @@ log_as(u_int32_t as)
 {
 	static char	buf[12];	/* "65000.65000\0" */
 
-	if (as < USHRT_MAX) {
+	if (as <= USHRT_MAX) {
 		if (snprintf(buf, sizeof(buf), "%u", as) == -1)
 			return ("?");
 	} else {
@@ -212,6 +212,7 @@ aspath_strlen(void *data, u_int16_t len)
 				else
 					total_size += 1;
 				total_size += 1; /* dot between hi & lo */
+				as &= 0xffff;
 			}
 			if (as >= 10000)
 				total_size += 5;
