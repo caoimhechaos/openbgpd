@@ -178,9 +178,9 @@ msgbuf_write(struct msgbuf *msgbuf)
 
 	if (buf != NULL && buf->fd != -1) {
 		msg.msg_control = (caddr_t)&cmsgbuf.buf;
-		msg.msg_controllen = CMSG_LEN(sizeof(int));
+		msg.msg_controllen = sizeof(cmsgbuf.buf);
 		cmsg = CMSG_FIRSTHDR(&msg);
-		cmsg->cmsg_len = msg.msg_controllen;
+		cmsg->cmsg_len = CMSG_LEN(sizeof(int));
 		cmsg->cmsg_level = SOL_SOCKET;
 		cmsg->cmsg_type = SCM_RIGHTS;
 		*(int *)CMSG_DATA(cmsg) = buf->fd;
