@@ -1717,7 +1717,7 @@ rde_dump_rib_as(struct prefix *p, struct rde_aspath *asp, pid_t pid, int flags)
 		rib.flags |= F_RIB_INTERNAL;
 	if (asp->flags & F_PREFIX_ANNOUNCED)
 		rib.flags |= F_RIB_ANNOUNCE;
-	if (asp->nexthop != NULL && asp->nexthop->state == NEXTHOP_REACH)
+	if (asp->nexthop == NULL || asp->nexthop->state == NEXTHOP_REACH)
 		rib.flags |= F_RIB_ELIGIBLE;
 	if (asp->flags & F_ATTR_LOOP)
 		rib.flags &= ~F_RIB_ELIGIBLE;
@@ -2846,4 +2846,3 @@ sa_cmp(struct bgpd_addr *a, struct sockaddr *b)
 
 	return (0);
 }
-
