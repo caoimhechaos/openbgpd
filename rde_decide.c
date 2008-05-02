@@ -121,14 +121,14 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 	if (!(p2->flags & F_LOCAL))
 		return (1);
  
-	/* only loop free pathes are eligible */
-	if (p1->flags & F_ATTR_LOOP)
-		return (-1);
-	if (p2->flags & F_ATTR_LOOP)
-		return (1);
-
 	asp1 = p1->aspath;
 	asp2 = p2->aspath;
+
+	/* only loop free pathes are eligible */
+	if (asp1->flags & F_ATTR_LOOP)
+		return (-1);
+	if (asp2->flags & F_ATTR_LOOP)
+		return (1);
 
 	/* 1. check if prefix is eligible a.k.a reachable */
 	if (asp2->nexthop != NULL && asp2->nexthop->state != NEXTHOP_REACH)
