@@ -45,6 +45,18 @@ timer_due(struct peer *p, enum Timer timer)
 	return (0);
 }
 
+struct peer_timer *
+timer_nextisdue(struct peer *p)
+{
+	struct peer_timer *pt;
+
+	pt = TAILQ_FIRST(&p->timers);
+
+	if (pt != NULL && pt->val > 0 && pt->val <= time(NULL))
+		return (pt);
+	return (NULL);
+}
+
 time_t
 timer_nextduein(struct peer *p)
 {
