@@ -88,7 +88,7 @@ timer_set(struct peer *p, enum Timer timer, u_int offset)
 	pt->val = time(NULL) + offset;
 
 	TAILQ_FOREACH(t, &p->timers, entry)
-		if (t->val > pt->val)
+		if (t->val == 0 || t->val > pt->val)
 			break;
 	if (t != NULL)
 		TAILQ_INSERT_BEFORE(t, pt, entry);
