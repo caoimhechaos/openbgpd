@@ -257,14 +257,17 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 				p = getpeerbyaddr(&neighbor->addr);
 				if (p == NULL)
 					p = getpeerbydesc(neighbor->descr);
-				if (p != NULL && !neighbor->show_timers) {
+				if (p == NULL) {
+					control_result(c, CTL_RES_NOSUCHPEER);
+					break;
+				}
+				if (!neighbor->show_timers) {
 					imsg_compose_rde(imsg.hdr.type,
 					    imsg.hdr.pid,
 					    p, sizeof(struct peer));
 					imsg_compose_rde(IMSG_CTL_END,
 					    imsg.hdr.pid, NULL, 0);
-				}
-				if (p != NULL && neighbor->show_timers) {
+				} else {
 					u_int			 i;
 					time_t			 d;
 					struct ctl_timer	 ct;
