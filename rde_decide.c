@@ -120,7 +120,7 @@ prefix_cmp(struct prefix *p1, struct prefix *p2)
 		return (-1);
 	if (!(p2->flags & F_LOCAL))
 		return (1);
- 
+
 	asp1 = p1->aspath;
 	asp2 = p2->aspath;
 

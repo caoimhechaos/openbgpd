@@ -124,7 +124,7 @@ timer_remove(struct peer *p, enum Timer timer)
 
 	if (pt != NULL) {
 		TAILQ_REMOVE(&p->timers, pt, entry);
-		free (pt);
+		free(pt);
 	}
 }
 

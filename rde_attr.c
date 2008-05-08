@@ -915,7 +915,7 @@ aspath_match(struct aspath *a, enum as_spec type, u_int32_t as)
 		/* just check the final (rightmost) AS */
 		if (type == AS_SOURCE) {
 			/* not yet in the final segment */
-		       	if (!final)
+			if (!final)
 				continue;
 
 			if (as == aspath_extract(seg, seg_len - 1))
