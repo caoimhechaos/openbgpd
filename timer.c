@@ -94,6 +94,8 @@ timer_set(struct peer *p, enum Timer timer, u_int offset)
 			fatal("timer_set");
 		pt->type = timer;
 	} else {
+		if (pt->val == time(NULL) + offset)
+			return;
 		TAILQ_REMOVE(&p->timers, pt, entry);
 	}
 
