@@ -35,16 +35,6 @@ timer_get(struct peer *p, enum Timer timer)
 	return (pt);
 }
 
-int
-timer_due(struct peer *p, enum Timer timer)
-{
-	struct peer_timer	*pt = timer_get(p, timer);
-
-	if (pt != NULL && pt->val > 0 && pt->val <= time(NULL))
-		return (1);
-	return (0);
-}
-
 struct peer_timer *
 timer_nextisdue(struct peer *p)
 {
