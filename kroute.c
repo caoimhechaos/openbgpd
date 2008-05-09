@@ -1759,6 +1759,7 @@ send_rtmsg(int fd, int action, struct kroute *kroute)
 	hdr.rtm_type = action;
 	hdr.rtm_tableid = kr_state.rtableid;
 	hdr.rtm_flags = RTF_PROTO1;
+	hdr.rtm_priority = RTP_BGP;
 	if (kroute->flags & F_BLACKHOLE)
 		hdr.rtm_flags |= RTF_BLACKHOLE;
 	if (kroute->flags & F_REJECT)
