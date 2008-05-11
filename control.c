@@ -236,6 +236,7 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 			case IMSG_CTL_SHOW_RIB_COMMUNITY:
 			case IMSG_CTL_SHOW_NETWORK:
 			case IMSG_CTL_SHOW_TERSE:
+			case IMSG_CTL_SHOW_TIMER:
 				break;
 			default:
 				/* clear imsg type to prevent processing */
