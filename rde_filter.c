@@ -462,7 +462,8 @@ filterset_cmp(struct filter_set *a, struct filter_set *b)
 	if (strcmp(filterset_name(a->type), filterset_name(b->type)))
 		return (a->type - b->type);
 
-	if (a->type == ACTION_SET_COMMUNITY) {	/* a->type == b->type */
+	if (a->type == ACTION_SET_COMMUNITY ||
+	    a->type == ACTION_DEL_COMMUNITY) {	/* a->type == b->type */
 		/* compare community */
 		if (a->action.community.as - b->action.community.as != 0)
 			return (a->action.community.as -

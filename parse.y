@@ -2749,6 +2749,8 @@ merge_filterset(struct filter_set_head *sh, struct filter_set *s)
 		if (filterset_cmp(s, t) == 0) {
 			if (s->type == ACTION_SET_COMMUNITY)
 				yyerror("community is already set");
+			else if (s->type == ACTION_DEL_COMMUNITY)
+				yyerror("community will already be deleted");
 			else
 				yyerror("redefining set parameter %s",
 				    filterset_name(s->type));
@@ -2764,6 +2766,7 @@ merge_filterset(struct filter_set_head *sh, struct filter_set *s)
 		if (s->type == t->type)
 			switch (s->type) {
 			case ACTION_SET_COMMUNITY:
+			case ACTION_DEL_COMMUNITY:
 				if (s->action.community.as <
 				    t->action.community.as ||
 				    (s->action.community.as ==
