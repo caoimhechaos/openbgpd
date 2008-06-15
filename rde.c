@@ -748,6 +748,11 @@ rde_update_dispatch(struct imsg *imsg)
 
 	p = imsg->data;
 
+	if (imsg->hdr.len < IMSG_HEADER_SIZE + 2) {
+		rde_update_err(peer, ERR_UPDATE, ERR_UPD_ATTRLIST, NULL, 0);
+		return (-1);
+	}
+
 	memcpy(&len, p, 2);
 	withdrawn_len = ntohs(len);
 	p += 2;
