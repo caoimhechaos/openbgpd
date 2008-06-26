@@ -2259,7 +2259,7 @@ session_dispatch_imsg(struct imsgbuf *ibuf, int idx, u_int *listener_cnt)
 		fatal("session_dispatch_imsg: imsg_read error");
 
 	if (n == 0)	/* connection closed */
-		fatal("session_dispatch_imsg: pipe closed");
+		fatalx("session_dispatch_imsg: pipe closed");
 
 	for (;;) {
 		if ((n = imsg_get(ibuf, &imsg)) == -1)
