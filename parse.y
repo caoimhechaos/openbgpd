@@ -2381,7 +2381,7 @@ getcommunity(char *s)
 		return (COMMUNITY_NEIGHBOR_AS);
 	val = strtonum(s, 0, USHRT_MAX, &errstr);
 	if (errstr) {
-		yyerror("Community %s is %s (max: %s)", s, errstr, USHRT_MAX);
+		yyerror("Community %s is %s (max: %u)", s, errstr, USHRT_MAX);
 		return (COMMUNITY_ERROR);
 	}
 	return (val);
