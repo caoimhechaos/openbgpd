@@ -2193,22 +2193,20 @@ parse_capabilities(struct peer *peer, u_char *d, u_int16_t dlen, u_int32_t *as)
 			memcpy(&mp_safi, capa_val + 3, sizeof(mp_safi));
 			switch (mp_afi) {
 			case AFI_IPv4:
-				if (mp_safi < 1 || mp_safi > 3) {
+				if (mp_safi < 1 || mp_safi > 3)
 					log_peer_warnx(&peer->conf,
 					    "parse_capabilities: AFI IPv4, "
-					    "mp_safi %u illegal", mp_safi);
-					return (-1);
-				}
-				peer->capa.peer.mp_v4 = mp_safi;
+					    "mp_safi %u unknown", mp_safi);
+				else
+					peer->capa.peer.mp_v4 = mp_safi;
 				break;
 			case AFI_IPv6:
-				if (mp_safi < 1 || mp_safi > 3) {
+				if (mp_safi < 1 || mp_safi > 3)
 					log_peer_warnx(&peer->conf,
 					    "parse_capabilities: AFI IPv6, "
-					    "mp_safi %u illegal", mp_safi);
-					return (-1);
-				}
-				peer->capa.peer.mp_v6 = mp_safi;
+					    "mp_safi %u unknown", mp_safi);
+				else
+					peer->capa.peer.mp_v6 = mp_safi;
 				break;
 			default:			/* ignore */
 				break;
