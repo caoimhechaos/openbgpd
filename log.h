@@ -119,5 +119,6 @@ static const char * const timernames[] = {
 	"HoldTimer",
 	"IdleHoldTimer",
 	"IdleHoldResetTimer",
+	"CarpUndemoteTimer",
 	""
 };

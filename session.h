@@ -171,6 +171,7 @@ enum Timer {
 	Timer_Hold,
 	Timer_IdleHold,
 	Timer_IdleHoldReset,
+	Timer_CarpUndemote,
 	Timer_Max
 };
 
