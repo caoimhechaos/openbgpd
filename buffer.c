@@ -152,13 +152,13 @@ msgbuf_write(struct msgbuf *msgbuf)
 {
 	struct iovec	 iov[IOV_MAX];
 	struct buf	*buf, *next;
-	int		 i = 0;
+	unsigned int	 i = 0;
 	ssize_t		 n;
 	struct msghdr	 msg;
 	struct cmsghdr	*cmsg;
 	union {
-		struct cmsghdr hdr;
-		char	buf[CMSG_SPACE(sizeof(int))];
+		struct cmsghdr	hdr;
+		char 		buf[CMSG_SPACE(sizeof(int))];
 	} cmsgbuf;
 
 	bzero(&iov, sizeof(iov));
