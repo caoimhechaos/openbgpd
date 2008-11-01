@@ -360,7 +360,7 @@ up_generate(struct rde_peer *peer, struct rde_aspath *asp,
 	if (asp) {
 		ua = calloc(1, sizeof(struct update_attr));
 		if (ua == NULL)
-			fatal("up_generate_updates");
+			fatal("up_generate");
 
 		if (up_generate_attr(peer, ua, asp, addr->af) == -1) {
 			log_warnx("generation of bgp path attributes failed");
@@ -379,7 +379,7 @@ up_generate(struct rde_peer *peer, struct rde_aspath *asp,
 
 	up = calloc(1, sizeof(struct update_prefix));
 	if (up == NULL)
-		fatal("up_generate_updates");
+		fatal("up_generate");
 	up->prefix = *addr;
 	up->prefixlen = prefixlen;
 
