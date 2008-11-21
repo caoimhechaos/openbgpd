@@ -352,7 +352,8 @@ void		 prefix_remove(struct rde_peer *, struct bgpd_addr *, int,
 		    u_int32_t);
 int		 prefix_write(u_char *, int, struct bgpd_addr *, u_int8_t);
 struct prefix	*prefix_bypeer(struct pt_entry *, struct rde_peer *, u_int32_t);
-void		 prefix_updateall(struct rde_aspath *, enum nexthop_state);
+void		 prefix_updateall(struct rde_aspath *, enum nexthop_state,
+		     enum nexthop_state);
 void		 prefix_destroy(struct prefix *);
 void		 prefix_network_clean(struct rde_peer *, time_t);
 
