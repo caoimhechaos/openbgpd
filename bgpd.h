@@ -424,6 +424,7 @@ struct kroute {
 	u_int16_t	labelid;
 	u_short		ifindex;
 	u_int8_t	prefixlen;
+	u_int8_t	priority;
 };
 
 struct kroute6 {
@@ -433,6 +434,7 @@ struct kroute6 {
 	u_int16_t	labelid;
 	u_short		ifindex;
 	u_int8_t	prefixlen;
+	u_int8_t	priority;
 };
 
 struct kroute_nexthop {
