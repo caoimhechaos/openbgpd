@@ -588,7 +588,7 @@ aspath_merge(struct rde_aspath *a, struct attr *attr)
 
 	ascnt = aspath_count(attr->data, attr->len);
 	if (ascnt > a->aspath->ascnt) {
-		/* ASPATH is shorter then NEW_ASPATH no way to merge */
+		/* ASPATH is shorter then AS4_PATH no way to merge */
 		attr_free(a, attr);
 		return;
 	}

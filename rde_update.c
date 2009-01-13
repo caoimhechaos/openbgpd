@@ -774,7 +774,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 		if (plen == 0)
 			r = 0;
 		else if ((r = attr_write(up_attr_buf + wlen, len, flags,
-		    ATTR_NEW_ASPATH, pdata, plen)) == -1)
+		    ATTR_AS4_PATH, pdata, plen)) == -1)
 			return (-1);
 		wlen += r; len -= r;
 		free(pdata);
@@ -784,7 +784,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 		if (!(a->flags & F_PREFIX_ANNOUNCED))
 			flags |= ATTR_PARTIAL;
 		if ((r = attr_write(up_attr_buf + wlen, len, flags,
-		    ATTR_NEW_AGGREGATOR, newaggr->data, newaggr->len)) == -1)
+		    ATTR_AS4_AGGREGATOR, newaggr->data, newaggr->len)) == -1)
 			return (-1);
 		wlen += r; len -= r;
 	}
