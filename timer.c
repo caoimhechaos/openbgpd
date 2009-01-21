@@ -65,7 +65,7 @@ timer_nextduein(struct peer *p)
 	struct peer_timer *pt;
 
 	if ((pt = TAILQ_FIRST(&p->timers)) != NULL && pt->val > 0)
-		return (pt->val);
+		return (MAX(pt->val - getmonotime(), 0));
 	return (-1);
 }
 
