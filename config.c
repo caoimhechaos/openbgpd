@@ -145,7 +145,7 @@ get_bgpid(void)
 		cur = ((struct sockaddr_in *)ifa->ifa_addr)->sin_addr.s_addr;
 		if ((cur & localnet) == localnet)	/* skip 127/8 */
 			continue;
-		if (cur > ip)
+		if (ntohl(cur) > ntohl(ip))
 			ip = cur;
 	}
 	freeifaddrs(ifap);
