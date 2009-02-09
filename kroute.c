@@ -2150,7 +2150,7 @@ retry:
 				    kroute->prefixlen);
 				return (0);
 			} else {
-				log_warnx("send_rtmsg: action %u, "
+				log_warnx("send_rt6msg: action %u, "
 				    "prefix %s/%u: %s", hdr.rtm_type,
 				    log_in6addr(&kroute->prefix),
 				    kroute->prefixlen, strerror(errno));
@@ -2158,7 +2158,7 @@ retry:
 			}
 			break;
 		default:
-			log_warnx("send_rtmsg: action %u, prefix %s/%u: %s",
+			log_warnx("send_rt6msg: action %u, prefix %s/%u: %s",
 			    hdr.rtm_type, log_in6addr(&kroute->prefix),
 			    kroute->prefixlen, strerror(errno));
 			return (0);
