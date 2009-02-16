@@ -1396,7 +1396,7 @@ prefixlenop	: unaryop NUMBER		{
 				YYERROR;
 			}
 			if ($1 >= $3) {
-				yyerror("start prefixlen is bigger that end");
+				yyerror("start prefixlen is bigger than end");
 				YYERROR;
 			}
 			$$.op = $2;
