@@ -832,6 +832,8 @@ aspath_prepend(struct aspath *asp, u_int32_t as, int quantum, u_int16_t *len)
 		size = 0;
 	}
 
+	if (quantum > 255)
+		fatalx("aspath_prepend: preposterous prepend");
 	if (quantum == 0) {
 		/* no change needed but return a copy */
 		p = malloc(asp->len);
@@ -843,7 +845,10 @@ aspath_prepend(struct aspath *asp, u_int32_t as, int quantum, u_int16_t *len)
 	} else if (type == AS_SET || size + quantum > 255) {
 		/* need to attach a new AS_SEQUENCE */
 		l = 2 + quantum * sizeof(u_int32_t) + asp->len;
-		overflow = type == AS_SET ? quantum : (size + quantum) & 0xff;
+		if (type == AS_SET)
+			overflow = quantum;
+		else
+			overflow = size + quantum - 255;
 	} else
 		l = quantum * sizeof(u_int32_t) + asp->len;
 
@@ -915,7 +920,7 @@ aspath_match(struct aspath *a, enum as_spec type, u_int32_t as)
 		/* just check the final (rightmost) AS */
 		if (type == AS_SOURCE) {
 			/* not yet in the final segment */
-			if (!final)
+		       	if (!final)
 				continue;
 
 			if (as == aspath_extract(seg, seg_len - 1))
