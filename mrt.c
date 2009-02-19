@@ -358,7 +358,7 @@ mrt_dump_entry_mp(struct mrt *mrt, struct prefix *p, u_int16_t snum,
 		len += MRT_BGP4MP_IPv4_ENTRY_SIZE + p_len + attr_len;
 		break;
 	case AF_INET6:
-		len += MRT_BGP4MP_IPv4_ENTRY_SIZE + p_len + attr_len;
+		len += MRT_BGP4MP_IPv6_ENTRY_SIZE + p_len + attr_len;
 		break;
 	default:
 		return (-1);
