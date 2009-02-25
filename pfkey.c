@@ -497,6 +497,8 @@ pfkey_sa_remove(struct bgpd_addr *src, struct bgpd_addr *dst, u_int32_t *spi)
 int
 pfkey_md5sig_establish(struct peer *p)
 {
+	sleep(1);
+
 	if (!p->auth.spi_out)
 		if (pfkey_sa_add(&p->auth.local_addr, &p->conf.remote_addr,
 		    p->conf.auth.md5key_len, p->conf.auth.md5key,
