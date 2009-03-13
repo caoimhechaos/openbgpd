@@ -255,13 +255,11 @@ enum mrt_state {
 };
 
 struct mrt {
-	enum mrt_type		type;
+	struct msgbuf		wbuf;
+	LIST_ENTRY(mrt)		entry;
 	u_int32_t		peer_id;
 	u_int32_t		group_id;
-	u_int32_t		queued;
-	int			fd;
-	TAILQ_HEAD(, buf)	bufs;
-	LIST_ENTRY(mrt)		entry;
+	enum mrt_type		type;
 };
 
 struct mrt_config {
