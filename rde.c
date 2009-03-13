@@ -856,8 +856,16 @@ rde_update_dispatch(struct imsg *imsg)
 		prefix_remove(peer, &prefix, prefixlen, F_ORIGINAL);
 	}
 
-	if (attrpath_len == 0) /* 0 = no NLRI information in this message */
+	if (attrpath_len == 0) {
+		/* 0 = no NLRI information in this message */
+		if (nlri_len != 0) {
+			/* crap at end of update which should not be there */
+			rde_update_err(peer, ERR_UPDATE,
+			    ERR_UPD_ATTRLIST, NULL, 0);
+			return (-1);
+		}
 		return (0);
+	}
 
 	/* withdraw MP_UNREACH_NLRI if available */
 	if (mpa.unreach_len != 0) {
