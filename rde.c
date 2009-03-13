@@ -2603,16 +2603,14 @@ peer_dump(u_int32_t id, u_int16_t afi, u_int8_t safi)
 
 	if (afi == AFI_ALL || afi == AFI_IPv4)
 		if (safi == SAFI_ALL || safi == SAFI_UNICAST) {
-			if (peer->conf.announce_type ==
-			    ANNOUNCE_DEFAULT_ROUTE)
+			if (peer->conf.announce_type == ANNOUNCE_DEFAULT_ROUTE)
 				up_generate_default(rules_l, peer, AF_INET);
 			else
 				pt_dump(rde_up_dump_upcall, peer, AF_INET);
 		}
 	if (afi == AFI_ALL || afi == AFI_IPv6)
 		if (safi == SAFI_ALL || safi == SAFI_UNICAST) {
-			if (peer->conf.announce_type ==
-			    ANNOUNCE_DEFAULT_ROUTE)
+			if (peer->conf.announce_type == ANNOUNCE_DEFAULT_ROUTE)
 				up_generate_default(rules_l, peer, AF_INET6);
 			else
 				pt_dump(rde_up_dump_upcall, peer, AF_INET6);
