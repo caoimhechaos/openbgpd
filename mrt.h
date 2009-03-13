@@ -285,7 +285,7 @@ int		 mrt_dump_state(struct mrt *, u_int16_t, u_int16_t,
 		     struct peer *, struct bgpd_config *);
 void		 mrt_clear_seq(void);
 void		 mrt_dump_upcall(struct pt_entry *, void *);
-int		 mrt_write(struct mrt *);
+void		 mrt_write(struct mrt *);
 void		 mrt_clean(struct mrt *);
 void		 mrt_init(struct imsgbuf *, struct imsgbuf *);
 int		 mrt_timeout(struct mrt_head *);

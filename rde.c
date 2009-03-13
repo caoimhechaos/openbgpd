@@ -300,11 +300,12 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 			rde_dispatch_imsg_session(ibuf_se_ctl);
 
 		if (pfd[PFD_MRT_FILE].revents & POLLOUT) {
-			if (mrt_write(mrt) == -1) {
+			mrt_write(mrt);
+			if (mrt->wbuf.queued == 0) {
+				close(mrt->wbuf.fd);
 				free(mrt);
 				mrt = NULL;
-			} else if (mrt->wbuf.queued == 0)
-				close(mrt->wbuf.fd);
+			}
 		}
 
 		rde_update_queue_runner();

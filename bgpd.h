@@ -742,7 +742,7 @@ void		*buf_seek(struct buf *, size_t, size_t);
 size_t		 buf_size(struct buf *);
 size_t		 buf_left(struct buf *);
 int		 buf_close(struct msgbuf *, struct buf *);
-int		 buf_write(int, struct buf *);
+int		 buf_write(struct msgbuf *);
 void		 buf_free(struct buf *);
 void		 msgbuf_init(struct msgbuf *);
 void		 msgbuf_clear(struct msgbuf *);
