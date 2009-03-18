@@ -241,6 +241,7 @@ struct peer_config {
 	u_int32_t		 id;
 	u_int32_t		 groupid;
 	u_int32_t		 remote_as;
+	u_int32_t		 local_as;
 	u_int32_t		 max_prefix;
 	enum announce_type	 announce_type;
 	enum enforce_as		 enforce_as;
@@ -248,6 +249,7 @@ struct peer_config {
 	u_int16_t		 max_prefix_restart;
 	u_int16_t		 holdtime;
 	u_int16_t		 min_holdtime;
+	u_int16_t		 local_short_as;
 	u_int8_t		 template;
 	u_int8_t		 remote_masklen;
 	u_int8_t		 cloned;

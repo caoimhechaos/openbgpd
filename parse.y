@@ -2454,6 +2454,8 @@ alloc_peer(void)
 	p->conf.capabilities.refresh = 1;
 	p->conf.capabilities.restart = 0;
 	p->conf.capabilities.as4byte = 0;
+	p->conf.local_as = conf->as;
+	p->conf.local_short_as = conf->short_as;
 	p->conf.softreconfig_in = 1;
 	p->conf.softreconfig_out = 1;
 
@@ -2476,6 +2478,8 @@ new_peer(void)
 		    sizeof(p->conf.descr)) >= sizeof(p->conf.descr))
 			fatalx("new_peer descr strlcpy");
 		p->conf.groupid = curgroup->conf.id;
+		p->conf.local_as = curgroup->conf.local_as;
+		p->conf.local_short_as = curgroup->conf.local_short_as;
 	}
 	p->next = NULL;
 
