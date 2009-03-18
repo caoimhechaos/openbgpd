@@ -700,7 +700,8 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 			if ((xmrt->wbuf.fd = imsg_get_fd(ibuf)) == -1)
 				log_warnx("expected to receive fd for mrt dump "
 				    "but didn't receive any");
-			else if (xmrt->type == MRT_TABLE_DUMP) {
+			else if (xmrt->type == MRT_TABLE_DUMP ||
+			    xmrt->type == MRT_TABLE_DUMP_MP) {
 				/* do not dump if another is still running */
 				if (mrt == NULL || mrt->wbuf.queued == 0) {
 					free(mrt);
