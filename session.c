@@ -1390,10 +1390,7 @@ session_open(struct peer *p)
 	}
 
 	msg.version = 4;
-	if (conf->as > USHRT_MAX)
-		msg.myas = htons(conf->short_as);
-	else
-		msg.myas = htons(conf->as);
+	msg.myas = htons(conf->short_as);
 	if (p->conf.holdtime)
 		msg.holdtime = htons(p->conf.holdtime);
 	else
