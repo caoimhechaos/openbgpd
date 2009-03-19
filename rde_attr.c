@@ -62,6 +62,31 @@ attr_write(void *p, u_int16_t p_len, u_int8_t flags, u_int8_t type,
 	return (tot_len);
 }
 
+int
+attr_writebuf(struct buf *buf, u_int8_t flags, u_int8_t type, void *data,
+    u_int16_t data_len)
+{
+	u_char	hdr[4];
+
+	if (data_len > 255) {
+		flags |= ATTR_EXTLEN;
+		hdr[2] = (data_len >> 8) & 0xff;
+		hdr[3] = data_len & 0xff;
+	} else {
+		flags &= ~ATTR_EXTLEN;
+		hdr[2] = data_len & 0xff;
+	}
+
+	hdr[0] = flags;
+	hdr[1] = type;
+
+	if (buf_add(buf, hdr, flags & ATTR_EXTLEN ? 4 : 3) == -1)
+		return (-1);
+	if (buf_add(buf, data, data_len) == -1)
+		return (-1);
+	return (0);
+}
+
 /* optional attribute specific functions */
 int		 attr_diff(struct attr *, struct attr *);
 struct attr	*attr_alloc(u_int8_t, u_int8_t, const void *, u_int16_t);
