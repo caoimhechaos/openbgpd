@@ -200,9 +200,6 @@ print_mainconf(struct bgpd_config *conf)
 	if (conf->flags & BGPD_FLAG_DECISION_MED_ALWAYS)
 		printf("rde med compare always\n");
 
-	if (conf->flags & BGPD_FLAG_DECISION_TRANS_AS)
-		printf("transparent-as yes\n");
-
 	if (conf->log & BGPD_LOG_UPDATES)
 		printf("log updates\n");
 
@@ -320,6 +317,8 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 		printf("%s\tdemote %s\n", c, p->demote_group);
 	if (p->if_depend[0])
 		printf("%s\tdepend on \"%s\"\n", c, p->if_depend);
+	if (p->flags & BGPD_FLAG_DECISION_TRANS_AS)
+		printf("%s\ttransparent-as yes\n", c);
 
 	if (p->auth.method == AUTH_MD5SIG)
 		printf("%s\ttcp md5sig\n", c);

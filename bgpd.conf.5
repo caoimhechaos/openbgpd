@@ -728,6 +728,18 @@ tcp md5sig key deadbeef
 .Ed
 .Pp
 .It Xo
+.Ic transparent-as
+.Pq Ic yes Ns \&| Ns Ic no
+.Xc
+If set to
+.Ic yes ,
+.Em AS paths
+to EBGP neighbors are not prepended with their own AS.
+The default is inherited from the global
+.Ic transparent-as
+setting.
+.Pp
+.It Xo
 .Ic ttl-security
 .Pq Ic yes Ns \&| Ns Ic no
 .Xc

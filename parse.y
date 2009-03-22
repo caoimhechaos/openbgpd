@@ -1058,6 +1058,12 @@ peeropts	: REMOTEAS as4number	{
 			else
 				curpeer->conf.softreconfig_out = $3;
 		}
+		| TRANSPARENT yesno	{
+			if ($2 == 1)
+				curpeer->conf.flags |= BGPD_FLAG_DECISION_TRANS_AS;
+			else
+				curpeer->conf.flags &= ~BGPD_FLAG_DECISION_TRANS_AS;
+		}
 		;
 
 restart		: /* nada */		{ $$ = 0; }
@@ -2482,6 +2488,7 @@ new_peer(void)
 		p->conf.local_short_as = curgroup->conf.local_short_as;
 	}
 	p->next = NULL;
+	p->conf.flags = (conf->flags & BGPD_FLAG_DECISION_TRANS_AS);
 
 	return (p);
 }
