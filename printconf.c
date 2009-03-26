@@ -317,7 +317,7 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 		printf("%s\tdemote %s\n", c, p->demote_group);
 	if (p->if_depend[0])
 		printf("%s\tdepend on \"%s\"\n", c, p->if_depend);
-	if (p->flags & BGPD_FLAG_DECISION_TRANS_AS)
+	if (p->flags & PEERFLAG_TRANS_AS)
 		printf("%s\ttransparent-as yes\n", c);
 
 	if (p->auth.method == AUTH_MD5SIG)

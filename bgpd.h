@@ -266,6 +266,8 @@ struct peer_config {
 	u_int8_t		 pad[3];
 };
 
+#define PEERFLAG_TRANS_AS	0x01
+
 struct network_config {
 	struct bgpd_addr	prefix;
 	struct filter_set_head	attrset;
