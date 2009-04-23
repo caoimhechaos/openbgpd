@@ -40,6 +40,8 @@
 #define	IPSEC_ENC_KEY_LEN		32
 #define	IPSEC_AUTH_KEY_LEN		20
 
+#define	ASNUM_MAX			0xffffffff
+
 #define	MAX_PKTSIZE			4096
 #define	MIN_HOLDTIME			3
 #define	READ_BUF_SIZE			65535

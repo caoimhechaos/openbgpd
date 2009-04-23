@@ -207,8 +207,8 @@ grammar		: /* empty */
 		;
 
 asnumber	: NUMBER			{
-			if ($1 < 0 || $1 >= USHRT_MAX) {
-				yyerror("AS too big: max %u", USHRT_MAX - 1);
+			if ($1 < 0 || $1 >= ASNUM_MAX) {
+				yyerror("AS too big: max %u", ASNUM_MAX - 1);
 				YYERROR;
 			}
 		}
