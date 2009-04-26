@@ -51,8 +51,6 @@ static struct pt_entry	*pt_restart(struct pt_context *);
 
 int	pt_prefix_cmp(const struct pt_entry *, const struct pt_entry *);
 
-#define MIN_PREFIX 0
-#define MAX_PREFIX 32
 RB_HEAD(pt_tree, pt_entry);
 RB_PROTOTYPE(pt_tree, pt_entry, pt_e, pt_prefix_cmp);
 RB_GENERATE(pt_tree, pt_entry, pt_e, pt_prefix_cmp);
