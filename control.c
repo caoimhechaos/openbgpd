@@ -396,6 +396,13 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 					control_result(c, CTL_RES_NOCAP);
 					break;
 				}
+				if ((imsg.hdr.type == IMSG_CTL_SHOW_RIB_PREFIX)
+				    && (ribreq->prefix.af != AF_INET)
+				    && (ribreq->prefix.af != AF_INET6)) {
+					/* malformed request, must specify af */
+					control_result(c, CTL_RES_PARSE_ERROR);
+					break;
+				}
 				c->ibuf.pid = imsg.hdr.pid;
 				imsg_compose_rde(imsg.hdr.type, imsg.hdr.pid,
 				    imsg.data, imsg.hdr.len - IMSG_HEADER_SIZE);
