@@ -1962,8 +1962,11 @@ rde_dump_runner(void)
 		default:
 			fatalx("rde_dump_runner: unsupported imsg type");
 		}
-		if (ctx->ptc.done && ctx->req.af == AF_UNSPEC)
+		if (ctx->ptc.done && ctx->req.af == AF_UNSPEC &&
+		    ctx->af == AF_INET) {
+			ctx->ptc.done = 0;
 			ctx->af = AF_INET6;
+		}
 	}
 }
 
