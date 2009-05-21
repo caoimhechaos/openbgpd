@@ -217,14 +217,7 @@ prefix_evaluate(struct prefix *p, struct rib_entry *re)
 {
 	struct prefix	*xp;
 
-	/* XXX we need to skip the adj-rib-in somehow */
-	/* XXX hack for now, no idea why we end up here. */
-	if (!re) {
-		log_debug("*BOOM*");
-		return;
-	}
-
-	if (rde_noevaluate()) {
+	if (re->rib->noevaluate || rde_noevaluate()) {
 		/* decision process is turned off */
 		if (p != NULL)
 			LIST_INSERT_HEAD(&re->prefix_h, p, rib_l);

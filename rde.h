@@ -273,6 +273,7 @@ struct rib {
 	LIST_HEAD(, rib_context)	ctxts;
 	enum rib_state		state;
 	u_int16_t		id;
+	u_char			noevaluate;
 };
 
 struct prefix {
