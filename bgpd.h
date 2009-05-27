@@ -172,6 +172,7 @@ struct bgpd_config {
 	u_int16_t				 short_as;
 	u_int16_t				 holdtime;
 	u_int16_t				 min_holdtime;
+	u_int16_t				 connectretry;
 };
 
 struct buf_read {

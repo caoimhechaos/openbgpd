@@ -129,6 +129,11 @@ For example:
 AS 3.10
 .Ed
 .Pp
+.It Ic connect-retry Ar seconds
+Set the number of seconds before retrying to open a connection.
+This timer should be sufficiently large in EBGP configurations.
+The default is 120 seconds.
+.Pp
 .It Xo
 .Ic dump
 .Pq Ic table Ns \&| Ns Ic table-mp

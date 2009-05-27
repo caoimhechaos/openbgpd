@@ -185,6 +185,8 @@ print_mainconf(struct bgpd_config *conf)
 		printf("holdtime %u\n", conf->holdtime);
 	if (conf->min_holdtime)
 		printf("holdtime min %u\n", conf->min_holdtime);
+	if (conf->connectretry)
+		printf("connect-retry %u\n", conf->connectretry);
 
 	if (conf->flags & BGPD_FLAG_NO_FIB_UPDATE)
 		printf("fib-update no\n");
