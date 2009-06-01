@@ -224,7 +224,6 @@ rib_dump_r(struct rib_context *ctx)
 
 	if (ctx->ctx_re == NULL) {
 		re = RB_MIN(rib_tree, &ctx->ctx_rib->rib);
-		LIST_INSERT_HEAD(&ctx->ctx_rib->ctxts, ctx, entry);
 	} else
 		re = rib_restart(ctx);
 
