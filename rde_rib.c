@@ -231,7 +231,6 @@ rib_dump_r(struct rib_context *ctx)
 	for (i = 0; re != NULL; re = RB_NEXT(rib_tree, unused, re)) {
 		if (ctx->ctx_af != AF_UNSPEC && ctx->ctx_af != re->prefix->af)
 			continue;
-		ctx->ctx_upcall(re, ctx->ctx_arg);
 		if (ctx->ctx_count && i++ >= ctx->ctx_count &&
 		    (re->flags & F_RIB_ENTRYLOCK) == 0) {
 			/* store and lock last element */
@@ -239,6 +238,7 @@ rib_dump_r(struct rib_context *ctx)
 			re->flags |= F_RIB_ENTRYLOCK;
 			return;
 		}
+		ctx->ctx_upcall(re, ctx->ctx_arg);
 	}
 
 	LIST_REMOVE(ctx, entry);
