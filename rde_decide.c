@@ -217,7 +217,7 @@ prefix_evaluate(struct prefix *p, struct rib_entry *re)
 {
 	struct prefix	*xp;
 
-	if (re->rib->noevaluate || rde_noevaluate()) {
+	if (re->flags & F_RIB_NOEVALUATE || rde_noevaluate()) {
 		/* decision process is turned off */
 		if (p != NULL)
 			LIST_INSERT_HEAD(&re->prefix_h, p, rib_l);

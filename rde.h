@@ -256,7 +256,8 @@ struct rib_entry {
 	struct prefix_head	 prefix_h;
 	struct prefix		*active; /* for fast access */
 	struct pt_entry		*prefix;
-	struct rib		*rib;
+	u_int16_t		 ribid;
+	u_int16_t		 flags;
 };
 
 enum rib_state {
@@ -270,9 +271,12 @@ struct rib {
 	struct rib_tree		rib;
 	LIST_HEAD(, rib_context)	ctxts;
 	enum rib_state		state;
+	u_int16_t		flags;
 	u_int16_t		id;
-	u_char			noevaluate;
 };
+
+#define F_RIB_ENTRYLOCK		0x0001
+#define F_RIB_NOEVALUATE	0x0002
 
 struct prefix {
 	LIST_ENTRY(prefix)		 rib_l, path_l;
