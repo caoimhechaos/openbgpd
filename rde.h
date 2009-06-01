@@ -242,7 +242,7 @@ struct pt_entry6 {
 
 struct rib_context {
 	LIST_ENTRY(rib_context)	 entry;
-	struct pt_entry		*ctx_p;
+	struct rib_entry	*ctx_re;
 	struct rib		*ctx_rib;
 	void		(*ctx_upcall)(struct rib_entry *, void *);
 	void		(*ctx_done)(void *);
