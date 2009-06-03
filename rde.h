@@ -346,7 +346,7 @@ extern u_int16_t	 rib_size;
 extern struct rib	*ribs;
 
 void		 rib_init(void);
-u_int16_t	 rib_new(char *);
+u_int16_t	 rib_new(u_int16_t, char *, u_int16_t);
 void		 rib_free(struct rib *);
 struct rib_entry *rib_get(struct rib *, struct bgpd_addr *, int);
 struct rib_entry *rib_lookup(struct rib *, struct bgpd_addr *);
