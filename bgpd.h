@@ -722,6 +722,15 @@ struct rde_memstats {
 	int64_t		attr_dcnt;
 };
 
+struct rde_rib {
+	SIMPLEQ_ENTRY(rde_rib)	entry;
+	char			name[PEER_DESCR_LEN];
+	u_int16_t		id;
+	u_int16_t		flags;
+};
+SIMPLEQ_HEAD(rib_names, rde_rib);
+extern struct rib_names ribnames;
+
 /* Address Family Numbers as per RFC 1700 */
 #define	AFI_IPv4	1
 #define	AFI_IPv6	2
