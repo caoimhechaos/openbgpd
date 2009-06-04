@@ -62,6 +62,9 @@ rib_new(int id, char *name, u_int16_t flags)
 		}
 	}
 
+	if (id == RIB_FAILED)
+		fatalx("rib_new: trying to use reserved id");
+
 	if (id >= rib_size) {
 		newsize = sizeof(struct rib) * (id + 1);
 		if ((xribs = realloc(ribs, newsize)) == NULL) {
@@ -80,6 +83,22 @@ rib_new(int id, char *name, u_int16_t flags)
 	ribs[id].flags = flags;
 
 	return (id);
+}
+
+u_int16_t
+rib_find(char *name)
+{
+	u_int16_t id;
+
+	if (name == NULL || *name == '\0')
+		return (1);	/* XXX */
+
+	for (id = 0; id < rib_size; id++) {
+		if (!strcmp(ribs[id].name, name))
+			return (id);
+	}
+
+	return (RIB_FAILED);
 }
 
 void

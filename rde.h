@@ -73,6 +73,7 @@ struct rde_peer {
 	u_int32_t			 up_nlricnt;
 	u_int32_t			 up_wcnt;
 	enum peer_state			 state;
+	u_int16_t			 ribid;
 	u_int16_t			 short_as;
 	u_int8_t			 reconf_in;	/* in filter changed */
 	u_int8_t			 reconf_out;	/* out filter changed */
@@ -277,6 +278,7 @@ struct rib {
 
 #define F_RIB_ENTRYLOCK		0x0001
 #define F_RIB_NOEVALUATE	0x0002
+#define RIB_FAILED		0xffff
 
 struct prefix {
 	LIST_ENTRY(prefix)		 rib_l, path_l;
@@ -347,6 +349,7 @@ extern u_int16_t	 rib_size;
 extern struct rib	*ribs;
 
 u_int16_t	 rib_new(int, char *, u_int16_t);
+u_int16_t	 rib_find(char *);
 void		 rib_free(struct rib *);
 struct rib_entry *rib_get(struct rib *, struct bgpd_addr *, int);
 struct rib_entry *rib_lookup(struct rib *, struct bgpd_addr *);
