@@ -676,8 +676,8 @@ mrt_get(struct mrt_head *c, struct mrt *m)
 	LIST_FOREACH(t, c, entry) {
 		if (t->type != m->type)
 			continue;
-		if (t->type == MRT_TABLE_DUMP)
-			return (t);
+		if (strcmp(t->rib, m->rib))
+			continue;
 		if (t->peer_id == m->peer_id &&
 		    t->group_id == m->group_id)
 			return (t);

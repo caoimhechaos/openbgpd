@@ -271,6 +271,7 @@ enum mrt_state {
 };
 
 struct mrt {
+	char			rib[PEER_DESCR_LEN];
 	struct msgbuf		wbuf;
 	LIST_ENTRY(mrt)		entry;
 	u_int32_t		peer_id;
