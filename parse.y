@@ -2297,7 +2297,7 @@ parse_config(char *filename, struct bgpd_config *xconf,
 	TAILQ_INIT(xfilter_l);
 
 	add_rib("Adj-RIB-In", 1);
-	add_rib("DEFAULT", 0);
+	add_rib("Loc-RIB", 0);
 
 	yyparse();
 	errors = file->errors;
