@@ -2210,7 +2210,7 @@ fetchtable(u_int rtableid, int connected_only)
 	lim = buf + len;
 	for (next = buf; next < lim; next += rtm->rtm_msglen) {
 		rtm = (struct rt_msghdr *)next;
-		sa = (struct sockaddr *)(rtm + 1);
+		sa = (struct sockaddr *)(next + rtm->rtm_hdrlen);
 		get_rtaddrs(rtm->rtm_addrs, sa, rti_info);
 
 		if ((sa = rti_info[RTAX_DST]) == NULL)
@@ -2440,7 +2440,7 @@ dispatch_rtmsg(void)
 		case RTM_ADD:
 		case RTM_CHANGE:
 		case RTM_DELETE:
-			sa = (struct sockaddr *)(rtm + 1);
+			sa = (struct sockaddr *)(next + rtm->rtm_hdrlen);
 			get_rtaddrs(rtm->rtm_addrs, sa, rti_info);
 
 			if (rtm->rtm_pid == kr_state.pid) /* cause by us */
