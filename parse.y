@@ -819,6 +819,21 @@ peeropts	: REMOTEAS as4number	{
 		| DOWN		{
 			curpeer->conf.down = 1;
 		}
+		| RIB STRING	{
+			if (!find_rib($2)) {
+				yyerror("rib \"%s\" does not exist.", $2);
+				free($2);
+			}
+			if (strlcpy(curpeer->conf.rib, $2,
+			    sizeof(curpeer->conf.rib)) >=
+			    sizeof(curpeer->conf.rib)) {
+				yyerror("rib name \"%s\" too long: max %u",
+				   $2, sizeof(curpeer->conf.rib) - 1);
+				free($2);
+				YYERROR;
+			}
+			free($2);
+		}
 		| HOLDTIME NUMBER	{
 			if ($2 < MIN_HOLDTIME || $2 > USHRT_MAX) {
 				yyerror("holdtime must be between %u and %u",
