@@ -272,8 +272,9 @@ int	pfkey_remove(struct peer *);
 int	pfkey_init(struct bgpd_sysdep *);
 
 /* printconf.c */
-void	print_config(struct bgpd_config *, struct network_head *, struct peer *,
-	    struct filter_head *, struct mrt_head *);
+void	print_config(struct bgpd_config *, struct rib_names *,
+	    struct network_head *, struct peer *, struct filter_head *,
+	    struct mrt_head *);
 
 /* carp.c */
 int	 carp_demote_init(char *, int);

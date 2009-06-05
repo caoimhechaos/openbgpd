@@ -183,7 +183,8 @@ main(int argc, char *argv[])
 
 	if (conf.opts & BGPD_OPT_NOACTION) {
 		if (conf.opts & BGPD_OPT_VERBOSE)
-			print_config(&conf, &net_l, peer_l, rules_l, &mrt_l);
+			print_config(&conf, &ribnames, &net_l, peer_l, rules_l,
+			    &mrt_l);
 		else
 			fprintf(stderr, "configuration OK\n");
 		exit(0);
