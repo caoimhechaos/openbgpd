@@ -30,7 +30,7 @@
 #include <poll.h>
 #include <stdarg.h>
 
-#include "imsg.h"
+#include <imsg.h>
 
 #define	BGP_VERSION			4
 #define	BGP_PORT			179
