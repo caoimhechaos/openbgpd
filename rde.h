@@ -278,6 +278,7 @@ struct rib {
 
 #define F_RIB_ENTRYLOCK		0x0001
 #define F_RIB_NOEVALUATE	0x0002
+#define F_RIB_NOFIB		0x0004
 #define RIB_FAILED		0xffff
 
 struct prefix {
