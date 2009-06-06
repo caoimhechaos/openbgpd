@@ -1329,13 +1329,7 @@ session_sendmsg(struct bgp_msg *msg, struct peer *p)
 			mrt_dump_bgp_msg(mrt, msg->buf->buf, msg->len, p);
 	}
 
-	if (buf_close(&p->wbuf, msg->buf) == -1) {
-		log_peer_warn(&p->conf, "session_sendmsg buf_close");
-		buf_free(msg->buf);
-		free(msg);
-		return (-1);
-	}
-
+	buf_close(&p->wbuf, msg->buf);
 	free(msg);
 	return (0);
 }
