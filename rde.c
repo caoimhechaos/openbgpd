@@ -662,11 +662,11 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 					reconf_in = 1;
 				}
 			}
-			/* sync local-RIB first */
 			/* XXX this needs rework anyway */
+			/* sync local-RIB first */
 			if (reconf_in)
 				rib_dump(&ribs[0], rde_softreconfig_in, NULL,
-				AF_UNSPEC);
+				    AF_UNSPEC);
 			/* then sync peers */
 			if (reconf_out) {
 				int i;
