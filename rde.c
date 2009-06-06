@@ -2229,13 +2229,15 @@ rde_up_dump_upcall(struct rib_entry *re, void *ptr)
 {
 	struct rde_peer		*peer = ptr;
 
+	if (re->ribid != peer->ribid)
+		fatalx("King Bula: monsterous evil horror.");
 	if (re->active == NULL)
 		return;
 	up_generate_updates(rules_l, peer, re->active, NULL);
 }
 
 void
-rde_generate_updates(struct prefix *new, struct prefix *old)
+rde_generate_updates(u_int16_t ribid, struct prefix *new, struct prefix *old)
 {
 	struct rde_peer			*peer;
 
@@ -2249,6 +2251,8 @@ rde_generate_updates(struct prefix *new, struct prefix *old)
 
 	LIST_FOREACH(peer, &peerlist, peer_l) {
 		if (peer->conf.id == 0)
+			continue;
+		if (peer->ribid != ribid)
 			continue;
 		if (peer->state != PEER_UP)
 			continue;

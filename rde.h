@@ -298,7 +298,8 @@ void		 rde_send_pftable(u_int16_t, struct bgpd_addr *,
 		     u_int8_t, int);
 void		 rde_send_pftable_commit(void);
 
-void		 rde_generate_updates(struct prefix *, struct prefix *);
+void		 rde_generate_updates(u_int16_t, struct prefix *,
+		     struct prefix *);
 u_int32_t	 rde_local_as(void);
 int		 rde_noevaluate(void);
 int		 rde_decisionflags(void);

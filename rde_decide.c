@@ -261,7 +261,7 @@ prefix_evaluate(struct prefix *p, struct rib_entry *re)
 		 * but remember that xp may be NULL aka ineligible.
 		 * Additional decision may be made by the called functions.
 		 */
-		rde_generate_updates(xp, re->active);
+		rde_generate_updates(re->ribid, xp, re->active);
 		rde_send_kroute(xp, re->active);
 
 		re->active = xp;
