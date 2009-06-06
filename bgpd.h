@@ -603,6 +603,7 @@ enum comp_ops {
 struct filter_peers {
 	u_int32_t	peerid;
 	u_int32_t	groupid;
+	u_int16_t	ribid;
 };
 
 /* special community type */
@@ -657,6 +658,7 @@ TAILQ_HEAD(filter_head, filter_rule);
 
 struct filter_rule {
 	TAILQ_ENTRY(filter_rule)	entry;
+	char				rib[PEER_DESCR_LEN];
 	struct filter_peers		peer;
 	struct filter_match		match;
 	struct filter_set_head		set;

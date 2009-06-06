@@ -447,10 +447,10 @@ int	 pt_prefix_cmp(const struct pt_entry *, const struct pt_entry *);
 
 
 /* rde_filter.c */
-enum filter_actions rde_filter(struct rde_aspath **, struct filter_head *,
-		     struct rde_peer *, struct rde_aspath *,
-		     struct bgpd_addr *, u_int8_t, struct rde_peer *,
-		     enum directions);
+enum filter_actions rde_filter(u_int16_t, struct rde_aspath **,
+		     struct filter_head *, struct rde_peer *,
+		     struct rde_aspath *, struct bgpd_addr *, u_int8_t,
+		     struct rde_peer *, enum directions);
 void		 rde_apply_set(struct rde_aspath *, struct filter_set_head *,
 		     sa_family_t, struct rde_peer *, struct rde_peer *);
 int		 rde_filter_community(struct rde_aspath *, int, int);

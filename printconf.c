@@ -423,9 +423,11 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 		printf("deny ");
 	else
 		printf("match ");
-
 	if (r->quick)
 		printf("quick ");
+
+	if (r->rib[0])
+		printf("rib %s ", r->rib);
 
 	if (r->dir == DIR_IN)
 		printf("from ");
