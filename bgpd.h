@@ -558,6 +558,7 @@ struct filter_community {
 };
 
 struct ctl_show_rib_request {
+	char			rib[PEER_DESCR_LEN];
 	struct ctl_neighbor	neighbor;
 	struct bgpd_addr	prefix;
 	struct filter_as	as;
