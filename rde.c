@@ -721,7 +721,7 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 				break;
 			}
 			memcpy(&xmrt, imsg.data, sizeof(xmrt));
-			if ((fd = imsg_get_fd(ibuf)) == -1)
+			if ((fd = imsg.fd) == -1)
 				log_warnx("expected to receive fd for mrt dump "
 				    "but didn't receive any");
 			else if (xmrt.type == MRT_TABLE_DUMP ||
