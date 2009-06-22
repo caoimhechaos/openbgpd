@@ -824,6 +824,8 @@ rde_update_dispatch(struct imsg *imsg)
 		    peer->conf.enforce_as == ENFORCE_AS_ON)
 			if (peer->conf.remote_as !=
 			    aspath_neighbor(asp->aspath)) {
+				log_peer_warnx(&peer->conf, "bad path, "
+				    "enforce remote-as enabled");
 				rde_update_err(peer, ERR_UPDATE, ERR_UPD_ASPATH,
 				    NULL, 0);
 				goto done;
