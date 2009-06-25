@@ -1,7 +1,5 @@
 #	$OpenBSD$
 
-.PATH:		${.CURDIR}/..
-
 PROG=	bgpd
 SRCS=	bgpd.c buffer.c session.c log.c parse.y config.c imsg.c \
 	rde.c rde_rib.c rde_decide.c rde_prefix.c mrt.c kroute.c \
