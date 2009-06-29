@@ -839,7 +839,6 @@ prefix_bypeer(struct rib_entry *re, struct rde_peer *peer, u_int32_t flags)
 	return (NULL);
 }
 
-/* XXX this completely wrong somewhat */
 void
 prefix_updateall(struct rde_aspath *asp, enum nexthop_state state,
     enum nexthop_state oldstate)
@@ -860,7 +859,8 @@ prefix_updateall(struct rde_aspath *asp, enum nexthop_state state,
 			 * or other internal infos. This will not change
 			 * the routing decision so shortcut here.
 			 */
-			if (p == p->rib->active)
+			if ((p->rib->flags & F_RIB_NOFIB) == 0 &&
+			    p == p->rib->active)
 				rde_send_kroute(p, NULL);
 			continue;
 		}
