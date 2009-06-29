@@ -277,16 +277,16 @@ struct mrt {
 	u_int32_t		peer_id;
 	u_int32_t		group_id;
 	enum mrt_type		type;
+	enum mrt_state		state;
 	u_int16_t		seqnum;
 };
 
 struct mrt_config {
 	struct mrt		conf;
-	time_t			ReopenTimer;
-	time_t			ReopenTimerInterval;
-	enum mrt_state		state;
 	char			name[MRT_FILE_LEN];	/* base file name */
 	char			file[MRT_FILE_LEN];	/* actual file name */
+	time_t			ReopenTimer;
+	time_t			ReopenTimerInterval;
 };
 
 #define	MRT2MC(x)	((struct mrt_config *)(x))
