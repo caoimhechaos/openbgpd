@@ -300,7 +300,7 @@ mrt_dump_entry_mp(struct mrt *mrt, struct prefix *p, u_int16_t snum,
 fail:
 	if (hbuf)
 		buf_free(hbuf);
-	if (h2buf);
+	if (h2buf)
 		buf_free(h2buf);
 	buf_free(buf);
 	return (-1);
