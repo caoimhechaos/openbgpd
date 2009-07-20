@@ -587,11 +587,26 @@ kr_show_route(struct imsg *imsg)
 				case AF_INET:
 					kr = h->kroute;
 					snh.valid = kroute_validate(&kr->r);
+					snh.connected =
+					    kr->r.flags & F_CONNECTED;
+					if ((snh.gateway.v4.s_addr =
+					    kr->r.nexthop.s_addr) != 0)
+						snh.gateway.af = AF_INET;
 					ifindex = kr->r.ifindex;
 					break;
 				case AF_INET6:
 					kr6 = h->kroute;
 					snh.valid = kroute6_validate(&kr6->r);
+					snh.connected =
+					    kr6->r.flags & F_CONNECTED;
+					if (memcmp(&kr6->r.nexthop,
+					    &in6addr_any,
+					    sizeof(struct in6_addr)) != 0) {
+						snh.gateway.af = AF_INET6;
+						memcpy(&snh.gateway.v6,
+						    &kr6->r.nexthop,
+						    sizeof(struct in6_addr));
+					}
 					ifindex = kr6->r.ifindex;
 					break;
 				}
