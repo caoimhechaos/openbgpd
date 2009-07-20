@@ -397,7 +397,7 @@ conf_main	: AS as4number		{
 				free($3);
 				YYERROR;
 			}
-			if (!add_rib($3, F_RIB_NOEVALUATE)) {
+			if (!add_rib($3, F_RIB_NOFIB | F_RIB_NOEVALUATE)) {
 				free($3);
 				YYERROR;
 			}
