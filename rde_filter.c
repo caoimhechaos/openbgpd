@@ -40,6 +40,13 @@ rde_filter(u_int16_t ribid, struct rde_aspath **new, struct filter_head *rules,
 	if (new != NULL)
 		*new = NULL;
 
+	if (asp->flags & F_ATTR_PARSE_ERR)
+		/*
+	 	 * don't try to filter bad updates but let them through
+		 * so they act as implicit withdraws
+		 */
+		return (action);
+
 	TAILQ_FOREACH(f, rules, entry) {
 		if (dir != f->dir)
 			continue;
