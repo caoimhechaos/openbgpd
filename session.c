@@ -2656,7 +2656,7 @@ getpeerbyip(struct sockaddr *ip)
 			newpeer->conf.remote_masklen = 32;
 		}
 		if (newpeer->conf.remote_addr.af == AF_INET6) {
-			memcpy(&p->conf.remote_addr.v6,
+			memcpy(&newpeer->conf.remote_addr.v6,
 			    &((struct sockaddr_in6 *)ip)->sin6_addr,
 			    sizeof(newpeer->conf.remote_addr.v6));
 			newpeer->conf.remote_masklen = 128;
