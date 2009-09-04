@@ -698,6 +698,7 @@ extern struct rib_names ribnames;
 #define	SAFI_NONE	0x00
 #define	SAFI_UNICAST	0x01
 #define	SAFI_MULTICAST	0x02
+#define	SAFI_MPLS	0x04
 #define	SAFI_ALL	0xff
 
 /* 4-byte magic AS number */
