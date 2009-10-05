@@ -78,7 +78,7 @@ rib_new(int id, char *name, u_int16_t flags)
 	bzero(&ribs[id], sizeof(struct rib));
 	strlcpy(ribs[id].name, name, sizeof(ribs[id].name));
 	RB_INIT(&ribs[id].rib);
-	ribs[id].state = RIB_ACTIVE;
+	ribs[id].state = RIB_NEW;
 	ribs[id].id = id;
 	ribs[id].flags = flags;
 

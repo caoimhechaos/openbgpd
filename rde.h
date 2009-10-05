@@ -265,6 +265,7 @@ struct rib_entry {
 
 enum rib_state {
 	RIB_NONE,
+	RIB_NEW,
 	RIB_ACTIVE,
 	RIB_DELETE
 };
