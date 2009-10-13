@@ -2600,7 +2600,7 @@ alloc_peer(void)
 	p->conf.capabilities.mp_v4 = SAFI_ALL;
 	p->conf.capabilities.mp_v6 = SAFI_ALL;
 	p->conf.capabilities.refresh = 1;
-	p->conf.capabilities.restart = 1;
+	p->conf.capabilities.restart = 0;
 	p->conf.capabilities.as4byte = 1;
 	p->conf.local_as = conf->as;
 	p->conf.local_short_as = conf->short_as;
