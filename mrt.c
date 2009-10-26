@@ -387,7 +387,7 @@ mrt_dump_upcall(struct rib_entry *re, void *ptr)
 }
 
 void
-mrt_dump_done(void *ptr)
+mrt_done(void *ptr)
 {
 	struct mrt		*mrtbuf = ptr;
 
@@ -541,6 +541,7 @@ mrt_write(struct mrt *mrt)
 	if ((r = buf_write(&mrt->wbuf)) < 0) {
 		log_warn("mrt dump aborted, mrt_write");
 		mrt_clean(mrt);
+		mrt_done(mrt);
 	}
 }
 

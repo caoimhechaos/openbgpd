@@ -303,7 +303,7 @@ void		 mrt_dump_state(struct mrt *, u_int16_t, u_int16_t,
 		     struct peer *);
 void		 mrt_clear_seq(void);
 void		 mrt_dump_upcall(struct rib_entry *, void *);
-void		 mrt_dump_done(void *);
+void		 mrt_done(void *);
 void		 mrt_write(struct mrt *);
 void		 mrt_clean(struct mrt *);
 void		 mrt_init(struct imsgbuf *, struct imsgbuf *);

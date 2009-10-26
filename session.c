@@ -189,7 +189,7 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 	struct passwd		*pw;
 	struct peer		*p, **peer_l = NULL, *last, *next;
 	struct network		*net;
-	struct mrt		*m, **mrt_l = NULL;
+	struct mrt		*m, *xm, **mrt_l = NULL;
 	struct filter_rule	*r;
 	struct pollfd		*pfd = NULL;
 	struct ctl_conn		*ctl_conn;
@@ -345,9 +345,17 @@ session_main(struct bgpd_config *config, struct peer *cpeers,
 		}
 
 		mrt_cnt = 0;
-		LIST_FOREACH(m, &mrthead, entry)
+		for (m = LIST_FIRST(&mrthead); m != NULL; m = xm) {
+			xm = LIST_NEXT(m, entry);
+			if (m->state == MRT_STATE_REMOVE) {
+				mrt_clean(m);
+				LIST_REMOVE(m, entry);
+				free(m);
+				continue;
+			}
 			if (m->wbuf.queued)
 				mrt_cnt++;
+		}
 
 		if (mrt_cnt > mrt_l_elms) {
 			if ((newp = realloc(mrt_l, sizeof(struct mrt *) *
