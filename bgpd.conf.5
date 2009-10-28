@@ -1062,6 +1062,12 @@ matches a rule which has the
 option set, this rule is considered the last matching rule, and evaluation
 of subsequent rules is skipped.
 .Pp
+.It Ic rib Ar name
+Apply rule only to the specified RIB.
+This only applies for recieved updates, so not for rules using the
+.Ar to Ar peer
+parameter.
+.Pp
 .It Ic set Ar attribute ...
 All matching rules can set the
 .Em AS path attributes
