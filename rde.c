@@ -360,7 +360,7 @@ rde_main(struct bgpd_config *config, struct peer *peer_l,
 		close(mctx->mrt.wbuf.fd);
 		LIST_REMOVE(&mctx->ribctx, entry);
 		LIST_REMOVE(mctx, entry);
-		free(mrt);
+		free(mctx);
 	}
 
 	msgbuf_clear(&ibuf_se->w);
