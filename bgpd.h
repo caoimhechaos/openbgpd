@@ -290,6 +290,7 @@ enum imsg_type {
 	IMSG_CTL_SHOW_RIB_MEM,
 	IMSG_CTL_SHOW_TERSE,
 	IMSG_CTL_SHOW_TIMER,
+	IMSG_CTL_LOG_VERBOSE,
 	IMSG_NETWORK_ADD,
 	IMSG_NETWORK_REMOVE,
 	IMSG_NETWORK_FLUSH,
@@ -713,6 +714,7 @@ int		 bgpd_filternexthop(struct kroute *, struct kroute6 *);
 
 /* log.c */
 void		 log_init(int);
+void		 log_verbose(int);
 void		 vlog(int, const char *, va_list);
 void		 log_peer_warn(const struct peer_config *, const char *, ...);
 void		 log_peer_warnx(const struct peer_config *, const char *, ...);
