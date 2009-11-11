@@ -1968,6 +1968,7 @@ rde_dump_ctx_new(struct ctl_show_rib_request *req, pid_t pid,
 		error = CTL_RES_NOSUCHPEER;
 		imsg_compose(ibuf_se_ctl, IMSG_CTL_RESULT, 0, pid, -1, &error,
 		    sizeof(error));
+		free(ctx);
 		return;
 	}
 

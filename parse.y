@@ -372,6 +372,7 @@ conf_main	: AS as4number		{
 				in6->sin6_port = htons(BGP_PORT);
 				break;
 			default:
+				free(la);
 				yyerror("king bula does not like family %u",
 				    $3.af);
 				YYERROR;
