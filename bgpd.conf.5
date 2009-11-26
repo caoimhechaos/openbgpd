@@ -1148,6 +1148,20 @@ otherwise it will be set to
 .Ar number .
 .Pp
 .It Xo
+.Ic origin
+.Sm off
+.Po Ic igp \*(Ba
+.Ic egp \*(Ba
+.Ic incomplete Pc
+.Sm on
+.Xc
+Set the
+.Em ORIGIN
+AS path attribute to mark the source of this
+route as being injected from an igp protocol, an egp protocol
+or being an aggregated route.
+.Pp
+.It Xo
 .Ic nexthop
 .Sm off
 .Po Ar address \*(Ba
