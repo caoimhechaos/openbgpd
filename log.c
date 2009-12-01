@@ -43,8 +43,9 @@ log_fmt_peer(const struct peer_config *peer)
 	char		*pfmt, *p;
 
 	ip = log_addr(&peer->remote_addr);
-	if ((peer->remote_addr.af == AF_INET && peer->remote_masklen != 32) ||
-	    (peer->remote_addr.af == AF_INET6 && peer->remote_masklen != 128)) {
+	if ((peer->remote_addr.aid == AID_INET && peer->remote_masklen != 32) ||
+	    (peer->remote_addr.aid == AID_INET6 &&
+	    peer->remote_masklen != 128)) {
 		if (asprintf(&p, "%s/%u", ip, peer->remote_masklen) == -1)
 			fatal(NULL);
 	} else {

@@ -214,7 +214,7 @@ pftable_add_work(const char *table, struct bgpd_addr *addr,
 
 	bzero(pfa, sizeof(*pfa));
 	memcpy(&pfa->pfra_u, &addr->ba, (len + 7U) / 8);
-	pfa->pfra_af = addr->af;
+	pfa->pfra_af = aid2af(addr->aid);
 	pfa->pfra_net = len;
 
 	pft->naddrs++;

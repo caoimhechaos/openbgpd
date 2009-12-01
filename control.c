@@ -371,7 +371,7 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 				neighbor->descr[PEER_DESCR_LEN - 1] = 0;
 				ribreq->peerid = 0;
 				p = NULL;
-				if (neighbor->addr.af) {
+				if (neighbor->addr.aid) {
 					p = getpeerbyaddr(&neighbor->addr);
 					if (p == NULL) {
 						control_result(c,
@@ -398,8 +398,8 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 					break;
 				}
 				if ((imsg.hdr.type == IMSG_CTL_SHOW_RIB_PREFIX)
-				    && (ribreq->prefix.af != AF_INET)
-				    && (ribreq->prefix.af != AF_INET6)) {
+				    && (ribreq->prefix.aid != AID_INET)
+				    && (ribreq->prefix.aid != AID_INET6)) {
 					/* malformed request, must specify af */
 					control_result(c, CTL_RES_PARSE_ERROR);
 					break;

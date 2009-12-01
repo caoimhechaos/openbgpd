@@ -281,8 +281,8 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 	char		*method;
 	struct in_addr	 ina;
 
-	if ((p->remote_addr.af == AF_INET && p->remote_masklen != 32) ||
-	    (p->remote_addr.af == AF_INET6 && p->remote_masklen != 128))
+	if ((p->remote_addr.aid == AID_INET && p->remote_masklen != 32) ||
+	    (p->remote_addr.aid == AID_INET6 && p->remote_masklen != 128))
 		printf("%sneighbor %s/%u {\n", c, log_addr(&p->remote_addr),
 		    p->remote_masklen);
 	else
@@ -299,7 +299,7 @@ print_peer(struct peer_config *p, struct bgpd_config *conf, const char *c)
 		printf("%s\tmultihop %u\n", c, p->distance);
 	if (p->passive)
 		printf("%s\tpassive\n", c);
-	if (p->local_addr.af)
+	if (p->local_addr.aid)
 		printf("%s\tlocal-address %s\n", c, log_addr(&p->local_addr));
 	if (p->max_prefix) {
 		printf("%s\tmax-prefix %u", c, p->max_prefix);
@@ -479,14 +479,14 @@ print_rule(struct peer *peer_l, struct filter_rule *r)
 	} else
 		printf("any ");
 
-	if (r->match.prefix.addr.af)
+	if (r->match.prefix.addr.aid)
 		printf("prefix %s/%u ", log_addr(&r->match.prefix.addr),
 		    r->match.prefix.len);
 
-	if (r->match.prefix.addr.af == 0 && r->match.prefixlen.af) {
-		if (r->match.prefixlen.af == AF_INET)
+	if (r->match.prefix.addr.aid == 0 && r->match.prefixlen.aid) {
+		if (r->match.prefixlen.aid == AID_INET)
 			printf("inet ");
-		if (r->match.prefixlen.af == AF_INET6)
+		if (r->match.prefixlen.aid == AID_INET6)
 			printf("inet6 ");
 	}
 
