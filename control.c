@@ -53,7 +53,7 @@ control_init(int restricted, char *path)
 
 	if (unlink(path) == -1)
 		if (errno != ENOENT) {
-			log_warn("unlink %s", path);
+			log_warn("control_init: unlink %s", path);
 			close(fd);
 			return (-1);
 		}
@@ -123,14 +123,14 @@ control_accept(int listenfd, int restricted)
 	if ((connfd = accept(listenfd,
 	    (struct sockaddr *)&sun, &len)) == -1) {
 		if (errno != EWOULDBLOCK && errno != EINTR)
-			log_warn("session_control_accept");
+			log_warn("control_accept: accept");
 		return (0);
 	}
 
 	session_socket_blockmode(connfd, BM_NONBLOCK);
 
 	if ((ctl_conn = malloc(sizeof(struct ctl_conn))) == NULL) {
-		log_warn("session_control_accept");
+		log_warn("control_accept");
 		close(connfd);
 		return (0);
 	}
