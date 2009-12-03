@@ -926,6 +926,7 @@ change_state(struct peer *peer, enum session_state state,
 		timer_stop(peer, Timer_ConnectRetry);
 		timer_stop(peer, Timer_Keepalive);
 		timer_stop(peer, Timer_Hold);
+		timer_stop(peer, Timer_IdleHold);
 		timer_stop(peer, Timer_IdleHoldReset);
 		session_close_connection(peer);
 		msgbuf_clear(&peer->wbuf);
