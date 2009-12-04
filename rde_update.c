@@ -796,7 +796,7 @@ up_generate_attr(struct rde_peer *peer, struct update_attr *upa,
 
 	/* write mp attribute to different buffer */
 	if (ismp)
-		if (up_generate_mp_reach(peer, upa, a, AF_INET6) == -1)
+		if (up_generate_mp_reach(peer, upa, a, aid) == -1)
 			return (-1);
 
 	/* the bgp path attributes are now stored in the global buf */
