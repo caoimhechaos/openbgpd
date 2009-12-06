@@ -354,7 +354,7 @@ conf_main	: AS as4number		{
 				fatal("parse conf_main listen on calloc");
 
 			la->fd = -1;
-			memcpy(addr2sa(&$3, BGP_PORT), &la->sa, sizeof(la->sa));
+			memcpy(&la->sa, addr2sa(&$3, BGP_PORT), sizeof(la->sa));
 			TAILQ_INSERT_TAIL(listen_addrs, la, entry);
 		}
 		| FIBUPDATE yesno		{
