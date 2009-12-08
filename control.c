@@ -437,7 +437,7 @@ control_dispatch_msg(struct pollfd *pfd, u_int *ctl_cnt)
 			    sizeof(verbose))
 				break;
 
-			/* forward to other porcesses */
+			/* forward to other processes */
 			imsg_compose_parent(imsg.hdr.type, imsg.hdr.pid,
 			    imsg.data, imsg.hdr.len - IMSG_HEADER_SIZE);
 			imsg_compose_rde(imsg.hdr.type, 0,
