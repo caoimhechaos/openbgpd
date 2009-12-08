@@ -280,6 +280,14 @@ inet6applymask(struct in6_addr *dest, const struct in6_addr *src, int prefixlen)
 /* address family translation functions */
 const struct aid aid_vals[AID_MAX] = AID_VALS;
 
+const char *
+aid2str(u_int8_t aid)
+{
+	if (aid < AID_MAX)
+		return (aid_vals[aid].name);
+	return ("unknown AID");
+}
+
 int
 aid2afi(u_int8_t aid, u_int16_t *afi, u_int8_t *safi)
 {

@@ -189,6 +189,7 @@ struct peer {
 	struct {
 		struct capabilities	ann;
 		struct capabilities	peer;
+		struct capabilities	neg;
 	}			 capa;
 	struct {
 		struct bgpd_addr	local_addr;
