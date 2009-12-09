@@ -1792,23 +1792,6 @@ filter_set_opt	: LOCALPREF NUMBER		{
 				free($$);
 				YYERROR;
 			}
-			/* Don't allow setting of unknown well-known types */
-			if ($$->action.community.as == COMMUNITY_WELLKNOWN) {
-				switch ($$->action.community.type) {
-				case COMMUNITY_NO_EXPORT:
-				case COMMUNITY_NO_ADVERTISE:
-				case COMMUNITY_NO_EXPSUBCONFED:
-				case COMMUNITY_NO_PEER:
-					/* valid */
-					break;
-				default:
-					/* unknown */
-					yyerror("Invalid well-known community");
-					free($$);
-					YYERROR;
-					break;
-				}
-			}
 		}
 		| ORIGIN origincode {
 			if (($$ = calloc(1, sizeof(struct filter_set))) == NULL)
@@ -2557,7 +2540,7 @@ parsecommunity(char *s, int *as, int *type)
 
 	if ((i = getcommunity(s)) == COMMUNITY_ERROR)
 		return (-1);
-	if (i == USHRT_MAX) {
+	if (i == COMMUNITY_WELLKNOWN) {
 		yyerror("Bad community AS number");
 		return (-1);
 	}
