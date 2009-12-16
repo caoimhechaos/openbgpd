@@ -346,6 +346,10 @@ int		 aspath_match(struct aspath *, enum as_spec, u_int32_t);
 int		 community_match(void *, u_int16_t, int, int);
 int		 community_set(struct rde_aspath *, int, int);
 void		 community_delete(struct rde_aspath *, int, int);
+int		 community_ext_set(struct rde_aspath *,
+		    struct filter_extcommunity *, u_int16_t);
+void		 community_ext_delete(struct rde_aspath *,
+		    struct filter_extcommunity *, u_int16_t);
 
 /* rde_rib.c */
 extern u_int16_t	 rib_size;

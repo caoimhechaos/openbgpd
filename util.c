@@ -90,6 +90,32 @@ log_as(u_int32_t as)
 	return (buf);
 }
 
+/* XXX this function does not check if the type/subtype combo is
+ * actually valid. */
+const char *
+log_ext_subtype(u_int8_t subtype)
+{
+	static char etype[6];
+
+	switch (subtype) {
+	case EXT_COMMUNITY_ROUTE_TGT:
+		return ("rt");	/* route target */
+	case EXT_CUMMUNITY_ROUTE_ORIG:
+		return ("soo");	/* source of origin */
+	case EXT_COMMUNITY_OSPF_DOM_ID:
+		return ("odi");	/* ospf domain id */
+	case EXT_COMMUNITY_OSPF_RTR_TYPE:
+		return ("ort");	/* ospf route type */
+	case EXT_COMMUNITY_OSPF_RTR_ID:
+		return ("ori");	/* ospf router id */
+	case EXT_COMMUNITY_BGP_COLLECT:
+		return ("bdc");	/* bgp data collection */
+	default:
+		snprintf(etype, sizeof(etype), "[%i]", (int)subtype);
+		return (etype);
+	}
+}
+
 int
 aspath_snprint(char *buf, size_t size, void *data, u_int16_t len)
 {

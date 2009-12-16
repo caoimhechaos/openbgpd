@@ -1389,6 +1389,22 @@ bad_flags:
 		    ATTR_PARTIAL))
 			goto bad_flags;
 		goto optattr;
+	case ATTR_EXT_COMMUNITIES:
+		if ((attr_len & 0x7) != 0) {
+			/*
+			 * mark update as bad and withdraw all routes as per
+			 * draft-ietf-idr-optional-transitive-00.txt
+			 * but only if partial bit is set
+			 */
+			if ((flags & ATTR_PARTIAL) == 0)
+				goto bad_len;
+			else
+				a->flags |= F_ATTR_PARSE_ERR;
+		}
+		if (!CHECK_FLAGS(flags, ATTR_OPTIONAL|ATTR_TRANSITIVE,
+		    ATTR_PARTIAL))
+			goto bad_flags;
+		goto optattr;
 	case ATTR_ORIGINATOR_ID:
 		if (attr_len != 4)
 			goto bad_len;
