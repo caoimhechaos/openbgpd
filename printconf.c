@@ -112,7 +112,7 @@ print_extcommunity(struct filter_extcommunity *c)
 		    log_as(c->data.ext_as4.as4), c->data.ext_as.val);
 		break;
 	case EXT_COMMUNITY_OPAQUE:
-		printf("%s 0x%x", log_ext_subtype(c->subtype),
+		printf("%s 0x%llx", log_ext_subtype(c->subtype),
 		    c->data.ext_opaq);
 		break;
 	default:
