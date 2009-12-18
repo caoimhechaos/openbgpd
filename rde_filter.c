@@ -299,7 +299,7 @@ rde_filter_match(struct filter_rule *f, struct rde_aspath *asp,
 			break;
 		}
 
-		if (rde_filter_community(asp, as, type) == 0)
+		if (community_match(asp, as, type) == 0)
 			return (0);
 	}
 
@@ -371,19 +371,6 @@ rde_filter_match(struct filter_rule *f, struct rde_aspath *asp,
 
 	/* matched somewhen or is anymatch rule  */
 	return (1);
-}
-
-int
-rde_filter_community(struct rde_aspath *asp, int as, int type)
-{
-	struct attr	*a;
-
-	a = attr_optget(asp, ATTR_COMMUNITIES);
-	if (a == NULL)
-		/* no communities, no match */
-		return (0);
-
-	return (community_match(a->data, a->len, as, type));
 }
 
 int

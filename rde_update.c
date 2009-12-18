@@ -318,13 +318,13 @@ up_test_update(struct rde_peer *peer, struct prefix *p)
 	}
 
 	/* well known communities */
-	if (rde_filter_community(p->aspath,
+	if (community_match(p->aspath,
 	    COMMUNITY_WELLKNOWN, COMMUNITY_NO_ADVERTISE))
 		return (0);
-	if (peer->conf.ebgp && rde_filter_community(p->aspath,
+	if (peer->conf.ebgp && community_match(p->aspath,
 	    COMMUNITY_WELLKNOWN, COMMUNITY_NO_EXPORT))
 		return (0);
-	if (peer->conf.ebgp && rde_filter_community(p->aspath,
+	if (peer->conf.ebgp && community_match(p->aspath,
 	    COMMUNITY_WELLKNOWN, COMMUNITY_NO_EXPSUBCONFED))
 		return (0);
 

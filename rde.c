@@ -1938,7 +1938,7 @@ rde_dump_filter(struct prefix *p, struct ctl_show_rib_request *req)
 		    !aspath_match(p->aspath->aspath, req->as.type, req->as.as))
 			return;
 		if (req->type == IMSG_CTL_SHOW_RIB_COMMUNITY &&
-		    !rde_filter_community(p->aspath, req->community.as,
+		    !community_match(p->aspath, req->community.as,
 		    req->community.type))
 			return;
 		rde_dump_rib_as(p, p->aspath, req->pid, req->flags);
