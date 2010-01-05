@@ -619,6 +619,9 @@ rde_dispatch_imsg_parent(struct imsgbuf *ibuf)
 					nconf->flags &= ~BGPD_FLAG_NO_EVALUATE;
 			}
 			memcpy(conf, nconf, sizeof(struct bgpd_config));
+			conf->listen_addrs = NULL;
+			conf->csock = NULL;
+			conf->rcsock = NULL;
 			free(nconf);
 			nconf = NULL;
 			parent_set = NULL;
