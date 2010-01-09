@@ -184,7 +184,7 @@ up_add(struct rde_peer *peer, struct update_prefix *p, struct update_attr *a)
 		wdl = &peer->withdraws6;
 		break;
 	default:
-		fatalx("up_add: unknown AF");
+		fatalx("up_add: unknown AID");
 	}
 
 	/* 1. search for attr */
