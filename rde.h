@@ -421,11 +421,12 @@ void		 up_generate_updates(struct filter_head *, struct rde_peer *,
 		     struct prefix *, struct prefix *);
 void		 up_generate_default(struct filter_head *, struct rde_peer *,
 		     u_int8_t);
+int		 up_generate_marker(struct rde_peer *, u_int8_t);
 int		 up_dump_prefix(u_char *, int, struct uplist_prefix *,
 		     struct rde_peer *);
 int		 up_dump_attrnlri(u_char *, int, struct rde_peer *);
 u_char		*up_dump_mp_unreach(u_char *, u_int16_t *, struct rde_peer *);
-u_char		*up_dump_mp_reach(u_char *, u_int16_t *, struct rde_peer *);
+int		 up_dump_mp_reach(u_char *, u_int16_t *, struct rde_peer *);
 
 /* rde_prefix.c */
 #define pt_empty(pt)	((pt)->refcnt == 0)
