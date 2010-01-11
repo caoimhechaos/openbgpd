@@ -365,11 +365,12 @@ main(int argc, char *argv[])
 		LIST_REMOVE(m, entry);
 		free(m);
 	}
-	while ((la = TAILQ_FIRST(conf.listen_addrs)) != NULL) {
-		TAILQ_REMOVE(conf.listen_addrs, la, entry);
-		close(la->fd);
-		free(la);
-	}
+	if (conf.listen_addrs)
+		while ((la = TAILQ_FIRST(conf.listen_addrs)) != NULL) {
+			TAILQ_REMOVE(conf.listen_addrs, la, entry);
+			close(la->fd);
+			free(la);
+		}
 
 	free(rules_l);
 	control_cleanup(conf.csock);
