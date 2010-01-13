@@ -33,10 +33,20 @@ log_addr(const struct bgpd_addr *addr)
 {
 	static char	buf[48];
 
-	if (inet_ntop(aid2af(addr->aid), &addr->ba, buf, sizeof(buf)) == NULL)
-		return ("?");
-	else
+	switch (addr->aid) {
+	case AID_INET:
+	case AID_INET6:
+		if (inet_ntop(aid2af(addr->aid), &addr->ba, buf,
+		    sizeof(buf)) == NULL)
+			return ("?");
 		return (buf);
+	case AID_VPN_IPv4:
+		if (inet_ntop(AF_INET, &addr->vpn4.addr, buf,
+		    sizeof(buf)) == NULL)
+			return ("?");
+		return (buf);
+	}
+	return ("???");
 }
 
 const char *
