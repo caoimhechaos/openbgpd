@@ -2879,7 +2879,7 @@ peer_up(u_int32_t id, struct session_up *sup)
 		return;
 
 	for (i = 0; i < AID_MAX; i++) {
-		if (peer->capa.mp[i] == 1)
+		if (peer->capa.mp[i])
 			peer_dump(id, i);
 	}
 }
