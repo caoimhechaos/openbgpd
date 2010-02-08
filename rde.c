@@ -2822,7 +2822,10 @@ peer_localaddrs(struct rde_peer *peer, struct bgpd_addr *laddr)
 				ifa = match;
 			sa2addr(ifa->ifa_addr, &peer->local_v4_addr);
 			break;
-		} else if (ifa->ifa_addr->sa_family == AF_INET6 &&
+		}
+	}
+	for (ifa = ifap; ifa != NULL; ifa = ifa->ifa_next) {
+		if (ifa->ifa_addr->sa_family == AF_INET6 &&
 		    strcmp(ifa->ifa_name, match->ifa_name) == 0) {
 			/*
 			 * only accept global scope addresses except explicitly
