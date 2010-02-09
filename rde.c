@@ -2657,7 +2657,7 @@ rde_update6_queue_runner(u_int8_t aid)
 			case -2:
 				continue;
 			case -1:
-				peer_send_eor(peer, AID_INET6);
+				peer_send_eor(peer, aid);
 				continue;
 			default:
 				b = queue_buf + r;
