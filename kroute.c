@@ -1797,7 +1797,7 @@ prefixlen2mask6(u_int8_t prefixlen)
 }
 
 #define	ROUNDUP(a)	\
-    (((a) & ((sizeof(long)) - 1)) ? (1 + ((a) | ((sizeof(long)) - 1))) : (a))
+    (((a) & (sizeof(long) - 1)) ? (1 + ((a) | (sizeof(long) - 1))) : (a))
 
 void
 get_rtaddrs(int addrs, struct sockaddr *sa, struct sockaddr **rti_info)
