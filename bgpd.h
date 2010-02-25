@@ -29,6 +29,7 @@
 
 #include <poll.h>
 #include <stdarg.h>
+#include <string.h>
 
 #include <imsg.h>
 
@@ -829,7 +830,6 @@ void		 kr_nexthop_delete(struct bgpd_addr *);
 void		 kr_show_route(struct imsg *);
 void		 kr_ifinfo(char *);
 int		 kr_reload(void);
-struct in6_addr	*prefixlen2mask6(u_int8_t prefixlen);
 
 /* control.c */
 void	control_cleanup(const char *);
@@ -872,7 +872,6 @@ const char	*log_ext_subtype(u_int8_t);
 int		 aspath_snprint(char *, size_t, void *, u_int16_t);
 int		 aspath_asprint(char **, void *, u_int16_t);
 size_t		 aspath_strlen(void *, u_int16_t);
-in_addr_t	 prefixlen2mask(u_int8_t);
 void		 inet6applymask(struct in6_addr *, const struct in6_addr *,
 		    int);
 const char	*aid2str(u_int8_t);
@@ -882,5 +881,43 @@ sa_family_t	 aid2af(u_int8_t);
 int		 af2aid(sa_family_t, u_int8_t, u_int8_t *);
 struct sockaddr	*addr2sa(struct bgpd_addr *, u_int16_t);
 void		 sa2addr(struct sockaddr *, struct bgpd_addr *);
+
+/* here */
+
+static inline in_addr_t
+prefixlen2mask(u_int8_t prefixlen)
+{
+	if (prefixlen == 0)
+		return (0);
+
+	return (0xffffffff << (32 - prefixlen));
+}
+
+static inline u_int8_t
+mask2prefixlen(in_addr_t ina)
+{
+	if (ina == 0)
+		return (0);
+	else
+		return (33 - ffs(ntohl(ina)));
+}
+
+static inline struct in6_addr *
+prefixlen2mask6(u_int8_t prefixlen)
+{
+	static struct in6_addr	mask;
+	int			i;
+
+	bzero(&mask, sizeof(mask));
+
+	for (i = 0; i < prefixlen / 8; i++)
+		mask.s6_addr[i] = 0xff;
+
+	i = prefixlen % 8;
+	if (i)
+		mask.s6_addr[prefixlen / 8] = 0xff00 >> i;
+
+	return (&mask);
+}
 
 #endif /* __BGPD_H__ */

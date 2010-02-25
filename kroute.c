@@ -132,7 +132,6 @@ void			 kroute_detach_nexthop(struct knexthop_node *);
 
 int		protect_lo(void);
 u_int8_t	prefixlen_classful(in_addr_t);
-u_int8_t	mask2prefixlen(in_addr_t);
 u_int8_t	mask2prefixlen6(struct sockaddr_in6 *);
 void		get_rtaddrs(int, struct sockaddr *, struct sockaddr **);
 void		if_change(u_short, int, struct if_data *);
@@ -1723,15 +1722,7 @@ prefixlen_classful(in_addr_t ina)
 		return (8);
 }
 
-u_int8_t
-mask2prefixlen(in_addr_t ina)
-{
-	if (ina == 0)
-		return (0);
-	else
-		return (33 - ffs(ntohl(ina)));
-}
-
+/* Too large to be inlined sensibly */
 u_int8_t
 mask2prefixlen6(struct sockaddr_in6 *sa_in6)
 {
@@ -1778,22 +1769,6 @@ mask2prefixlen6(struct sockaddr_in6 *sa_in6)
 	}
 
 	return (l);
-}
-
-struct in6_addr *
-prefixlen2mask6(u_int8_t prefixlen)
-{
-	static struct in6_addr	mask;
-	int			i;
-
-	bzero(&mask, sizeof(mask));
-	for (i = 0; i < prefixlen / 8; i++)
-		mask.s6_addr[i] = 0xff;
-	i = prefixlen % 8;
-	if (i)
-		mask.s6_addr[prefixlen / 8] = 0xff00 >> i;
-
-	return (&mask);
 }
 
 #define	ROUNDUP(a)	\

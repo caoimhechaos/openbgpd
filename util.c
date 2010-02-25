@@ -287,15 +287,6 @@ aspath_extract(const void *seg, int pos)
 	return (ntohl(as));
 }
 
-in_addr_t
-prefixlen2mask(u_int8_t prefixlen)
-{
-	if (prefixlen == 0)
-		return (0);
-
-	return (0xffffffff << (32 - prefixlen));
-}
-
 void
 inet6applymask(struct in6_addr *dest, const struct in6_addr *src, int prefixlen)
 {
